@@ -7,7 +7,7 @@ const app = express();
 
 logger.info(`Spotify App started in ${config.util.getEnv('NODE_ENV')} mode`);
 
-app.get('/', (req, res) => {
+app.get('/test', (req, res) => {
   res.sendStatus(200);
 });
 
