@@ -1,32 +1,20 @@
 {
+  "author": "Luis Alfonso",
+  "description": "Simple webapp for Spotify stats",
+  "license": "ISC",
+  "main": "src/server/server.js",
   "name": "spotifyapp",
   "version": "1.0.0",
-  "description": "Simple webapp for Spotify stats",
-  "main": "src/server/server.js",
   "scripts": {
     "build": "./node_modules/.bin/webpack -w",
-    "start": "nodemon src/server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "nodemon src/server/server.js",
+    "start": "node src/server/server.js",
+    "test": "jest"
   },
-  "author": "Luis Alfonso",
-  "license": "ISC",
-  "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "css-loader": "^0.28.9",
-    "eslint": "^4.17.0",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.6.1",
-    "html-webpack-plugin": "^2.30.1",
-    "nodemon": "^1.14.12",
-    "style-loader": "^0.20.1",
-    "webpack": "^3.11.0",
-    "webpack-dev-middleware": "^2.0.5",
-    "webpack-hot-middleware": "^2.21.0"
+  "jest": {
+    "moduleNameMapper": {
+      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
+    }
   },
   "dependencies": {
     "config": "^1.29.4",
@@ -37,5 +25,29 @@
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.2.2",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.9",
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.6.1",
+    "html-webpack-plugin": "^2.30.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^22.2.2",
+    "nodemon": "^1.14.12",
+    "react-test-renderer": "^16.2.0",
+    "style-loader": "^0.20.1",
+    "superagent": "^3.8.2",
+    "supertest": "^3.0.0",
+    "webpack": "^3.11.0",
+    "webpack-dev-middleware": "^2.0.5",
+    "webpack-hot-middleware": "^2.21.0"
   }
 }

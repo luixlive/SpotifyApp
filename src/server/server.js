@@ -7,16 +7,14 @@ const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 /* eslint-enable import/no-extraneous-dependencies */
 
+const app = require('./app');
 const logger = require('./../utils/logger');
 const webpackConfig = require('./../../webpack.config');
 
-const app = express();
-const environment = config.get('NODE_ENV');
+const environment = config.util.getEnv('NODE_ENV');
 const port = config.get('PORT');
 
-logger.info(`Spotify App started in ${environment} mode`);
-
-if (environment === 'dev') {
+if (environment === 'development') {
   const webpackCompiler = webpack(webpackConfig);
 
   app.use(webpackMiddleware(webpackCompiler, {}));
@@ -25,6 +23,6 @@ if (environment === 'dev') {
   app.use(express.static(path.join(__dirname, './../../dist')));
 }
 
-app.listen(3000, () => {
+app.listen(port, () => {
   logger.info(`Spotify App listening at http://${config.get('HOST')}:${port}`);
 });

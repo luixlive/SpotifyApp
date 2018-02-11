@@ -2,6 +2,5 @@
   "HOST": "localhost",
   "LOG_FILE": "./logs/spotifyapp.log",
   "LOG_LEVEL": "debug",
-  "NODE_ENV": "dev",
   "PORT": 3000
 }

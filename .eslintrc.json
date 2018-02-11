@@ -2,5 +2,8 @@
   "globals": {
       "document": true
   },
+  "env": {
+      "jest": true
+  },
   "extends": "airbnb"
 }

@@ -1,1 +1,4 @@
+dist
+logs
+node_modules
 webpack.config.js
