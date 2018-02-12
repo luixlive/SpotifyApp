@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
-import Router from './components/router';
+import { Router } from './components';
 import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);

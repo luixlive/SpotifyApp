@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Router from './../../../app/components/router';
+import { Router } from './../../../app/components';
 
 describe('Router', () => {
   test('Snapshot', () => {

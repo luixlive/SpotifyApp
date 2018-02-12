@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import UserStats from './../../../app/components/user_stats';
+import { UserStats } from './../../../app/components';
 
 describe('UserStats', () => {
   test('Snapshot', () => {
