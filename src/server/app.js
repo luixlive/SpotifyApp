@@ -4,11 +4,9 @@ const cookieSession = require('cookie-session');
 const express = require('express');
 const passport = require('passport');
 const path = require('path');
-/* eslint-disable import/no-extraneous-dependencies */
 const webpack = require('webpack');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-/* eslint-enable import/no-extraneous-dependencies */
 
 const apiRouter = require('./routers');
 const logger = require('./../utils/logger');

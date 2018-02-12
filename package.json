@@ -30,6 +30,9 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
+    "webpack": "^3.11.0",
+    "webpack-dev-middleware": "^2.0.5",
+    "webpack-hot-middleware": "^2.21.0",
     "winston": "^2.4.0"
   },
   "devDependencies": {
@@ -52,9 +55,6 @@
     "react-test-renderer": "^16.2.0",
     "style-loader": "^0.20.1",
     "superagent": "^3.8.2",
-    "supertest": "^3.0.0",
-    "webpack": "^3.11.0",
-    "webpack-dev-middleware": "^2.0.5",
-    "webpack-hot-middleware": "^2.21.0"
+    "supertest": "^3.0.0"
   }
 }
