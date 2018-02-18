@@ -6,7 +6,7 @@ import Footer from './footer';
 
 const App = props => (
   <div>
-    <Header />
+    <Header isUserAuthenticated={false} />
     {props.children}
     <Footer />
   </div>

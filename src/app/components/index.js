@@ -1,7 +1,9 @@
-import app from './app';
-import router from './router';
-import userStats from './user_stats';
+import App from './app';
+import Router from './router';
+import UserStats from './user_stats';
 
-export const App = app;
-export const Router = router;
-export const UserStats = userStats;
+export {
+  App,
+  Router,
+  UserStats,
+};
