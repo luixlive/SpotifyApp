@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import css from './../style/style.css';
+import Header from './header';
+import Footer from './footer';
 
 const App = props => (
-  <div className={css.app} >
+  <div>
+    <Header />
     {props.children}
+    <Footer />
   </div>
 );
 
