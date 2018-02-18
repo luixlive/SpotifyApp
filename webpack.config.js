@@ -27,6 +27,18 @@ module.exports = {
           modules: true
         }
       }]
+    }, {
+      test: /\.(eot|png|ttf|svg|woff|woff2)$/,
+      use: 'file-loader'
+    }, {
+      test: /\.less$/,
+      use: [{
+          loader: "style-loader"
+      }, {
+          loader: "css-loader"
+      }, {
+          loader: "less-loader"
+      }]
     }]
   },
   plugins: [
@@ -39,6 +51,9 @@ module.exports = {
     })
   ],
   resolve: {
+    alias: {
+      '../../theme.config$': path.join(__dirname, 'src/app/style/theme.config')
+    },
     extensions: [".js", ".jsx"]
   }
 };
