@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/spotify', passport.authenticate('spotify'));
 
 router.get('/spotify/callback', passport.authenticate('spotify', {
-  failureRedirect: '/login',
+  failureRedirect: '/',
 }), (req, res) => {
   logger.debug(`api/authentication/spotify/callback: ${JSON.stringify(req.user)}`);
   res.redirect('/stats');

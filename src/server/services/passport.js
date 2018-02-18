@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const config = require('config');
 const passport = require('passport');
 const { Strategy: SpotifyStrategy } = require('passport-spotify');
@@ -5,7 +6,7 @@ const { Strategy: SpotifyStrategy } = require('passport-spotify');
 const logger = require('./../../utils/logger');
 
 passport.serializeUser((user, done) => {
-  done(null, JSON.stringify(user));
+  done(null, JSON.stringify(_.pick(user, config.get('SESSION_VALUES'))));
 });
 
 passport.deserializeUser((user, done) => {
@@ -18,5 +19,5 @@ passport.use(new SpotifyStrategy({
   callbackURL: config.get('SPOTIFY_CALLBACK_URL'),
 }, (accessToken, refreshToken, expiresIn, profile, done) => {
   logger.debug(`User retrieves successfully: ${profile}`);
-  done(null, { profile, accessToken });
+  done(null, { accessToken, profile, refreshToken });
 }));
