@@ -6,7 +6,7 @@
   "name": "spotifyapp",
   "version": "1.0.0",
   "scripts": {
-    "build": "./node_modules/.bin/webpack -w",
+    "build": "./node_modules/.bin/webpack",
     "start:dev": "nodemon src/server/server.js",
     "start": "node src/server/server.js",
     "test": "NODE_ENV=test jest"

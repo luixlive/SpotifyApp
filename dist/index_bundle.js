@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c49d6a1b1f4655145556"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "376226cc001cb19f41a3"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -722,7 +722,7 @@
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return hotCreateRequire(463)(__webpack_require__.s = 463);
+/******/ 	return hotCreateRequire(464)(__webpack_require__.s = 464);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -12475,7 +12475,7 @@ var App = function App(props) {
 };
 
 App.propTypes = {
-  children: _propTypes2.default.element.isRequired
+  children: _propTypes2.default.arrayOf(_propTypes2.default.element).isRequired
 };
 
 var _default = App;
@@ -24179,7 +24179,8 @@ module.exports = __webpack_require__.p + "674f50d287a8c48dc19ba404d20fe713.eot";
 /* 460 */,
 /* 461 */,
 /* 462 */,
-/* 463 */
+/* 463 */,
+/* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(467);
@@ -24187,7 +24188,6 @@ module.exports = __webpack_require__(534);
 
 
 /***/ }),
-/* 464 */,
 /* 465 */,
 /* 466 */,
 /* 467 */
