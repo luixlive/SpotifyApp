@@ -4,7 +4,7 @@
   "LOG_FILE": "./logs/spotifyapp.log",
   "LOG_LEVEL": "debug",
   "PORT": 3000,
-  "SPOTIFY_CALLBACK_URL": "/api/authentication/spotify/callback",
+  "SPOTIFY_CALLBACK_URL": "localhost:3000/api/authentication/spotify/callback",
   "SPOTIFY_CLIENT_ID": "2437ec8de5bb43c38da5f012f7ab5db5",
   "SPOTIFY_CLIENT_SECRET": "9427fa67630b4beaacac67ae7179a001"
 }
