@@ -1,9 +1,9 @@
-import App from './app';
+import AppConnected from './app';
 import Router from './router';
 import UserStats from './user_stats';
 
 export {
-  App,
+  AppConnected,
   Router,
   UserStats,
 };
