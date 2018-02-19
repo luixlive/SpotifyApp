@@ -1,9 +1,11 @@
 {
   "globals": {
-      "document": true
+    "document": true,
+    "window": true
   },
   "env": {
       "jest": true
   },
-  "extends": "airbnb"
+  "extends": "airbnb",
+  "parser": "babel-eslint"
 }

@@ -8,7 +8,7 @@ import UserStats from './user_stats';
 export default () => (
   <BrowserRouter>
     <App>
-      <Route path="/" component={Login} />
+      <Route exact path="/" component={Login} />
       <Route path="/stats" component={UserStats} />
     </App>
   </BrowserRouter>

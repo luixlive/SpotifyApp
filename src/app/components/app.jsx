@@ -3,6 +3,7 @@ import React from 'react';
 
 import Header from './header';
 import Footer from './footer';
+import { SizeDetector } from './hoc';
 
 const App = props => (
   <div>
@@ -16,4 +17,4 @@ App.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
 };
 
-export default App;
+export default SizeDetector(App);

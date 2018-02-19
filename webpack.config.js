@@ -51,6 +51,7 @@ module.exports = {
     })
   ],
   resolve: {
+    // Hack to solve Semantic UI issue reading theme.config
     alias: {
       '../../theme.config$': path.join(__dirname, 'src/app/style/theme.config')
     },
