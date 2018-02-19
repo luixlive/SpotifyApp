@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const AppHeader = (props) => {
+export const AppHeader = (props) => {
   const getLoginButtonText = () => {
     if (props.isUserAuthenticated) {
       return 'Logout';

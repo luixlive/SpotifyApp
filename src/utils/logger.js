@@ -22,8 +22,6 @@ let transports = [];
 
 if (environment === 'development') {
   transports = transports.concat([consoleTransport, fileTransport]);
-} else if (environment === 'test') {
-  transports.push(fileTransport);
 } else {
   transports.push(consoleTransport);
 }

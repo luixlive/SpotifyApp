@@ -8,13 +8,7 @@
   "scripts": {
     "build": "./node_modules/.bin/webpack -w",
     "start:dev": "nodemon src/server/server.js",
-    "start": "node src/server/server.js",
-    "test": "NODE_ENV=test jest"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
-    }
+    "start": "node src/server/server.js"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
@@ -55,13 +49,10 @@
     "eslint-plugin-react": "^7.6.1",
     "file-loader": "^1.1.6",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^22.2.2",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
     "nodemon": "^1.14.12",
-    "react-test-renderer": "^16.2.0",
-    "style-loader": "^0.20.1",
-    "superagent": "^3.8.2",
-    "supertest": "^3.0.0"
+    "redux-mock-store": "^1.5.1",
+    "style-loader": "^0.20.1"
   }
 }

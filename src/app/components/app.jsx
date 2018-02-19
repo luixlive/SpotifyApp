@@ -5,7 +5,7 @@ import Header from './header';
 import Footer from './footer';
 import { SizeDetector } from './hoc';
 
-const App = props => (
+export const App = props => (
   <div>
     <Header isUserAuthenticated={false} />
     {props.children}
