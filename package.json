@@ -62,7 +62,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.6.1",
     "file-loader": "^1.1.6",
-    "husky": "^0.14.3",
+    "husky": "^0.15.0-rc.8",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.3.0",
     "less": "^2.7.2",
