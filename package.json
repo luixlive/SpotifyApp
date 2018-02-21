@@ -72,6 +72,8 @@
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.2.0",
     "redux-mock-store": "^1.5.1",
-    "style-loader": "^0.20.1"
+    "style-loader": "^0.20.1",
+    "superagent": "^3.8.2",
+    "supertest": "^3.0.0"
   }
 }
