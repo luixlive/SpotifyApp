@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Components - Header Snapshots renders mobile 1`] = `
+<div
+  className="ui green center aligned segment"
+>
+  <div
+    className="ui three column grid"
+  >
+    <div
+      className="column"
+    />
+    <div
+      className="middle aligned column"
+    >
+      <h3
+        className="ui header"
+      >
+        Spotify Stats
+      </h3>
+    </div>
+    <div
+      className="column"
+    >
+      <button
+        className="ui green inverted right floated button"
+        disabled={undefined}
+        onClick={[Function]}
+        role="button"
+        tabIndex={undefined}
+      >
+        Sign in
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`App Components - Header Snapshots renders no mobile 1`] = `
+<div
+  className="ui green center aligned segment"
+>
+  <div
+    className="ui three column grid"
+  >
+    <div
+      className="column"
+    />
+    <div
+      className="middle aligned column"
+    >
+      <h2
+        className="ui header"
+      >
+        Spotify Stats
+      </h2>
+    </div>
+    <div
+      className="column"
+    >
+      <button
+        className="ui green inverted right floated button"
+        disabled={undefined}
+        onClick={[Function]}
+        role="button"
+        tabIndex={undefined}
+      >
+        Sign in with Spotify
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`App Components - Header Snapshots renders user authenticated 1`] = `
+<div
+  className="ui green center aligned segment"
+>
+  <div
+    className="ui three column grid"
+  >
+    <div
+      className="column"
+    />
+    <div
+      className="middle aligned column"
+    >
+      <h2
+        className="ui header"
+      >
+        Spotify Stats
+      </h2>
+    </div>
+    <div
+      className="column"
+    >
+      <button
+        className="ui green inverted right floated button"
+        disabled={undefined}
+        onClick={[Function]}
+        role="button"
+        tabIndex={undefined}
+      >
+        Logout
+      </button>
+    </div>
+  </div>
+</div>
+`;

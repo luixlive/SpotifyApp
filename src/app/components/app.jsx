@@ -7,7 +7,7 @@ import { SizeDetector } from './hoc';
 
 export const App = props => (
   <div>
-    <Header isUserAuthenticated={false} />
+    <Header />
     {props.children}
     <Footer />
   </div>

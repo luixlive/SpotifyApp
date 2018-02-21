@@ -3,7 +3,7 @@ import { Container, Header } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Login = props => (
+export const Login = props => (
   <Container className="" textAlign="center">
     <Header
       as="h1"

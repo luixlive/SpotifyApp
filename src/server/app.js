@@ -34,6 +34,10 @@ if (environment === 'development') {
 
   app.use(webpackMiddleware(webpackCompiler, {}));
   app.use(webpackHotMiddleware(webpackCompiler));
+} else if (environment === 'test') {
+  app.get('/test', (req, res) => {
+    res.sendStatus(200);
+  });
 } else {
   app.use(express.static(path.join(__dirname, './../../dist')));
 }
