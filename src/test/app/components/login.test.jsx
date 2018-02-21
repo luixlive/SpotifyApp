@@ -7,6 +7,7 @@ import { shallow, mount } from 'enzyme';
 import ConnectedLogin, {
   Login,
 } from './../../../app/components/login';
+import initialState from './../initial_state';
 
 describe('App Components - Login', () => {
   describe('Snapshots', () => {
@@ -59,15 +60,12 @@ describe('App Components - Login', () => {
   });
 
   describe('Provider', () => {
-    const initialState = { isDeviceMobile: true };
     const mockStore = configureStore();
     let store;
     let wrapper;
     beforeEach(() => {
       store = mockStore(initialState);
-      const props = {
-        isDeviceMobile: false,
-      };
+      const props = { isDeviceMobile: true };
       wrapper = mount((
         <Provider store={store}>
           <ConnectedLogin {...props} />

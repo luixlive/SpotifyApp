@@ -11,7 +11,7 @@
     "scan": "nsp check",
     "start:dev": "nodemon src/server/server.js",
     "start": "node src/server/server.js",
-    "test": "NODE_ENV=test && jest"
+    "test": "NODE_ENV=test && jest --coverage"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./test-setup.js"

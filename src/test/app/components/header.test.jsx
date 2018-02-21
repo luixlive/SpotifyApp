@@ -7,6 +7,7 @@ import { shallow, mount } from 'enzyme';
 import ConnectedAppHeader, {
   AppHeader,
 } from './../../../app/components/header';
+import initialState from './../initial_state';
 
 describe('App Components - Header', () => {
   describe('Snapshots', () => {
@@ -105,14 +106,13 @@ describe('App Components - Header', () => {
   });
 
   describe('Provider', () => {
-    const initialState = { isDeviceMobile: true };
     const mockStore = configureStore();
     let store;
     let wrapper;
     beforeAll(() => {
       store = mockStore(initialState);
       const props = {
-        isDeviceMobile: false,
+        isDeviceMobile: true,
         isUserAuthenticated: false,
       };
       wrapper = mount((

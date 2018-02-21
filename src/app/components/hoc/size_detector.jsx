@@ -1,8 +1,5 @@
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import deviceTypeChanged from './../../actions/device';
 import isDeviceMobile from './../../util/is_device_mobile';
 
 export default (ComposedComponent) => {
@@ -22,25 +19,18 @@ export default (ComposedComponent) => {
     }
 
     handleWindowSizeChange = () => {
-      const isNewSizeMobile = isDeviceMobile(window.innerWidth);
-      if (this.state.isDeviceMobile !== isNewSizeMobile) {
-        this.setState({ isDeviceMobile: isNewSizeMobile });
-        this.props.deviceTypeChanged(isNewSizeMobile);
-      }
+      this.setState({ isDeviceMobile: isDeviceMobile(window.innerWidth) });
     }
 
     render() {
-      return <ComposedComponent {...this.props} />;
+      return (
+        <ComposedComponent
+          {...this.props}
+          isDeviceMobile={this.state.isDeviceMobile}
+        />
+      );
     }
   }
 
-  SizeDetector.propTypes = {
-    deviceTypeChanged: PropTypes.func.isRequired,
-  };
-
-  const mapDispatchToProps = dispatch => ({
-    deviceTypeChanged: isMobile => dispatch(deviceTypeChanged(isMobile)),
-  });
-
-  return connect(null, mapDispatchToProps)(SizeDetector);
+  return SizeDetector;
 };
