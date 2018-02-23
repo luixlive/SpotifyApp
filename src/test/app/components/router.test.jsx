@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import {
   LoginConnected,
   Router,
-  UserStats,
+  UserStatsConnected,
 } from './../../../app/components';
 
 describe('App Components - Router', () => {
@@ -19,6 +19,6 @@ describe('App Components - Router', () => {
     }, {});
 
     expect(pathMap['/']).toBe(LoginConnected);
-    expect(pathMap['/stats']).toBe(UserStats);
+    expect(pathMap['/stats']).toBe(UserStatsConnected);
   });
 });

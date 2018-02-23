@@ -111,13 +111,9 @@ describe('App Components - Header', () => {
     let wrapper;
     beforeAll(() => {
       store = mockStore(initialState);
-      const props = {
-        isDeviceMobile: true,
-        isUserAuthenticated: false,
-      };
       wrapper = mount((
         <Provider store={store}>
-          <ConnectedAppHeader {...props} />
+          <ConnectedAppHeader />
         </Provider>
       ));
     });

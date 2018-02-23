@@ -3,7 +3,7 @@ import AppFooterConnected from './footer';
 import AppHeaderConnected from './header';
 import LoginConnected from './login';
 import Router from './router';
-import UserStats from './user_stats';
+import UserStatsConnected from './user_stats';
 
 export {
   AppConnected,
@@ -11,5 +11,5 @@ export {
   AppHeaderConnected,
   LoginConnected,
   Router,
-  UserStats,
+  UserStatsConnected,
 };

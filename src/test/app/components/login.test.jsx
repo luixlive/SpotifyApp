@@ -65,10 +65,9 @@ describe('App Components - Login', () => {
     let wrapper;
     beforeEach(() => {
       store = mockStore(initialState);
-      const props = { isDeviceMobile: true };
       wrapper = mount((
         <Provider store={store}>
-          <ConnectedLogin {...props} />
+          <ConnectedLogin />
         </Provider>
       ));
     });
