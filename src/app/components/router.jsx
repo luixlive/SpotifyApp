@@ -1,11 +1,8 @@
 import { BrowserRouter, Route } from 'react-router-dom';
 import React from 'react';
 
-import {
-  AppConnected,
-  LoginConnected,
-  UserStatsConnected,
-} from './';
+import { AppConnected } from './';
+import { LoginConnected, UserStatsConnected } from './containers';
 
 export default () => (
   <BrowserRouter>

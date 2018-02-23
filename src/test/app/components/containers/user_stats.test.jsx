@@ -6,8 +6,8 @@ import { shallow, mount } from 'enzyme';
 
 import UserStatsConnected, {
   UserStats,
-} from './../../../app/components/user_stats';
-import initialState from './../initial_state';
+} from './../../../../app/components/containers/user_stats';
+import initialState from './../../initial_state';
 
 describe('App Components - UserStats', () => {
   describe('Snapshots', () => {
@@ -30,10 +30,16 @@ describe('App Components - UserStats', () => {
         expect(wrapper.length).toEqual(1);
       });
 
-      // TODO: Update behavior tests
-      // it('renders dummy text', () => {
-      //   expect(wrapper.find('div').text()).toEqual('User stats');
-      // });
+      it('renders loader', () => {
+        expect(wrapper.find('Loader').length).toEqual(1);
+        expect(wrapper.find('Loader').prop('children')).toEqual('Loading');
+      });
+
+      it('calls loadUserStats when componentDidMount', () => {
+        const spy = jest.fn();
+        mount(<UserStats loadUserStats={spy} />);
+        expect(spy).toHaveBeenCalledTimes(1);
+      });
     });
   });
 
@@ -54,10 +60,9 @@ describe('App Components - UserStats', () => {
       expect(wrapper.find(UserStatsConnected).length).toEqual(1);
     });
 
-    // TODO: Update Provider tests
-    // it('matches initial state', () => {
-    //   expect(wrapper.find(UserStats).prop('isDeviceMobile'))
-    //     .toEqual(initialState.isDeviceMobile);
-    // });
+    it('matches initial state', () => {
+      expect(wrapper.find(UserStats).prop('loadUserStats'))
+        .toBeInstanceOf(Function);
+    });
   });
 });

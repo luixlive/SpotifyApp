@@ -3,17 +3,17 @@ import { Dimmer, Loader, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import loadUserStats from './../actions/user_stats';
+import loadUserStats from './../../actions/user_stats';
 
 export class UserStats extends Component {
-  onComponentDidMount() {
+  componentDidMount() {
     this.props.loadUserStats();
   }
 
   render() {
     return (
       <Segment basic className="body">
-        <Dimmer active inverted>
+        <Dimmer active={!this.props.statsLoaded} inverted>
           <Loader inverted size="big">Loading</Loader>
         </Dimmer>
         User stats
@@ -22,8 +22,13 @@ export class UserStats extends Component {
   }
 }
 
+UserStats.defaultProps = {
+  statsLoaded: false,
+};
+
 UserStats.propTypes = {
   loadUserStats: PropTypes.func.isRequired,
+  statsLoaded: PropTypes.bool,
 };
 
 const mapDispatchToProps = dispatch => ({

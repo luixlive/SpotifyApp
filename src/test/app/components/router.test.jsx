@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+import { Router } from './../../../app/components';
 import {
   LoginConnected,
-  Router,
   UserStatsConnected,
-} from './../../../app/components';
+} from './../../../app/components/containers';
 
 describe('App Components - Router', () => {
   it('renders correct routes', () => {

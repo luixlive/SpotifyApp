@@ -6,8 +6,8 @@ import { shallow, mount } from 'enzyme';
 
 import ConnectedLogin, {
   Login,
-} from './../../../app/components/login';
-import initialState from './../initial_state';
+} from './../../../../app/components/containers/login';
+import initialState from './../../initial_state';
 
 describe('App Components - Login', () => {
   describe('Snapshots', () => {
