@@ -18,6 +18,6 @@ passport.use(new SpotifyStrategy({
   clientSecret: config.get('SPOTIFY_CLIENT_SECRET'),
   callbackURL: config.get('SPOTIFY_CALLBACK_URL'),
 }, (accessToken, refreshToken, expiresIn, profile, done) => {
-  logger.debug(`User retrieves successfully: ${profile}`);
+  logger.debug(`User retrieved successfully: ${profile}`);
   done(null, { accessToken, profile, refreshToken });
 }));

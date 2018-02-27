@@ -6,10 +6,8 @@ import { shallow, mount } from 'enzyme';
 import AppConnected, {
   App,
 } from './../../../app/components/app';
-import {
-  AppFooterConnected,
-  AppHeaderConnected,
-} from './../../../app/components';
+import { AppFooter } from './../../../app/components';
+import { AppHeaderConnected } from './../../../app/components/containers';
 import initialState from './../initial_state';
 
 describe('App Components - App', () => {
@@ -37,7 +35,7 @@ describe('App Components - App', () => {
 
     it('renders the footer', () => {
       expect(wrapper.find('div').get(0).props.children[2])
-        .toEqual(<AppFooterConnected />);
+        .toEqual(<AppFooter />);
     });
   });
 

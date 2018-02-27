@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+import { Router } from './../../../app/components';
 import {
   LoginConnected,
-  Router,
-  UserStats,
-} from './../../../app/components';
+  UserStatsConnected,
+} from './../../../app/components/containers';
 
 describe('App Components - Router', () => {
   it('renders correct routes', () => {
@@ -19,6 +19,6 @@ describe('App Components - Router', () => {
     }, {});
 
     expect(pathMap['/']).toBe(LoginConnected);
-    expect(pathMap['/stats']).toBe(UserStats);
+    expect(pathMap['/stats']).toBe(UserStatsConnected);
   });
 });

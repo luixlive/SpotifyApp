@@ -1,6 +1,7 @@
 {
   "globals": {
     "document": true,
+    "Event": true,
     "window": true
   },
   "env": {

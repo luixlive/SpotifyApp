@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Header from './header';
-import Footer from './footer';
+import { AppFooter } from './';
+import { AppHeaderConnected } from './containers';
 import { SizeDetector } from './hoc';
 
 export const App = props => (
   <div>
-    <Header />
+    <AppHeaderConnected />
     {props.children}
-    <Footer />
+    <AppFooter />
   </div>
 );
 
