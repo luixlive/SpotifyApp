@@ -1,18 +1,27 @@
 import { AppContainer } from 'react-hot-loader';
-import { compose, createStore } from 'redux';
+import { applyMiddleware, compose, createStore } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Router } from './components';
 import reducers from './reducers';
+import sagas from './sagas';
 import './style/semantic.less';
+
+const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
   reducers,
   undefined,
-  compose(window.devToolsExtension ? window.devToolsExtension() : f => f),
+  compose(
+    applyMiddleware(sagaMiddleware),
+    window.devToolsExtension ? window.devToolsExtension() : f => f,
+  ),
 );
+
+sagaMiddleware.run(sagas);
 
 const render = () => {
   ReactDOM.render(

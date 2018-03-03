@@ -4,6 +4,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: [
+    'babel-polyfill',
     'react-hot-loader/patch',
     path.resolve(__dirname, './src/app/index.jsx')
   ],

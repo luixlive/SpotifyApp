@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { Container, Header } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 export const Login = props => (
   <Container className="" textAlign="center">
@@ -28,4 +29,6 @@ Login.propTypes = {
 
 const mapStateToProps = ({ isDeviceMobile }) => ({ isDeviceMobile });
 
-export default connect(mapStateToProps)(Login);
+export const connectedLogin = connect(mapStateToProps)(Login);
+
+export default withRouter(connectedLogin);

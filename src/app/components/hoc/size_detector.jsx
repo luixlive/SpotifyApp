@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import deviceTypeChanged from './../../actions/device';
 import isDeviceMobile from './../../util/is_device_mobile';
@@ -46,5 +47,8 @@ export default (ComposedComponent) => {
     deviceTypeChanged: isMobile => dispatch(deviceTypeChanged(isMobile)),
   });
 
-  return connect(null, mapDispatchToProps)(getSizeDetector(ComposedComponent));
+  const connectedSizeDetector =
+    connect(null, mapDispatchToProps)(getSizeDetector(ComposedComponent));
+
+  return withRouter(connectedSizeDetector);
 };
