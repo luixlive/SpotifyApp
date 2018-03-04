@@ -4,10 +4,12 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { shallow, mount } from 'enzyme';
 
-import ConnectedAppHeader, {
+import {
+  ConnectedAppHeader,
   AppHeader,
 } from './../../../../app/components/containers/header';
-import initialState from './../../initial_state';
+import emptyFunction from './../../../test_utils/empty_function';
+import initialState from './../../../test_utils/initial_state';
 
 describe('App Components - Header', () => {
   describe('Snapshots', () => {
@@ -16,6 +18,7 @@ describe('App Components - Header', () => {
       props = {
         isDeviceMobile: false,
         isUserAuthenticated: false,
+        logoutUser: emptyFunction,
       };
     });
 
@@ -43,6 +46,7 @@ describe('App Components - Header', () => {
       props = {
         isDeviceMobile: false,
         isUserAuthenticated: false,
+        logoutUser: emptyFunction,
       };
     });
 

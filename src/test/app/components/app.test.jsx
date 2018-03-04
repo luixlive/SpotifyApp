@@ -1,4 +1,5 @@
 import configureStore from 'redux-mock-store';
+import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import React from 'react';
 import { shallow, mount } from 'enzyme';
@@ -8,7 +9,7 @@ import AppConnected, {
 } from './../../../app/components/app';
 import { AppFooter } from './../../../app/components';
 import { AppHeaderConnected } from './../../../app/components/containers';
-import initialState from './../initial_state';
+import initialState from './../../test_utils/initial_state';
 
 describe('App Components - App', () => {
   describe('Behavior', () => {
@@ -46,10 +47,13 @@ describe('App Components - App', () => {
     beforeAll(() => {
       store = mockStore(initialState);
       const props = { children: [<div key="0" />] };
+      // We need the router because sizeDetector is exported with "withRouter"
       wrapper = mount((
-        <Provider store={store}>
-          <AppConnected {...props} />
-        </Provider>
+        <MemoryRouter>
+          <Provider store={store}>
+            <AppConnected {...props} />
+          </Provider>
+        </MemoryRouter>
       ));
     });
 

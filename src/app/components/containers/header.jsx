@@ -61,7 +61,7 @@ const mapDispatchToProps = dispatch => ({
   logoutUser: () => dispatch(logoutUser()),
 });
 
-export const connectedAppHeader =
+export const ConnectedAppHeader =
   connect(mapStateToProps, mapDispatchToProps)(AppHeader);
 
-export default withRouter(connectedAppHeader);
+export default withRouter(ConnectedAppHeader);

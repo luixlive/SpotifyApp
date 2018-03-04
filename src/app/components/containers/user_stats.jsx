@@ -47,7 +47,7 @@ const mapDispatchToProps = dispatch => ({
   loadUserStats: () => dispatch(loadUserStats()),
 });
 
-export const connectedUserStats =
+export const ConnectedUserStats =
   connect(mapStateToProps, mapDispatchToProps)(UserStats);
 
-export default withRouter(connectedUserStats);
+export default withRouter(ConnectedUserStats);

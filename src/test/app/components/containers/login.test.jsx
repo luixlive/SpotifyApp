@@ -4,10 +4,11 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { shallow, mount } from 'enzyme';
 
-import ConnectedLogin, {
+import {
+  ConnectedLogin,
   Login,
 } from './../../../../app/components/containers/login';
-import initialState from './../../initial_state';
+import initialState from './../../../test_utils/initial_state';
 
 describe('App Components - Login', () => {
   describe('Snapshots', () => {

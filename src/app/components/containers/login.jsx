@@ -29,6 +29,6 @@ Login.propTypes = {
 
 const mapStateToProps = ({ isDeviceMobile }) => ({ isDeviceMobile });
 
-export const connectedLogin = connect(mapStateToProps)(Login);
+export const ConnectedLogin = connect(mapStateToProps)(Login);
 
-export default withRouter(connectedLogin);
+export default withRouter(ConnectedLogin);
