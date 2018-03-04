@@ -3,8 +3,8 @@ import { shallow } from 'enzyme';
 
 import { Router } from './../../../app/components';
 import {
-  LoginConnected,
-  UserStatsConnected,
+  LoginContainer,
+  UserStatsContainer,
 } from './../../../app/components/containers';
 
 describe('App Components - Router', () => {
@@ -18,7 +18,7 @@ describe('App Components - Router', () => {
       return undefined;
     }, {});
 
-    expect(pathMap['/']).toBe(LoginConnected);
-    expect(pathMap['/stats']).toBe(UserStatsConnected);
+    expect(pathMap['/']).toBe(LoginContainer);
+    expect(pathMap['/stats']).toBe(UserStatsContainer);
   });
 });

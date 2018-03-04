@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import React from 'react';
@@ -5,21 +6,19 @@ import renderer from 'react-test-renderer';
 import { shallow, mount } from 'enzyme';
 
 import {
+  appHeaderContainer as componentProps,
+} from './../../../test_utils/components_props';
+import {
   ConnectedAppHeader,
   AppHeader,
 } from './../../../../app/components/containers/header';
-import emptyFunction from './../../../test_utils/empty_function';
 import initialState from './../../../test_utils/initial_state';
 
 describe('App Components - Header', () => {
   describe('Snapshots', () => {
     let props;
     beforeEach(() => {
-      props = {
-        isDeviceMobile: false,
-        isUserAuthenticated: false,
-        logoutUser: emptyFunction,
-      };
+      props = _.cloneDeep(componentProps);
     });
 
     it('renders no mobile', () => {
@@ -43,11 +42,7 @@ describe('App Components - Header', () => {
   describe('Behavior', () => {
     let props;
     beforeEach(() => {
-      props = {
-        isDeviceMobile: false,
-        isUserAuthenticated: false,
-        logoutUser: emptyFunction,
-      };
+      props = _.cloneDeep(componentProps);
     });
 
     describe('General', () => {
@@ -100,11 +95,30 @@ describe('App Components - Header', () => {
     });
 
     describe('User authenticated', () => {
-      it('renders the sign in button', () => {
+      it('renders the logout button', () => {
         props.isUserAuthenticated = true;
         const wrapper = shallow(<AppHeader {...props} />);
         expect(wrapper.find('Button').prop('children'))
           .toEqual('Logout');
+      });
+    });
+
+    describe('Events', () => {
+      it('redirects to login on sign in button click', () => {
+        const open = jest.fn();
+        global.open = open;
+        const wrapper = shallow(<AppHeader {...props} />);
+        wrapper.find('Button').simulate('click');
+        expect(open).toHaveBeenCalledTimes(1);
+      });
+
+      it('calls logoutUser on logout button click', () => {
+        const logoutUser = jest.fn();
+        props.isUserAuthenticated = true;
+        const wrapper =
+          shallow(<AppHeader {...props} logoutUser={logoutUser} />);
+        wrapper.find('Button').simulate('click');
+        expect(logoutUser).toHaveBeenCalledTimes(1);
       });
     });
   });
@@ -127,8 +141,8 @@ describe('App Components - Header', () => {
     });
 
     it('matches initial state', () => {
-      expect(wrapper.find(AppHeader).prop('isDeviceMobile'))
-        .toEqual(initialState.isDeviceMobile);
+      expect(Object.keys(wrapper.find(AppHeader).props()))
+        .toEqual(Object.keys(componentProps));
     });
   });
 });

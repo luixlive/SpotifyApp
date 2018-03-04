@@ -1,12 +1,9 @@
-import deviceReducer from './../../../app/reducers/device';
+import deviceReducer, {
+  initialState,
+} from './../../../app/reducers/device';
 import * as types from './../../../app/actions/types';
 
 describe('App Reducers - Device', () => {
-  let initialState;
-  beforeEach(() => {
-    initialState = false;
-  });
-
   it('should return initial state', () => {
     expect(deviceReducer(undefined, {})).toEqual(initialState);
   });

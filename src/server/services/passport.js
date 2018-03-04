@@ -21,3 +21,5 @@ passport.use(new SpotifyStrategy({
   logger.debug(`User retrieved successfully: ${profile}`);
   done(null, { accessToken, profile, refreshToken });
 }));
+
+module.exports = passport;

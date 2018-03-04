@@ -1,9 +1,9 @@
-import AppHeaderConnected from './header';
-import LoginConnected from './login';
-import UserStatsConnected from './user_stats';
+import AppHeaderContainer from './header';
+import LoginContainer from './login';
+import UserStatsContainer from './user_stats';
 
 export {
-  AppHeaderConnected,
-  LoginConnected,
-  UserStatsConnected,
+  AppHeaderContainer,
+  LoginContainer,
+  UserStatsContainer,
 };

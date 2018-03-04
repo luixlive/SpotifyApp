@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import configureStore from 'redux-mock-store';
 import { MemoryRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -9,18 +10,16 @@ import {
   ConnectedUserStats,
   UserStats,
 } from './../../../../app/components/containers/user_stats';
-import emptyFunction from './../../../test_utils/empty_function';
 import initialState from './../../../test_utils/initial_state';
+import {
+  userStatsContainer as componentProps,
+} from './../../../test_utils/components_props';
 
 describe('App Components - UserStats', () => {
   describe('Snapshots', () => {
     let props;
     beforeAll(() => {
-      props = {
-        isUserAuthenticated: false,
-        loadUserFinished: false,
-        loadUserStats: emptyFunction,
-      };
+      props = _.cloneDeep(componentProps);
     });
 
     it('renders user not authenticated and load not finished', () => {
@@ -56,15 +55,14 @@ describe('App Components - UserStats', () => {
   });
 
   describe('Behavior', () => {
+    let props;
+    beforeAll(() => {
+      props = _.cloneDeep(componentProps);
+    });
+
     describe('General', () => {
-      let props;
       let wrapper;
       beforeAll(() => {
-        props = {
-          isUserAuthenticated: false,
-          loadUserFinished: false,
-          loadUserStats: emptyFunction,
-        };
         wrapper = shallow(<UserStats {...props} />);
       });
 
@@ -78,9 +76,19 @@ describe('App Components - UserStats', () => {
       });
 
       it('calls loadUserStats when componentDidMount', () => {
-        const spy = jest.fn();
-        mount(<UserStats {...props} loadUserStats={spy} />);
-        expect(spy).toHaveBeenCalledTimes(1);
+        const loadUserStats = jest.fn();
+        mount(<UserStats {...props} loadUserStats={loadUserStats} />);
+        expect(loadUserStats).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    describe('User couldnt authenticate', () => {
+      it('renders Redirect component', () => {
+        props.isUserAuthenticated = false;
+        props.loadUserFinished = true;
+        const wrapper = shallow(<UserStats {...props} />);
+        expect(wrapper.find('Redirect').length).toEqual(1);
+        expect(wrapper.find('Redirect').prop('to')).toEqual('/');
       });
     });
   });
@@ -103,8 +111,8 @@ describe('App Components - UserStats', () => {
     });
 
     it('matches initial state', () => {
-      expect(wrapper.find(UserStats).prop('loadUserStats'))
-        .toBeInstanceOf(Function);
+      expect(Object.keys(wrapper.find(UserStats).props()))
+        .toEqual(Object.keys(componentProps));
     });
   });
 });
