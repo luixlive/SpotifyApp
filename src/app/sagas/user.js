@@ -1,5 +1,5 @@
 import { delay } from 'redux-saga';
-import { put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 
 import {
   LOAD_USER,
@@ -12,7 +12,7 @@ import {
 
 export function* loadUser() {
   try {
-    yield delay(1000); // TODO: Retrieve user
+    yield call(delay, 1000); // TODO: Retrieve user
     yield put({
       type: LOAD_USER_SUCCEEDED,
       payload: { isUserAuthenticated: true },
@@ -24,7 +24,7 @@ export function* loadUser() {
 
 export function* logoutUser() {
   try {
-    yield delay(1000); // TODO: Call logout user
+    yield call(delay, 1000); // TODO: Call logout user
     yield put({ type: LOGOUT_USER_SUCCEEDED });
   } catch (error) {
     yield put({ type: LOGOUT_USER_FAILED, payload: error });

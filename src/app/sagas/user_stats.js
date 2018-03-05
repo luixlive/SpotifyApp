@@ -12,10 +12,10 @@ import {
 export function* loadUserStats() {
   try {
     yield call(loadUser);
-    yield delay(1000); // TODO: Retrieve user stats
+    yield call(delay, 1000); // TODO: Retrieve user stats
     yield put({ type: LOAD_USER_STATS_SUCCEEDED });
   } catch (error) {
-    yield put({ type: LOAD_USER_STATS_FAILED });
+    yield put({ type: LOAD_USER_STATS_FAILED, payload: error });
   }
 }
 
