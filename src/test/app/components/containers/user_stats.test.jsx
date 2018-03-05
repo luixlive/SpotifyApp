@@ -35,9 +35,7 @@ describe('App Components - UserStats', () => {
 
     it('renders user authenticated and load finished', () => {
       props.loadUserFinished = true;
-      const rendered = renderer
-        .create(<UserStats {...props} />)
-        .toJSON();
+      const rendered = renderer.create(<UserStats {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
 
@@ -50,6 +48,13 @@ describe('App Components - UserStats', () => {
             <Route component={() => <UserStats {...props} />} path="/stats" />
           </MemoryRouter>))
         .toJSON();
+      expect(rendered).toMatchSnapshot();
+    });
+
+    it('renders user authenticated and load finished while logging out', () => {
+      props.isUserAuthenticated = true;
+      props.loggingOutUser = true;
+      const rendered = renderer.create(<UserStats {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
   });
@@ -75,6 +80,11 @@ describe('App Components - UserStats', () => {
         expect(wrapper.find('Loader').prop('size')).toEqual('big');
       });
 
+      it('has an active dimmer', () => {
+        expect(wrapper.find('Dimmer').length).toEqual(1);
+        expect(wrapper.find('Dimmer').prop('active')).toBeTruthy();
+      });
+
       it('calls loadUserStats when componentDidMount', () => {
         const loadUserStats = jest.fn();
         mount(<UserStats {...props} loadUserStats={loadUserStats} />);
@@ -84,11 +94,37 @@ describe('App Components - UserStats', () => {
 
     describe('User couldnt authenticate', () => {
       it('renders Redirect component', () => {
-        props.isUserAuthenticated = false;
         props.loadUserFinished = true;
         const wrapper = shallow(<UserStats {...props} />);
         expect(wrapper.find('Redirect').length).toEqual(1);
         expect(wrapper.find('Redirect').prop('to')).toEqual('/');
+      });
+    });
+
+    // TODO: When UserStats component is finished, check not only the dimmer but
+    // also that it renders all the components
+
+    describe('User could authenticate', () => {
+      it('has an active dimmer', () => {
+        props.isUserAuthenticated = true;
+        const wrapper = shallow(<UserStats {...props} />);
+        expect(wrapper.find('Dimmer').prop('active')).toBeTruthy();
+      });
+    });
+
+    describe('User stats were loaded', () => {
+      it('has an inactive dimmer', () => {
+        props.statsLoaded = true;
+        const wrapper = shallow(<UserStats {...props} />);
+        expect(wrapper.find('Dimmer').prop('active')).toBeFalsy();
+      });
+    });
+
+    describe('User is logging out', () => {
+      it('has an active dimmer', () => {
+        props.loggingOutUser = true;
+        const wrapper = shallow(<UserStats {...props} />);
+        expect(wrapper.find('Dimmer').prop('active')).toBeTruthy();
       });
     });
   });

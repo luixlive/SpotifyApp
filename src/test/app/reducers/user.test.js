@@ -21,6 +21,18 @@ describe('App Reducers - User', () => {
     expect(userReducer(undefined, action)).toEqual(expectedState);
   });
 
+  it(types.LOGOUT_USER, () => {
+    const action = {
+      type: types.LOGOUT_USER,
+      payload: {},
+    };
+    const expectedState = {
+      ...initialState,
+      loggingOutUser: true,
+    };
+    expect(userReducer(undefined, action)).toEqual(expectedState);
+  });
+
   it(types.LOGOUT_USER_SUCCEEDED, () => {
     const action = {
       type: types.LOGOUT_USER_SUCCEEDED,
@@ -29,6 +41,7 @@ describe('App Reducers - User', () => {
     const expectedState = {
       ...initialState,
       isUserAuthenticated: false,
+      loggingOutUser: false,
     };
     expect(userReducer(undefined, action)).toEqual(expectedState);
   });

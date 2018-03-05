@@ -17,7 +17,10 @@ export class UserStats extends Component {
     }
     return (
       <Segment basic className="body">
-        <Dimmer active={!this.props.statsLoaded} inverted>
+        <Dimmer
+          active={!this.props.statsLoaded || this.props.loggingOutUser}
+          inverted
+        >
           <Loader inverted size="big" />
         </Dimmer>
         User stats
@@ -34,12 +37,14 @@ UserStats.propTypes = {
   isUserAuthenticated: PropTypes.bool.isRequired,
   loadUserFinished: PropTypes.bool.isRequired,
   loadUserStats: PropTypes.func.isRequired,
+  loggingOutUser: PropTypes.bool.isRequired,
   statsLoaded: PropTypes.bool,
 };
 
 const mapStateToProps = ({ user, userStats }) => ({
   isUserAuthenticated: user.isUserAuthenticated,
   loadUserFinished: user.loadUserFinished,
+  loggingOutUser: user.loggingOutUser,
   statsLoaded: userStats.statsLoaded,
 });
 
