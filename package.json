@@ -44,6 +44,7 @@
     "webpack": "^3.11.0",
     "webpack-dev-middleware": "^2.0.5",
     "webpack-hot-middleware": "^2.21.0",
+    "whatwg-fetch": "^2.0.3",
     "winston": "^2.4.0"
   },
   "devDependencies": {

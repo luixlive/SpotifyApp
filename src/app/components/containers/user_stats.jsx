@@ -12,6 +12,7 @@ export class UserStats extends Component {
   }
 
   render() {
+    // TODO: make a HOC with this logic
     if (this.props.loadUserFinished && !this.props.isUserAuthenticated) {
       return <Redirect to="/" />;
     }

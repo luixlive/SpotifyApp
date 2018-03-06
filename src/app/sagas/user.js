@@ -1,6 +1,8 @@
-import { delay } from 'redux-saga';
 import { call, put, takeLatest } from 'redux-saga/effects';
 
+import authenticationApi from './../api';
+import errors from './util/errors';
+import httpStatus from './../../utils/http_status';
 import {
   LOAD_USER,
   LOAD_USER_FAILED,
@@ -9,14 +11,29 @@ import {
   LOGOUT_USER_FAILED,
   LOGOUT_USER_SUCCEEDED,
 } from './../actions/types';
+import readResponse from './util/read_response';
 
 export function* loadUser() {
   try {
-    yield call(delay, 1000); // TODO: Retrieve user
-    yield put({
-      type: LOAD_USER_SUCCEEDED,
-      payload: { isUserAuthenticated: true },
-    });
+    const response = yield call(authenticationApi.user.get);
+
+    if (response.status === httpStatus.OK) {
+      const user = yield call(readResponse(response));
+      yield put({
+        type: LOAD_USER_SUCCEEDED,
+        payload: { ...user, isUserAuthenticated: true },
+      });
+    } else if (response.status === httpStatus.UNAUTHORIZED) {
+      yield put({
+        type: LOAD_USER_SUCCEEDED,
+        payload: { isUserAuthenticated: false },
+      });
+    } else {
+      yield put({
+        type: LOAD_USER_FAILED,
+        payload: { error: errors.unexpected },
+      });
+    }
   } catch (error) {
     yield put({ type: LOAD_USER_FAILED, payload: error });
   }
@@ -24,8 +41,16 @@ export function* loadUser() {
 
 export function* logoutUser() {
   try {
-    yield call(delay, 1000); // TODO: Call logout user
-    yield put({ type: LOGOUT_USER_SUCCEEDED });
+    const response = yield call(authenticationApi.logout.get);
+
+    if (response.status === httpStatus.OK) {
+      yield put({ type: LOGOUT_USER_SUCCEEDED });
+    } else {
+      yield put({
+        type: LOGOUT_USER_FAILED,
+        payload: { error: errors.unexpected },
+      });
+    }
   } catch (error) {
     yield put({ type: LOGOUT_USER_FAILED, payload: error });
   }

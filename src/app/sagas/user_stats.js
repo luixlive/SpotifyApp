@@ -1,19 +1,30 @@
 import { delay } from 'redux-saga';
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, select, takeLatest } from 'redux-saga/effects';
 
+import errors from './util/errors';
 import { loadUser } from './user';
-
 import {
   LOAD_USER_STATS,
   LOAD_USER_STATS_FAILED,
   LOAD_USER_STATS_SUCCEEDED,
 } from './../actions/types';
 
+export const getAccessToken = ({ user }) => user.accessToken;
+
 export function* loadUserStats() {
   try {
     yield call(loadUser);
-    yield call(delay, 1000); // TODO: Retrieve user stats
-    yield put({ type: LOAD_USER_STATS_SUCCEEDED });
+    const accessToken = yield select(getAccessToken);
+
+    if (accessToken) {
+      yield call(delay, 1000); // TODO: Retrieve users stats
+      yield put({ type: LOAD_USER_STATS_SUCCEEDED });
+    } else {
+      yield put({
+        type: LOAD_USER_STATS_FAILED,
+        payload: errors.noAccessToken,
+      });
+    }
   } catch (error) {
     yield put({ type: LOAD_USER_STATS_FAILED, payload: error });
   }
