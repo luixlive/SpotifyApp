@@ -18,7 +18,7 @@ export function* loadUser() {
     const response = yield call(authenticationApi.user.get);
 
     if (response.status === httpStatus.OK) {
-      const user = yield call(readResponse(response));
+      const user = yield call(readResponse, response);
       yield put({
         type: LOAD_USER_SUCCEEDED,
         payload: { ...user, isUserAuthenticated: true },
@@ -44,7 +44,7 @@ export function* logoutUser() {
     const response = yield call(authenticationApi.logout.get);
 
     if (response.status === httpStatus.OK) {
-      yield put({ type: LOGOUT_USER_SUCCEEDED });
+      yield put({ type: LOGOUT_USER_SUCCEEDED, payload: {} });
     } else {
       yield put({
         type: LOGOUT_USER_FAILED,

@@ -22,7 +22,7 @@ export function* loadUserStats() {
     } else {
       yield put({
         type: LOAD_USER_STATS_FAILED,
-        payload: errors.noAccessToken,
+        payload: { error: errors.noAccessToken },
       });
     }
   } catch (error) {

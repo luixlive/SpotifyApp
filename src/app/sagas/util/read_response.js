@@ -1,1 +1,1 @@
-export default response => () => response.json();
+export default response => response.json();

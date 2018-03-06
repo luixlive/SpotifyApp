@@ -1,3 +1,4 @@
+import error from './../../test_utils/error';
 import userReducer, {
   initialState,
 } from './../../../app/reducers/user';
@@ -6,6 +7,18 @@ import * as types from './../../../app/actions/types';
 describe('App Reducers - User', () => {
   it('should return initial state', () => {
     expect(userReducer(undefined, {})).toEqual(initialState);
+  });
+
+  it(types.LOAD_USER_FAILED, () => {
+    const action = {
+      type: types.LOAD_USER_FAILED,
+      payload: { error },
+    };
+    const expectedState = {
+      ...initialState,
+      loadUserFinished: true,
+    };
+    expect(userReducer(undefined, action)).toEqual(expectedState);
   });
 
   it(types.LOAD_USER_SUCCEEDED, () => {
