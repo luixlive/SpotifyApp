@@ -30,8 +30,8 @@ describe('Server Controllers - Authentication', () => {
     it('logs out user', () => {
       authenticationController.logout(req, res);
       expect(statusValue).toEqual(httpStatus.OK);
-      expect(responseValue).toBe(undefined);
-      expect(user).toBe(undefined);
+      expect(responseValue).toBeUndefined();
+      expect(user).toBeUndefined();
     });
   });
 
@@ -51,7 +51,7 @@ describe('Server Controllers - Authentication', () => {
     it('returns unauthorized if not authenticated', () => {
       authenticationController.user(_.omit(req, ['user']), res);
       expect(statusValue).toBe(httpStatus.UNAUTHORIZED);
-      expect(responseValue).toBe(undefined);
+      expect(responseValue).toBeUndefined();
     });
   });
 });

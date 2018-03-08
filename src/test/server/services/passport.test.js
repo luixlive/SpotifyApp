@@ -33,7 +33,7 @@ describe('Server Services - Passport', () => {
       };
       passport.serializeUser.mock.calls[0][0](user, done);
       expect(done).toHaveBeenCalledTimes(1);
-      expect(done.mock.calls[0][0]).toBe(null);
+      expect(done.mock.calls[0][0]).toBeNull();
       expect(JSON.parse(done.mock.calls[0][1])).toEqual(user);
     });
   });
@@ -59,7 +59,7 @@ describe('Server Services - Passport', () => {
       };
       passport.deserializeUser.mock.calls[0][0](JSON.stringify(user), done);
       expect(done).toHaveBeenCalledTimes(1);
-      expect(done.mock.calls[0][0]).toBe(null);
+      expect(done.mock.calls[0][0]).toBeNull();
       expect(done.mock.calls[0][1]).toEqual(user);
     });
   });
@@ -85,7 +85,7 @@ describe('Server Services - Passport', () => {
         done,
       );
       expect(done).toHaveBeenCalledTimes(1);
-      expect(done.mock.calls[0][0]).toBe(null);
+      expect(done.mock.calls[0][0]).toBeNull();
       expect(done.mock.calls[0][1]).toEqual({
         accessToken,
         refreshToken,
