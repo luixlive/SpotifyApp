@@ -17,7 +17,7 @@ const environment = config.util.getEnv('NODE_ENV');
 
 logger.info(`Spotify App started in ${config.util.getEnv('NODE_ENV')} mode`);
 
-require('./services/passport');
+require('./services/passport').configurePassport(passport);
 
 app.use(bodyParser.json());
 app.use(cookieSession({
