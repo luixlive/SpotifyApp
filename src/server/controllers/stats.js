@@ -1,17 +1,23 @@
+const httpStatus = require('./../../utils/http_status');
 const logger = require('./../../utils/logger');
-const { spotifyService } = require('./../services');
 
-const topArtists = (req, res) => {
-  logger.debug(`api/stats/topArtists: ${JSON.stringify(req.user)}`);
-  spotifyService.getUsersTopArtists(req.user.accessToken, (err, spotifyRes) => {
-    if (err) {
-      logger.debug(`Spotify getUsersTopArtists error: ${err}`);
-      return res.status(500).send({ error: err });
-    }
+const getUsersTopArtistsCallback = res => (err, spotifyRes) => {
+  if (err) {
+    logger.debug(`Spotify getUsersTopArtists error: ${err}`);
+    res.status(httpStatus.INTERNAL_SERVER_ERROR);
+    return res.send({ error: err });
+  }
 
-    logger.debug(`Spotify getUsersTopArtists: ${JSON.stringify(spotifyRes)}`);
-    return res.send(spotifyRes);
-  });
+  logger.debug(`Spotify getUsersTopArtists: ${JSON.stringify(spotifyRes)}`);
+  return res.send(spotifyRes);
 };
 
-module.exports = { topArtists };
+const topArtists = (req, res, getUsersTopArtists) => {
+  logger.debug(`api/stats/topArtists: ${JSON.stringify(req.user)}`);
+  getUsersTopArtists(req.user.accessToken, getUsersTopArtistsCallback(res));
+};
+
+module.exports = {
+  getUsersTopArtistsCallback,
+  topArtists,
+};
