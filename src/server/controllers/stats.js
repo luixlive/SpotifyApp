@@ -9,7 +9,7 @@ const topArtists = (req, res) => {
       return res.status(500).send({ error: err });
     }
 
-    logger.debug(`Spotify getUsersTopArtists: ${spotifyRes}`);
+    logger.debug(`Spotify getUsersTopArtists: ${JSON.stringify(spotifyRes)}`);
     return res.send(spotifyRes);
   });
 };
