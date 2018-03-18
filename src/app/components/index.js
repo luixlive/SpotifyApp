@@ -1,9 +1,9 @@
-import AppConnected from './app';
+import AppComponent from './app';
 import AppFooter from './footer';
 import Router from './router';
 
 export {
-  AppConnected,
+  AppComponent,
   AppFooter,
   Router,
 };

@@ -36,7 +36,7 @@ describe('Server - App', () => {
 
   it('should return index.html when GET /unknown', (done) => {
     request(app)
-      .get('/')
+      .get('/unknown')
       .then((response) => {
         expect(response.statusCode).toBe(200);
         expect(response.text).toEqual(staticIndex);

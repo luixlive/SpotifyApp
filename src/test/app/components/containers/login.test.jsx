@@ -1,23 +1,34 @@
+import _ from 'lodash';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { shallow, mount } from 'enzyme';
 
-import ConnectedLogin, {
+import {
+  ConnectedLogin,
   Login,
 } from './../../../../app/components/containers/login';
-import initialState from './../../initial_state';
+import initialState from './../../../test_utils/initial_state';
+import {
+  loginContainer as componentProps,
+} from './../../../test_utils/components_props';
 
 describe('App Components - Login', () => {
   describe('Snapshots', () => {
+    let props;
+    beforeEach(() => {
+      props = _.cloneDeep(componentProps);
+    });
+
     it('renders no mobile', () => {
-      const rendered = renderer.create(<Login isDeviceMobile={false} />).toJSON();
+      const rendered = renderer.create(<Login {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
 
     it('renders mobile', () => {
-      const rendered = renderer.create(<Login isDeviceMobile />).toJSON();
+      props.isDeviceMobile = true;
+      const rendered = renderer.create(<Login {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
   });
@@ -26,7 +37,8 @@ describe('App Components - Login', () => {
     describe('General', () => {
       let wrapper;
       beforeAll(() => {
-        wrapper = shallow(<Login isDeviceMobile={false} />);
+        const props = _.cloneDeep(componentProps);
+        wrapper = shallow(<Login {...props} />);
       });
 
       it('renders', () => {
@@ -77,8 +89,8 @@ describe('App Components - Login', () => {
     });
 
     it('matches initial state', () => {
-      expect(wrapper.find(Login).prop('isDeviceMobile'))
-        .toEqual(initialState.isDeviceMobile);
+      expect(Object.keys(wrapper.find(Login).props()))
+        .toEqual(Object.keys(componentProps));
     });
   });
 });

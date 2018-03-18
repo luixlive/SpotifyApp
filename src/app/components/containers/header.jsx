@@ -2,6 +2,9 @@ import { Button, Grid, Header, Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+
+import { logoutUser } from './../../actions/user';
 
 export const AppHeader = (props) => {
   const getLoginButtonText = () => {
@@ -29,7 +32,7 @@ export const AppHeader = (props) => {
             floated="right"
             onClick={() => {
               if (props.isUserAuthenticated) {
-
+                props.logoutUser();
               } else {
                 window.open('/api/authentication/spotify', '_self');
               }
@@ -46,8 +49,19 @@ export const AppHeader = (props) => {
 AppHeader.propTypes = {
   isDeviceMobile: PropTypes.bool.isRequired,
   isUserAuthenticated: PropTypes.bool.isRequired,
+  logoutUser: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ isDeviceMobile }) => ({ isDeviceMobile });
+const mapStateToProps = ({ isDeviceMobile, user }) => ({
+  isDeviceMobile,
+  isUserAuthenticated: user.isUserAuthenticated,
+});
 
-export default connect(mapStateToProps)(AppHeader);
+const mapDispatchToProps = dispatch => ({
+  logoutUser: () => dispatch(logoutUser()),
+});
+
+export const ConnectedAppHeader =
+  connect(mapStateToProps, mapDispatchToProps)(AppHeader);
+
+export default withRouter(ConnectedAppHeader);

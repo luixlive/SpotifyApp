@@ -1,3 +1,4 @@
+import { BrowserRouter } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import React from 'react';
@@ -6,7 +7,7 @@ import { mount } from 'enzyme';
 import SizeDetector, {
   getSizeDetector,
 } from './../../../../app/components/hoc/size_detector';
-import initialState from './../../initial_state';
+import initialState from './../../../test_utils/initial_state';
 
 describe('App Components HOC - SizeDetector', () => {
   describe('Behavior', () => {
@@ -53,10 +54,13 @@ describe('App Components HOC - SizeDetector', () => {
     beforeAll(() => {
       store = mockStore(initialState);
       RenderedComponent = SizeDetector(ComposedComponent);
+      // We need the router because sizeDetector is exported with "withRouter"
       wrapper = mount((
-        <Provider store={store}>
-          <RenderedComponent />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <RenderedComponent />
+          </Provider>
+        </BrowserRouter>
       ));
     });
 
