@@ -2,6 +2,7 @@ const bodyParser = require('body-parser');
 const config = require('config');
 const cookieSession = require('cookie-session');
 const express = require('express');
+const helmet = require('helmet');
 const passport = require('passport');
 const path = require('path');
 const webpack = require('webpack');
@@ -19,6 +20,7 @@ logger.info(`Spotify App started in ${config.util.getEnv('NODE_ENV')} mode`);
 
 require('./services/passport').configurePassport(passport);
 
+app.use(helmet());
 app.use(bodyParser.json());
 app.use(cookieSession({
   maxAge: 30 * 24 * 60 * 60 * 1000,
