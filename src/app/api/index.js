@@ -1,3 +1,7 @@
 import authenticationApi from './authentication';
+import statsApi from './stats';
 
-export default authenticationApi;
+export {
+  authenticationApi,
+  statsApi,
+};

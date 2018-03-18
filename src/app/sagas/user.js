@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
-import authenticationApi from './../api';
+import { authenticationApi } from './../api';
 import errors from './util/errors';
 import httpStatus from './../../utils/http_status';
 import {

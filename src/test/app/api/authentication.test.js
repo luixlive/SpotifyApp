@@ -1,4 +1,4 @@
-import authenticationApi from './../../../app/api';
+import { authenticationApi } from './../../../app/api';
 
 describe('App API - Authentication', () => {
   let fetch;

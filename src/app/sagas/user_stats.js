@@ -1,4 +1,3 @@
-import { delay } from 'redux-saga';
 import { call, put, select, takeLatest } from 'redux-saga/effects';
 
 import errors from './util/errors';
@@ -8,6 +7,7 @@ import {
   LOAD_USER_STATS_FAILED,
   LOAD_USER_STATS_SUCCEEDED,
 } from './../actions/types';
+import { statsApi } from './../api';
 
 export const getAccessToken = ({ user }) => user.accessToken;
 
@@ -17,7 +17,7 @@ export function* loadUserStats() {
     const accessToken = yield select(getAccessToken);
 
     if (accessToken) {
-      yield call(delay, 1000); // TODO: Retrieve users stats
+      yield call(statsApi.topArtists.get);
       yield put({ type: LOAD_USER_STATS_SUCCEEDED });
     } else {
       yield put({

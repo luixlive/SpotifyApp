@@ -1,9 +1,9 @@
 import { call, put, select, takeLatest } from 'redux-saga/effects';
-import { delay } from 'redux-saga';
 
 import error from './../../test_utils/error';
 import errors from './../../../app/sagas/util/errors';
 import { loadUser } from './../../../app/sagas/user';
+import { statsApi } from './../../../app/api';
 import * as types from './../../../app/actions/types';
 import watcher, {
   getAccessToken,
@@ -27,7 +27,7 @@ describe('App Sagas - UserStats', () => {
       expect(loadUserStatsGenerator.next().value)
         .toEqual(select(getAccessToken));
       expect(loadUserStatsGenerator.next(accessToken).value)
-        .toEqual(call(delay, 1000));
+        .toEqual(call(statsApi.topArtists.get));
       expect(loadUserStatsGenerator.next().value)
         .toEqual(put({ type: types.LOAD_USER_STATS_SUCCEEDED }));
       expect(loadUserStatsGenerator.next().done).toBeTruthy();
