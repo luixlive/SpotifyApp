@@ -11,6 +11,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const apiRouter = require('./routers');
 const logger = require('./../utils/logger');
+const swaggerRouter = require('./swagger');
 const webpackConfig = require('./../../webpack.config');
 
 const app = express();
@@ -30,6 +31,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/api', apiRouter);
+
+if (environment !== 'production') {
+  app.use('/swagger', swaggerRouter);
+}
 
 if (environment === 'development') {
   const webpackCompiler = webpack(webpackConfig);

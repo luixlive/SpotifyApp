@@ -1,4 +1,6 @@
 {
+  "APP_DESCRIPTION": "Simple webapp for Spotify stats",
+  "APP_TITLE": "Spotify Stats",
   "COOKIE_KEY": "h8a9sdhf834h887a9sgdfdsjk",
   "HOST": "localhost",
   "LOG_FILE": "./logs/spotifyapp.log",

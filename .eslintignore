@@ -2,4 +2,5 @@ dist
 coverage
 logs
 node_modules
+src/server/swagger/ui
 webpack.config.js

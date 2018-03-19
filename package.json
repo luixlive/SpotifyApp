@@ -44,6 +44,7 @@
     "semantic-ui-less": "^2.2.14",
     "semantic-ui-react": "^0.78.2",
     "superagent": "^3.8.2",
+    "swagger-jsdoc": "^1.9.7",
     "webpack": "^3.11.0",
     "webpack-dev-middleware": "^2.0.5",
     "webpack-hot-middleware": "^2.21.0",
