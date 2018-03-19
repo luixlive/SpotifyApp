@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Server Swagger - Router should return Swagger JSON when GET /swagger/api-docs.json 1`] = `"{\\"info\\":{\\"title\\":\\"Spotify Stats\\",\\"version\\":\\"1.0.0\\",\\"description\\":\\"Simple webapp for Spotify stats\\"},\\"swagger\\":\\"2.0\\",\\"paths\\":{},\\"definitions\\":{},\\"responses\\":{},\\"parameters\\":{},\\"securityDefinitions\\":{},\\"tags\\":[]}"`;
+
+exports[`Server Swagger - Router should return Swagger UI when GET /swagger/api-docs 1`] = `
+"<!DOCTYPE html>
+<html lang=\\"en\\">
+<head>
+<meta charset=\\"utf-8\\">
+<title>Redirecting</title>
+</head>
+<body>
+<pre>Redirecting to <a href=\\"/swagger/api-docs/\\">/swagger/api-docs/</a></pre>
+</body>
+"
+`;

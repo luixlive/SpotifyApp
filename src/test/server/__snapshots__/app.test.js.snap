@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Server - App should return index.html when GET / 1`] = `
+"<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=\\"utf-8\\">
+    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
+    <title>Spotify App</title>
+  </head>
+  <body>
+    <div class=\\"app\\"></div>
+  <script type=\\"text/javascript\\" src=\\"/index_bundle.js\\"></script></body>
+</html>"
+`;
+
+exports[`Server - App should return index.html when GET /unknown 1`] = `
+"<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=\\"utf-8\\">
+    <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1\\">
+    <title>Spotify App</title>
+  </head>
+  <body>
+    <div class=\\"app\\"></div>
+  <script type=\\"text/javascript\\" src=\\"/index_bundle.js\\"></script></body>
+</html>"
+`;

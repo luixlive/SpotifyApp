@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Server Swagger - Controller Swagger JS Doc sets headers and sends Swagger JSON 1`] = `
+Object {
+  "definitions": Object {},
+  "info": Object {
+    "description": "Simple webapp for Spotify stats",
+    "title": "Spotify Stats",
+    "version": "1.0.0",
+  },
+  "parameters": Object {},
+  "paths": Object {},
+  "responses": Object {},
+  "securityDefinitions": Object {},
+  "swagger": "2.0",
+  "tags": Array [],
+}
+`;
