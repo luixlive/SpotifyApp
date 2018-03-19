@@ -22,38 +22,13 @@ describe('App Components - UserStats', () => {
       props = _.cloneDeep(componentProps);
     });
 
-    it('renders user not authenticated and load not finished', () => {
+    it('renders stats not loaded', () => {
       const rendered = renderer.create(<UserStats {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
 
-    it('renders user authenticated and load not finished', () => {
-      props.isUserAuthenticated = true;
-      const rendered = renderer.create(<UserStats {...props} />).toJSON();
-      expect(rendered).toMatchSnapshot();
-    });
-
-    it('renders user authenticated and load finished', () => {
-      props.loadUserFinished = true;
-      const rendered = renderer.create(<UserStats {...props} />).toJSON();
-      expect(rendered).toMatchSnapshot();
-    });
-
-    it('renders user not authenticated and load finished', () => {
-      props.isUserAuthenticated = false;
-      // With Route we mock the current location of the router
-      const rendered = renderer
-        .create((
-          <MemoryRouter>
-            <Route component={() => <UserStats {...props} />} path="/stats" />
-          </MemoryRouter>))
-        .toJSON();
-      expect(rendered).toMatchSnapshot();
-    });
-
-    it('renders user authenticated and load finished while logging out', () => {
-      props.isUserAuthenticated = true;
-      props.loggingOutUser = true;
+    it('renders stats loaded', () => {
+      props.statsLoaded = true;
       const rendered = renderer.create(<UserStats {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
@@ -75,15 +50,16 @@ describe('App Components - UserStats', () => {
         expect(wrapper.length).toEqual(1);
       });
 
-      it('renders big loader', () => {
-        expect(wrapper.find('Loader').length).toEqual(1);
-        expect(wrapper.find('Loader').prop('size')).toEqual('big');
-      });
+      // TODO: move to authentication_checker test
+      // it('renders big loader', () => {
+      //   expect(wrapper.find('Loader').length).toEqual(1);
+      //   expect(wrapper.find('Loader').prop('size')).toEqual('big');
+      // });
 
-      it('has an active dimmer', () => {
-        expect(wrapper.find('Dimmer').length).toEqual(1);
-        expect(wrapper.find('Dimmer').prop('active')).toBeTruthy();
-      });
+      // it('has an active dimmer', () => {
+      //   expect(wrapper.find('Dimmer').length).toEqual(1);
+      //   expect(wrapper.find('Dimmer').prop('active')).toBeTruthy();
+      // });
 
       it('calls loadUserStats when componentDidMount', () => {
         const loadUserStats = jest.fn();
@@ -92,39 +68,18 @@ describe('App Components - UserStats', () => {
       });
     });
 
-    describe('User couldnt authenticate', () => {
-      it('renders Redirect component', () => {
-        props.loadUserFinished = true;
+    describe('User stats not loaded yet', () => {
+      it('renders the ScreenLoader', () => {
         const wrapper = shallow(<UserStats {...props} />);
-        expect(wrapper.find('Redirect').length).toEqual(1);
-        expect(wrapper.find('Redirect').prop('to')).toEqual('/');
-      });
-    });
-
-    // TODO: When UserStats component is finished, check not only the dimmer but
-    // also that it renders all the components
-
-    describe('User could authenticate', () => {
-      it('has an active dimmer', () => {
-        props.isUserAuthenticated = true;
-        const wrapper = shallow(<UserStats {...props} />);
-        expect(wrapper.find('Dimmer').prop('active')).toBeTruthy();
+        expect(wrapper.find('ScreenLoader').length).toEqual(1);
       });
     });
 
     describe('User stats were loaded', () => {
-      it('has an inactive dimmer', () => {
+      it('hides the ScreenLoader', () => {
         props.statsLoaded = true;
         const wrapper = shallow(<UserStats {...props} />);
-        expect(wrapper.find('Dimmer').prop('active')).toBeFalsy();
-      });
-    });
-
-    describe('User is logging out', () => {
-      it('has an active dimmer', () => {
-        props.loggingOutUser = true;
-        const wrapper = shallow(<UserStats {...props} />);
-        expect(wrapper.find('Dimmer').prop('active')).toBeTruthy();
+        expect(wrapper.find('ScreenLoader').length).toEqual(0);
       });
     });
   });

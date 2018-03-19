@@ -1,30 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App Components - UserStats Snapshots renders user authenticated and load finished 1`] = `
-<div
-  className="ui basic segment body"
->
-  <div
-    className="ui active transition visible inverted dimmer"
-    onClick={[Function]}
-  >
-    <div
-      className="content"
-    >
-      <div
-        className="center"
-      >
-        <div
-          className="ui big inverted loader"
-        />
-      </div>
-    </div>
-  </div>
+exports[`App Components - UserStats Snapshots renders stats loaded 1`] = `
+<div>
   User stats
 </div>
 `;
 
-exports[`App Components - UserStats Snapshots renders user authenticated and load finished while logging out 1`] = `
+exports[`App Components - UserStats Snapshots renders stats not loaded 1`] = `
 <div
   className="ui basic segment body"
 >
@@ -44,56 +26,5 @@ exports[`App Components - UserStats Snapshots renders user authenticated and loa
       </div>
     </div>
   </div>
-  User stats
-</div>
-`;
-
-exports[`App Components - UserStats Snapshots renders user authenticated and load not finished 1`] = `
-<div
-  className="ui basic segment body"
->
-  <div
-    className="ui active transition visible inverted dimmer"
-    onClick={[Function]}
-  >
-    <div
-      className="content"
-    >
-      <div
-        className="center"
-      >
-        <div
-          className="ui big inverted loader"
-        />
-      </div>
-    </div>
-  </div>
-  User stats
-</div>
-`;
-
-exports[`App Components - UserStats Snapshots renders user not authenticated and load finished 1`] = `null`;
-
-exports[`App Components - UserStats Snapshots renders user not authenticated and load not finished 1`] = `
-<div
-  className="ui basic segment body"
->
-  <div
-    className="ui active transition visible inverted dimmer"
-    onClick={[Function]}
-  >
-    <div
-      className="content"
-    >
-      <div
-        className="center"
-      >
-        <div
-          className="ui big inverted loader"
-        />
-      </div>
-    </div>
-  </div>
-  User stats
 </div>
 `;

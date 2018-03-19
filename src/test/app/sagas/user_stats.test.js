@@ -2,19 +2,19 @@ import { call, put, select, takeLatest } from 'redux-saga/effects';
 
 import error from './../../test_utils/error';
 import errors from './../../../app/sagas/util/errors';
-import { loadUser } from './../../../app/sagas/user';
 import { statsApi } from './../../../app/api';
 import * as types from './../../../app/actions/types';
 import watcher, {
-  getAccessToken,
+  getIsUserAuthenticated,
   loadUserStats,
 } from './../../../app/sagas/user_stats';
 
 describe('App Sagas - UserStats', () => {
   describe('Selectors', () => {
-    it('should get access token', () => {
+    it('should get is user authenticated', () => {
       const mockState = { user: { accessToken: 'token' } };
-      expect(getAccessToken(mockState)).toEqual(mockState.user.accessToken);
+      expect(getIsUserAuthenticated(mockState))
+        .toEqual(mockState.user.getIsUserAuthenticated);
     });
   });
 
@@ -23,9 +23,8 @@ describe('App Sagas - UserStats', () => {
       const accessToken = 'token';
 
       const loadUserStatsGenerator = loadUserStats();
-      expect(loadUserStatsGenerator.next().value).toEqual(call(loadUser));
       expect(loadUserStatsGenerator.next().value)
-        .toEqual(select(getAccessToken));
+        .toEqual(select(getIsUserAuthenticated));
       expect(loadUserStatsGenerator.next(accessToken).value)
         .toEqual(call(statsApi.topArtists.get));
       expect(loadUserStatsGenerator.next().value)
@@ -37,9 +36,8 @@ describe('App Sagas - UserStats', () => {
       const accessToken = undefined;
 
       const loadUserStatsGenerator = loadUserStats();
-      expect(loadUserStatsGenerator.next().value).toEqual(call(loadUser));
       expect(loadUserStatsGenerator.next().value)
-        .toEqual(select(getAccessToken));
+        .toEqual(select(getIsUserAuthenticated));
       expect(loadUserStatsGenerator.next(accessToken).value).toEqual(put({
         type: types.LOAD_USER_STATS_FAILED,
         payload: { error: errors.noAccessToken },

@@ -1,7 +1,6 @@
 import { call, put, select, takeLatest } from 'redux-saga/effects';
 
 import errors from './util/errors';
-import { loadUser } from './user';
 import {
   LOAD_USER_STATS,
   LOAD_USER_STATS_FAILED,
@@ -9,14 +8,13 @@ import {
 } from './../actions/types';
 import { statsApi } from './../api';
 
-export const getAccessToken = ({ user }) => user.accessToken;
+export const getIsUserAuthenticated = ({ user }) => user.isUserAuthenticated;
 
 export function* loadUserStats() {
   try {
-    yield call(loadUser);
-    const accessToken = yield select(getAccessToken);
+    const isUserAuthenticated = yield select(getIsUserAuthenticated);
 
-    if (accessToken) {
+    if (isUserAuthenticated) {
       yield call(statsApi.topArtists.get);
       yield put({ type: LOAD_USER_STATS_SUCCEEDED });
     } else {

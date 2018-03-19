@@ -1,6 +1,7 @@
 import SizeDetector from './size_detector';
+import AuthenticationChecker from './authentication_checker';
 
-/* eslint-disable */
 export {
+  AuthenticationChecker,
   SizeDetector,
 };

@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import { Dimmer, Loader, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import loadUserStats from './../../actions/user_stats';
+import ScreenLoader from './../screen_loader';
 
 export class UserStats extends Component {
   componentDidMount() {
@@ -12,40 +12,23 @@ export class UserStats extends Component {
   }
 
   render() {
-    // TODO: make a HOC with this logic
-    if (this.props.loadUserFinished && !this.props.isUserAuthenticated) {
-      return <Redirect to="/" />;
+    if (this.props.statsLoaded) {
+      return (
+        <div>
+          User stats
+        </div>
+      );
     }
-    return (
-      <Segment basic className="body">
-        <Dimmer
-          active={!this.props.statsLoaded || this.props.loggingOutUser}
-          inverted
-        >
-          <Loader inverted size="big" />
-        </Dimmer>
-        User stats
-      </Segment>
-    );
+    return <ScreenLoader />;
   }
 }
 
-UserStats.defaultProps = {
-  statsLoaded: false,
-};
-
 UserStats.propTypes = {
-  isUserAuthenticated: PropTypes.bool.isRequired,
-  loadUserFinished: PropTypes.bool.isRequired,
   loadUserStats: PropTypes.func.isRequired,
-  loggingOutUser: PropTypes.bool.isRequired,
-  statsLoaded: PropTypes.bool,
+  statsLoaded: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = ({ user, userStats }) => ({
-  isUserAuthenticated: user.isUserAuthenticated,
-  loadUserFinished: user.loadUserFinished,
-  loggingOutUser: user.loggingOutUser,
+const mapStateToProps = ({ userStats }) => ({
   statsLoaded: userStats.statsLoaded,
 });
 
