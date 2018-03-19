@@ -7,7 +7,16 @@ export const appHeaderContainer = {
   logoutUser: emptyFunction,
 };
 
+export const authenticationChecker = {
+  isUserAuthenticated: initialState.user.isUserAuthenticated,
+  loadUserFinished: initialState.user.loadUserFinished,
+  loggingOutUser: initialState.user.loggingOutUser,
+  loadUser: emptyFunction,
+};
+
 export const loginContainer = { isDeviceMobile: initialState.isDeviceMobile };
+
+export const sizeDetector = { deviceTypeChanged: emptyFunction };
 
 export const userStatsContainer = {
   statsLoaded: initialState.userStats.statsLoaded,

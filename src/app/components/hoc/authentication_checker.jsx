@@ -9,7 +9,9 @@ import ScreenLoader from './../screen_loader';
 export const getAuthenticationChecker = (ComposedComponent) => {
   class AuthenticationChecker extends Component {
     componentDidMount() {
-      this.props.loadUser();
+      if (!this.props.isUserAuthenticated) {
+        this.props.loadUser();
+      }
     }
 
     render() {

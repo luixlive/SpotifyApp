@@ -13,6 +13,7 @@ import {
   AppHeader,
 } from './../../../../app/components/containers/header';
 import initialState from './../../../test_utils/initial_state';
+import * as types from './../../../../app/actions/types';
 
 describe('App Components - Header', () => {
   describe('Snapshots', () => {
@@ -45,81 +46,19 @@ describe('App Components - Header', () => {
       props = _.cloneDeep(componentProps);
     });
 
-    describe('General', () => {
-      let wrapper;
-      beforeEach(() => {
-        wrapper = shallow(<AppHeader {...props} />);
-      });
-
-      it('renders', () => {
-        expect(wrapper.length).toEqual(1);
-      });
-
-      it('renders the Spotify Stats header', () => {
-        expect(wrapper.find('Header').prop('children'))
-          .toEqual('Spotify Stats');
-      });
+    it('redirects to login on sign in button click', () => {
+      global.open = jest.fn();
+      const wrapper = shallow(<AppHeader {...props} />);
+      wrapper.find('Button').simulate('click');
+      expect(global.open).toHaveBeenCalledTimes(1);
     });
 
-    describe('Not mobile', () => {
-      let wrapper;
-      beforeAll(() => {
-        wrapper = shallow(<AppHeader {...props} />);
-      });
-
-      it('renders the Spotify Stats header as h2', () => {
-        expect(wrapper.find('Header').prop('as')).toEqual('h2');
-      });
-
-      it('renders the sign in button', () => {
-        expect(wrapper.find('Button').prop('children'))
-          .toEqual('Sign in with Spotify');
-      });
-    });
-
-    describe('Mobile', () => {
-      let wrapper;
-      beforeAll(() => {
-        props.isDeviceMobile = true;
-        wrapper = shallow(<AppHeader {...props} />);
-      });
-
-      it('renders the Spotify Stats header as h3', () => {
-        expect(wrapper.find('Header').prop('as')).toEqual('h3');
-      });
-
-      it('renders the sign in button', () => {
-        expect(wrapper.find('Button').prop('children'))
-          .toEqual('Sign in');
-      });
-    });
-
-    describe('User authenticated', () => {
-      it('renders the logout button', () => {
-        props.isUserAuthenticated = true;
-        const wrapper = shallow(<AppHeader {...props} />);
-        expect(wrapper.find('Button').prop('children'))
-          .toEqual('Logout');
-      });
-    });
-
-    describe('Events', () => {
-      it('redirects to login on sign in button click', () => {
-        const open = jest.fn();
-        global.open = open;
-        const wrapper = shallow(<AppHeader {...props} />);
-        wrapper.find('Button').simulate('click');
-        expect(open).toHaveBeenCalledTimes(1);
-      });
-
-      it('calls logoutUser on logout button click', () => {
-        const logoutUser = jest.fn();
-        props.isUserAuthenticated = true;
-        const wrapper =
-          shallow(<AppHeader {...props} logoutUser={logoutUser} />);
-        wrapper.find('Button').simulate('click');
-        expect(logoutUser).toHaveBeenCalledTimes(1);
-      });
+    it('calls logoutUser on logout button click', () => {
+      props.isUserAuthenticated = true;
+      props.logoutUser = jest.fn();
+      const wrapper = shallow(<AppHeader {...props} />);
+      wrapper.find('Button').simulate('click');
+      expect(props.logoutUser).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -143,6 +82,25 @@ describe('App Components - Header', () => {
     it('matches initial state', () => {
       expect(Object.keys(wrapper.find(AppHeader).props()))
         .toEqual(Object.keys(componentProps));
+    });
+
+    it('dispatches logoutUser', () => {
+      store = mockStore(_.merge({}, initialState, {
+        user: { isUserAuthenticated: true },
+      }));
+      wrapper = mount((
+        <Provider store={store}>
+          <ConnectedAppHeader />
+        </Provider>
+      ));
+      expect(store.getActions().length).toBe(0);
+      wrapper.find('Button').simulate('click');
+
+      const expectedAction = {
+        type: types.LOGOUT_USER,
+        payload: { },
+      };
+      expect(store.getActions()[0]).toEqual(expectedAction);
     });
   });
 });

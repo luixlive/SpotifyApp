@@ -5,7 +5,7 @@ import { AppFooter } from './';
 import { AppHeaderContainer } from './containers';
 import { SizeDetector } from './hoc';
 
-export const App = props => (
+const App = props => (
   <div>
     <AppHeaderContainer />
     {props.children}

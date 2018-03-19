@@ -1,9 +1,9 @@
 import _ from 'lodash';
 import configureStore from 'redux-mock-store';
+import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { shallow, mount } from 'enzyme';
 
 import {
   ConnectedLogin,
@@ -30,44 +30,6 @@ describe('App Components - Login', () => {
       props.isDeviceMobile = true;
       const rendered = renderer.create(<Login {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
-    });
-  });
-
-  describe('Behavior', () => {
-    describe('General', () => {
-      let wrapper;
-      beforeAll(() => {
-        const props = _.cloneDeep(componentProps);
-        wrapper = shallow(<Login {...props} />);
-      });
-
-      it('renders', () => {
-        expect(wrapper.length).toEqual(1);
-      });
-
-      it('renders welcome text', () => {
-        expect(wrapper.find('Header').get(0).props.as).toEqual('h1');
-        expect(wrapper.find('Header').get(0).props.children).toEqual('Welcome');
-      });
-
-      it('renders the sign in text', () => {
-        expect(wrapper.find('Header').get(1).props.children)
-          .toEqual('Please sign in with Spotify to start.');
-      });
-    });
-
-    describe('Not mobile', () => {
-      it('renders the sign in text as h2', () => {
-        const wrapper = shallow(<Login isDeviceMobile={false} />);
-        expect(wrapper.find('Header').get(1).props.as).toEqual('h2');
-      });
-    });
-
-    describe('Mobile', () => {
-      it('renders the sign in text as h3', () => {
-        const wrapper = shallow(<Login isDeviceMobile />);
-        expect(wrapper.find('Header').get(1).props.as).toEqual('h3');
-      });
     });
   });
 

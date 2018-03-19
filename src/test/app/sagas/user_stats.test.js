@@ -11,7 +11,7 @@ import watcher, {
 
 describe('App Sagas - UserStats', () => {
   describe('Selectors', () => {
-    it('should get is user authenticated', () => {
+    it('should get isUserAuthenticated', () => {
       const mockState = { user: { accessToken: 'token' } };
       expect(getIsUserAuthenticated(mockState))
         .toEqual(mockState.user.getIsUserAuthenticated);
@@ -20,12 +20,12 @@ describe('App Sagas - UserStats', () => {
 
   describe('Load User Stats', () => {
     it(types.LOAD_USER_STATS_SUCCEEDED, () => {
-      const accessToken = 'token';
+      const isUserAuthenticated = true;
 
       const loadUserStatsGenerator = loadUserStats();
       expect(loadUserStatsGenerator.next().value)
         .toEqual(select(getIsUserAuthenticated));
-      expect(loadUserStatsGenerator.next(accessToken).value)
+      expect(loadUserStatsGenerator.next(isUserAuthenticated).value)
         .toEqual(call(statsApi.topArtists.get));
       expect(loadUserStatsGenerator.next().value)
         .toEqual(put({ type: types.LOAD_USER_STATS_SUCCEEDED }));
@@ -33,15 +33,16 @@ describe('App Sagas - UserStats', () => {
     });
 
     it(`${types.LOAD_USER_STATS_FAILED} - ${errors.noAccessToken}`, () => {
-      const accessToken = undefined;
+      const isUserAuthenticated = false;
 
       const loadUserStatsGenerator = loadUserStats();
       expect(loadUserStatsGenerator.next().value)
         .toEqual(select(getIsUserAuthenticated));
-      expect(loadUserStatsGenerator.next(accessToken).value).toEqual(put({
-        type: types.LOAD_USER_STATS_FAILED,
-        payload: { error: errors.noAccessToken },
-      }));
+      expect(loadUserStatsGenerator.next(isUserAuthenticated).value)
+        .toEqual(put({
+          type: types.LOAD_USER_STATS_FAILED,
+          payload: { error: errors.noAccessToken },
+        }));
       expect(loadUserStatsGenerator.next().done).toBeTruthy();
     });
 

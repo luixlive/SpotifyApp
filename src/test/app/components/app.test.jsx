@@ -1,64 +1,28 @@
 import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
+import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import toJson from 'enzyme-to-json';
 
-import AppComponent, {
-  App,
-} from './../../../app/components/app';
-import { AppFooter } from './../../../app/components';
-import { AppHeaderContainer } from './../../../app/components/containers';
+import AppComponent from './../../../app/components/app';
 import initialState from './../../test_utils/initial_state';
 
 describe('App Components - App', () => {
-  describe('Behavior', () => {
-    const children = [<div key="0" />];
-    let wrapper;
-    beforeAll(() => {
-      const props = { children };
-      wrapper = shallow(<App {...props} />);
-    });
-
-    it('renders', () => {
-      expect(wrapper.length).toEqual(1);
-    });
-
-    it('renders the header', () => {
-      expect(wrapper.find('div').get(0).props.children[0])
-        .toEqual(<AppHeaderContainer />);
-    });
-
-    it('renders the children', () => {
-      expect(wrapper.find('div').get(0).props.children[1])
-        .toEqual(children);
-    });
-
-    it('renders the footer', () => {
-      expect(wrapper.find('div').get(0).props.children[2])
-        .toEqual(<AppFooter />);
-    });
-  });
-
-  describe('Provider', () => {
+  it('renders', () => {
     const mockStore = configureStore();
-    let store;
-    let wrapper;
-    beforeAll(() => {
-      store = mockStore(initialState);
-      const props = { children: [<div key="0" />] };
-      // We need the router because sizeDetector is exported with "withRouter"
-      wrapper = mount((
-        <MemoryRouter>
-          <Provider store={store}>
-            <AppComponent {...props} />
-          </Provider>
-        </MemoryRouter>
-      ));
-    });
-
-    it('renders', () => {
-      expect(wrapper.find(AppComponent).length).toEqual(1);
-    });
+    const store = mockStore(initialState);
+    const props = { children: [<div key="0" />] };
+    const wrapper = mount((
+      <MemoryRouter
+        initialEntries={[{ pathname: '/', key: 'key' }]}
+        initialIndex={0}
+      >
+        <Provider store={store}>
+          <AppComponent {...props} />
+        </Provider>
+      </MemoryRouter>
+    ));
+    expect(toJson(wrapper.find('App'))).toMatchSnapshot();
   });
 });

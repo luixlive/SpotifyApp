@@ -1,3 +1,317 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App Components - Router renders 1`] = `[Function]`;
+exports[`App Components - Router renders 1`] = `
+<_default>
+  <BrowserRouter>
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "createHref": [Function],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
+            "hash": "",
+            "pathname": "blank",
+            "search": "",
+            "state": undefined,
+          },
+          "push": [Function],
+          "replace": [Function],
+        }
+      }
+    >
+      <withRouter(Connect(SizeDetector))>
+        <Route
+          render={[Function]}
+        >
+          <Connect(SizeDetector)
+            history={
+              Object {
+                "action": "POP",
+                "block": [Function],
+                "createHref": [Function],
+                "go": [Function],
+                "goBack": [Function],
+                "goForward": [Function],
+                "length": 1,
+                "listen": [Function],
+                "location": Object {
+                  "hash": "",
+                  "pathname": "blank",
+                  "search": "",
+                  "state": undefined,
+                },
+                "push": [Function],
+                "replace": [Function],
+              }
+            }
+            location={
+              Object {
+                "hash": "",
+                "pathname": "blank",
+                "search": "",
+                "state": undefined,
+              }
+            }
+            match={
+              Object {
+                "isExact": false,
+                "params": Object {},
+                "path": "/",
+                "url": "/",
+              }
+            }
+          >
+            <SizeDetector
+              deviceTypeChanged={[Function]}
+              history={
+                Object {
+                  "action": "POP",
+                  "block": [Function],
+                  "createHref": [Function],
+                  "go": [Function],
+                  "goBack": [Function],
+                  "goForward": [Function],
+                  "length": 1,
+                  "listen": [Function],
+                  "location": Object {
+                    "hash": "",
+                    "pathname": "blank",
+                    "search": "",
+                    "state": undefined,
+                  },
+                  "push": [Function],
+                  "replace": [Function],
+                }
+              }
+              location={
+                Object {
+                  "hash": "",
+                  "pathname": "blank",
+                  "search": "",
+                  "state": undefined,
+                }
+              }
+              match={
+                Object {
+                  "isExact": false,
+                  "params": Object {},
+                  "path": "/",
+                  "url": "/",
+                }
+              }
+            >
+              <App
+                deviceTypeChanged={[Function]}
+                history={
+                  Object {
+                    "action": "POP",
+                    "block": [Function],
+                    "createHref": [Function],
+                    "go": [Function],
+                    "goBack": [Function],
+                    "goForward": [Function],
+                    "length": 1,
+                    "listen": [Function],
+                    "location": Object {
+                      "hash": "",
+                      "pathname": "blank",
+                      "search": "",
+                      "state": undefined,
+                    },
+                    "push": [Function],
+                    "replace": [Function],
+                  }
+                }
+                location={
+                  Object {
+                    "hash": "",
+                    "pathname": "blank",
+                    "search": "",
+                    "state": undefined,
+                  }
+                }
+                match={
+                  Object {
+                    "isExact": false,
+                    "params": Object {},
+                    "path": "/",
+                    "url": "/",
+                  }
+                }
+              >
+                <div>
+                  <withRouter(Connect(AppHeader))>
+                    <Route
+                      render={[Function]}
+                    >
+                      <Connect(AppHeader)
+                        history={
+                          Object {
+                            "action": "POP",
+                            "block": [Function],
+                            "createHref": [Function],
+                            "go": [Function],
+                            "goBack": [Function],
+                            "goForward": [Function],
+                            "length": 1,
+                            "listen": [Function],
+                            "location": Object {
+                              "hash": "",
+                              "pathname": "blank",
+                              "search": "",
+                              "state": undefined,
+                            },
+                            "push": [Function],
+                            "replace": [Function],
+                          }
+                        }
+                        location={
+                          Object {
+                            "hash": "",
+                            "pathname": "blank",
+                            "search": "",
+                            "state": undefined,
+                          }
+                        }
+                        match={
+                          Object {
+                            "isExact": false,
+                            "params": Object {},
+                            "path": "/",
+                            "url": "/",
+                          }
+                        }
+                      >
+                        <AppHeader
+                          history={
+                            Object {
+                              "action": "POP",
+                              "block": [Function],
+                              "createHref": [Function],
+                              "go": [Function],
+                              "goBack": [Function],
+                              "goForward": [Function],
+                              "length": 1,
+                              "listen": [Function],
+                              "location": Object {
+                                "hash": "",
+                                "pathname": "blank",
+                                "search": "",
+                                "state": undefined,
+                              },
+                              "push": [Function],
+                              "replace": [Function],
+                            }
+                          }
+                          isDeviceMobile={false}
+                          isUserAuthenticated={false}
+                          location={
+                            Object {
+                              "hash": "",
+                              "pathname": "blank",
+                              "search": "",
+                              "state": undefined,
+                            }
+                          }
+                          logoutUser={[Function]}
+                          match={
+                            Object {
+                              "isExact": false,
+                              "params": Object {},
+                              "path": "/",
+                              "url": "/",
+                            }
+                          }
+                        >
+                          <Segment
+                            color="green"
+                            textAlign="center"
+                          >
+                            <div
+                              className="ui green center aligned segment"
+                            >
+                              <Grid
+                                columns={3}
+                              >
+                                <div
+                                  className="ui three column grid"
+                                >
+                                  <GridColumn>
+                                    <div
+                                      className="column"
+                                    />
+                                  </GridColumn>
+                                  <GridColumn
+                                    verticalAlign="middle"
+                                  >
+                                    <div
+                                      className="middle aligned column"
+                                    >
+                                      <Header
+                                        as="h2"
+                                      >
+                                        <h2
+                                          className="ui header"
+                                        >
+                                          Spotify Stats
+                                        </h2>
+                                      </Header>
+                                    </div>
+                                  </GridColumn>
+                                  <GridColumn>
+                                    <div
+                                      className="column"
+                                    >
+                                      <Button
+                                        as="button"
+                                        color="green"
+                                        floated="right"
+                                        inverted={true}
+                                        onClick={[Function]}
+                                      >
+                                        <button
+                                          className="ui green inverted right floated button"
+                                          onClick={[Function]}
+                                          role="button"
+                                        >
+                                          Sign in with Spotify
+                                        </button>
+                                      </Button>
+                                    </div>
+                                  </GridColumn>
+                                </div>
+                              </Grid>
+                            </div>
+                          </Segment>
+                        </AppHeader>
+                      </Connect(AppHeader)>
+                    </Route>
+                  </withRouter(Connect(AppHeader))>
+                  <Route
+                    component={[Function]}
+                    exact={true}
+                    path="/"
+                  />
+                  <Route
+                    component={[Function]}
+                    path="/stats"
+                  />
+                  <Footer>
+                    <div />
+                  </Footer>
+                </div>
+              </App>
+            </SizeDetector>
+          </Connect(SizeDetector)>
+        </Route>
+      </withRouter(Connect(SizeDetector))>
+    </Router>
+  </BrowserRouter>
+</_default>
+`;

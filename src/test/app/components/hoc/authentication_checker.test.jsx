@@ -1,66 +1,106 @@
-import { BrowserRouter } from 'react-router-dom';
+import _ from 'lodash';
 import configureStore from 'redux-mock-store';
+import { MemoryRouter, Route, Switch } from 'react-router-dom';
+import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import React from 'react';
-import { mount } from 'enzyme';
+import renderer from 'react-test-renderer';
+import toJson from 'enzyme-to-json';
 
-import SizeDetector, {
-  getSizeDetector,
-} from './../../../../app/components/hoc/size_detector';
+import addRouterProps from './../../../test_utils/add_router_props';
+import {
+  authenticationChecker as componentProps,
+} from './../../../test_utils/components_props';
+import AuthenticationChecker, {
+  getAuthenticationChecker,
+} from './../../../../app/components/hoc/authentication_checker';
 import initialState from './../../../test_utils/initial_state';
+import * as types from './../../../../app/actions/types';
 
 describe('App Components HOC - AuthenticationChecker', () => {
-  describe('Behavior', () => {
-    it('should call deviceTypeChanged on resize events', () => {
-      const deviceTypeChanged = jest.fn();
-      const SizeDetectorComponent = getSizeDetector(() => <div />);
-      mount(<SizeDetectorComponent deviceTypeChanged={deviceTypeChanged} />);
-
-      global.innerWidth = 500;
-      global.dispatchEvent(new Event('resize'));
-      expect(deviceTypeChanged).toHaveBeenCalledTimes(1);
-
-      global.innerWidth = 1000;
-      global.dispatchEvent(new Event('resize'));
-      expect(deviceTypeChanged).toHaveBeenCalledTimes(2);
-
-      global.innerWidth = 700;
-      global.dispatchEvent(new Event('resize'));
-      expect(deviceTypeChanged).toHaveBeenCalledTimes(2);
+  describe('Snapshots', () => {
+    let AuthenticationCheckerComponent;
+    let props;
+    beforeEach(() => {
+      props = _.cloneDeep(componentProps);
+      AuthenticationCheckerComponent = getAuthenticationChecker(() => <div />);
     });
 
-    it('shouldnt call deviceTypeChanged after componentWillUnmount', () => {
-      const deviceTypeChanged = jest.fn();
-      const SizeDetectorComponent = getSizeDetector(() => <div />);
-      mount(<SizeDetectorComponent deviceTypeChanged={deviceTypeChanged} />)
-        .unmount();
+    it('renders user not authenticated', () => {
+      const rendered =
+        renderer.create(<AuthenticationCheckerComponent {...props} />).toJSON();
+      expect(rendered).toMatchSnapshot();
+    });
 
-      global.innerWidth = 500;
-      global.dispatchEvent(new Event('resize'));
-      expect(deviceTypeChanged).toHaveBeenCalledTimes(0);
+    it('renders Redirect if user not authenticated and load finished', () => {
+      props.loadUserFinished = true;
+      const rendered = mount((
+        <MemoryRouter initialIndex={0} initialEntries={['/stats']} >
+          <Switch>
+            <Route exact path="/" component={() => <div>Should render this</div>} />
+            <Route path="/stats" component={() => <AuthenticationCheckerComponent {...props} />} />
+          </Switch>
+        </MemoryRouter>
+      ));
+      expect(toJson(rendered.find('div'))).toMatchSnapshot();
+    });
 
-      global.innerWidth = 1000;
-      global.dispatchEvent(new Event('resize'));
-      expect(deviceTypeChanged).toHaveBeenCalledTimes(0);
+    it('renders user authenticated and load finished', () => {
+      props.isUserAuthenticated = true;
+      props.loadUserFinished = true;
+      const rendered =
+        renderer.create(<AuthenticationCheckerComponent {...props} />).toJSON();
+      expect(rendered).toMatchSnapshot();
+    });
+
+    it('renders user authenticated and logging out', () => {
+      props.isUserAuthenticated = true;
+      props.loadUserFinished = true;
+      props.loggingOutUser = true;
+      const rendered =
+        renderer.create(<AuthenticationCheckerComponent {...props} />).toJSON();
+      expect(rendered).toMatchSnapshot();
+    });
+  });
+
+  describe('Behavior', () => {
+    let AuthenticationCheckerComponent;
+    let props;
+    beforeEach(() => {
+      props = _.cloneDeep(componentProps);
+      props.loadUser = jest.fn();
+      AuthenticationCheckerComponent = getAuthenticationChecker(() => <div />);
+    });
+
+    it('should call loadUser if user not authenticated', () => {
+      mount(<AuthenticationCheckerComponent {...props} />);
+
+      expect(props.loadUser).toHaveBeenCalledTimes(1);
+    });
+
+    it('shouldnt call loadUser if user authenticated', () => {
+      props.isUserAuthenticated = true;
+      mount(<AuthenticationCheckerComponent {...props} />);
+
+      expect(props.loadUser).toHaveBeenCalledTimes(0);
     });
   });
 
   describe('Provider', () => {
-    const mockStore = configureStore();
-    const ComposedComponent = () => <div>Component</div>;
     let RenderedComponent;
     let store;
     let wrapper;
     beforeAll(() => {
+      const ComposedComponent = () => <div>Component</div>;
+      const mockStore = configureStore();
       store = mockStore(initialState);
-      RenderedComponent = SizeDetector(ComposedComponent);
-      // We need the router because sizeDetector is exported with "withRouter"
+      RenderedComponent = AuthenticationChecker(ComposedComponent);
       wrapper = mount((
-        <BrowserRouter>
+        <MemoryRouter>
           <Provider store={store}>
             <RenderedComponent />
           </Provider>
-        </BrowserRouter>
+        </MemoryRouter>
       ));
     });
 
@@ -68,13 +108,18 @@ describe('App Components HOC - AuthenticationChecker', () => {
       expect(wrapper.find(RenderedComponent).length).toEqual(1);
     });
 
-    it('renders composed component', () => {
-      expect(wrapper.find(ComposedComponent).length).toEqual(1);
+    it('matches initial state', () => {
+      const props = addRouterProps(componentProps);
+      expect(Object.keys(wrapper.find('AuthenticationChecker').props()))
+        .toEqual(Object.keys(props));
     });
 
-    it('contains prop deviceTypeChanged', () => {
-      expect(wrapper.find(ComposedComponent).prop('deviceTypeChanged').length)
-        .toEqual(1);
+    it('dispatches loadUser', () => {
+      const expectedAction = {
+        type: types.LOAD_USER,
+        payload: { },
+      };
+      expect(store.getActions()[0]).toEqual(expectedAction);
     });
   });
 });
