@@ -7,7 +7,8 @@ const getRouter = (controller) => {
 
   router.get(
     '/topArtists',
-    (req, res) => controller.topArtists(req, res, spotifyService),
+    (req, res) =>
+      controller.topArtists(req, res, spotifyService.getUsersTopArtists),
   );
 
   return router;
