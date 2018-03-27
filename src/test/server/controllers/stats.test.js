@@ -10,7 +10,7 @@ describe('Server Controllers - Stats', () => {
   let statusValue;
   let user;
   beforeEach(() => {
-    response = { artists: ['1', '2'] };
+    response = { body: { items: ['1', '2'] } };
     responseValue = undefined;
     statusValue = undefined;
     user = { accessToken: 'accessToken' };
@@ -30,10 +30,10 @@ describe('Server Controllers - Stats', () => {
       expect(service.mock.calls[0][1]).toBeInstanceOf(Function);
     });
 
-    it.skip('returns top artists in callback', () => {
+    it('returns top artists in callback', () => {
       const callback = statsController.getUsersTopArtistsCallback(res);
       callback(null, response);
-      expect(responseValue).toBe(response);
+      expect(responseValue).toBe(response.body.items);
     });
 
     it('returns internal server error when service returns error', () => {

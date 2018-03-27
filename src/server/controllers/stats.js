@@ -8,6 +8,7 @@ const getUsersTopArtistsCallback = res => (err, spotifyRes) => {
     return res.send({ error: err });
   }
 
+  // TODO: Add validation for spotifyRes.body.items
   logger.debug(`Spotify getUsersTopArtists: ${JSON.stringify(spotifyRes)}`);
   return res.send(spotifyRes.body.items);
 };
