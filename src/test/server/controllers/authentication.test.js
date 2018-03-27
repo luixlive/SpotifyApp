@@ -29,7 +29,7 @@ describe('Server Controllers - Authentication', () => {
   describe('Logout', () => {
     it('logs out user', () => {
       authenticationController.logout(req, res);
-      expect(statusValue).toEqual(httpStatus.OK);
+      expect(statusValue).toEqual(httpStatus.NO_CONTENT);
       expect(responseValue).toBeUndefined();
       expect(user).toBeUndefined();
     });

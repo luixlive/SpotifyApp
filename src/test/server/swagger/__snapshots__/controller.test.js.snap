@@ -2,14 +2,202 @@
 
 exports[`Server Swagger - Controller Swagger JS Doc sets headers and sends Swagger JSON 1`] = `
 Object {
-  "definitions": Object {},
+  "definitions": Object {
+    "User": Object {
+      "properties": Object {
+        "accessToken": Object {
+          "type": "string",
+        },
+        "profile": Object {
+          "properties": Object {
+            "_json": Object {
+              "properties": Object {
+                "display_name": Object {
+                  "type": "string",
+                },
+                "external_urls": Object {
+                  "properties": Object {
+                    "spotify": Object {
+                      "format": "uri",
+                      "type": "string",
+                    },
+                  },
+                  "type": "object",
+                },
+                "followers": Object {
+                  "properties": Object {
+                    "href": Object {
+                      "format": "uri",
+                      "type": "string",
+                    },
+                    "total": Object {
+                      "format": "int64",
+                      "type": "number",
+                    },
+                  },
+                  "type": "object",
+                },
+                "href": Object {
+                  "format": "uri",
+                  "type": "string",
+                },
+                "id": Object {
+                  "type": "string",
+                },
+                "images": Object {
+                  "properties": Object {
+                    "height": Object {
+                      "format": "int32",
+                      "type": "number",
+                    },
+                    "url": Object {
+                      "format": "uri",
+                      "type": "string",
+                    },
+                    "width": Object {
+                      "format": "int32",
+                      "type": "number",
+                    },
+                  },
+                  "type": "object",
+                },
+                "type": Object {
+                  "type": "string",
+                },
+                "uri": Object {
+                  "format": "uri",
+                  "type": "string",
+                },
+              },
+              "type": "object",
+            },
+          },
+          "type": "object",
+        },
+        "refreshToken": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "accessToken",
+        "profile",
+        "refreshToken",
+      ],
+      "type": "object",
+    },
+  },
   "info": Object {
     "description": "Simple webapp for Spotify stats",
     "title": "Spotify Stats",
     "version": "1.0.0",
   },
   "parameters": Object {},
-  "paths": Object {},
+  "paths": Object {
+    "/api/authentication/logout": Object {
+      "get": Object {
+        "description": "Logout from Spotify",
+        "parameters": Array [
+          Object {
+            "description": "Session cookie signed",
+            "in": "cookie",
+            "name": "session",
+            "schema": Object {
+              "type": "string",
+            },
+          },
+          Object {
+            "description": "Signature key for the Session cookie",
+            "in": "cookie",
+            "name": "session.sig",
+            "schema": Object {
+              "type": "string",
+            },
+          },
+        ],
+        "responses": Object {
+          "204": Object {
+            "description": "User logged out (if there was a session)",
+          },
+        },
+      },
+    },
+    "/api/authentication/spotify": Object {
+      "get": Object {
+        "description": "Get redirected to Spotify's login page, after login event /api/authentication/spotify/callback will be called",
+      },
+    },
+    "/api/authentication/user": Object {
+      "get": Object {
+        "description": "Retrieve current user (if there is one)",
+        "parameters": Array [
+          Object {
+            "description": "Session cookie signed",
+            "in": "cookie",
+            "name": "session",
+            "schema": Object {
+              "type": "string",
+            },
+          },
+          Object {
+            "description": "Signature key for the Session cookie",
+            "in": "cookie",
+            "name": "session.sig",
+            "schema": Object {
+              "type": "string",
+            },
+          },
+        ],
+        "produces": Array [
+          "application/json",
+        ],
+        "responses": Object {
+          "200": Object {
+            "description": "User found and returned",
+            "schema": Object {
+              "$ref": "#/definitions/User",
+            },
+          },
+          "401": Object {
+            "description": "No user found",
+          },
+        },
+      },
+    },
+    "/api/stats/topArtists": Object {
+      "get": Object {
+        "description": "Retrieve from Spotify user's top artists",
+        "parameters": Array [
+          Object {
+            "description": "Session cookie signed",
+            "in": "cookie",
+            "name": "session",
+            "schema": Object {
+              "type": "string",
+            },
+          },
+          Object {
+            "description": "Signature key for the Session cookie",
+            "in": "cookie",
+            "name": "session.sig",
+            "schema": Object {
+              "type": "string",
+            },
+          },
+        ],
+        "responses": Object {
+          "200": Object {
+            "description": "List of user's top artists",
+            "schema": Object {
+              "$ref": "#/definitions/Artists",
+            },
+          },
+          "500": Object {
+            "description": "Error retrieving artists from Spotify",
+          },
+        },
+      },
+    },
+  },
   "responses": Object {},
   "securityDefinitions": Object {},
   "swagger": "2.0",
