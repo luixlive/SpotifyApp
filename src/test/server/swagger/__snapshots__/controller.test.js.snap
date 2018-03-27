@@ -3,6 +3,34 @@
 exports[`Server Swagger - Controller Swagger JS Doc sets headers and sends Swagger JSON 1`] = `
 Object {
   "definitions": Object {
+    "Artists": Object {
+      "items": Object {
+        "allOf": Array [
+          Object {
+            "$ref": "#/definitions/UserBase",
+          },
+          Object {
+            "properties": Object {
+              "genres": Object {
+                "items": Object {
+                  "type": "string",
+                },
+                "type": "array",
+              },
+              "name": Object {
+                "type": "string",
+              },
+              "popularity": Object {
+                "format": "int32",
+                "type": "number",
+              },
+            },
+            "type": "object",
+          },
+        ],
+      },
+      "type": "array",
+    },
     "User": Object {
       "properties": Object {
         "accessToken": Object {
@@ -11,65 +39,19 @@ Object {
         "profile": Object {
           "properties": Object {
             "_json": Object {
-              "properties": Object {
-                "display_name": Object {
-                  "type": "string",
+              "allOf": Array [
+                Object {
+                  "$ref": "#/definitions/UserBase",
                 },
-                "external_urls": Object {
+                Object {
                   "properties": Object {
-                    "spotify": Object {
-                      "format": "uri",
+                    "display_name": Object {
                       "type": "string",
                     },
                   },
                   "type": "object",
                 },
-                "followers": Object {
-                  "properties": Object {
-                    "href": Object {
-                      "format": "uri",
-                      "type": "string",
-                    },
-                    "total": Object {
-                      "format": "int64",
-                      "type": "number",
-                    },
-                  },
-                  "type": "object",
-                },
-                "href": Object {
-                  "format": "uri",
-                  "type": "string",
-                },
-                "id": Object {
-                  "type": "string",
-                },
-                "images": Object {
-                  "properties": Object {
-                    "height": Object {
-                      "format": "int32",
-                      "type": "number",
-                    },
-                    "url": Object {
-                      "format": "uri",
-                      "type": "string",
-                    },
-                    "width": Object {
-                      "format": "int32",
-                      "type": "number",
-                    },
-                  },
-                  "type": "object",
-                },
-                "type": Object {
-                  "type": "string",
-                },
-                "uri": Object {
-                  "format": "uri",
-                  "type": "string",
-                },
-              },
-              "type": "object",
+              ],
             },
           },
           "type": "object",
@@ -83,6 +65,67 @@ Object {
         "profile",
         "refreshToken",
       ],
+      "type": "object",
+    },
+    "UserBase": Object {
+      "properties": Object {
+        "external_urls": Object {
+          "properties": Object {
+            "spotify": Object {
+              "format": "uri",
+              "type": "string",
+            },
+          },
+          "type": "object",
+        },
+        "followers": Object {
+          "properties": Object {
+            "href": Object {
+              "format": "uri",
+              "type": "string",
+            },
+            "total": Object {
+              "format": "int64",
+              "type": "number",
+            },
+          },
+          "type": "object",
+        },
+        "href": Object {
+          "format": "uri",
+          "type": "string",
+        },
+        "id": Object {
+          "type": "string",
+        },
+        "images": Object {
+          "items": Object {
+            "properties": Object {
+              "height": Object {
+                "format": "int32",
+                "type": "number",
+              },
+              "url": Object {
+                "format": "uri",
+                "type": "string",
+              },
+              "width": Object {
+                "format": "int32",
+                "type": "number",
+              },
+            },
+            "type": "object",
+          },
+          "type": "array",
+        },
+        "type": Object {
+          "type": "string",
+        },
+        "uri": Object {
+          "format": "uri",
+          "type": "string",
+        },
+      },
       "type": "object",
     },
   },
