@@ -9,7 +9,7 @@ const getUsersTopArtistsCallback = res => (err, spotifyRes) => {
   }
 
   logger.debug(`Spotify getUsersTopArtists: ${JSON.stringify(spotifyRes)}`);
-  return res.send(spotifyRes);
+  return res.send(spotifyRes.body);
 };
 
 const topArtists = (req, res, getUsersTopArtists) => {
