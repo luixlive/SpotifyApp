@@ -69,7 +69,7 @@ describe('App Sagas - User', () => {
 
   describe('Logout User', () => {
     it(types.LOGOUT_USER_SUCCEEDED, () => {
-      const response = { status: httpStatus.OK };
+      const response = { status: httpStatus.NO_CONTENT };
 
       const logoutUserGenerator = logoutUser();
       expect(logoutUserGenerator.next().value)
