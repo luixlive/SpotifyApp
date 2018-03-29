@@ -6,6 +6,9 @@ export default {
     }),
   },
   logout: {
-    get: () => window.fetch('/api/authentication/logout', { method: 'GET' }),
+    get: () => window.fetch('/api/authentication/logout', {
+      credentials: 'same-origin',
+      method: 'GET',
+    }),
   },
 };

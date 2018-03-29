@@ -24,7 +24,7 @@ describe('App API - Authentication', () => {
       expect(fetch).toHaveBeenCalledTimes(1);
       expect(fetch.mock.calls[0]).toEqual([
         '/api/authentication/logout',
-        { method: 'GET' },
+        { credentials: 'same-origin', method: 'GET' },
       ]);
     });
   });
