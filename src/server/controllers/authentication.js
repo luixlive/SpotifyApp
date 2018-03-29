@@ -14,11 +14,7 @@ const spotifyCallback = (req, res) => {
 
 const user = (req, res) => {
   logger.debug(`api/authentication/user: ${JSON.stringify(req.user)}`);
-  if (req.user) {
-    res.send(req.user);
-  } else {
-    res.sendStatus(httpStatus.UNAUTHORIZED);
-  }
+  res.send(req.user);
 };
 
 module.exports = {

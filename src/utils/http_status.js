@@ -4,4 +4,5 @@ module.exports = {
   UNAUTHORIZED: 401,
   IM_A_TEAPOT: 418,
   INTERNAL_SERVER_ERROR: 500,
+  BAD_GATEWAY: 502,
 };

@@ -1,6 +1,7 @@
 const express = require('express');
 
 const { spotifyService } = require('./../services');
+const { userLoggedIn } = require('./../middlewares');
 
 const getRouter = (controller) => {
   const router = express.Router();
@@ -26,11 +27,12 @@ const getRouter = (controller) => {
    *         description: List of user's top artists
    *         schema:
    *           $ref: '#/definitions/Artists'
-   *       500:
+   *       502:
    *         description: Error retrieving artists from Spotify
    */
   router.get(
     '/topArtists',
+    userLoggedIn,
     (req, res) =>
       controller.topArtists(req, res, spotifyService.getUsersTopArtists),
   );

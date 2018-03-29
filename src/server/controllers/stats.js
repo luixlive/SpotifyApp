@@ -1,14 +1,16 @@
+const _ = require('lodash');
+
 const httpStatus = require('./../../utils/http_status');
 const logger = require('./../../utils/logger');
+const { UNEXPECTED_SPOTIFY_RESPONSE } = require('./../util/error_responses');
 
 const getUsersTopArtistsCallback = res => (err, spotifyRes) => {
-  if (err) {
-    logger.debug(`Spotify getUsersTopArtists error: ${err}`);
-    res.status(httpStatus.INTERNAL_SERVER_ERROR);
-    return res.send({ error: err });
+  if (err || !_.has(spotifyRes, 'body.items')) {
+    logger.debug(`Spotify getUsersTopArtists error: ${err || UNEXPECTED_SPOTIFY_RESPONSE}`);
+    res.status(httpStatus.BAD_GATEWAY);
+    return res.send({ error: err || UNEXPECTED_SPOTIFY_RESPONSE });
   }
 
-  // TODO: Add validation for spotifyRes.body.items
   logger.debug(`Spotify getUsersTopArtists: ${JSON.stringify(spotifyRes)}`);
   return res.send(spotifyRes.body.items);
 };

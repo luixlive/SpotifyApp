@@ -2,6 +2,8 @@ const config = require('config');
 const express = require('express');
 const passport = require('passport');
 
+const { userLoggedIn } = require('./../middlewares');
+
 const getRouter = (controller) => {
   const router = express.Router();
 
@@ -68,7 +70,7 @@ const getRouter = (controller) => {
    *       401:
    *         description: No user found
    */
-  router.get('/user', controller.user);
+  router.get('/user', userLoggedIn, controller.user);
 
   return router;
 };
