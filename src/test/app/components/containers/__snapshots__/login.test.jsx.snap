@@ -18,7 +18,7 @@ exports[`App Components - Login Snapshots renders mobile 1`] = `
   <h3
     className="ui header"
   >
-    Please sign in with Spotify to start.
+    Please log in with Spotify to start.
   </h3>
 </div>
 `;
@@ -41,7 +41,7 @@ exports[`App Components - Login Snapshots renders no mobile 1`] = `
   <h2
     className="ui header"
   >
-    Please sign in with Spotify to start.
+    Please log in with Spotify to start.
   </h2>
 </div>
 `;

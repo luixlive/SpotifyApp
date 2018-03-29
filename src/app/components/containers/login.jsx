@@ -18,7 +18,7 @@ export const Login = props => (
     <Header
       as={props.isDeviceMobile ? 'h3' : 'h2'}
     >
-      Please sign in with Spotify to start.
+      Please log in with Spotify to start.
     </Header>
   </Container>
 );

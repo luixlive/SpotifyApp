@@ -1,4 +1,4 @@
 export default {
-  noAccessToken: 'No access token. Please sign in.',
+  noAccessToken: 'No access token. Please log in.',
   unexpected: 'Unexpected error.',
 };

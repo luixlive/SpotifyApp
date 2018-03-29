@@ -29,7 +29,7 @@ exports[`App Components - Header Snapshots renders mobile 1`] = `
         role="button"
         tabIndex={undefined}
       >
-        Sign in
+        Log in
       </button>
     </div>
   </div>
@@ -65,7 +65,7 @@ exports[`App Components - Header Snapshots renders no mobile 1`] = `
         role="button"
         tabIndex={undefined}
       >
-        Sign in with Spotify
+        Log in with Spotify
       </button>
     </div>
   </div>

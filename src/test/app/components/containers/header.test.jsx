@@ -46,7 +46,7 @@ describe('App Components - Header', () => {
       props = _.cloneDeep(componentProps);
     });
 
-    it('redirects to login on sign in button click', () => {
+    it('redirects to login on log in button click', () => {
       global.open = jest.fn();
       const wrapper = shallow(<AppHeader {...props} />);
       wrapper.find('Button').simulate('click');

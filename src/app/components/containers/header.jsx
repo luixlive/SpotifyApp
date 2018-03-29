@@ -11,7 +11,7 @@ export const AppHeader = (props) => {
     if (props.isUserAuthenticated) {
       return 'Logout';
     }
-    return props.isDeviceMobile ? 'Sign in' : 'Sign in with Spotify';
+    return props.isDeviceMobile ? 'Log in' : 'Log in with Spotify';
   };
 
   return (
