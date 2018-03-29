@@ -15,6 +15,7 @@ describe('Server Controllers - Authentication', () => {
     user = 'user';
     req = {
       logout: () => { user = undefined; },
+      session: 'session',
       user,
     };
     res = {
@@ -30,6 +31,7 @@ describe('Server Controllers - Authentication', () => {
       expect(statusValue).toEqual(httpStatus.NO_CONTENT);
       expect(responseValue).toBeUndefined();
       expect(user).toBeUndefined();
+      expect(req.session).toBeNull();
     });
   });
 

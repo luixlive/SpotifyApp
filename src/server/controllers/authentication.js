@@ -4,6 +4,7 @@ const logger = require('./../../utils/logger');
 const logout = (req, res) => {
   logger.debug(`api/authentication/logout: ${JSON.stringify(req.user)}`);
   req.logout();
+  req.session = null;
   res.sendStatus(httpStatus.NO_CONTENT);
 };
 
