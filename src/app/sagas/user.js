@@ -43,7 +43,7 @@ export function* logoutUser() {
   try {
     const response = yield call(authenticationApi.logout.get);
 
-    if (response.status === httpStatus.OK) {
+    if (response.status === httpStatus.NO_CONTENT) {
       yield put({ type: LOGOUT_USER_SUCCEEDED, payload: {} });
     } else {
       yield put({
