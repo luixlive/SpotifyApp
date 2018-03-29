@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 module.exports = Joi.object().keys({
-  accessToken: Joi.string().length(151).required(),
+  accessToken: Joi.string().min(151).required(),
   profile: Joi.object().keys({
     _json: Joi.object().keys({
       display_name: Joi.string().required(),
@@ -14,5 +14,5 @@ module.exports = Joi.object().keys({
       uri: Joi.string().required(),
     }).required(),
   }).required(),
-  refreshToken: Joi.string().length(131).required(),
+  refreshToken: Joi.string().min(131).required(),
 });
