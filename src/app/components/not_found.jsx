@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 import { Container, Header } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
-export const Login = props => (
+export const NotFound = props => (
   <Container className="" textAlign="center">
     <Header
       as="h1"
@@ -13,15 +13,15 @@ export const Login = props => (
         marginTop: props.isDeviceMobile ? '1em' : '1.5em',
       }}
     >
-    Welcome
+    Error 404
     </Header>
-    <Header as={props.isDeviceMobile ? 'h3' : 'h2'} >
-      Please log in with Spotify to start.
+    <Header as={props.isDeviceMobile ? 'h3' : 'h2'}>
+      Page not found, go back to <Link to="/stats">home</Link> page.
     </Header>
   </Container>
 );
 
-Login.propTypes = {
+NotFound.propTypes = {
   isDeviceMobile: PropTypes.bool.isRequired,
 };
 
@@ -29,7 +29,7 @@ const mapStateToProps = ({ isDeviceMobile }) => ({ isDeviceMobile });
 
 const mapDispatchToProps = () => ({});
 
-export const ConnectedLogin =
-  connect(mapStateToProps, mapDispatchToProps)(Login);
+export const ConnectedNotFound =
+  connect(mapStateToProps, mapDispatchToProps)(NotFound);
 
-export default withRouter(ConnectedLogin);
+export default withRouter(ConnectedNotFound);

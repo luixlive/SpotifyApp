@@ -14,7 +14,7 @@ const App = props => (
 );
 
 App.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  children: PropTypes.element.isRequired,
 };
 
 export default SizeDetector(App);

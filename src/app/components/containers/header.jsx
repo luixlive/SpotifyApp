@@ -19,9 +19,7 @@ export const AppHeader = (props) => {
       <Grid columns={3}>
         <Grid.Column />
         <Grid.Column verticalAlign="middle">
-          <Header
-            as={props.isDeviceMobile ? 'h3' : 'h2'}
-          >
+          <Header as={props.isDeviceMobile ? 'h3' : 'h2'} >
             Spotify Stats
           </Header>
         </Grid.Column>
