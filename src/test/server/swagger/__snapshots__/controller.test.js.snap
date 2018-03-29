@@ -234,7 +234,7 @@ Object {
               "$ref": "#/definitions/Artists",
             },
           },
-          "500": Object {
+          "502": Object {
             "description": "Error retrieving artists from Spotify",
           },
         },

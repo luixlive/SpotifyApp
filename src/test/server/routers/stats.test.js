@@ -1,4 +1,5 @@
 import getRouter from './../../../server/routers/stats';
+import handleRouterRequest from './../../test_utils/handle_router_request';
 
 describe('Server Routers - Stats', () => {
   let controller;
@@ -9,8 +10,8 @@ describe('Server Routers - Stats', () => {
   });
 
   it('calls getArtists controller', () => {
-    const request = { url: '/topArtists', method: 'GET' };
-    router.handle(request);
+    const req = { method: 'GET', url: '/topArtists' };
+    handleRouterRequest(router, req, null, true);
     expect(controller.topArtists).toHaveBeenCalledTimes(1);
   });
 });

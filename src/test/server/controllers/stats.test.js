@@ -1,6 +1,9 @@
 import error from './../../test_utils/error';
 import httpStatus from './../../../utils/http_status';
 import { statsController } from './../../../server/controllers';
+import {
+  UNEXPECTED_SPOTIFY_RESPONSE,
+} from './../../../server/util/error_responses';
 
 describe('Server Controllers - Stats', () => {
   let response;
@@ -36,11 +39,19 @@ describe('Server Controllers - Stats', () => {
       expect(responseValue).toBe(response.body.items);
     });
 
-    it('returns internal server error when service returns error', () => {
+    it('returns bad gateway error when service returns error', () => {
       const callback = statsController.getUsersTopArtistsCallback(res);
       callback(error, response);
-      expect(statusValue).toBe(httpStatus.INTERNAL_SERVER_ERROR);
+      expect(statusValue).toBe(httpStatus.BAD_GATEWAY);
       expect(responseValue.error).toBe(error);
+    });
+
+    it('returns bad gateway error when Spotifys response is unexpected', () => {
+      const callback = statsController.getUsersTopArtistsCallback(res);
+      response.body = {};
+      callback(null, response);
+      expect(statusValue).toBe(httpStatus.BAD_GATEWAY);
+      expect(responseValue.error).toBe(UNEXPECTED_SPOTIFY_RESPONSE);
     });
   });
 });

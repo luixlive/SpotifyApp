@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import { authenticationController } from './../../../server/controllers';
 import httpStatus from './../../../utils/http_status';
 
@@ -43,15 +41,9 @@ describe('Server Controllers - Authentication', () => {
   });
 
   describe('User', () => {
-    it('returns user if authenticated', () => {
+    it('returns user', () => {
       authenticationController.user(req, res);
       expect(responseValue).toBe(req.user);
-    });
-
-    it('returns unauthorized if not authenticated', () => {
-      authenticationController.user(_.omit(req, ['user']), res);
-      expect(statusValue).toBe(httpStatus.UNAUTHORIZED);
-      expect(responseValue).toBeUndefined();
     });
   });
 });
