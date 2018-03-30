@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import configureStore from 'redux-mock-store';
-import { MemoryRouter } from 'react-router-dom';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import React from 'react';
@@ -8,6 +7,7 @@ import renderer from 'react-test-renderer';
 
 import addRouterProps from './../../../test_utils/add_router_props';
 import initialState from './../../../test_utils/initial_state';
+import injectRouter from './../../../test_utils/inject_router';
 import {
   sizeDetector as componentProps,
 } from './../../../test_utils/components_props';
@@ -71,13 +71,11 @@ describe('App Components HOC - SizeDetector', () => {
     beforeAll(() => {
       store = mockStore(initialState);
       RenderedComponent = SizeDetector(ComposedComponent);
-      wrapper = mount((
-        <MemoryRouter>
-          <Provider store={store}>
-            <RenderedComponent />
-          </Provider>
-        </MemoryRouter>
-      ));
+      wrapper = mount(injectRouter(() => (
+        <Provider store={store}>
+          <RenderedComponent />
+        </Provider>
+      )));
     });
 
     it('renders', () => {

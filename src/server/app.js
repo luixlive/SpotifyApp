@@ -32,21 +32,26 @@ app.use(passport.session());
 
 app.use('/api', apiRouter);
 
+/* istanbul ignore next  */
 if (environment !== 'production') {
   app.use('/swagger', swaggerRouter);
 }
 
-if (environment === 'development') {
-  const webpackCompiler = webpack(webpackConfig);
-
-  app.use(webpackMiddleware(webpackCompiler, {}));
-  app.use(webpackHotMiddleware(webpackCompiler));
-} else if (environment === 'test') {
-  app.get('/test', (req, res) => {
-    res.sendStatus(200);
-  });
-} else {
-  app.use(express.static(path.join(__dirname, './../../dist')));
+const webpackCompiler = webpack(webpackConfig);
+switch (environment) {
+  /* istanbul ignore next */
+  case 'development':
+    app.use(webpackMiddleware(webpackCompiler, {}));
+    app.use(webpackHotMiddleware(webpackCompiler));
+    break;
+  case 'test':
+    app.get('/test', (req, res) => {
+      res.sendStatus(200);
+    });
+    break;
+  /* istanbul ignore next */
+  default:
+    app.use(express.static(path.join(__dirname, './../../dist')));
 }
 
 app.get('*', (req, res) => {

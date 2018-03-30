@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import configureStore from 'redux-mock-store';
-import { MemoryRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import React from 'react';
@@ -15,6 +15,7 @@ import AuthenticationChecker, {
   getAuthenticationChecker,
 } from './../../../../app/components/hoc/authentication_checker';
 import initialState from './../../../test_utils/initial_state';
+import injectRouter from './../../../test_utils/inject_router';
 import * as types from './../../../../app/actions/types';
 
 describe('App Components HOC - AuthenticationChecker', () => {
@@ -34,13 +35,21 @@ describe('App Components HOC - AuthenticationChecker', () => {
 
     it('renders Redirect if user not authenticated and load finished', () => {
       props.loadUserFinished = true;
-      const rendered = mount((
-        <MemoryRouter initialIndex={0} initialEntries={['/stats']} >
+      const rendered = mount(injectRouter(
+        () => (
           <Switch>
-            <Route exact path="/" component={() => <div>Should render this</div>} />
-            <Route path="/stats" component={() => <AuthenticationCheckerComponent {...props} />} />
+            <Route
+              exact
+              path="/"
+              component={() => <div>Should render this</div>}
+            />
+            <Route
+              path="/stats"
+              component={() => <AuthenticationCheckerComponent {...props} />}
+            />
           </Switch>
-        </MemoryRouter>
+        ),
+        '/stats',
       ));
       expect(toJson(rendered.find('div'))).toMatchSnapshot();
     });
@@ -95,13 +104,11 @@ describe('App Components HOC - AuthenticationChecker', () => {
       const mockStore = configureStore();
       store = mockStore(initialState);
       RenderedComponent = AuthenticationChecker(ComposedComponent);
-      wrapper = mount((
-        <MemoryRouter>
-          <Provider store={store}>
-            <RenderedComponent />
-          </Provider>
-        </MemoryRouter>
-      ));
+      wrapper = mount(injectRouter(() => (
+        <Provider store={store}>
+          <RenderedComponent />
+        </Provider>
+      )));
     });
 
     it('renders', () => {

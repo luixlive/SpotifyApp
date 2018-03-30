@@ -20,12 +20,17 @@ const fileTransport = new (winston.transports.File)({
 });
 let transports = [];
 
-if (environment === 'development') {
-  transports = transports.concat([consoleTransport, fileTransport]);
-} else if (environment === 'test') {
-  transports.push(fileTransport);
-} else {
-  transports.push(consoleTransport);
+switch (environment) {
+  /* istanbul ignore next */
+  case 'development':
+    transports = transports.concat([consoleTransport, fileTransport]);
+    break;
+  case 'test':
+    transports.push(fileTransport);
+    break;
+  /* istanbul ignore next */
+  default:
+    transports.push(consoleTransport);
 }
 
 const logger = new (winston.Logger)({ transports });

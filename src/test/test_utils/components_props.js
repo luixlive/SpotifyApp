@@ -16,6 +16,8 @@ export const authenticationChecker = {
 
 export const loginContainer = { isDeviceMobile: initialState.isDeviceMobile };
 
+export const notFoundContainer = { isDeviceMobile: initialState.isDeviceMobile };
+
 export const sizeDetector = { deviceTypeChanged: emptyFunction };
 
 export const userStatsContainer = {
