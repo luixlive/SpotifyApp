@@ -16,16 +16,12 @@ export const appHeaderContainer = {
 
 export const authenticationChecker = {
   userAuthenticated: initialState.user.userAuthenticated,
-  userLoaded: initialState.user.userLoaded,
   loggingOutUser: initialState.user.loggingOutUser,
-  loadUser: emptyFunction,
 };
 
 export const loginContainer = {
   deviceMobile: initialState.deviceMobile,
   userAuthenticated: initialState.user.userAuthenticated,
-  userLoaded: initialState.user.userLoaded,
-  loadUser: emptyFunction,
 };
 
 export const notFoundContainer = {

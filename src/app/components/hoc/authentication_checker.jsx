@@ -1,33 +1,22 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
 
-import { loadUser } from './../../actions/user';
 import ScreenLoader from './../screen_loader';
 
 export const getAuthenticationChecker = (ComposedComponent) => {
-  class AuthenticationChecker extends Component {
-    componentDidMount() {
-      if (!this.props.userAuthenticated) {
-        this.props.loadUser();
-      }
+  const AuthenticationChecker = (props) => {
+    if (props.loggingOutUser) {
+      return <ScreenLoader />;
+    } else if (!props.userAuthenticated) {
+      return <Redirect to="/login" />;
     }
-
-    render() {
-      if (!this.props.userLoaded || this.props.loggingOutUser) {
-        return <ScreenLoader />;
-      } else if (!this.props.userAuthenticated) {
-        return <Redirect to="/login" />;
-      }
-      return <ComposedComponent {...this.props} />;
-    }
-  }
+    return <ComposedComponent {...props} />;
+  };
 
   AuthenticationChecker.propTypes = {
     userAuthenticated: PropTypes.bool.isRequired,
-    loadUser: PropTypes.func.isRequired,
-    userLoaded: PropTypes.bool.isRequired,
     loggingOutUser: PropTypes.bool.isRequired,
   };
 
@@ -35,13 +24,10 @@ export const getAuthenticationChecker = (ComposedComponent) => {
 };
 
 export default (ComposedComponent) => {
-  const mapDispatchToProps = dispatch => ({
-    loadUser: () => dispatch(loadUser()),
-  });
+  const mapDispatchToProps = () => ({});
 
   const mapStateToProps = ({ user }) => ({
     userAuthenticated: user.userAuthenticated,
-    userLoaded: user.userLoaded,
     loggingOutUser: user.loggingOutUser,
   });
 

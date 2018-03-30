@@ -23,13 +23,12 @@ describe('App Components - Login', () => {
       props = _.cloneDeep(componentProps);
     });
 
-    it('renders user not loaded', () => {
+    it('renders user not authenticated', () => {
       const rendered = renderer.create(<Login {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
 
     it('renders user authenticated', () => {
-      props.userLoaded = true;
       props.userAuthenticated = true;
       const rendered = renderer.create(injectRouter(
         () => (
@@ -51,13 +50,11 @@ describe('App Components - Login', () => {
     });
 
     it('renders user not authenticated no mobile', () => {
-      props.userLoaded = true;
       const rendered = renderer.create(<Login {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
 
     it('renders user not authenticated mobile', () => {
-      props.userLoaded = true;
       props.deviceMobile = true;
       const rendered = renderer.create(<Login {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();

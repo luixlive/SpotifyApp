@@ -16,7 +16,6 @@ import AuthenticationChecker, {
 } from './../../../../app/components/hoc/authentication_checker';
 import initialState from './../../../test_utils/initial_state';
 import injectRouter from './../../../test_utils/inject_router';
-import * as types from './../../../../app/actions/types';
 
 describe('App Components HOC - AuthenticationChecker', () => {
   describe('Snapshots', () => {
@@ -28,13 +27,6 @@ describe('App Components HOC - AuthenticationChecker', () => {
     });
 
     it('renders user not authenticated', () => {
-      const rendered =
-        renderer.create(<AuthenticationCheckerComponent {...props} />).toJSON();
-      expect(rendered).toMatchSnapshot();
-    });
-
-    it('renders Redirect if user not authenticated and load finished', () => {
-      props.userLoaded = true;
       const rendered = mount(injectRouter(() => (
         <Switch>
           <Route
@@ -51,9 +43,8 @@ describe('App Components HOC - AuthenticationChecker', () => {
       expect(toJson(rendered.find('div'))).toMatchSnapshot();
     });
 
-    it('renders user authenticated and load finished', () => {
+    it('renders user authenticated', () => {
       props.userAuthenticated = true;
-      props.userLoaded = true;
       const rendered =
         renderer.create(<AuthenticationCheckerComponent {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
@@ -61,34 +52,10 @@ describe('App Components HOC - AuthenticationChecker', () => {
 
     it('renders user authenticated and logging out', () => {
       props.userAuthenticated = true;
-      props.userLoaded = true;
       props.loggingOutUser = true;
       const rendered =
         renderer.create(<AuthenticationCheckerComponent {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
-    });
-  });
-
-  describe('Behavior', () => {
-    let AuthenticationCheckerComponent;
-    let props;
-    beforeEach(() => {
-      props = _.cloneDeep(componentProps);
-      props.loadUser = jest.fn();
-      AuthenticationCheckerComponent = getAuthenticationChecker(() => <div />);
-    });
-
-    it('should call loadUser if user not authenticated', () => {
-      mount(<AuthenticationCheckerComponent {...props} />);
-
-      expect(props.loadUser).toHaveBeenCalledTimes(1);
-    });
-
-    it('shouldnt call loadUser if user authenticated', () => {
-      props.userAuthenticated = true;
-      mount(<AuthenticationCheckerComponent {...props} />);
-
-      expect(props.loadUser).toHaveBeenCalledTimes(0);
     });
   });
 
@@ -99,7 +66,9 @@ describe('App Components HOC - AuthenticationChecker', () => {
     beforeAll(() => {
       const ComposedComponent = () => <div>Component</div>;
       const mockStore = configureStore();
-      store = mockStore(initialState);
+      store = mockStore(_.merge({}, initialState, {
+        user: { userAuthenticated: true },
+      }));
       RenderedComponent = AuthenticationChecker(ComposedComponent);
       wrapper = mount(injectRouter(() => (
         <Provider store={store}>
@@ -116,14 +85,6 @@ describe('App Components HOC - AuthenticationChecker', () => {
       const props = addRouterProps(componentProps);
       expect(Object.keys(wrapper.find('AuthenticationChecker').props()))
         .toEqual(Object.keys(props));
-    });
-
-    it('dispatches loadUser', () => {
-      const expectedAction = {
-        type: types.LOAD_USER,
-        payload: { },
-      };
-      expect(store.getActions()[0]).toEqual(expectedAction);
     });
   });
 });
