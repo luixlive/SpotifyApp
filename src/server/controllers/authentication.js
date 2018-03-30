@@ -15,7 +15,7 @@ const spotifyCallback = (req, res) => {
 
 const user = (req, res) => {
   logger.debug(`api/authentication/user: ${JSON.stringify(req.user)}`);
-  res.send(req.user);
+  res.send(req.user.profile);
 };
 
 module.exports = {

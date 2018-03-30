@@ -9,7 +9,7 @@ export const appHeaderContainer = {
 
 export const authenticationChecker = {
   isUserAuthenticated: initialState.user.isUserAuthenticated,
-  loadUserFinished: initialState.user.loadUserFinished,
+  userLoaded: initialState.user.userLoaded,
   loggingOutUser: initialState.user.loggingOutUser,
   loadUser: emptyFunction,
 };

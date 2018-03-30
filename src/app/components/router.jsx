@@ -13,11 +13,15 @@ export default () => (
   <BrowserRouter>
     <AppComponent>
       <Switch>
-        <Route exact path="/" component={LoginContainer} />
         <Route
           exact
-          path="/stats"
+          path="/"
           component={AuthenticationChecker(UserStatsContainer)}
+        />
+        <Route
+          exact
+          path="/login"
+          component={LoginContainer}
         />
         <Route path="*" component={NotFoundContainer} />
       </Switch>

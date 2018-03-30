@@ -18,7 +18,7 @@ export function* loadUser() {
     const response = yield call(authenticationApi.user.get);
 
     if (response.status === httpStatus.OK) {
-      const { profile: { _json } } = yield call(readResponse, response);
+      const { _json } = yield call(readResponse, response);
       yield put({
         type: LOAD_USER_SUCCEEDED,
         payload: { ..._json, isUserAuthenticated: true },

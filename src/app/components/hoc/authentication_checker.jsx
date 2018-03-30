@@ -15,10 +15,10 @@ export const getAuthenticationChecker = (ComposedComponent) => {
     }
 
     render() {
-      if (!this.props.loadUserFinished || this.props.loggingOutUser) {
+      if (!this.props.userLoaded || this.props.loggingOutUser) {
         return <ScreenLoader />;
       } else if (!this.props.isUserAuthenticated) {
-        return <Redirect to="/" />;
+        return <Redirect to="/login" />;
       }
       return <ComposedComponent {...this.props} />;
     }
@@ -27,7 +27,7 @@ export const getAuthenticationChecker = (ComposedComponent) => {
   AuthenticationChecker.propTypes = {
     isUserAuthenticated: PropTypes.bool.isRequired,
     loadUser: PropTypes.func.isRequired,
-    loadUserFinished: PropTypes.bool.isRequired,
+    userLoaded: PropTypes.bool.isRequired,
     loggingOutUser: PropTypes.bool.isRequired,
   };
 
@@ -41,7 +41,7 @@ export default (ComposedComponent) => {
 
   const mapStateToProps = ({ user }) => ({
     isUserAuthenticated: user.isUserAuthenticated,
-    loadUserFinished: user.loadUserFinished,
+    userLoaded: user.userLoaded,
     loggingOutUser: user.loggingOutUser,
   });
 

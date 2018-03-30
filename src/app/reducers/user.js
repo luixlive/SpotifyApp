@@ -7,16 +7,16 @@ import {
 
 export const initialState = {
   isUserAuthenticated: false,
-  loadUserFinished: false,
+  userLoaded: false,
   loggingOutUser: false,
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
     case LOAD_USER_FAILED:
-      return { ...state, loadUserFinished: true };
+      return { ...state, userLoaded: true };
     case LOAD_USER_SUCCEEDED:
-      return { ...state, ...action.payload, loadUserFinished: true };
+      return { ...state, ...action.payload, userLoaded: true };
     case LOGOUT_USER:
       return { ...state, loggingOutUser: true };
     case LOGOUT_USER_SUCCEEDED:

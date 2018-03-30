@@ -16,7 +16,7 @@ describe('App Reducers - User', () => {
     };
     const expectedState = {
       ...initialState,
-      loadUserFinished: true,
+      userLoaded: true,
     };
     expect(userReducer(undefined, action)).toEqual(expectedState);
   });
@@ -29,7 +29,7 @@ describe('App Reducers - User', () => {
     const expectedState = {
       ...initialState,
       isUserAuthenticated: true,
-      loadUserFinished: true,
+      userLoaded: true,
     };
     expect(userReducer(undefined, action)).toEqual(expectedState);
   });

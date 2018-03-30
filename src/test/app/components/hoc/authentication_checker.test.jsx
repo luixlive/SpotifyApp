@@ -34,7 +34,7 @@ describe('App Components HOC - AuthenticationChecker', () => {
     });
 
     it('renders Redirect if user not authenticated and load finished', () => {
-      props.loadUserFinished = true;
+      props.userLoaded = true;
       const rendered = mount(injectRouter(
         () => (
           <Switch>
@@ -56,7 +56,7 @@ describe('App Components HOC - AuthenticationChecker', () => {
 
     it('renders user authenticated and load finished', () => {
       props.isUserAuthenticated = true;
-      props.loadUserFinished = true;
+      props.userLoaded = true;
       const rendered =
         renderer.create(<AuthenticationCheckerComponent {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
@@ -64,7 +64,7 @@ describe('App Components HOC - AuthenticationChecker', () => {
 
     it('renders user authenticated and logging out', () => {
       props.isUserAuthenticated = true;
-      props.loadUserFinished = true;
+      props.userLoaded = true;
       props.loggingOutUser = true;
       const rendered =
         renderer.create(<AuthenticationCheckerComponent {...props} />).toJSON();
