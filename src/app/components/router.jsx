@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import React from 'react';
 
-import { AppComponent } from './';
 import { AuthenticationChecker } from './hoc';
 import {
+  AppContainer,
   LoginContainer,
   UserStatsContainer,
   NotFoundContainer,
@@ -11,7 +11,7 @@ import {
 
 export default () => (
   <BrowserRouter>
-    <AppComponent>
+    <AppContainer>
       <Switch>
         <Route
           exact
@@ -25,6 +25,6 @@ export default () => (
         />
         <Route path="*" component={NotFoundContainer} />
       </Switch>
-    </AppComponent>
+    </AppContainer>
   </BrowserRouter>
 );

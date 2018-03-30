@@ -1,5 +1,12 @@
 import emptyFunction from './empty_function';
 import initialState from './initial_state';
+import trivialReactElement from './trivial_react_element';
+
+export const appContainer = {
+  children: trivialReactElement,
+  userLoaded: initialState.user.userLoaded,
+  loadUser: emptyFunction,
+};
 
 export const appHeaderContainer = {
   deviceMobile: initialState.deviceMobile,
