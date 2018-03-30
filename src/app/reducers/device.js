@@ -6,7 +6,7 @@ export const initialState = isDeviceMobile(window.innerWidth);
 export default function (state = initialState, action) {
   switch (action.type) {
     case DEVICE_TYPE_CHANGED:
-      return action.payload.isDeviceMobile;
+      return action.payload.deviceMobile;
     default:
       return state;
   }

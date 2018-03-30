@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App Components - Login Snapshots renders mobile 1`] = `
+exports[`App Components - Login Snapshots renders user authenticated 1`] = `
+<div>
+  Should render this
+</div>
+`;
+
+exports[`App Components - Login Snapshots renders user not authenticated mobile 1`] = `
 <div
   className="ui center aligned container"
 >
@@ -23,7 +29,7 @@ exports[`App Components - Login Snapshots renders mobile 1`] = `
 </div>
 `;
 
-exports[`App Components - Login Snapshots renders no mobile 1`] = `
+exports[`App Components - Login Snapshots renders user not authenticated no mobile 1`] = `
 <div
   className="ui center aligned container"
 >
@@ -43,5 +49,28 @@ exports[`App Components - Login Snapshots renders no mobile 1`] = `
   >
     Please log in with Spotify to start.
   </h2>
+</div>
+`;
+
+exports[`App Components - Login Snapshots renders user not loaded 1`] = `
+<div
+  className="ui basic segment body"
+>
+  <div
+    className="ui active transition visible inverted dimmer"
+    onClick={[Function]}
+  >
+    <div
+      className="content"
+    >
+      <div
+        className="center"
+      >
+        <div
+          className="ui big inverted loader"
+        />
+      </div>
+    </div>
+  </div>
 </div>
 `;

@@ -21,12 +21,12 @@ export function* loadUser() {
       const { _json } = yield call(readResponse, response);
       yield put({
         type: LOAD_USER_SUCCEEDED,
-        payload: { ..._json, isUserAuthenticated: true },
+        payload: { ..._json, userAuthenticated: true },
       });
     } else if (response.status === httpStatus.UNAUTHORIZED) {
       yield put({
         type: LOAD_USER_SUCCEEDED,
-        payload: { isUserAuthenticated: false },
+        payload: { userAuthenticated: false },
       });
     } else {
       yield put({

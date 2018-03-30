@@ -15,7 +15,7 @@ export class Login extends Component {
   render() {
     if (!this.props.userLoaded) {
       return <ScreenLoader />;
-    } else if (this.props.isUserAuthenticated) {
+    } else if (this.props.userAuthenticated) {
       return <Redirect to="/" />;
     }
     return (
@@ -23,13 +23,13 @@ export class Login extends Component {
         <Header
           as="h1"
           style={{
-            fontSize: this.props.isDeviceMobile ? '2em' : '4em',
-            marginTop: this.props.isDeviceMobile ? '1em' : '1.5em',
+            fontSize: this.props.deviceMobile ? '2em' : '4em',
+            marginTop: this.props.deviceMobile ? '1em' : '1.5em',
           }}
         >
         Welcome
         </Header>
-        <Header as={this.props.isDeviceMobile ? 'h3' : 'h2'} >
+        <Header as={this.props.deviceMobile ? 'h3' : 'h2'} >
           Please log in with Spotify to start.
         </Header>
       </Container>
@@ -38,15 +38,15 @@ export class Login extends Component {
 }
 
 Login.propTypes = {
-  isDeviceMobile: PropTypes.bool.isRequired,
-  isUserAuthenticated: PropTypes.bool.isRequired,
+  deviceMobile: PropTypes.bool.isRequired,
+  userAuthenticated: PropTypes.bool.isRequired,
   loadUser: PropTypes.func.isRequired,
   userLoaded: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = ({ isDeviceMobile, user }) => ({
-  isDeviceMobile,
-  isUserAuthenticated: user.isUserAuthenticated,
+const mapStateToProps = ({ deviceMobile, user }) => ({
+  deviceMobile,
+  userAuthenticated: user.userAuthenticated,
   userLoaded: user.userLoaded,
 });
 

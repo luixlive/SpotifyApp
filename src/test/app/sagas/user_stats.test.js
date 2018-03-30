@@ -5,27 +5,27 @@ import errors from './../../../app/sagas/util/errors';
 import { statsApi } from './../../../app/api';
 import * as types from './../../../app/actions/types';
 import watcher, {
-  getIsUserAuthenticated,
+  getUserAuthenticated,
   loadUserStats,
 } from './../../../app/sagas/user_stats';
 
 describe('App Sagas - UserStats', () => {
   describe('Selectors', () => {
-    it('should get isUserAuthenticated', () => {
+    it('should get userAuthenticated', () => {
       const mockState = { user: { accessToken: 'token' } };
-      expect(getIsUserAuthenticated(mockState))
-        .toEqual(mockState.user.getIsUserAuthenticated);
+      expect(getUserAuthenticated(mockState))
+        .toEqual(mockState.user.getUserAuthenticated);
     });
   });
 
   describe('Load User Stats', () => {
     it(types.LOAD_USER_STATS_SUCCEEDED, () => {
-      const isUserAuthenticated = true;
+      const userAuthenticated = true;
 
       const loadUserStatsGenerator = loadUserStats();
       expect(loadUserStatsGenerator.next().value)
-        .toEqual(select(getIsUserAuthenticated));
-      expect(loadUserStatsGenerator.next(isUserAuthenticated).value)
+        .toEqual(select(getUserAuthenticated));
+      expect(loadUserStatsGenerator.next(userAuthenticated).value)
         .toEqual(call(statsApi.topArtists.get));
       expect(loadUserStatsGenerator.next().value)
         .toEqual(put({ type: types.LOAD_USER_STATS_SUCCEEDED }));
@@ -33,12 +33,12 @@ describe('App Sagas - UserStats', () => {
     });
 
     it(`${types.LOAD_USER_STATS_FAILED} - ${errors.noAccessToken}`, () => {
-      const isUserAuthenticated = false;
+      const userAuthenticated = false;
 
       const loadUserStatsGenerator = loadUserStats();
       expect(loadUserStatsGenerator.next().value)
-        .toEqual(select(getIsUserAuthenticated));
-      expect(loadUserStatsGenerator.next(isUserAuthenticated).value)
+        .toEqual(select(getUserAuthenticated));
+      expect(loadUserStatsGenerator.next(userAuthenticated).value)
         .toEqual(put({
           type: types.LOAD_USER_STATS_FAILED,
           payload: { error: errors.noAccessToken },

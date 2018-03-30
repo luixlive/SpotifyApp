@@ -11,7 +11,7 @@ export const getSizeDetector = (ComposedComponent) => {
     constructor(props) {
       super(props);
 
-      this.state = { isDeviceMobile: isDeviceMobile(window.innerWidth) };
+      this.state = { deviceMobile: isDeviceMobile(window.innerWidth) };
     }
 
     componentWillMount() {
@@ -24,8 +24,8 @@ export const getSizeDetector = (ComposedComponent) => {
 
     handleWindowSizeChange = () => {
       const isNewSizeMobile = isDeviceMobile(window.innerWidth);
-      if (this.state.isDeviceMobile !== isNewSizeMobile) {
-        this.setState({ isDeviceMobile: isNewSizeMobile });
+      if (this.state.deviceMobile !== isNewSizeMobile) {
+        this.setState({ deviceMobile: isNewSizeMobile });
         this.props.deviceTypeChanged(isNewSizeMobile);
       }
     }

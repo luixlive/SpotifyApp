@@ -9,7 +9,7 @@ import ScreenLoader from './../screen_loader';
 export const getAuthenticationChecker = (ComposedComponent) => {
   class AuthenticationChecker extends Component {
     componentDidMount() {
-      if (!this.props.isUserAuthenticated) {
+      if (!this.props.userAuthenticated) {
         this.props.loadUser();
       }
     }
@@ -17,7 +17,7 @@ export const getAuthenticationChecker = (ComposedComponent) => {
     render() {
       if (!this.props.userLoaded || this.props.loggingOutUser) {
         return <ScreenLoader />;
-      } else if (!this.props.isUserAuthenticated) {
+      } else if (!this.props.userAuthenticated) {
         return <Redirect to="/login" />;
       }
       return <ComposedComponent {...this.props} />;
@@ -25,7 +25,7 @@ export const getAuthenticationChecker = (ComposedComponent) => {
   }
 
   AuthenticationChecker.propTypes = {
-    isUserAuthenticated: PropTypes.bool.isRequired,
+    userAuthenticated: PropTypes.bool.isRequired,
     loadUser: PropTypes.func.isRequired,
     userLoaded: PropTypes.bool.isRequired,
     loggingOutUser: PropTypes.bool.isRequired,
@@ -40,7 +40,7 @@ export default (ComposedComponent) => {
   });
 
   const mapStateToProps = ({ user }) => ({
-    isUserAuthenticated: user.isUserAuthenticated,
+    userAuthenticated: user.userAuthenticated,
     userLoaded: user.userLoaded,
     loggingOutUser: user.loggingOutUser,
   });

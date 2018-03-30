@@ -8,13 +8,13 @@ import {
 } from './../actions/types';
 import { statsApi } from './../api';
 
-export const getIsUserAuthenticated = ({ user }) => user.isUserAuthenticated;
+export const getUserAuthenticated = ({ user }) => user.userAuthenticated;
 
 export function* loadUserStats() {
   try {
-    const isUserAuthenticated = yield select(getIsUserAuthenticated);
+    const userAuthenticated = yield select(getUserAuthenticated);
 
-    if (isUserAuthenticated) {
+    if (userAuthenticated) {
       yield call(statsApi.topArtists.get);
       yield put({ type: LOAD_USER_STATS_SUCCEEDED });
     } else {

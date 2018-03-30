@@ -16,16 +16,16 @@ describe('App Sagas - User', () => {
     it(`${types.LOAD_USER_SUCCEEDED} - user authenticated`, () => {
       const response = { status: httpStatus.OK };
       const userProfileJson = { key: 'value' };
-      const user = { profile: { _json: { ...userProfileJson } } };
+      const userResponse = { _json: { ...userProfileJson } };
 
       const loadUserGenerator = loadUser();
       expect(loadUserGenerator.next().value)
         .toEqual(call(authenticationApi.user.get));
       expect(loadUserGenerator.next(response).value)
         .toEqual(call(readResponse, response));
-      expect(loadUserGenerator.next(user).value).toEqual(put({
+      expect(loadUserGenerator.next(userResponse).value).toEqual(put({
         type: types.LOAD_USER_SUCCEEDED,
-        payload: { ...userProfileJson, isUserAuthenticated: true },
+        payload: { ...userProfileJson, userAuthenticated: true },
       }));
       expect(loadUserGenerator.next().done).toBeTruthy();
     });
@@ -38,7 +38,7 @@ describe('App Sagas - User', () => {
         .toEqual(call(authenticationApi.user.get));
       expect(loadUserGenerator.next(response).value).toEqual(put({
         type: types.LOAD_USER_SUCCEEDED,
-        payload: { isUserAuthenticated: false },
+        payload: { userAuthenticated: false },
       }));
       expect(loadUserGenerator.next().done).toBeTruthy();
     });

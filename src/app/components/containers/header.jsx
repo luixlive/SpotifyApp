@@ -8,10 +8,10 @@ import { logoutUser } from './../../actions/user';
 
 export const AppHeader = (props) => {
   const getLoginButtonText = () => {
-    if (props.isUserAuthenticated) {
+    if (props.userAuthenticated) {
       return 'Logout';
     }
-    return props.isDeviceMobile ? 'Log in' : 'Log in with Spotify';
+    return props.deviceMobile ? 'Log in' : 'Log in with Spotify';
   };
 
   return (
@@ -19,7 +19,7 @@ export const AppHeader = (props) => {
       <Grid columns={3}>
         <Grid.Column />
         <Grid.Column verticalAlign="middle">
-          <Header as={props.isDeviceMobile ? 'h3' : 'h2'} >
+          <Header as={props.deviceMobile ? 'h3' : 'h2'} >
             Spotify Stats
           </Header>
         </Grid.Column>
@@ -29,7 +29,7 @@ export const AppHeader = (props) => {
             color="green"
             floated="right"
             onClick={() => {
-              if (props.isUserAuthenticated) {
+              if (props.userAuthenticated) {
                 props.logoutUser();
               } else {
                 window.open('/api/authentication/spotify', '_self');
@@ -45,14 +45,14 @@ export const AppHeader = (props) => {
 };
 
 AppHeader.propTypes = {
-  isDeviceMobile: PropTypes.bool.isRequired,
-  isUserAuthenticated: PropTypes.bool.isRequired,
+  deviceMobile: PropTypes.bool.isRequired,
+  userAuthenticated: PropTypes.bool.isRequired,
   logoutUser: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ isDeviceMobile, user }) => ({
-  isDeviceMobile,
-  isUserAuthenticated: user.isUserAuthenticated,
+const mapStateToProps = ({ deviceMobile, user }) => ({
+  deviceMobile,
+  userAuthenticated: user.userAuthenticated,
 });
 
 const mapDispatchToProps = dispatch => ({

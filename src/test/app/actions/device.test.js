@@ -3,11 +3,11 @@ import * as types from './../../../app/actions/types';
 
 describe('App Actions - Device', () => {
   it(types.DEVICE_TYPE_CHANGED, () => {
-    const isDeviceMobile = true;
+    const deviceMobile = true;
     const expectedAction = {
       type: types.DEVICE_TYPE_CHANGED,
-      payload: { isDeviceMobile },
+      payload: { deviceMobile },
     };
-    expect(deviceChanged(isDeviceMobile)).toEqual(expectedAction);
+    expect(deviceChanged(deviceMobile)).toEqual(expectedAction);
   });
 });

@@ -6,7 +6,7 @@ import {
 } from './../actions/types';
 
 export const initialState = {
-  isUserAuthenticated: false,
+  userAuthenticated: false,
   userLoaded: false,
   loggingOutUser: false,
 };
@@ -20,7 +20,7 @@ export default function (state = initialState, action) {
     case LOGOUT_USER:
       return { ...state, loggingOutUser: true };
     case LOGOUT_USER_SUCCEEDED:
-      return { ...state, isUserAuthenticated: false, loggingOutUser: false };
+      return { ...state, userAuthenticated: false, loggingOutUser: false };
     default:
       return state;
   }

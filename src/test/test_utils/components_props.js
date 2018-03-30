@@ -2,21 +2,28 @@ import emptyFunction from './empty_function';
 import initialState from './initial_state';
 
 export const appHeaderContainer = {
-  isDeviceMobile: initialState.isDeviceMobile,
-  isUserAuthenticated: initialState.user.isUserAuthenticated,
+  deviceMobile: initialState.deviceMobile,
+  userAuthenticated: initialState.user.userAuthenticated,
   logoutUser: emptyFunction,
 };
 
 export const authenticationChecker = {
-  isUserAuthenticated: initialState.user.isUserAuthenticated,
+  userAuthenticated: initialState.user.userAuthenticated,
   userLoaded: initialState.user.userLoaded,
   loggingOutUser: initialState.user.loggingOutUser,
   loadUser: emptyFunction,
 };
 
-export const loginContainer = { isDeviceMobile: initialState.isDeviceMobile };
+export const loginContainer = {
+  deviceMobile: initialState.deviceMobile,
+  userAuthenticated: initialState.user.userAuthenticated,
+  userLoaded: initialState.user.userLoaded,
+  loadUser: emptyFunction,
+};
 
-export const notFoundContainer = { isDeviceMobile: initialState.isDeviceMobile };
+export const notFoundContainer = {
+  deviceMobile: initialState.deviceMobile,
+};
 
 export const sizeDetector = { deviceTypeChanged: emptyFunction };
 

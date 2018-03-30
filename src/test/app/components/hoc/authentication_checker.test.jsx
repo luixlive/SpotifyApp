@@ -35,27 +35,24 @@ describe('App Components HOC - AuthenticationChecker', () => {
 
     it('renders Redirect if user not authenticated and load finished', () => {
       props.userLoaded = true;
-      const rendered = mount(injectRouter(
-        () => (
-          <Switch>
-            <Route
-              exact
-              path="/"
-              component={() => <div>Should render this</div>}
-            />
-            <Route
-              path="/stats"
-              component={() => <AuthenticationCheckerComponent {...props} />}
-            />
-          </Switch>
-        ),
-        '/stats',
-      ));
+      const rendered = mount(injectRouter(() => (
+        <Switch>
+          <Route
+            exact
+            path="/login"
+            component={() => <div>Should render this</div>}
+          />
+          <Route
+            path="/"
+            component={() => <AuthenticationCheckerComponent {...props} />}
+          />
+        </Switch>
+      )));
       expect(toJson(rendered.find('div'))).toMatchSnapshot();
     });
 
     it('renders user authenticated and load finished', () => {
-      props.isUserAuthenticated = true;
+      props.userAuthenticated = true;
       props.userLoaded = true;
       const rendered =
         renderer.create(<AuthenticationCheckerComponent {...props} />).toJSON();
@@ -63,7 +60,7 @@ describe('App Components HOC - AuthenticationChecker', () => {
     });
 
     it('renders user authenticated and logging out', () => {
-      props.isUserAuthenticated = true;
+      props.userAuthenticated = true;
       props.userLoaded = true;
       props.loggingOutUser = true;
       const rendered =
@@ -88,7 +85,7 @@ describe('App Components HOC - AuthenticationChecker', () => {
     });
 
     it('shouldnt call loadUser if user authenticated', () => {
-      props.isUserAuthenticated = true;
+      props.userAuthenticated = true;
       mount(<AuthenticationCheckerComponent {...props} />);
 
       expect(props.loadUser).toHaveBeenCalledTimes(0);

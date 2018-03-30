@@ -95,7 +95,7 @@ describe('App Components HOC - SizeDetector', () => {
 
       const expectedAction = {
         type: types.DEVICE_TYPE_CHANGED,
-        payload: { isDeviceMobile: true },
+        payload: { deviceMobile: true },
       };
       expect(store.getActions()[0]).toEqual(expectedAction);
     });

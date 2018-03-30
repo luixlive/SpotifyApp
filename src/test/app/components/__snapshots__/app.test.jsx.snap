@@ -104,6 +104,7 @@ exports[`App Components - App renders 1`] = `
           }
         >
           <AppHeader
+            deviceMobile={false}
             history={
               Object {
                 "action": "POP",
@@ -134,8 +135,6 @@ exports[`App Components - App renders 1`] = `
                 "replace": [Function],
               }
             }
-            isDeviceMobile={false}
-            isUserAuthenticated={false}
             location={
               Object {
                 "hash": "",
@@ -153,6 +152,7 @@ exports[`App Components - App renders 1`] = `
                 "url": "/",
               }
             }
+            userAuthenticated={false}
           >
             <Segment
               color="green"

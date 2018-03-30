@@ -12,7 +12,11 @@ describe('Server Controllers - Authentication', () => {
     redirectTo = undefined;
     responseValue = undefined;
     statusValue = undefined;
-    user = 'user';
+    user = {
+      accessToken: 'accessToken',
+      profile: { _json: 'profileJson' },
+      refreshToken: 'refreshToken',
+    };
     req = {
       logout: () => { user = undefined; },
       session: 'session',
@@ -45,7 +49,7 @@ describe('Server Controllers - Authentication', () => {
   describe('User', () => {
     it('returns user', () => {
       authenticationController.user(req, res);
-      expect(responseValue).toBe(req.user);
+      expect(responseValue).toBe(req.user.profile);
     });
   });
 });

@@ -9,23 +9,23 @@ export const NotFound = props => (
     <Header
       as="h1"
       style={{
-        fontSize: props.isDeviceMobile ? '2em' : '4em',
-        marginTop: props.isDeviceMobile ? '1em' : '1.5em',
+        fontSize: props.deviceMobile ? '2em' : '4em',
+        marginTop: props.deviceMobile ? '1em' : '1.5em',
       }}
     >
     Error 404
     </Header>
-    <Header as={props.isDeviceMobile ? 'h3' : 'h2'}>
+    <Header as={props.deviceMobile ? 'h3' : 'h2'}>
       Page not found, go back to <Link to="/stats">home</Link> page.
     </Header>
   </Container>
 );
 
 NotFound.propTypes = {
-  isDeviceMobile: PropTypes.bool.isRequired,
+  deviceMobile: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = ({ isDeviceMobile }) => ({ isDeviceMobile });
+const mapStateToProps = ({ deviceMobile }) => ({ deviceMobile });
 
 const mapDispatchToProps = () => ({});
 

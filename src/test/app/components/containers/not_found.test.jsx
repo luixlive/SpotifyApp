@@ -12,7 +12,7 @@ import {
 import initialState from './../../../test_utils/initial_state';
 import injectRouter from './../../../test_utils/inject_router';
 import {
-  loginContainer as componentProps,
+  notFoundContainer as componentProps,
 } from './../../../test_utils/components_props';
 
 describe('App Components - NotFound', () => {
@@ -29,7 +29,7 @@ describe('App Components - NotFound', () => {
     });
 
     it('renders mobile', () => {
-      props.isDeviceMobile = true;
+      props.deviceMobile = true;
       const rendered =
         renderer.create(injectRouter(() => <NotFound {...props} />)).toJSON();
       expect(rendered).toMatchSnapshot();

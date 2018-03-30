@@ -28,13 +28,13 @@ describe('App Components - Header', () => {
     });
 
     it('renders mobile', () => {
-      props.isDeviceMobile = true;
+      props.deviceMobile = true;
       const rendered = renderer.create(<AppHeader {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
 
     it('renders user authenticated', () => {
-      props.isUserAuthenticated = true;
+      props.userAuthenticated = true;
       const rendered = renderer.create(<AppHeader {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
@@ -54,7 +54,7 @@ describe('App Components - Header', () => {
     });
 
     it('calls logoutUser on logout button click', () => {
-      props.isUserAuthenticated = true;
+      props.userAuthenticated = true;
       props.logoutUser = jest.fn();
       const wrapper = shallow(<AppHeader {...props} />);
       wrapper.find('Button').simulate('click');
@@ -86,7 +86,7 @@ describe('App Components - Header', () => {
 
     it('dispatches logoutUser', () => {
       store = mockStore(_.merge({}, initialState, {
-        user: { isUserAuthenticated: true },
+        user: { userAuthenticated: true },
       }));
       wrapper = mount((
         <Provider store={store}>

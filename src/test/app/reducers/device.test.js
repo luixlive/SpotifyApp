@@ -11,7 +11,7 @@ describe('App Reducers - Device', () => {
   it(types.DEVICE_TYPE_CHANGED, () => {
     const action = {
       type: types.DEVICE_TYPE_CHANGED,
-      payload: { isDeviceMobile: true },
+      payload: { deviceMobile: true },
     };
     const expectedState = true;
     expect(deviceReducer(undefined, action)).toEqual(expectedState);
