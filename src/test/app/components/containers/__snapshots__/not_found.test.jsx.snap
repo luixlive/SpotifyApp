@@ -20,7 +20,7 @@ exports[`App Components - NotFound Snapshots renders mobile 1`] = `
   >
     Page not found, go back to 
     <a
-      href="/stats"
+      href="/"
       onClick={[Function]}
     >
       home
@@ -50,7 +50,7 @@ exports[`App Components - NotFound Snapshots renders no mobile 1`] = `
   >
     Page not found, go back to 
     <a
-      href="/stats"
+      href="/"
       onClick={[Function]}
     >
       home

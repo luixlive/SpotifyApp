@@ -477,10 +477,10 @@ exports[`App Components - Router renders 1`] = `
                                       Page not found, go back to 
                                       <Link
                                         replace={false}
-                                        to="/stats"
+                                        to="/"
                                       >
                                         <a
-                                          href="/stats"
+                                          href="/"
                                           onClick={[Function]}
                                         >
                                           home

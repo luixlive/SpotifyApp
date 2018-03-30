@@ -40,9 +40,9 @@ describe('Server Controllers - Authentication', () => {
   });
 
   describe('Spotify Callback', () => {
-    it('redirects to /stats', () => {
+    it('redirects to /', () => {
       authenticationController.spotifyCallback(req, res);
-      expect(redirectTo).toEqual('/stats');
+      expect(redirectTo).toEqual('/');
     });
   });
 

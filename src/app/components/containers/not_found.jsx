@@ -16,7 +16,7 @@ export const NotFound = props => (
     Error 404
     </Header>
     <Header as={props.deviceMobile ? 'h3' : 'h2'}>
-      Page not found, go back to <Link to="/stats">home</Link> page.
+      Page not found, go back to <Link to="/">home</Link> page.
     </Header>
   </Container>
 );
