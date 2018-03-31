@@ -32,7 +32,7 @@ export default function (state = initialState, action) {
     case LOGOUT_USER_FAILED:
       return { ...state, error: action.payload.error, loggingOutUser: false };
     case LOGOUT_USER_SUCCEEDED:
-      return { ...initialState };
+      return { ...initialState, userLoaded: true };
     default:
       return state;
   }
