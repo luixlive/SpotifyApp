@@ -16,7 +16,9 @@
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./test-setup.js",
-    "coveragePathIgnorePatterns": ["/test/"]
+    "coveragePathIgnorePatterns": [
+      "/test/"
+    ]
   },
   "husky": {
     "hooks": {
