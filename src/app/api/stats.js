@@ -1,8 +1,10 @@
 export default {
   topArtists: {
-    get: () => window.fetch('/api/stats/topArtists', {
+    post: options => window.fetch('/api/stats/topArtists', {
       credentials: 'same-origin',
-      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      method: 'POST',
+      body: JSON.stringify(options),
     }),
   },
 };

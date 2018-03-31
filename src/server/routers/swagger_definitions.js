@@ -2,8 +2,24 @@
  * @swagger
  * definitions:
  *
+ *   Error:
+ *     type: object
+ *     required:
+ *       - error
+ *     properties:
+ *       error:
+ *         type: string
+ *
  *   UserBase:
  *     type: object
+ *     required:
+ *       - external_urls
+ *       - followers
+ *       - href
+ *       - id
+ *       - images
+ *       - type
+ *       - uri
  *     properties:
  *       external_urls:
  *         type: object
@@ -56,6 +72,8 @@
  *         type: string
  *       profile:
  *         type: object
+ *         required:
+ *           - _json
  *         properties:
  *           _json:
  *             allOf:
@@ -70,6 +88,10 @@
  *   Artists:
  *     type: array
  *     items:
+ *       required:
+ *         - genres
+ *         - name
+ *         - popularity
  *       allOf:
  *       - $ref: '#/definitions/UserBase'
  *       - type: object
@@ -83,4 +105,20 @@
  *           popularity:
  *             type: number
  *             format: int32
+ *
+ *   TopArtistsOptions:
+ *     type: object
+ *     properties:
+ *       limit:
+ *         type: number
+ *         format: int32
+ *         minimum: 1
+ *         maximum: 50
+ *       offset:
+ *         type: number
+ *         format: int32
+ *         minimum: 0
+ *       timeRange:
+ *         type: string
+ *         enum: [long_term, medium_term, short_term]
  */

@@ -7,6 +7,13 @@
   "LOG_LEVEL": "debug",
   "PORT": 3000,
   "SESSION_VALUES": ["accessToken", "profile._json", "refreshToken"],
+  "SPOTIFY_API_URL": "https://api.spotify.com/",
+  "SPOTIFY_API_ENDPOINTS": {
+    "TOP_ARTISTS": {
+      "URI": "v1/me/top/artists",
+      "OPTIONS": ["limit", "offset", "time_range"]
+    }
+  },
   "SPOTIFY_AUTHORIZATION_SCOPE": ["user-top-read"],
   "SPOTIFY_CALLBACK_URL": "localhost:3000/api/authentication/spotify/callback",
   "SPOTIFY_CLIENT_ID": "2437ec8de5bb43c38da5f012f7ab5db5",

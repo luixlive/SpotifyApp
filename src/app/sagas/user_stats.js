@@ -15,7 +15,12 @@ export function* loadUserStats() {
     const userAuthenticated = yield select(getUserAuthenticated);
 
     if (userAuthenticated) {
-      yield call(statsApi.topArtists.get);
+      // TODO: This should be configurable by the user
+      yield call(statsApi.topArtists.post, {
+        limit: 15,
+        offset: 0,
+        timeRange: 'long_term',
+      });
       yield put({ type: LOAD_USER_STATS_SUCCEEDED });
     } else {
       yield put({

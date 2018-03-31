@@ -24,7 +24,7 @@ require('./services/passport').configurePassport(passport);
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(cookieSession({
-  maxAge: 30 * 24 * 60 * 60 * 1000,
+  maxAge: 24 * 60 * 60 * 1000,
   keys: [config.get('COOKIE_KEY')],
 }));
 app.use(passport.initialize());
