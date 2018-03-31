@@ -28,8 +28,48 @@ Object {
             "type": "object",
           },
         ],
+        "required": Array [
+          "genres",
+          "name",
+          "popularity",
+        ],
       },
       "type": "array",
+    },
+    "Error": Object {
+      "properties": Object {
+        "error": Object {
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "error",
+      ],
+      "type": "object",
+    },
+    "TopArtistsOptions": Object {
+      "properties": Object {
+        "limit": Object {
+          "format": "int32",
+          "maximum": 50,
+          "minimum": 1,
+          "type": "number",
+        },
+        "offset": Object {
+          "format": "int32",
+          "minimum": 0,
+          "type": "number",
+        },
+        "timeRange": Object {
+          "enum": Array [
+            "long_term",
+            "medium_term",
+            "short_term",
+          ],
+          "type": "string",
+        },
+      },
+      "type": "object",
     },
     "User": Object {
       "properties": Object {
@@ -54,6 +94,9 @@ Object {
               ],
             },
           },
+          "required": Array [
+            "_json",
+          ],
           "type": "object",
         },
         "refreshToken": Object {
@@ -126,6 +169,15 @@ Object {
           "type": "string",
         },
       },
+      "required": Array [
+        "external_urls",
+        "followers",
+        "href",
+        "id",
+        "images",
+        "type",
+        "uri",
+      ],
       "type": "object",
     },
   },
@@ -141,6 +193,7 @@ Object {
         "description": "Logout from Spotify",
         "parameters": Array [
           Object {
+            "default": "Set it in the browser, leave this field as it is",
             "description": "Session cookie signed",
             "in": "cookie",
             "name": "session",
@@ -149,6 +202,7 @@ Object {
             },
           },
           Object {
+            "default": "Set it in the browser, leave this field as it is",
             "description": "Signature key for the Session cookie",
             "in": "cookie",
             "name": "session.sig",
@@ -159,14 +213,23 @@ Object {
         ],
         "responses": Object {
           "204": Object {
-            "description": "User logged out (if there was a session)",
+            "description": "User logged out",
+          },
+          "401": Object {
+            "description": "No user found",
           },
         },
+        "tags": Array [
+          "Authentication",
+        ],
       },
     },
     "/api/authentication/spotify": Object {
       "get": Object {
         "description": "Get redirected to Spotify's login page, after login event /api/authentication/spotify/callback will be called",
+        "tags": Array [
+          "Authentication",
+        ],
       },
     },
     "/api/authentication/user": Object {
@@ -174,6 +237,7 @@ Object {
         "description": "Retrieve current user (if there is one)",
         "parameters": Array [
           Object {
+            "default": "Set it in the browser, leave this field as it is",
             "description": "Session cookie signed",
             "in": "cookie",
             "name": "session",
@@ -182,6 +246,7 @@ Object {
             },
           },
           Object {
+            "default": "Set it in the browser, leave this field as it is",
             "description": "Signature key for the Session cookie",
             "in": "cookie",
             "name": "session.sig",
@@ -204,13 +269,17 @@ Object {
             "description": "No user found",
           },
         },
+        "tags": Array [
+          "Authentication",
+        ],
       },
     },
     "/api/stats/topArtists": Object {
-      "get": Object {
+      "post": Object {
         "description": "Retrieve from Spotify user's top artists",
         "parameters": Array [
           Object {
+            "default": "Set it in the browser, leave this field as it is",
             "description": "Session cookie signed",
             "in": "cookie",
             "name": "session",
@@ -219,11 +288,20 @@ Object {
             },
           },
           Object {
+            "default": "Set it in the browser, leave this field as it is",
             "description": "Signature key for the Session cookie",
             "in": "cookie",
             "name": "session.sig",
             "schema": Object {
               "type": "string",
+            },
+          },
+          Object {
+            "description": "Artists fetching options",
+            "in": "body",
+            "name": "body",
+            "schema": Object {
+              "$ref": "#/definitions/TopArtistsOptions",
             },
           },
         ],
@@ -234,16 +312,38 @@ Object {
               "$ref": "#/definitions/Artists",
             },
           },
+          "400": Object {
+            "description": "Bad request",
+            "schema": Object {
+              "$ref": "#/definitions/Error",
+            },
+          },
+          "401": Object {
+            "description": "No user found",
+          },
           "502": Object {
             "description": "Error retrieving artists from Spotify",
+            "schema": Object {
+              "$ref": "#/definitions/Error",
+            },
           },
         },
+        "tags": Array [
+          "Stats",
+        ],
       },
     },
   },
   "responses": Object {},
   "securityDefinitions": Object {},
   "swagger": "2.0",
-  "tags": Array [],
+  "tags": Array [
+    Object {
+      "name": "Authentication",
+    },
+    Object {
+      "name": "Stats",
+    },
+  ],
 }
 `;

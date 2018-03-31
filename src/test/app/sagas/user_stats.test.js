@@ -26,7 +26,11 @@ describe('App Sagas - UserStats', () => {
       expect(loadUserStatsGenerator.next().value)
         .toEqual(select(getUserAuthenticated));
       expect(loadUserStatsGenerator.next(userAuthenticated).value)
-        .toEqual(call(statsApi.topArtists.get));
+        .toEqual(call(statsApi.topArtists.post, {
+          limit: 15,
+          offset: 0,
+          timeRange: 'long_term',
+        }));
       expect(loadUserStatsGenerator.next().value)
         .toEqual(put({ type: types.LOAD_USER_STATS_SUCCEEDED }));
       expect(loadUserStatsGenerator.next().done).toBeTruthy();

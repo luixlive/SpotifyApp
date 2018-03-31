@@ -1,5 +1,8 @@
+import _ from 'lodash';
+
 import error from './../../test_utils/error';
 import httpStatus from './../../../utils/http_status';
+import mockUser from './../../test_utils/mock_user';
 import { statsController } from './../../../server/controllers';
 import {
   UNEXPECTED_SPOTIFY_RESPONSE,
@@ -16,7 +19,7 @@ describe('Server Controllers - Stats', () => {
     response = { body: { items: ['1', '2'] } };
     responseValue = undefined;
     statusValue = undefined;
-    user = { accessToken: 'accessToken' };
+    user = _.cloneDeep(mockUser);
     req = { user };
     res = {
       send: (value) => { responseValue = value; },

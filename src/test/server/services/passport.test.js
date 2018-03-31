@@ -1,8 +1,11 @@
-import emptyFunction from './../../test_utils/empty_function';
+import _ from 'lodash';
+
 import {
   configurePassport,
   spotifyStrategyCallback,
 } from './../../../server/services/passport';
+import emptyFunction from './../../test_utils/empty_function';
+import mockUser from './../../test_utils/mock_user';
 
 describe('Server Services - Passport', () => {
   const passport = {};
@@ -24,13 +27,7 @@ describe('Server Services - Passport', () => {
       configurePassport(passport);
 
       const done = jest.fn();
-      const user = {
-        accessToken: 'accessToken',
-        profile: {
-          _json: 'profile._json',
-        },
-        refreshToken: 'refreshToken',
-      };
+      const user = _.cloneDeep(mockUser);
       passport.serializeUser.mock.calls[0][0](user, done);
       expect(done).toHaveBeenCalledTimes(1);
       expect(done.mock.calls[0][0]).toBeNull();
@@ -50,13 +47,7 @@ describe('Server Services - Passport', () => {
       configurePassport(passport);
 
       const done = jest.fn();
-      const user = {
-        accessToken: 'accessToken',
-        profile: {
-          _json: 'profile._json',
-        },
-        refreshToken: 'refreshToken',
-      };
+      const user = _.cloneDeep(mockUser);
       passport.deserializeUser.mock.calls[0][0](JSON.stringify(user), done);
       expect(done).toHaveBeenCalledTimes(1);
       expect(done.mock.calls[0][0]).toBeNull();

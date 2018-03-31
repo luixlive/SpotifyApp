@@ -1,5 +1,8 @@
+import _ from 'lodash';
+
 import { authenticationController } from './../../../server/controllers';
 import httpStatus from './../../../utils/http_status';
+import mockUser from './../../test_utils/mock_user';
 
 describe('Server Controllers - Authentication', () => {
   let req;
@@ -12,11 +15,7 @@ describe('Server Controllers - Authentication', () => {
     redirectTo = undefined;
     responseValue = undefined;
     statusValue = undefined;
-    user = {
-      accessToken: 'accessToken',
-      profile: { _json: 'profileJson' },
-      refreshToken: 'refreshToken',
-    };
+    user = _.cloneDeep(mockUser);
     req = {
       logout: () => { user = undefined; },
       session: 'session',

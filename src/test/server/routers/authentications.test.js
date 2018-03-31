@@ -16,7 +16,7 @@ describe('Server Routers - Authentication', () => {
 
   it('calls logout controller', () => {
     const req = { url: '/logout', method: 'GET' };
-    handleRouterRequest(router, req);
+    handleRouterRequest(router, req, null, true);
     expect(controller.logout).toHaveBeenCalledTimes(1);
   });
 

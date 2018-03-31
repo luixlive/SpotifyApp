@@ -15,7 +15,8 @@
     "test": "NODE_ENV=test && jest --coverage"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "./test-setup.js"
+    "setupTestFrameworkScriptFile": "./test-setup.js",
+    "coveragePathIgnorePatterns": ["/test/"]
   },
   "husky": {
     "hooks": {

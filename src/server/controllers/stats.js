@@ -7,8 +7,8 @@ const { UNEXPECTED_SPOTIFY_RESPONSE } = require('./../util/error_responses');
 const getUsersTopArtistsCallback = res => (err, spotifyRes) => {
   if (err || !_.has(spotifyRes, 'body.items')) {
     logger.debug(`Spotify getUsersTopArtists error: ${err || UNEXPECTED_SPOTIFY_RESPONSE}`);
-    return res.status(httpStatus.BAD_GATEWAY)
-      .send({ error: err || UNEXPECTED_SPOTIFY_RESPONSE });
+    res.status(httpStatus.BAD_GATEWAY);
+    return res.send({ error: err || UNEXPECTED_SPOTIFY_RESPONSE });
   }
 
   logger.debug(`Spotify getUsersTopArtists: ${JSON.stringify(spotifyRes)}`);

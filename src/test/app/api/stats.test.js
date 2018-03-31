@@ -8,12 +8,18 @@ describe('App API - Stats', () => {
   });
 
   describe('Top Artists', () => {
-    it('fetches /api/stats/topArtists as a GET', () => {
-      statsApi.topArtists.get();
+    it('fetches /api/stats/topArtists as a POST', () => {
+      const body = { body: 'example' };
+      statsApi.topArtists.post(body);
       expect(fetch).toHaveBeenCalledTimes(1);
       expect(fetch.mock.calls[0]).toEqual([
         '/api/stats/topArtists',
-        { credentials: 'same-origin', method: 'GET' },
+        {
+          body: JSON.stringify(body),
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/json' },
+          method: 'POST',
+        },
       ]);
     });
   });
