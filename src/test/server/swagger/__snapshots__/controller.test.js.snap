@@ -77,27 +77,19 @@ Object {
           "type": "string",
         },
         "profile": Object {
-          "properties": Object {
-            "_json": Object {
-              "allOf": Array [
-                Object {
-                  "$ref": "#/definitions/UserBase",
-                },
-                Object {
-                  "properties": Object {
-                    "display_name": Object {
-                      "type": "string",
-                    },
-                  },
-                  "type": "object",
-                },
-              ],
+          "allOf": Array [
+            Object {
+              "$ref": "#/definitions/UserBase",
             },
-          },
-          "required": Array [
-            "_json",
+            Object {
+              "properties": Object {
+                "displayName": Object {
+                  "type": "string",
+                },
+              },
+              "type": "object",
+            },
           ],
-          "type": "object",
         },
         "refreshToken": Object {
           "type": "string",
@@ -112,7 +104,7 @@ Object {
     },
     "UserBase": Object {
       "properties": Object {
-        "external_urls": Object {
+        "externalUrls": Object {
           "properties": Object {
             "spotify": Object {
               "format": "uri",
@@ -170,7 +162,7 @@ Object {
         },
       },
       "required": Array [
-        "external_urls",
+        "externalUrls",
         "followers",
         "href",
         "id",

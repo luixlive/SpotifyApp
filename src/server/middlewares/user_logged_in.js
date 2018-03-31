@@ -8,10 +8,11 @@ module.exports = (req, res, next) => {
   if (req.user) {
     const { error } = Joi.validate(req.user, userSchema);
     if (!error) {
-      req.logUser = req.user.profile._json.display_name;
+      req.logUser = req.user.profile.displayName;
       logger.debug(`User authorized: ${req.logUser}`);
       return next();
     }
+    logger.debug(req.user);
   }
   logger.debug('User unauthorized');
   return res.sendStatus(httpStatus.UNAUTHORIZED);

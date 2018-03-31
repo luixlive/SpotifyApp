@@ -1,9 +1,11 @@
+import _ from 'lodash';
 import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { authenticationApi } from './../../../app/api';
 import error from './../../test_utils/error';
 import errors from './../../../app/sagas/util/errors';
 import httpStatus from './../../../utils/http_status';
+import { mockUser } from './../../test_utils/mock_data';
 import readResponse from './../../../app/sagas/util/read_response';
 import * as types from './../../../app/actions/types';
 import watcher, {
@@ -15,8 +17,8 @@ describe('App Sagas - User', () => {
   describe('Load User', () => {
     it(`${types.LOAD_USER_SUCCEEDED} - user authenticated`, () => {
       const response = { status: httpStatus.OK };
-      const userProfileJson = { key: 'value' };
-      const userResponse = { _json: { ...userProfileJson } };
+      const user = _.cloneDeep(mockUser);
+      const userResponse = { ...user };
 
       const loadUserGenerator = loadUser();
       expect(loadUserGenerator.next().value)
@@ -25,7 +27,7 @@ describe('App Sagas - User', () => {
         .toEqual(call(readResponse, response));
       expect(loadUserGenerator.next(userResponse).value).toEqual(put({
         type: types.LOAD_USER_SUCCEEDED,
-        payload: { ...userProfileJson, userAuthenticated: true },
+        payload: { ...user, userAuthenticated: true },
       }));
       expect(loadUserGenerator.next().done).toBeTruthy();
     });

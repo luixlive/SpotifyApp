@@ -5,6 +5,12 @@ import { App, Login, UserStats } from './containers';
 import { AuthenticationChecker } from './hoc';
 import Message from './templates';
 
+export const NotFound = () => (
+  <Message title="Error 404">
+    Page not found, go back to <Link to="/">home</Link> page.
+  </Message>
+);
+
 export default () => (
   <BrowserRouter>
     <App>
@@ -13,11 +19,7 @@ export default () => (
         <Route exact path="/login" component={Login} />
         <Route
           path="*"
-          component={() => (
-            <Message title="Error 404">
-              Page not found, go back to <Link to="/">home</Link> page.
-            </Message>
-          )}
+          component={NotFound}
         />
       </Switch>
     </App>

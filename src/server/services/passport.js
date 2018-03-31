@@ -1,8 +1,18 @@
-const _ = require('lodash');
 const config = require('config');
 const { Strategy: SpotifyStrategy } = require('passport-spotify');
 
 const logger = require('./../../utils/logger');
+
+const cleanProfileProperties = ({ _json }) => ({
+  displayName: _json.display_name,
+  externalUrls: _json.external_urls,
+  followers: _json.followers,
+  href: _json.href,
+  id: _json.id,
+  images: _json.images,
+  type: _json.type,
+  uri: _json.uri,
+});
 
 const spotifyStrategyCallback = (
   accessToken,
@@ -11,13 +21,14 @@ const spotifyStrategyCallback = (
   profile,
   done,
 ) => {
-  logger.debug(`User retrieved successfully: ${profile}`);
-  done(null, { accessToken, profile, refreshToken });
+  const cleanProfile = cleanProfileProperties(profile);
+  logger.debug(`User retrieved successfully: ${JSON.stringify(cleanProfile)}`);
+  done(null, { accessToken, profile: cleanProfile, refreshToken });
 };
 
 const configurePassport = (passport) => {
   passport.serializeUser((user, done) => {
-    done(null, JSON.stringify(_.pick(user, config.get('SESSION_VALUES'))));
+    done(null, JSON.stringify(user));
   });
 
   passport.deserializeUser((user, done) => {

@@ -13,7 +13,7 @@
  *   UserBase:
  *     type: object
  *     required:
- *       - external_urls
+ *       - externalUrls
  *       - followers
  *       - href
  *       - id
@@ -21,7 +21,7 @@
  *       - type
  *       - uri
  *     properties:
- *       external_urls:
+ *       externalUrls:
  *         type: object
  *         properties:
  *           spotify:
@@ -71,17 +71,12 @@
  *       accessToken:
  *         type: string
  *       profile:
- *         type: object
- *         required:
- *           - _json
- *         properties:
- *           _json:
- *             allOf:
- *             - $ref: '#/definitions/UserBase'
- *             - type: object
- *               properties:
- *                 display_name:
- *                   type: string
+ *         allOf:
+ *         - $ref: '#/definitions/UserBase'
+ *         - type: object
+ *           properties:
+ *             displayName:
+ *               type: string
  *       refreshToken:
  *         type: string
  *

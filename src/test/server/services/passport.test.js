@@ -5,7 +5,7 @@ import {
   spotifyStrategyCallback,
 } from './../../../server/services/passport';
 import emptyFunction from './../../test_utils/empty_function';
-import mockUser from './../../test_utils/mock_user';
+import { mockUser, mockSpotifyUser } from './../../test_utils/mock_data';
 
 describe('Server Services - Passport', () => {
   const passport = {};
@@ -64,9 +64,11 @@ describe('Server Services - Passport', () => {
 
     it('calls done with no errors and session values', () => {
       const done = jest.fn();
-      const accessToken = 'accessToken';
-      const profile = { _json: 'profile._json' };
-      const refreshToken = 'refreshToken';
+      const {
+        accessToken,
+        profile,
+        refreshToken,
+      } = _.cloneDeep(mockSpotifyUser);
 
       spotifyStrategyCallback(
         accessToken,
@@ -80,7 +82,7 @@ describe('Server Services - Passport', () => {
       expect(done.mock.calls[0][1]).toEqual({
         accessToken,
         refreshToken,
-        profile,
+        profile: mockUser.profile,
       });
     });
   });

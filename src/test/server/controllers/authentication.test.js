@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 import { authenticationController } from './../../../server/controllers';
 import httpStatus from './../../../utils/http_status';
-import mockUser from './../../test_utils/mock_user';
+import { mockUser, mockSpotifyUser } from './../../test_utils/mock_data';
 
 describe('Server Controllers - Authentication', () => {
   let req;
@@ -40,6 +40,7 @@ describe('Server Controllers - Authentication', () => {
 
   describe('Spotify Callback', () => {
     it('redirects to /', () => {
+      req.user = _.cloneDeep(mockSpotifyUser);
       authenticationController.spotifyCallback(req, res);
       expect(redirectTo).toEqual('/');
     });

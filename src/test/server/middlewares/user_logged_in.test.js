@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 import httpStatus from './../../../utils/http_status';
-import mockUser from './../../test_utils/mock_user';
+import { mockUser } from './../../test_utils/mock_data';
 import { userLoggedIn } from './../../../server/middlewares';
 
 describe('Server Middlewares - User Logged In', () => {

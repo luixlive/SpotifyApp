@@ -2,7 +2,11 @@ import _ from 'lodash';
 
 import error from './../../test_utils/error';
 import httpStatus from './../../../utils/http_status';
-import mockUser from './../../test_utils/mock_user';
+import {
+  mockSpotifyTopArtists,
+  mockTopArtists,
+  mockUser,
+} from './../../test_utils/mock_data';
 import { statsController } from './../../../server/controllers';
 import {
   UNEXPECTED_SPOTIFY_RESPONSE,
@@ -16,7 +20,7 @@ describe('Server Controllers - Stats', () => {
   let statusValue;
   let user;
   beforeEach(() => {
-    response = { body: { items: ['1', '2'] } };
+    response = { body: { items: _.cloneDeep(mockSpotifyTopArtists) } };
     responseValue = undefined;
     statusValue = undefined;
     user = _.cloneDeep(mockUser);
@@ -39,7 +43,7 @@ describe('Server Controllers - Stats', () => {
     it('returns top artists in callback', () => {
       const callback = statsController.getUsersTopArtistsCallback(res);
       callback(null, response);
-      expect(responseValue).toBe(response.body.items);
+      expect(responseValue).toEqual(mockTopArtists);
     });
 
     it('returns bad gateway error when service returns error', () => {

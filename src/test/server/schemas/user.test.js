@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import Joi from 'joi';
 
-import mockUser from './../../test_utils/mock_user';
+import { mockUser } from './../../test_utils/mock_data';
 import { userSchema } from './../../../server/schemas';
 
 describe('Server Schemas - User', () => {

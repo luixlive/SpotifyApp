@@ -5,7 +5,6 @@
   "LOG_FILE": "./logs/spotifystats.log",
   "LOG_LEVEL": "debug",
   "PORT": 3000,
-  "SESSION_VALUES": ["accessToken", "profile._json", "refreshToken"],
   "SPOTIFY_API_URL": "https://api.spotify.com/",
   "SPOTIFY_API_ENDPOINTS": {
     "TOP_ARTISTS": {

@@ -55,7 +55,7 @@ const getRouter = (controller) => {
 
   router.get('/spotify/callback', passport.authenticate('spotify', {
     failureRedirect: '/',
-  }), userLoggedIn, controller.spotifyCallback);
+  }), controller.spotifyCallback);
 
   /**
    * @swagger
