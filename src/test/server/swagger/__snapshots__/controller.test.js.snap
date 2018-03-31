@@ -182,7 +182,7 @@ Object {
     },
   },
   "info": Object {
-    "description": "Simple webapp for Spotify stats",
+    "description": "Simple webapp to see your user's Spotify statistics.",
     "title": "Spotify Stats",
     "version": "1.0.0",
   },
