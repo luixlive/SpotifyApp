@@ -14,7 +14,6 @@ describe('App Reducers - User', () => {
     };
     const expectedState = {
       ...initialState,
-      userLoaded: true,
     };
     expect(userReducer(undefined, action)).toEqual(expectedState);
   });
