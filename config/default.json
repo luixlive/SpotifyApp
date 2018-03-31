@@ -1,5 +1,5 @@
 {
-  "APP_DESCRIPTION": "Simple webapp for Spotify stats",
+  "APP_DESCRIPTION": "Simple webapp to see your user's Spotify statistics.",
   "APP_TITLE": "Spotify Stats",
   "HOST": "localhost",
   "LOG_FILE": "./logs/spotifystats.log",

@@ -1,6 +1,6 @@
 {
   "author": "Luis Alfonso",
-  "description": "Simple webapp for Spotify stats",
+  "description": "Simple webapp to see your user's Spotify statistics.",
   "license": "ISC",
   "main": "src/server/server.js",
   "name": "spotify-stats",
