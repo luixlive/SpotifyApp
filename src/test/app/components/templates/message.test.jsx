@@ -47,7 +47,7 @@ describe('App Components Templates - Message', () => {
     });
 
     it('renders', () => {
-      expect(wrapper.find(Message).length).toEqual(1);
+      expect(wrapper.find(PureMessage).length).toEqual(1);
     });
 
     it('matches initial state', () => {
