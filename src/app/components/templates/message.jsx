@@ -2,9 +2,8 @@ import { connect } from 'react-redux';
 import { Container, Header } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
 
-export const NotFound = props => (
+export const Message = props => (
   <Container className="" textAlign="center">
     <Header
       as="h1"
@@ -13,23 +12,25 @@ export const NotFound = props => (
         marginTop: props.deviceMobile ? '1em' : '1.5em',
       }}
     >
-    Error 404
+      {props.title}
     </Header>
-    <Header as={props.deviceMobile ? 'h3' : 'h2'}>
-      Page not found, go back to <Link to="/">home</Link> page.
+    <Header as={props.deviceMobile ? 'h3' : 'h2'} >
+      {props.children}
     </Header>
   </Container>
 );
 
-NotFound.propTypes = {
+Message.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
   deviceMobile: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = ({ deviceMobile }) => ({ deviceMobile });
 
 const mapDispatchToProps = () => ({});
 
-export const ConnectedNotFound =
-  connect(mapStateToProps, mapDispatchToProps)(NotFound);
-
-export default withRouter(ConnectedNotFound);
+export default connect(mapStateToProps, mapDispatchToProps)(Message);

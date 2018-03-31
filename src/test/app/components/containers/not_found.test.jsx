@@ -8,7 +8,7 @@ import renderer from 'react-test-renderer';
 import {
   ConnectedNotFound,
   NotFound,
-} from './../../../../app/components/containers/not_found';
+} from './../../../../app/components/not_found';
 import initialState from './../../../test_utils/initial_state';
 import injectRouter from './../../../test_utils/inject_router';
 import {

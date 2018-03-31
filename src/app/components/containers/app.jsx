@@ -32,7 +32,10 @@ export class App extends Component {
 }
 
 App.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
   loadUser: PropTypes.func.isRequired,
   userLoaded: PropTypes.bool.isRequired,
 };
