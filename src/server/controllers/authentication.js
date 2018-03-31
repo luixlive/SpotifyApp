@@ -9,10 +9,7 @@ const logout = (req, res) => {
 };
 
 const spotifyCallback = (req, res) => {
-  logger.debug(
-    'api/authentication/spotify/callback: ',
-    req.user.profile.displayName,
-  );
+  logger.debug('api/authentication/spotify/callback: ', req.logUser);
   res.redirect('/');
 };
 
