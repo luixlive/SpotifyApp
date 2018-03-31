@@ -1,7 +1,6 @@
 {
   "APP_DESCRIPTION": "Simple webapp for Spotify stats",
   "APP_TITLE": "Spotify Stats",
-  "COOKIE_KEY": "h8a9sdhf834h887a9sgdfdsjk",
   "HOST": "localhost",
   "LOG_FILE": "./logs/spotifyapp.log",
   "LOG_LEVEL": "debug",
@@ -15,7 +14,5 @@
     }
   },
   "SPOTIFY_AUTHORIZATION_SCOPE": ["user-top-read"],
-  "SPOTIFY_CALLBACK_URL": "localhost:3000/api/authentication/spotify/callback",
-  "SPOTIFY_CLIENT_ID": "2437ec8de5bb43c38da5f012f7ab5db5",
-  "SPOTIFY_CLIENT_SECRET": "9427fa67630b4beaacac67ae7179a001"
+  "SPOTIFY_CALLBACK_URL": "localhost:3000/api/authentication/spotify/callback"
 }
