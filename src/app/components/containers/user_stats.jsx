@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 
 import loadUserStats from './../../actions/user_stats';
 import ScreenLoader from './../screen_loader';
 
-export class UserStats extends Component {
+export class PureUserStats extends Component {
   componentDidMount() {
     this.props.loadUserStats();
   }
@@ -23,7 +22,7 @@ export class UserStats extends Component {
   }
 }
 
-UserStats.propTypes = {
+PureUserStats.propTypes = {
   loadUserStats: PropTypes.func.isRequired,
   statsLoaded: PropTypes.bool.isRequired,
 };
@@ -36,7 +35,4 @@ const mapDispatchToProps = dispatch => ({
   loadUserStats: () => dispatch(loadUserStats()),
 });
 
-export const ConnectedUserStats =
-  connect(mapStateToProps, mapDispatchToProps)(UserStats);
-
-export default withRouter(ConnectedUserStats);
+export default connect(mapStateToProps, mapDispatchToProps)(PureUserStats);

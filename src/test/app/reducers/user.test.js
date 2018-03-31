@@ -1,7 +1,5 @@
 import error from './../../test_utils/error';
-import userReducer, {
-  initialState,
-} from './../../../app/reducers/user';
+import userReducer, { initialState } from './../../../app/reducers/user';
 import * as types from './../../../app/actions/types';
 
 describe('App Reducers - User', () => {

@@ -5,14 +5,13 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import {
-  ConnectedUserStats,
-  UserStats,
+import UserStats, {
+  PureUserStats,
 } from './../../../../app/components/containers/user_stats';
 import initialState from './../../../test_utils/initial_state';
 import * as types from './../../../../app/actions/types';
 import {
-  userStatsContainer as componentProps,
+  userStats as componentProps,
 } from './../../../test_utils/components_props';
 
 describe('App Components - UserStats', () => {
@@ -23,13 +22,13 @@ describe('App Components - UserStats', () => {
     });
 
     it('renders stats not loaded', () => {
-      const rendered = renderer.create(<UserStats {...props} />).toJSON();
+      const rendered = renderer.create(<PureUserStats {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
 
     it('renders stats loaded', () => {
       props.statsLoaded = true;
-      const rendered = renderer.create(<UserStats {...props} />).toJSON();
+      const rendered = renderer.create(<PureUserStats {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
   });
@@ -38,7 +37,7 @@ describe('App Components - UserStats', () => {
     it('calls loadUserStats when componentDidMount', () => {
       const loadUserStats = jest.fn();
       const props = _.cloneDeep(componentProps);
-      mount(<UserStats {...props} loadUserStats={loadUserStats} />);
+      mount(<PureUserStats {...props} loadUserStats={loadUserStats} />);
       expect(loadUserStats).toHaveBeenCalledTimes(1);
     });
   });
@@ -51,17 +50,17 @@ describe('App Components - UserStats', () => {
       store = mockStore(initialState);
       wrapper = mount((
         <Provider store={store}>
-          <ConnectedUserStats />
+          <UserStats />
         </Provider>
       ));
     });
 
     it('renders', () => {
-      expect(wrapper.find(ConnectedUserStats).length).toEqual(1);
+      expect(wrapper.find(PureUserStats).length).toEqual(1);
     });
 
     it('matches initial state', () => {
-      expect(Object.keys(wrapper.find(UserStats).props()))
+      expect(Object.keys(wrapper.find(PureUserStats).props()))
         .toEqual(Object.keys(componentProps));
     });
 

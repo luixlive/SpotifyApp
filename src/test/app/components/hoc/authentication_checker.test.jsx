@@ -7,7 +7,6 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import toJson from 'enzyme-to-json';
 
-import addRouterProps from './../../../test_utils/add_router_props';
 import {
   authenticationChecker as componentProps,
 } from './../../../test_utils/components_props';
@@ -70,11 +69,11 @@ describe('App Components HOC - AuthenticationChecker', () => {
         user: { userAuthenticated: true },
       }));
       RenderedComponent = AuthenticationChecker(ComposedComponent);
-      wrapper = mount(injectRouter(() => (
+      wrapper = mount((
         <Provider store={store}>
           <RenderedComponent />
         </Provider>
-      )));
+      ));
     });
 
     it('renders', () => {
@@ -82,9 +81,8 @@ describe('App Components HOC - AuthenticationChecker', () => {
     });
 
     it('matches initial state', () => {
-      const props = addRouterProps(componentProps);
       expect(Object.keys(wrapper.find('AuthenticationChecker').props()))
-        .toEqual(Object.keys(props));
+        .toEqual(Object.keys(componentProps));
     });
   });
 });

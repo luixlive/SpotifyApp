@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 
 import { Router } from './components';
 import reducers from './reducers';
-import sagas from './sagas';
+import rootSaga from './sagas';
 import './style/semantic.less';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -21,7 +21,7 @@ const store = createStore(
   ),
 );
 
-sagaMiddleware.run(sagas);
+sagaMiddleware.run(rootSaga);
 
 const render = () => {
   ReactDOM.render(

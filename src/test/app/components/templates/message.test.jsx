@@ -5,17 +5,15 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import {
-  ConnectedNotFound,
-  NotFound,
-} from './../../../../app/components/not_found';
 import initialState from './../../../test_utils/initial_state';
-import injectRouter from './../../../test_utils/inject_router';
 import {
-  notFoundContainer as componentProps,
+  message as componentProps,
 } from './../../../test_utils/components_props';
+import Message, {
+  PureMessage,
+} from './../../../../app/components/templates/message';
 
-describe('App Components - NotFound', () => {
+describe('App Components Templates - Message', () => {
   describe('Snapshots', () => {
     let props;
     beforeEach(() => {
@@ -23,15 +21,13 @@ describe('App Components - NotFound', () => {
     });
 
     it('renders no mobile', () => {
-      const rendered =
-        renderer.create(injectRouter(() => <NotFound {...props} />)).toJSON();
+      const rendered = renderer.create(<PureMessage {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
 
     it('renders mobile', () => {
       props.deviceMobile = true;
-      const rendered =
-        renderer.create(injectRouter(() => <NotFound {...props} />)).toJSON();
+      const rendered = renderer.create(<PureMessage {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
   });
@@ -40,18 +36,22 @@ describe('App Components - NotFound', () => {
     const mockStore = configureStore();
     let store;
     let wrapper;
-    beforeEach(() => {
+    beforeAll(() => {
       store = mockStore(initialState);
-      wrapper = mount(injectRouter(() =>
-        <Provider store={store}><ConnectedNotFound /></Provider>));
+      wrapper = mount((
+        <Provider store={store}>
+          <Message title={componentProps.title}>
+            {componentProps.children}
+          </Message>
+        </Provider>));
     });
 
     it('renders', () => {
-      expect(wrapper.find(ConnectedNotFound).length).toEqual(1);
+      expect(wrapper.find(Message).length).toEqual(1);
     });
 
     it('matches initial state', () => {
-      expect(Object.keys(wrapper.find(NotFound).props()))
+      expect(Object.keys(wrapper.find(PureMessage).props()))
         .toEqual(Object.keys(componentProps));
     });
   });

@@ -6,9 +6,12 @@ import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
 import {
-  appContainer as componentProps,
+  app as componentProps,
 } from './../../../test_utils/components_props';
-import { App, ConnectedApp } from './../../../../app/components/containers/app';
+import {
+  ConnectedApp,
+  PureApp,
+} from './../../../../app/components/containers/app';
 import initialState from './../../../test_utils/initial_state';
 import injectRouter from './../../../test_utils/inject_router';
 import trivialReactElement from './../../../test_utils/trivial_react_element';
@@ -30,7 +33,7 @@ describe('App Components - App', () => {
     it('renders user not loaded', () => {
       const rendered = renderer.create(injectRouter(() => (
         <Provider store={store}>
-          <App {...props} />
+          <PureApp {...props} />
         </Provider>
       ))).toJSON();
       expect(rendered).toMatchSnapshot();
@@ -40,7 +43,7 @@ describe('App Components - App', () => {
       props.userLoaded = true;
       const rendered = renderer.create(injectRouter(() => (
         <Provider store={store}>
-          <App {...props} />
+          <PureApp {...props} />
         </Provider>
       ))).toJSON();
       expect(rendered).toMatchSnapshot();
@@ -60,11 +63,11 @@ describe('App Components - App', () => {
     });
 
     it('renders', () => {
-      expect(wrapper.find(ConnectedApp).length).toEqual(1);
+      expect(wrapper.find(PureApp).length).toEqual(1);
     });
 
     it('matches initial state', () => {
-      expect(Object.keys(wrapper.find(App).props()))
+      expect(Object.keys(wrapper.find(PureApp).props()))
         .toEqual(Object.keys(componentProps));
     });
 

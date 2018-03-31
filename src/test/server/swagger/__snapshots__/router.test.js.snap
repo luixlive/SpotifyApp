@@ -12,5 +12,6 @@ exports[`Server Swagger - Router should return Swagger UI when GET /swagger/api-
 <body>
 <pre>Redirecting to <a href=\\"/swagger/api-docs/\\">/swagger/api-docs/</a></pre>
 </body>
+</html>
 "
 `;

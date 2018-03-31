@@ -1,21 +1,25 @@
 {
-  "rules": {
-    "jsx-a11y/anchor-is-valid": [ "error", {
-      "components": [ "Link" ],
-      "specialLink": [ "to" ]
-    }],
-    "no-underscore-dangle": [ "error", {
-      "allow": [ "_json" ]
-    }]
-  },
-  "globals": {
-    "document": true,
-    "Event": true,
-    "window": true
-  },
-  "env": {
-      "jest": true
-  },
-  "extends": "airbnb",
-  "parser": "babel-eslint"
-}
+    "rules": {
+      "jsx-a11y/anchor-is-valid": [ "error", {
+        "components": [ "Link" ],
+        "specialLink": [ "to" ]
+      }],
+      "max-len": [ "error", {
+        "code": 80
+      }],
+      "no-underscore-dangle": [ "error", {
+        "allow": [ "_json" ]
+      }],
+      "object-curly-newline": "off"
+    },
+    "globals": {
+      "document": true,
+      "Event": true,
+      "window": true
+    },
+    "env": {
+        "jest": true
+    },
+    "extends": "airbnb",
+    "parser": "babel-eslint"
+  }

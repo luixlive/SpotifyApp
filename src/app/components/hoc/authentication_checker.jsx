@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import ScreenLoader from './../screen_loader';
 
@@ -31,11 +31,8 @@ export default (ComposedComponent) => {
     loggingOutUser: user.loggingOutUser,
   });
 
-  const connectedSizeDetector =
-    connect(
-      mapStateToProps,
-      mapDispatchToProps,
-    )(getAuthenticationChecker(ComposedComponent));
-
-  return withRouter(connectedSizeDetector);
+  return connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(getAuthenticationChecker(ComposedComponent));
 };

@@ -3,7 +3,7 @@ import { Container, Header } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export const Message = props => (
+export const PureMessage = props => (
   <Container className="" textAlign="center">
     <Header
       as="h1"
@@ -20,7 +20,7 @@ export const Message = props => (
   </Container>
 );
 
-Message.propTypes = {
+PureMessage.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
@@ -33,4 +33,4 @@ const mapStateToProps = ({ deviceMobile }) => ({ deviceMobile });
 
 const mapDispatchToProps = () => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Message);
+export default connect(mapStateToProps, mapDispatchToProps)(PureMessage);

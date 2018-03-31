@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import MessageTemplate from './templates';
+import Message from './templates';
 
-export const NotFound = () => (
-  <MessageTemplate title="Error 404">
+const NotFound = () => (
+  <Message title="Error 404">
     Page not found, go back to <Link to="/">home</Link> page.
-  </MessageTemplate>
+  </Message>
 );
 
 export default NotFound;

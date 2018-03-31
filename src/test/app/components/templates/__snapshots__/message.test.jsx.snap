@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App Components - NotFound Snapshots renders mobile 1`] = `
+exports[`App Components Templates - Message Snapshots renders mobile 1`] = `
 <div
   className="ui center aligned container"
 >
@@ -13,24 +13,17 @@ exports[`App Components - NotFound Snapshots renders mobile 1`] = `
       }
     }
   >
-    Error 404
+    
   </h1>
   <h3
     className="ui header"
   >
-    Page not found, go back to 
-    <a
-      href="/"
-      onClick={[Function]}
-    >
-      home
-    </a>
-     page.
+    <div />
   </h3>
 </div>
 `;
 
-exports[`App Components - NotFound Snapshots renders no mobile 1`] = `
+exports[`App Components Templates - Message Snapshots renders no mobile 1`] = `
 <div
   className="ui center aligned container"
 >
@@ -43,19 +36,12 @@ exports[`App Components - NotFound Snapshots renders no mobile 1`] = `
       }
     }
   >
-    Error 404
+    
   </h1>
   <h2
     className="ui header"
   >
-    Page not found, go back to 
-    <a
-      href="/"
-      onClick={[Function]}
-    >
-      home
-    </a>
-     page.
+    <div />
   </h2>
 </div>
 `;

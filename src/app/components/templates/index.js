@@ -1,3 +1,3 @@
-import MessageTemplate from './message';
+import Message from './message';
 
-export default MessageTemplate;
+export default Message;

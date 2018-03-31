@@ -1,12 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App Components - Login Snapshots renders user authenticated 1`] = `
-<div>
-  Should render this
-</div>
-`;
-
-exports[`App Components - Login Snapshots renders user not authenticated 1`] = `
+exports[`App Components - NotFound renders 1`] = `
 <div
   className="ui center aligned container"
 >
@@ -19,12 +13,19 @@ exports[`App Components - Login Snapshots renders user not authenticated 1`] = `
       }
     }
   >
-    Welcome
+    Error 404
   </h1>
   <h2
     className="ui header"
   >
-    Please log in with Spotify to start.
+    Page not found, go back to 
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      home
+    </a>
+     page.
   </h2>
 </div>
 `;

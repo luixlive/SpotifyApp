@@ -6,14 +6,13 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { Route, Switch } from 'react-router-dom';
 
-import {
-  ConnectedLogin,
-  Login,
+import Login, {
+  PureLogin,
 } from './../../../../app/components/containers/login';
 import initialState from './../../../test_utils/initial_state';
 import injectRouter from './../../../test_utils/inject_router';
 import {
-  loginContainer as componentProps,
+  login as componentProps,
 } from './../../../test_utils/components_props';
 
 describe('App Components - Login', () => {
@@ -24,7 +23,13 @@ describe('App Components - Login', () => {
     });
 
     it('renders user not authenticated', () => {
-      const rendered = renderer.create(<Login {...props} />).toJSON();
+      const mockStore = configureStore();
+      const store = mockStore(initialState);
+      const rendered = renderer.create((
+        <Provider store={store}>
+          <PureLogin {...props} />
+        </Provider>
+      )).toJSON();
       expect(rendered).toMatchSnapshot();
     });
 
@@ -40,23 +45,12 @@ describe('App Components - Login', () => {
             />
             <Route
               path="/login"
-              component={() => <Login {...props} />}
+              component={() => <PureLogin {...props} />}
             />
           </Switch>
         ),
         '/login',
       )).toJSON();
-      expect(rendered).toMatchSnapshot();
-    });
-
-    it('renders user not authenticated no mobile', () => {
-      const rendered = renderer.create(<Login {...props} />).toJSON();
-      expect(rendered).toMatchSnapshot();
-    });
-
-    it('renders user not authenticated mobile', () => {
-      props.deviceMobile = true;
-      const rendered = renderer.create(<Login {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
   });
@@ -67,19 +61,15 @@ describe('App Components - Login', () => {
     let wrapper;
     beforeEach(() => {
       store = mockStore(initialState);
-      wrapper = mount((
-        <Provider store={store}>
-          <ConnectedLogin />
-        </Provider>
-      ));
+      wrapper = mount(<Provider store={store}><Login /></Provider>);
     });
 
     it('renders', () => {
-      expect(wrapper.find(ConnectedLogin).length).toEqual(1);
+      expect(wrapper.find(PureLogin).length).toEqual(1);
     });
 
     it('matches initial state', () => {
-      expect(Object.keys(wrapper.find(Login).props()))
+      expect(Object.keys(wrapper.find(PureLogin).props()))
         .toEqual(Object.keys(componentProps));
     });
   });

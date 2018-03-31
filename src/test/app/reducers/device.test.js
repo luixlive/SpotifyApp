@@ -1,6 +1,4 @@
-import deviceReducer, {
-  initialState,
-} from './../../../app/reducers/device';
+import deviceReducer, { initialState } from './../../../app/reducers/device';
 import * as types from './../../../app/actions/types';
 
 describe('App Reducers - Device', () => {

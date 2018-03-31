@@ -1,30 +1,18 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import React from 'react';
 
-import {
-  AppContainer,
-  LoginContainer,
-  UserStatsContainer,
-} from './containers';
+import { App, Login, UserStats } from './containers';
 import { AuthenticationChecker } from './hoc';
-import { AppNotFound } from './';
+import { NotFound } from './';
 
 export default () => (
   <BrowserRouter>
-    <AppContainer>
+    <App>
       <Switch>
-        <Route
-          exact
-          path="/"
-          component={AuthenticationChecker(UserStatsContainer)}
-        />
-        <Route
-          exact
-          path="/login"
-          component={LoginContainer}
-        />
-        <Route path="*" component={AppNotFound} />
+        <Route exact path="/" component={AuthenticationChecker(UserStats)} />
+        <Route exact path="/login" component={Login} />
+        <Route path="*" component={NotFound} />
       </Switch>
-    </AppContainer>
+    </App>
   </BrowserRouter>
 );

@@ -2,13 +2,13 @@ import emptyFunction from './empty_function';
 import initialState from './initial_state';
 import trivialReactElement from './trivial_react_element';
 
-export const appContainer = {
+export const app = {
   children: trivialReactElement,
   userLoaded: initialState.user.userLoaded,
   loadUser: emptyFunction,
 };
 
-export const appHeaderContainer = {
+export const header = {
   deviceMobile: initialState.deviceMobile,
   userAuthenticated: initialState.user.userAuthenticated,
   logoutUser: emptyFunction,
@@ -19,18 +19,17 @@ export const authenticationChecker = {
   loggingOutUser: initialState.user.loggingOutUser,
 };
 
-export const loginContainer = {
+export const message = {
+  title: '',
+  children: trivialReactElement,
   deviceMobile: initialState.deviceMobile,
-  userAuthenticated: initialState.user.userAuthenticated,
 };
 
-export const notFoundContainer = {
-  deviceMobile: initialState.deviceMobile,
-};
+export const login = { userAuthenticated: initialState.user.userAuthenticated };
 
 export const sizeDetector = { deviceTypeChanged: emptyFunction };
 
-export const userStatsContainer = {
+export const userStats = {
   statsLoaded: initialState.userStats.statsLoaded,
   loadUserStats: emptyFunction,
 };

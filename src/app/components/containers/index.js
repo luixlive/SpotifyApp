@@ -1,11 +1,6 @@
-import AppContainer from './app';
-import AppHeaderContainer from './header';
-import LoginContainer from './login';
-import UserStatsContainer from './user_stats';
+import App from './app';
+import Header from './header';
+import Login from './login';
+import UserStats from './user_stats';
 
-export {
-  AppContainer,
-  AppHeaderContainer,
-  LoginContainer,
-  UserStatsContainer,
-};
+export { App, Header, Login, UserStats };

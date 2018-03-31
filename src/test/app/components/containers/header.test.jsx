@@ -6,11 +6,10 @@ import renderer from 'react-test-renderer';
 import { shallow, mount } from 'enzyme';
 
 import {
-  appHeaderContainer as componentProps,
+  header as componentProps,
 } from './../../../test_utils/components_props';
-import {
-  ConnectedAppHeader,
-  AppHeader,
+import Header, {
+  PureHeader,
 } from './../../../../app/components/containers/header';
 import initialState from './../../../test_utils/initial_state';
 import * as types from './../../../../app/actions/types';
@@ -23,19 +22,19 @@ describe('App Components - Header', () => {
     });
 
     it('renders no mobile', () => {
-      const rendered = renderer.create(<AppHeader {...props} />).toJSON();
+      const rendered = renderer.create(<PureHeader {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
 
     it('renders mobile', () => {
       props.deviceMobile = true;
-      const rendered = renderer.create(<AppHeader {...props} />).toJSON();
+      const rendered = renderer.create(<PureHeader {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
 
     it('renders user authenticated', () => {
       props.userAuthenticated = true;
-      const rendered = renderer.create(<AppHeader {...props} />).toJSON();
+      const rendered = renderer.create(<PureHeader {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
   });
@@ -48,7 +47,7 @@ describe('App Components - Header', () => {
 
     it('redirects to login on log in button click', () => {
       global.open = jest.fn();
-      const wrapper = shallow(<AppHeader {...props} />);
+      const wrapper = shallow(<PureHeader {...props} />);
       wrapper.find('Button').simulate('click');
       expect(global.open).toHaveBeenCalledTimes(1);
     });
@@ -56,7 +55,7 @@ describe('App Components - Header', () => {
     it('calls logoutUser on logout button click', () => {
       props.userAuthenticated = true;
       props.logoutUser = jest.fn();
-      const wrapper = shallow(<AppHeader {...props} />);
+      const wrapper = shallow(<PureHeader {...props} />);
       wrapper.find('Button').simulate('click');
       expect(props.logoutUser).toHaveBeenCalledTimes(1);
     });
@@ -70,17 +69,17 @@ describe('App Components - Header', () => {
       store = mockStore(initialState);
       wrapper = mount((
         <Provider store={store}>
-          <ConnectedAppHeader />
+          <Header />
         </Provider>
       ));
     });
 
     it('renders', () => {
-      expect(wrapper.find(ConnectedAppHeader).length).toEqual(1);
+      expect(wrapper.find(PureHeader).length).toEqual(1);
     });
 
     it('matches initial state', () => {
-      expect(Object.keys(wrapper.find(AppHeader).props()))
+      expect(Object.keys(wrapper.find(PureHeader).props()))
         .toEqual(Object.keys(componentProps));
     });
 
@@ -90,7 +89,7 @@ describe('App Components - Header', () => {
       }));
       wrapper = mount((
         <Provider store={store}>
-          <ConnectedAppHeader />
+          <Header />
         </Provider>
       ));
       expect(store.getActions().length).toBe(0);

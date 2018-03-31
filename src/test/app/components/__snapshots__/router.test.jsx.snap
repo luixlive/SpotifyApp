@@ -106,7 +106,7 @@ exports[`App Components - Router renders 1`] = `
                 }
               }
             >
-              <Connect(App)
+              <Connect(PureApp)
                 deviceTypeChanged={[Function]}
                 history={
                   Object {
@@ -145,7 +145,7 @@ exports[`App Components - Router renders 1`] = `
                   }
                 }
               >
-                <App
+                <PureApp
                   deviceTypeChanged={[Function]}
                   history={
                     Object {
@@ -187,153 +187,74 @@ exports[`App Components - Router renders 1`] = `
                   userLoaded={false}
                 >
                   <div>
-                    <withRouter(Connect(AppHeader))>
-                      <Route
-                        render={[Function]}
+                    <Connect(PureHeader)>
+                      <PureHeader
+                        deviceMobile={false}
+                        logoutUser={[Function]}
+                        userAuthenticated={false}
                       >
-                        <Connect(AppHeader)
-                          history={
-                            Object {
-                              "action": "POP",
-                              "block": [Function],
-                              "createHref": [Function],
-                              "go": [Function],
-                              "goBack": [Function],
-                              "goForward": [Function],
-                              "length": 1,
-                              "listen": [Function],
-                              "location": Object {
-                                "hash": "",
-                                "pathname": "blank",
-                                "search": "",
-                                "state": undefined,
-                              },
-                              "push": [Function],
-                              "replace": [Function],
-                            }
-                          }
-                          location={
-                            Object {
-                              "hash": "",
-                              "pathname": "blank",
-                              "search": "",
-                              "state": undefined,
-                            }
-                          }
-                          match={
-                            Object {
-                              "isExact": false,
-                              "params": Object {},
-                              "path": "/",
-                              "url": "/",
-                            }
-                          }
+                        <Segment
+                          color="green"
+                          textAlign="center"
                         >
-                          <AppHeader
-                            deviceMobile={false}
-                            history={
-                              Object {
-                                "action": "POP",
-                                "block": [Function],
-                                "createHref": [Function],
-                                "go": [Function],
-                                "goBack": [Function],
-                                "goForward": [Function],
-                                "length": 1,
-                                "listen": [Function],
-                                "location": Object {
-                                  "hash": "",
-                                  "pathname": "blank",
-                                  "search": "",
-                                  "state": undefined,
-                                },
-                                "push": [Function],
-                                "replace": [Function],
-                              }
-                            }
-                            location={
-                              Object {
-                                "hash": "",
-                                "pathname": "blank",
-                                "search": "",
-                                "state": undefined,
-                              }
-                            }
-                            logoutUser={[Function]}
-                            match={
-                              Object {
-                                "isExact": false,
-                                "params": Object {},
-                                "path": "/",
-                                "url": "/",
-                              }
-                            }
-                            userAuthenticated={false}
+                          <div
+                            className="ui green center aligned segment"
                           >
-                            <Segment
-                              color="green"
-                              textAlign="center"
+                            <Grid
+                              columns={3}
                             >
                               <div
-                                className="ui green center aligned segment"
+                                className="ui three column grid"
                               >
-                                <Grid
-                                  columns={3}
+                                <GridColumn>
+                                  <div
+                                    className="column"
+                                  />
+                                </GridColumn>
+                                <GridColumn
+                                  verticalAlign="middle"
                                 >
                                   <div
-                                    className="ui three column grid"
+                                    className="middle aligned column"
                                   >
-                                    <GridColumn>
-                                      <div
-                                        className="column"
-                                      />
-                                    </GridColumn>
-                                    <GridColumn
-                                      verticalAlign="middle"
+                                    <Header
+                                      as="h2"
                                     >
-                                      <div
-                                        className="middle aligned column"
+                                      <h2
+                                        className="ui header"
                                       >
-                                        <Header
-                                          as="h2"
-                                        >
-                                          <h2
-                                            className="ui header"
-                                          >
-                                            Spotify Stats
-                                          </h2>
-                                        </Header>
-                                      </div>
-                                    </GridColumn>
-                                    <GridColumn>
-                                      <div
-                                        className="column"
-                                      >
-                                        <Button
-                                          as="button"
-                                          color="green"
-                                          floated="right"
-                                          inverted={true}
-                                          onClick={[Function]}
-                                        >
-                                          <button
-                                            className="ui green inverted right floated button"
-                                            onClick={[Function]}
-                                            role="button"
-                                          >
-                                            Log in with Spotify
-                                          </button>
-                                        </Button>
-                                      </div>
-                                    </GridColumn>
+                                        Spotify Stats
+                                      </h2>
+                                    </Header>
                                   </div>
-                                </Grid>
+                                </GridColumn>
+                                <GridColumn>
+                                  <div
+                                    className="column"
+                                  >
+                                    <Button
+                                      as="button"
+                                      color="green"
+                                      floated="right"
+                                      inverted={true}
+                                      onClick={[Function]}
+                                    >
+                                      <button
+                                        className="ui green inverted right floated button"
+                                        onClick={[Function]}
+                                        role="button"
+                                      >
+                                        Log in with Spotify
+                                      </button>
+                                    </Button>
+                                  </div>
+                                </GridColumn>
                               </div>
-                            </Segment>
-                          </AppHeader>
-                        </Connect(AppHeader)>
-                      </Route>
-                    </withRouter(Connect(AppHeader))>
+                            </Grid>
+                          </div>
+                        </Segment>
+                      </PureHeader>
+                    </Connect(PureHeader)>
                     <ScreenLoader>
                       <Segment
                         basic={true}
@@ -375,8 +296,8 @@ exports[`App Components - Router renders 1`] = `
                       <div />
                     </Footer>
                   </div>
-                </App>
-              </Connect(App)>
+                </PureApp>
+              </Connect(PureApp)>
             </SizeDetector>
           </Connect(SizeDetector)>
         </Route>

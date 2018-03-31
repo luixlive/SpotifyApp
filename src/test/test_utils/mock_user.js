@@ -1,5 +1,7 @@
 export default {
-  accessToken: 'accessTokenaccessTokenaccessTokenaccessTokenaccessTokenaccessTokenaccessTokenaccessTokenaccessTokenaccessTokenaccessTokenaccessTokenaccessTokenaccessTo',
+  accessToken: 'accessTokenaccessTokenaccessTokenaccessTokenaccessTokenaccess' +
+    'TokenaccessTokenaccessTokenaccessTokenaccessTokenaccessTokenaccessTokena' +
+    'ccessTokenaccessTo',
   profile: {
     _json: {
       display_name: 'display_name',
@@ -12,5 +14,6 @@ export default {
       uri: 'uri',
     },
   },
-  refreshToken: 'refreshTokenrefreshTokenrefreshTokenrefreshTokenrefreshTokenrefreshTokenrefreshTokenrefreshTokenrefreshTokenrefreshTokenrefreshToke',
+  refreshToken: 'refreshTokenrefreshTokenrefreshTokenrefreshTokenrefreshToken' +
+    'refreshTokenrefreshTokenrefreshTokenrefreshTokenrefreshTokenrefreshToke',
 };

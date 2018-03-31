@@ -1,9 +1,5 @@
-import AppFooter from './footer';
-import AppNotFound from './not_found';
+import Footer from './footer';
+import NotFound from './not_found';
 import Router from './router';
 
-export {
-  AppFooter,
-  AppNotFound,
-  Router,
-};
+export { Footer, NotFound, Router };

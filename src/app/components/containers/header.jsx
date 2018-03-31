@@ -2,11 +2,10 @@ import { Button, Grid, Header, Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 
 import { logoutUser } from './../../actions/user';
 
-export const AppHeader = (props) => {
+export const PureHeader = (props) => {
   const getLoginButtonText = () => {
     if (props.userAuthenticated) {
       return 'Logout';
@@ -44,7 +43,7 @@ export const AppHeader = (props) => {
   );
 };
 
-AppHeader.propTypes = {
+PureHeader.propTypes = {
   deviceMobile: PropTypes.bool.isRequired,
   userAuthenticated: PropTypes.bool.isRequired,
   logoutUser: PropTypes.func.isRequired,
@@ -59,7 +58,4 @@ const mapDispatchToProps = dispatch => ({
   logoutUser: () => dispatch(logoutUser()),
 });
 
-export const ConnectedAppHeader =
-  connect(mapStateToProps, mapDispatchToProps)(AppHeader);
-
-export default withRouter(ConnectedAppHeader);
+export default connect(mapStateToProps, mapDispatchToProps)(PureHeader);

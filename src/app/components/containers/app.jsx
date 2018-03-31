@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
-import { AppFooter } from './../';
-import { AppHeaderContainer } from './../containers';
+import { Footer } from './../';
+import { Header } from './../containers';
 import { loadUser } from './../../actions/user';
 import ScreenLoader from './../screen_loader';
 import { SizeDetector } from './../hoc';
 
-export class App extends Component {
+export class PureApp extends Component {
   componentDidMount() {
     this.props.loadUser();
   }
@@ -23,15 +24,15 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <AppHeaderContainer />
+        <Header />
         {this.renderBody()}
-        <AppFooter />
+        <Footer />
       </div>
     );
   }
 }
 
-App.propTypes = {
+PureApp.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
@@ -46,6 +47,7 @@ const mapDispatchToProps = dispatch => ({
   loadUser: () => dispatch(loadUser()),
 });
 
-export const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
+export const ConnectedApp =
+  connect(mapStateToProps, mapDispatchToProps)(PureApp);
 
-export default SizeDetector(ConnectedApp);
+export default withRouter(SizeDetector(ConnectedApp));

@@ -5,9 +5,7 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import addRouterProps from './../../../test_utils/add_router_props';
 import initialState from './../../../test_utils/initial_state';
-import injectRouter from './../../../test_utils/inject_router';
 import {
   sizeDetector as componentProps,
 } from './../../../test_utils/components_props';
@@ -71,11 +69,7 @@ describe('App Components HOC - SizeDetector', () => {
     beforeAll(() => {
       store = mockStore(initialState);
       RenderedComponent = SizeDetector(ComposedComponent);
-      wrapper = mount(injectRouter(() => (
-        <Provider store={store}>
-          <RenderedComponent />
-        </Provider>
-      )));
+      wrapper = mount(<Provider store={store}><RenderedComponent /></Provider>);
     });
 
     it('renders', () => {
@@ -83,9 +77,8 @@ describe('App Components HOC - SizeDetector', () => {
     });
 
     it('matches initial state', () => {
-      const props = addRouterProps(componentProps);
       expect(Object.keys(wrapper.find('SizeDetector').props()))
-        .toEqual(Object.keys(props));
+        .toEqual(Object.keys(componentProps));
     });
 
     it('dispatches deviceTypeChanged', () => {
