@@ -3,7 +3,7 @@
   "description": "Simple webapp for Spotify stats",
   "license": "ISC",
   "main": "src/server/server.js",
-  "name": "spotifyapp",
+  "name": "spotify-stats",
   "version": "1.0.0",
   "scripts": {
     "build": "webpack",

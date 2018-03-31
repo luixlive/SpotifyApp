@@ -2,7 +2,7 @@
   "APP_DESCRIPTION": "Simple webapp for Spotify stats",
   "APP_TITLE": "Spotify Stats",
   "HOST": "localhost",
-  "LOG_FILE": "./logs/spotifyapp.log",
+  "LOG_FILE": "./logs/spotifystats.log",
   "LOG_LEVEL": "debug",
   "PORT": 3000,
   "SESSION_VALUES": ["accessToken", "profile._json", "refreshToken"],
