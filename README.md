@@ -17,6 +17,7 @@ You will need to have [Node JS + NPM](https://nodejs.org/en/) in your environmen
 ```
 $ git clone https://github.com/luixlive/spotify-stats.git
 ```
+If you don't have git you can also download it manually.
 
 2. Enter into the new folder
 ```
