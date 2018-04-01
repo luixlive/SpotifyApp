@@ -1,5 +1,4 @@
 import {
-  LOAD_USER_FAILED,
   LOAD_USER_SUCCEEDED,
   LOGOUT_USER,
   LOGOUT_USER_SUCCEEDED,
@@ -7,7 +6,6 @@ import {
 } from './../actions/types';
 
 export const initialState = {
-  error: null,
   displayName: undefined,
   externalUrls: undefined,
   followers: undefined,
@@ -23,14 +21,12 @@ export const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case LOAD_USER_FAILED:
-      return { ...state, error: action.payload.error };
     case LOAD_USER_SUCCEEDED:
-      return { ...state, ...action.payload, error: null, userLoaded: true };
+      return { ...state, ...action.payload, userLoaded: true };
     case LOGOUT_USER:
       return { ...state, loggingOutUser: true };
     case LOGOUT_USER_FAILED:
-      return { ...state, error: action.payload.error, loggingOutUser: false };
+      return { ...state, loggingOutUser: false };
     case LOGOUT_USER_SUCCEEDED:
       return { ...initialState, userLoaded: true };
     default:

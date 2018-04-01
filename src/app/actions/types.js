@@ -1,6 +1,9 @@
 // Device reducer
 export const DEVICE_TYPE_CHANGED = 'DEVICE_TYPE_CHANGED';
 
+// Error
+export const CLEAR_ERROR = 'CLEAR_ERROR';
+
 // User
 export const LOAD_USER = 'LOAD_USER';
 export const LOAD_USER_FAILED = 'LOAD_USER_FAILED';
