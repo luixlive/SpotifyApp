@@ -48,6 +48,16 @@ describe('App Components - App', () => {
       ))).toJSON();
       expect(rendered).toMatchSnapshot();
     });
+
+    it('renders error', () => {
+      props.error = 'Some error';
+      const rendered = renderer.create(injectRouter(() => (
+        <Provider store={store}>
+          <PureApp {...props} />
+        </Provider>
+      ))).toJSON();
+      expect(rendered).toMatchSnapshot();
+    });
   });
 
   describe('Provider', () => {

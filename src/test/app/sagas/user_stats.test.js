@@ -55,7 +55,7 @@ describe('App Sagas - UserStats', () => {
       loadUserStatsGenerator.next();
       expect(loadUserStatsGenerator.throw(error).value).toEqual(put({
         type: types.LOAD_USER_STATS_FAILED,
-        payload: error,
+        payload: { error: errors.couldntLoadUserStats },
       }));
       expect(loadUserStatsGenerator.next().done).toBeTruthy();
     });

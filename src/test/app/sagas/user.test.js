@@ -45,7 +45,7 @@ describe('App Sagas - User', () => {
       expect(loadUserGenerator.next().done).toBeTruthy();
     });
 
-    it(`${types.LOAD_USER_FAILED} - ${errors.unexpected}`, () => {
+    it(`${types.LOAD_USER_FAILED} - ${errors.couldntLoadUser}`, () => {
       const response = { status: httpStatus.IM_A_TEAPOT };
 
       const loadUserGenerator = loadUser();
@@ -53,7 +53,7 @@ describe('App Sagas - User', () => {
         .toEqual(call(authenticationApi.user.get));
       expect(loadUserGenerator.next(response).value).toEqual(put({
         type: types.LOAD_USER_FAILED,
-        payload: { error: errors.unexpected },
+        payload: { error: errors.couldntLoadUser },
       }));
       expect(loadUserGenerator.next().done).toBeTruthy();
     });
@@ -63,7 +63,7 @@ describe('App Sagas - User', () => {
       loadUserGenerator.next();
       expect(loadUserGenerator.throw(error).value).toEqual(put({
         type: types.LOAD_USER_FAILED,
-        payload: error,
+        payload: { error: errors.couldntLoadUser },
       }));
       expect(loadUserGenerator.next().done).toBeTruthy();
     });
@@ -83,7 +83,7 @@ describe('App Sagas - User', () => {
       expect(logoutUserGenerator.next().done).toBeTruthy();
     });
 
-    it(`${types.LOGOUT_USER_FAILED} - ${errors.unexpected}`, () => {
+    it(`${types.LOGOUT_USER_FAILED} - ${errors.couldntLogout}`, () => {
       const response = { status: httpStatus.IM_A_TEAPOT };
 
       const logoutUserGenerator = logoutUser();
@@ -91,7 +91,7 @@ describe('App Sagas - User', () => {
         .toEqual(call(authenticationApi.logout.get));
       expect(logoutUserGenerator.next(response).value).toEqual(put({
         type: types.LOGOUT_USER_FAILED,
-        payload: { error: errors.unexpected },
+        payload: { error: errors.couldntLogout },
       }));
       expect(logoutUserGenerator.next().done).toBeTruthy();
     });
@@ -101,7 +101,7 @@ describe('App Sagas - User', () => {
       logoutUserGenerator.next();
       expect(logoutUserGenerator.throw(error).value).toEqual(put({
         type: types.LOGOUT_USER_FAILED,
-        payload: error,
+        payload: { error: errors.couldntLogout },
       }));
       expect(logoutUserGenerator.next().done).toBeTruthy();
     });

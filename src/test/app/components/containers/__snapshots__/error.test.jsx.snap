@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Components - Error Snapshots renders 1`] = `
+<div
+  className="ui center aligned container"
+>
+  <h1
+    className="ui header"
+    style={
+      Object {
+        "fontSize": "4em",
+        "marginTop": "1.5em",
+      }
+    }
+  >
+    Error :(
+  </h1>
+  <h2
+    className="ui header"
+  >
+    
+     Go back to
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+       Home
+    </a>
+    .
+  </h2>
+</div>
+`;

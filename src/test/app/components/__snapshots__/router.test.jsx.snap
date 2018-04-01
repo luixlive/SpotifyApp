@@ -18,7 +18,7 @@ exports[`App Components - Router Not Found component renders 1`] = `
   <h2
     className="ui header"
   >
-    Page not found, go back to 
+    Page not found. Go back to 
     <a
       href="/"
       onClick={[Function]}
@@ -177,6 +177,7 @@ exports[`App Components - Router renders 1`] = `
               >
                 <PureApp
                   deviceTypeChanged={[Function]}
+                  error=""
                   history={
                     Object {
                       "action": "POP",

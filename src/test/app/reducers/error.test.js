@@ -4,7 +4,7 @@ import errorReducer, {
 } from './../../../app/reducers/error';
 import * as types from './../../../app/actions/types';
 
-describe('App Reducers - UserStats', () => {
+describe('App Reducers - Error', () => {
   it('should return initial state', () => {
     expect(errorReducer(undefined, {})).toEqual(initialState);
   });

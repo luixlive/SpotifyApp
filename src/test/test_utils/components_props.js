@@ -4,7 +4,14 @@ import trivialReactElement from './trivial_react_element';
 
 export const app = {
   children: trivialReactElement,
+  error: initialState.error,
   userLoaded: initialState.user.userLoaded,
+  loadUser: emptyFunction,
+};
+
+export const error = {
+  error: initialState.error,
+  clearError: emptyFunction,
   loadUser: emptyFunction,
 };
 
