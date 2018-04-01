@@ -29,7 +29,10 @@ export function* loadUserStats() {
       });
     }
   } catch (error) {
-    yield put({ type: LOAD_USER_STATS_FAILED, payload: error });
+    yield put({
+      type: LOAD_USER_STATS_FAILED,
+      payload: { error: errors.couldntLoadUserStats },
+    });
   }
 }
 

@@ -11,7 +11,7 @@ describe('App Reducers - UserStats', () => {
 
   it(types.CLEAR_ERROR, () => {
     const action = { type: types.CLEAR_ERROR, payload: {} };
-    const expectedState = null;
+    const expectedState = '';
     expect(errorReducer(undefined, action)).toEqual(expectedState);
   });
 

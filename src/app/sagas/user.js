@@ -31,11 +31,14 @@ export function* loadUser() {
     } else {
       yield put({
         type: LOAD_USER_FAILED,
-        payload: { error: errors.unexpected },
+        payload: { error: errors.couldntLoadUser },
       });
     }
   } catch (error) {
-    yield put({ type: LOAD_USER_FAILED, payload: error });
+    yield put({
+      type: LOAD_USER_FAILED,
+      payload: { error: errors.couldntLoadUser },
+    });
   }
 }
 
@@ -48,11 +51,14 @@ export function* logoutUser() {
     } else {
       yield put({
         type: LOGOUT_USER_FAILED,
-        payload: { error: errors.unexpected },
+        payload: { error: errors.couldntLogout },
       });
     }
   } catch (error) {
-    yield put({ type: LOGOUT_USER_FAILED, payload: error });
+    yield put({
+      type: LOGOUT_USER_FAILED,
+      payload: { error: errors.couldntLogout },
+    });
   }
 }
 

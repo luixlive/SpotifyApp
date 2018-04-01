@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { Footer } from './../';
-import { Header } from './../containers';
+import { Error, Header } from './../containers';
 import { loadUser } from './../../actions/user';
 import ScreenLoader from './../screen_loader';
 import { SizeDetector } from './../hoc';
@@ -15,7 +15,9 @@ export class PureApp extends Component {
   }
 
   renderBody() {
-    if (this.props.userLoaded) {
+    if (this.props.error) {
+      return <Error />;
+    } else if (this.props.userLoaded) {
       return this.props.children;
     }
     return <ScreenLoader />;
@@ -37,11 +39,15 @@ PureApp.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
+  error: PropTypes.string.isRequired,
   loadUser: PropTypes.func.isRequired,
   userLoaded: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = ({ user }) => ({ userLoaded: user.userLoaded });
+const mapStateToProps = ({ error, user }) => ({
+  error,
+  userLoaded: user.userLoaded,
+});
 
 const mapDispatchToProps = dispatch => ({
   loadUser: () => dispatch(loadUser()),

@@ -7,7 +7,7 @@ import Message from './templates';
 
 export const NotFound = () => (
   <Message title="Error 404">
-    Page not found, go back to <Link to="/">home</Link> page.
+    Page not found. Go back to <Link to="/">home</Link> page.
   </Message>
 );
 
