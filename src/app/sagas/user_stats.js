@@ -16,7 +16,7 @@ export function* loadUserStats() {
 
     if (userAuthenticated) {
       // TODO: This should be configurable by the user
-      yield call(statsApi.topArtists.post, {
+      yield call(statsApi.topArtists.get, {
         limit: 15,
         offset: 0,
         timeRange: 'long_term',

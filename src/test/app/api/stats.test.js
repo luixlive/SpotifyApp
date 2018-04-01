@@ -9,16 +9,15 @@ describe('App API - Stats', () => {
 
   describe('Top Artists', () => {
     it('fetches /api/stats/topArtists as a POST', () => {
-      const body = { body: 'example' };
-      statsApi.topArtists.post(body);
+      const query = { key: 'value' };
+      statsApi.topArtists.get(query);
       expect(fetch).toHaveBeenCalledTimes(1);
       expect(fetch.mock.calls[0]).toEqual([
-        '/api/stats/topArtists',
+        '/api/stats/topArtists?key=value',
         {
-          body: JSON.stringify(body),
           credentials: 'same-origin',
           headers: { 'Content-Type': 'application/json' },
-          method: 'POST',
+          method: 'GET',
         },
       ]);
     });
