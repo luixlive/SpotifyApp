@@ -12,7 +12,6 @@ module.exports = (req, res, next) => {
       logger.debug(`User authorized: ${req.logUser}`);
       return next();
     }
-    logger.debug(req.user);
   }
   logger.debug('User unauthorized');
   return res.sendStatus(httpStatus.UNAUTHORIZED);
