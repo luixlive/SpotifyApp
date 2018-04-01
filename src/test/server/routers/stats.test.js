@@ -10,7 +10,7 @@ describe('Server Routers - Stats', () => {
   });
 
   it('calls getArtists controller', () => {
-    const req = { method: 'POST', url: '/topArtists' };
+    const req = { method: 'GET', url: '/topArtists' };
     handleRouterRequest(router, req, null, true);
     expect(controller.topArtists).toHaveBeenCalledTimes(1);
   });

@@ -24,7 +24,7 @@ describe('Server Controllers - Stats', () => {
     responseValue = undefined;
     statusValue = undefined;
     user = _.cloneDeep(mockUser);
-    req = { user };
+    req = { user, query: { key: 'value' } };
     res = {
       send: (value) => { responseValue = value; },
       status: (status) => { statusValue = status; },
@@ -38,6 +38,7 @@ describe('Server Controllers - Stats', () => {
       expect(service).toHaveBeenCalledTimes(1);
       expect(service.mock.calls[0][0]).toBe(user.accessToken);
       expect(service.mock.calls[0][1]).toBeInstanceOf(Function);
+      expect(service.mock.calls[0][2]).toBe(req.query);
     });
 
     it('returns top artists in callback', () => {

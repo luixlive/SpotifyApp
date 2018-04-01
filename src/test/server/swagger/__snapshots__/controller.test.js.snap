@@ -47,30 +47,6 @@ Object {
       ],
       "type": "object",
     },
-    "TopArtistsOptions": Object {
-      "properties": Object {
-        "limit": Object {
-          "format": "int32",
-          "maximum": 50,
-          "minimum": 1,
-          "type": "number",
-        },
-        "offset": Object {
-          "format": "int32",
-          "minimum": 0,
-          "type": "number",
-        },
-        "timeRange": Object {
-          "enum": Array [
-            "long_term",
-            "medium_term",
-            "short_term",
-          ],
-          "type": "string",
-        },
-      },
-      "type": "object",
-    },
     "User": Object {
       "properties": Object {
         "accessToken": Object {
@@ -267,7 +243,7 @@ Object {
       },
     },
     "/api/stats/topArtists": Object {
-      "post": Object {
+      "get": Object {
         "description": "Retrieve from Spotify user's top artists",
         "parameters": Array [
           Object {
@@ -289,12 +265,35 @@ Object {
             },
           },
           Object {
-            "description": "Artists fetching options",
-            "in": "body",
-            "name": "body",
-            "schema": Object {
-              "$ref": "#/definitions/TopArtistsOptions",
-            },
+            "default": 5,
+            "description": "Number of artists (minimum 1, maximum 50)",
+            "format": "int32",
+            "in": "query",
+            "maximum": 50,
+            "minimum": 1,
+            "name": "limit",
+            "type": "number",
+          },
+          Object {
+            "default": 0,
+            "description": "Offset value (minimum 0)",
+            "format": "int32",
+            "in": "query",
+            "minimum": 0,
+            "name": "offset",
+            "type": "number",
+          },
+          Object {
+            "default": "medium_term",
+            "description": "Time range to take into account artists",
+            "enum": Array [
+              "long_term",
+              "medium_term",
+              "short_term",
+            ],
+            "in": "query",
+            "name": "timeRange",
+            "type": "string",
           },
         ],
         "responses": Object {
