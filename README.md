@@ -41,7 +41,7 @@ $ npm run start:dev
 ```
 
 
-6. Open localhost:3000
+6. Open localhost:3000<br />
 <b>Important:</b> You won't be able to log yourself using OAuth because it is not possible to set Spotify's OAuth callback to get you back to localhost. Also you need some secret environment variables.<br />
 But you can "hijack" a valid session from the production site. Just login, and copy/paste the cookies using the developer tools.
 
