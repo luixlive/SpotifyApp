@@ -100,20 +100,4 @@
  *           popularity:
  *             type: number
  *             format: int32
- *
- *   TopArtistsOptions:
- *     type: object
- *     properties:
- *       limit:
- *         type: number
- *         format: int32
- *         minimum: 1
- *         maximum: 50
- *       offset:
- *         type: number
- *         format: int32
- *         minimum: 0
- *       timeRange:
- *         type: string
- *         enum: [long_term, medium_term, short_term]
  */

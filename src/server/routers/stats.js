@@ -1,8 +1,11 @@
+const config = require('config');
 const express = require('express');
 
 const { spotifyRequests } = require('./../schemas');
 const { spotifyService } = require('./../services');
 const { userLoggedIn, validateSchema } = require('./../middlewares');
+
+const SCHEMA_TYPES = config.get('SCHEMA_TYPES');
 
 const getRouter = (controller) => {
   /**
@@ -15,7 +18,7 @@ const getRouter = (controller) => {
   /**
    * @swagger
    * /api/stats/topArtists:
-   *   post:
+   *   get:
    *     tags:
    *       - Stats
    *     description: Retrieve from Spotify user's top artists
@@ -32,11 +35,28 @@ const getRouter = (controller) => {
    *         default: Set it in the browser, leave this field as it is
    *         schema:
    *           type: string
-   *       - in: body
-   *         name: body
-   *         description: Artists fetching options
-   *         schema:
-   *           $ref: "#/definitions/TopArtistsOptions"
+   *       - in: query
+   *         name: limit
+   *         description: Number of artists (minimum 1, maximum 50)
+   *         default: 5
+   *         type: number
+   *         format: int32
+   *         minimum: 1
+   *         maximum: 50
+   *       - in: query
+   *         name: offset
+   *         description: Offset value (minimum 0)
+   *         default: 0
+   *         type: number
+   *         format: int32
+   *         minimum: 0
+   *       - in: query
+   *         name: timeRange
+   *         description: Time range to take into account
+   *           artists
+   *         type: string
+   *         default: medium_term
+   *         enum: [long_term, medium_term, short_term]
    *     responses:
    *       200:
    *         description: List of user's top artists
@@ -53,12 +73,19 @@ const getRouter = (controller) => {
    *         schema:
    *           $ref: '#/definitions/Error'
    */
-  router.post(
+  router.get(
     '/topArtists',
     userLoggedIn,
-    validateSchema(spotifyRequests.topArtistsOptions, '/stats/topArtists'),
-    (req, res) =>
-      controller.topArtists(req, res, spotifyService.getUsersTopArtists),
+    validateSchema(
+      spotifyRequests.topArtistsOptions,
+      '/stats/topArtists',
+      SCHEMA_TYPES.TYPE_QUERY,
+    ),
+    (req, res) => controller.topArtists(
+      req,
+      res,
+      spotifyService.getUsersTopArtists,
+    ),
   );
 
   return router;

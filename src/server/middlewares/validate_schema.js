@@ -1,11 +1,21 @@
+const assert = require('assert');
+const config = require('config');
 const Joi = require('joi');
 
 const httpStatus = require('./../../utils/http_status');
 const { INVALID_JSON_SCHEMA } = require('./../util/error_responses');
 const logger = require('./../../utils/logger');
 
-module.exports = (schema, endpoint) => (req, res, next) => {
-  const { error } = Joi.validate(req.body, schema);
+const SCHEMA_TYPES = config.get('SCHEMA_TYPES');
+const VALID_TYPES = [SCHEMA_TYPES.TYPE_BODY, SCHEMA_TYPES.TYPE_QUERY];
+
+module.exports = (schema, endpoint, type) => (req, res, next) => {
+  assert(
+    VALID_TYPES.indexOf(type) !== -1,
+    'Invalid type provided for schema validation, expected body or query',
+  );
+
+  const { error } = Joi.validate(req[type], schema);
   if (error) {
     logger.error(`${endpoint} - Schema error: ${error.message}.`);
     res.status(httpStatus.BAD_REQUEST);

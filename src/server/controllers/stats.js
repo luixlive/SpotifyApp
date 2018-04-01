@@ -40,7 +40,7 @@ const topArtists = (req, res, getUsersTopArtists) => {
   getUsersTopArtists(
     req.user.accessToken,
     getUsersTopArtistsCallback(res),
-    req.body,
+    req.query,
   );
 };
 
