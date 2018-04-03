@@ -1,11 +1,11 @@
 const _ = require('lodash');
+const config = require('config');
 
 const httpStatus = require('./../../utils/http_status');
 const logger = require('./../../utils/logger');
 const { UNEXPECTED_SPOTIFY_RESPONSE } = require('./../util/error_responses');
 
-const TOP_ARTISTS = 'TOP_ARTISTS';
-const TOP_TRACKS = 'TOP_TRACKS';
+const { TOP_ARTISTS, TOP_TRACKS } = config.get('CONSTANTS');
 
 const cleanTopArtistsProperties = topArtists => topArtists.map(artist => ({
   externalUrls: artist.external_urls,

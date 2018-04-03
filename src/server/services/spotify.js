@@ -3,8 +3,7 @@ const config = require('config');
 const request = require('superagent');
 
 const SPOTIFY_API_URL = config.get('SPOTIFY_API_URL');
-const TOP_ARTISTS = 'TOP_ARTISTS';
-const TOP_TRACKS = 'TOP_TRACKS';
+const { TOP_ARTISTS, TOP_TRACKS } = config.get('CONSTANTS');
 
 const injectQueryParams = (url, options, optionsSchema) => {
   let finalUrl = `${url}?`;

@@ -1,6 +1,10 @@
 {
   "APP_DESCRIPTION": "Simple webapp to see your user's Spotify statistics.",
   "APP_TITLE": "Spotify Stats",
+  "CONSTANTS": {
+    "TOP_ARTISTS": "TOP_ARTISTS",
+    "TOP_TRACKS": "TOP_TRACKS"
+  },
   "HOST": "localhost",
   "LOG_FILE": "./logs/spotifystats.log",
   "LOG_LEVEL": "debug",
