@@ -13,14 +13,12 @@ import {
 } from './../../../server/util/error_responses';
 
 describe('Server Controllers - Stats', () => {
-  let response;
   let req;
   let res;
   let responseValue;
   let statusValue;
   let user;
   beforeEach(() => {
-    response = { body: { items: _.cloneDeep(mockSpotifyTopArtists) } };
     responseValue = undefined;
     statusValue = undefined;
     user = _.cloneDeep(mockUser);
@@ -32,32 +30,42 @@ describe('Server Controllers - Stats', () => {
   });
 
   describe('Top Artists', () => {
+    let response;
+    beforeEach(() => {
+      response = { body: { items: _.cloneDeep(mockSpotifyTopArtists) } };
+    });
+
     it('calls service to retrieve artists', () => {
       const service = jest.fn();
       statsController.topArtists(req, res, service);
       expect(service).toHaveBeenCalledTimes(1);
       expect(service.mock.calls[0][0]).toBe(user.accessToken);
-      expect(service.mock.calls[0][1]).toBeInstanceOf(Function);
-      expect(service.mock.calls[0][2]).toBe(req.query);
+      expect(service.mock.calls[0][1]).toBe(req.query);
+      expect(service.mock.calls[0][2]).toBeInstanceOf(Function);
     });
 
-    it('returns top artists in callback', () => {
-      const callback = statsController.getUsersTopArtistsCallback(res);
-      callback(null, response);
+    it('returns top cleaned artists in callback', () => {
+      const mockService = (token, options, callback) => {
+        callback(null, response);
+      };
+      statsController.topArtists(req, res, mockService);
       expect(responseValue).toEqual(mockTopArtists);
     });
 
     it('returns bad gateway error when service returns error', () => {
-      const callback = statsController.getUsersTopArtistsCallback(res);
-      callback(error, response);
+      const mockService = (token, options, callback) => {
+        callback(error, null);
+      };
+      statsController.topArtists(req, res, mockService);
       expect(statusValue).toBe(httpStatus.BAD_GATEWAY);
       expect(responseValue.error).toBe(error);
     });
 
     it('returns bad gateway error when Spotifys response is unexpected', () => {
-      const callback = statsController.getUsersTopArtistsCallback(res);
-      response.body = {};
-      callback(null, response);
+      const mockService = (token, options, callback) => {
+        callback(null, null);
+      };
+      statsController.topArtists(req, res, mockService);
       expect(statusValue).toBe(httpStatus.BAD_GATEWAY);
       expect(responseValue.error).toBe(UNEXPECTED_SPOTIFY_RESPONSE);
     });

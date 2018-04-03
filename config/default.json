@@ -14,6 +14,10 @@
     "TOP_ARTISTS": {
       "URI": "v1/me/top/artists",
       "OPTIONS": ["limit", "offset", "time_range"]
+    },
+    "TOP_TRACKS": {
+      "URI": "v1/me/top/tracks",
+      "OPTIONS": ["limit", "offset", "time_range"]
     }
   },
   "SPOTIFY_AUTHORIZATION_SCOPE": ["user-top-read"],

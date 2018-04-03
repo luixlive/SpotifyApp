@@ -23,61 +23,28 @@ const getRouter = (controller) => {
    *       - Stats
    *     description: Retrieve from Spotify user's top artists
    *     parameters:
-   *       - in: cookie
-   *         name: session
-   *         description: Session cookie signed
-   *         default: Set it in the browser, leave this field as it is
-   *         schema:
-   *           type: string
-   *       - in: cookie
-   *         name: session.sig
-   *         description: Signature key for the Session cookie
-   *         default: Set it in the browser, leave this field as it is
-   *         schema:
-   *           type: string
-   *       - in: query
-   *         name: limit
-   *         description: Number of artists (minimum 1, maximum 50)
-   *         default: 5
-   *         type: number
-   *         format: int32
-   *         minimum: 1
-   *         maximum: 50
-   *       - in: query
-   *         name: offset
-   *         description: Offset value (minimum 0)
-   *         default: 0
-   *         type: number
-   *         format: int32
-   *         minimum: 0
-   *       - in: query
-   *         name: timeRange
-   *         description: Time range to take into account
-   *           artists
-   *         type: string
-   *         default: medium_term
-   *         enum: [long_term, medium_term, short_term]
+   *       - $ref: '#/parameters/SessionCookie'
+   *       - $ref: '#/parameters/SignatureCookie'
+   *       - $ref: '#/parameters/ItemsLimit'
+   *       - $ref: '#/parameters/ItemsOffset'
+   *       - $ref: '#/parameters/ItemsTimeRange'
    *     responses:
    *       200:
-   *         description: List of user's top artists
+   *         $ref: '#/responses/OK'
    *         schema:
    *           $ref: '#/definitions/Artists'
    *       400:
-   *         description: Bad request
-   *         schema:
-   *           $ref: '#/definitions/Error'
+   *         $ref: '#/responses/BadRequest'
    *       401:
-   *         description: No user found
+   *         $ref: '#/responses/Unauthorized'
    *       502:
-   *         description: Error retrieving artists from Spotify
-   *         schema:
-   *           $ref: '#/definitions/Error'
+   *         $ref: '#/responses/BadGateway'
    */
   router.get(
     '/topArtists',
     userLoggedIn,
     validateSchema(
-      spotifyRequests.topArtistsOptions,
+      spotifyRequests.topArtistsOrTracksOptions,
       '/stats/topArtists',
       SCHEMA_TYPES.TYPE_QUERY,
     ),
@@ -85,6 +52,45 @@ const getRouter = (controller) => {
       req,
       res,
       spotifyService.getUsersTopArtists,
+    ),
+  );
+
+  // TODO: definir esquema de la respuesta 200
+  /**
+   * @swagger
+   * /api/stats/topTracks:
+   *   get:
+   *     tags:
+   *       - Stats
+   *     description: Retrieve from Spotify user's top tracks
+   *     parameters:
+   *       - $ref: '#/parameters/SessionCookie'
+   *       - $ref: '#/parameters/SignatureCookie'
+   *       - $ref: '#/parameters/ItemsLimit'
+   *       - $ref: '#/parameters/ItemsOffset'
+   *       - $ref: '#/parameters/ItemsTimeRange'
+   *     responses:
+   *       200:
+   *         $ref: '#/responses/OK'
+   *       400:
+   *         $ref: '#/responses/BadRequest'
+   *       401:
+   *         $ref: '#/responses/Unauthorized'
+   *       502:
+   *         $ref: '#/responses/BadGateway'
+   */
+  router.get(
+    '/topTracks',
+    userLoggedIn,
+    validateSchema(
+      spotifyRequests.topArtistsOrTracksOptions,
+      '/stats/topTracks',
+      SCHEMA_TYPES.TYPE_QUERY,
+    ),
+    (req, res) => controller.topTracks(
+      req,
+      res,
+      spotifyService.getUsersTopTracks,
     ),
   );
 

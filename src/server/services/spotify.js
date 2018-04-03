@@ -3,6 +3,8 @@ const config = require('config');
 const request = require('superagent');
 
 const SPOTIFY_API_URL = config.get('SPOTIFY_API_URL');
+const TOP_ARTISTS = 'TOP_ARTISTS';
+const TOP_TRACKS = 'TOP_TRACKS';
 
 const injectQueryParams = (url, options, optionsSchema) => {
   let finalUrl = `${url}?`;
@@ -15,7 +17,7 @@ const injectQueryParams = (url, options, optionsSchema) => {
   return finalUrl.slice(0, -1);
 };
 
-const getUsersTopArtists = (accessToken, callback, options) => {
+const getTopArtistsOrTracks = retrieve => (accessToken, options, callback) => {
   const cleanOptions = _.mapKeys(options, (value, key) => {
     if (key === 'timeRange') {
       return 'time_range';
@@ -26,7 +28,7 @@ const getUsersTopArtists = (accessToken, callback, options) => {
   const {
     URI: topArtistsEndpoint,
     OPTIONS: optionsSchema,
-  } = config.get('SPOTIFY_API_ENDPOINTS').TOP_ARTISTS;
+  } = config.get('SPOTIFY_API_ENDPOINTS')[retrieve];
 
   const requestUri = injectQueryParams(
     `${SPOTIFY_API_URL}${topArtistsEndpoint}`,
@@ -41,5 +43,6 @@ const getUsersTopArtists = (accessToken, callback, options) => {
 };
 
 module.exports = {
-  getUsersTopArtists,
+  getUsersTopArtists: getTopArtistsOrTracks(TOP_ARTISTS),
+  getUsersTopTracks: getTopArtistsOrTracks(TOP_TRACKS),
 };

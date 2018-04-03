@@ -12,6 +12,7 @@ describe('Server Services - Spotify', () => {
       const accessToken = 'accessToken';
       spotifyService.getUsersTopArtists(
         accessToken,
+        null,
         (err, res) => expect(res.body).toEqual(response),
       );
     });
@@ -29,8 +30,8 @@ describe('Server Services - Spotify', () => {
       };
       spotifyService.getUsersTopArtists(
         accessToken,
-        (err, res) => expect(res.body).toEqual(response),
         options,
+        (err, res) => expect(res.body).toEqual(response),
       );
     });
 
@@ -41,6 +42,7 @@ describe('Server Services - Spotify', () => {
         .replyWithError(error);
       spotifyService.getUsersTopArtists(
         accessToken,
+        null,
         err => expect(err.message).toEqual(error),
       );
     });

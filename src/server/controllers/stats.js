@@ -4,6 +4,9 @@ const httpStatus = require('./../../utils/http_status');
 const logger = require('./../../utils/logger');
 const { UNEXPECTED_SPOTIFY_RESPONSE } = require('./../util/error_responses');
 
+const TOP_ARTISTS = 'TOP_ARTISTS';
+const TOP_TRACKS = 'TOP_TRACKS';
+
 const cleanTopArtistsProperties = topArtists => topArtists.map(artist => ({
   externalUrls: artist.external_urls,
   followers: artist.followers,
@@ -17,34 +20,38 @@ const cleanTopArtistsProperties = topArtists => topArtists.map(artist => ({
   uri: artist.uri,
 }));
 
-const getUsersTopArtistsCallback = res => (err, spotifyRes) => {
-  if (err || !_.has(spotifyRes, 'body.items')) {
-    logger.debug(
-      'Spotify getUsersTopArtists error: ',
-      err || UNEXPECTED_SPOTIFY_RESPONSE,
-    );
-    res.status(httpStatus.BAD_GATEWAY);
-    return res.send({ error: err || UNEXPECTED_SPOTIFY_RESPONSE });
-  }
+const cleanTopTracksProperties = topTracks => topTracks;
 
-  const cleanTopArtists = cleanTopArtistsProperties(spotifyRes.body.items);
-  logger.debug(
-    'Spotify getUsersTopArtists:',
-    JSON.stringify(cleanTopArtists),
-  );
-  return res.send(cleanTopArtists);
-};
+const topArtistsOrTracks = retrieve => (req, res, service) => {
+  const { cleanProperties, endpoint } = {
+    TOP_ARTISTS: {
+      cleanProperties: cleanTopArtistsProperties,
+      endpoint: 'topArtists',
+    },
+    TOP_TRACKS: {
+      cleanProperties: cleanTopTracksProperties,
+      endpoint: 'topTracks',
+    },
+  }[retrieve];
 
-const topArtists = (req, res, getUsersTopArtists) => {
-  logger.debug(`api/stats/topArtists: ${req.logUser}`);
-  getUsersTopArtists(
-    req.user.accessToken,
-    getUsersTopArtistsCallback(res),
-    req.query,
-  );
+  logger.debug(`api/stats/${endpoint}: ${req.logUser}`);
+  service(req.user.accessToken, req.query, (err, spotifyRes) => {
+    if (err || !_.has(spotifyRes, 'body.items')) {
+      logger.debug(
+        `Spotify ${endpoint} error: `,
+        err || UNEXPECTED_SPOTIFY_RESPONSE,
+      );
+      res.status(httpStatus.BAD_GATEWAY);
+      return res.send({ error: err || UNEXPECTED_SPOTIFY_RESPONSE });
+    }
+
+    const cleanedValues = cleanProperties(spotifyRes.body.items);
+    logger.debug(`Spotify ${endpoint}: `, JSON.stringify(cleanedValues));
+    return res.send(cleanedValues);
+  });
 };
 
 module.exports = {
-  getUsersTopArtistsCallback,
-  topArtists,
+  topArtists: topArtistsOrTracks(TOP_ARTISTS),
+  topTracks: topArtistsOrTracks(TOP_TRACKS),
 };

@@ -154,37 +154,75 @@ Object {
     "title": "Spotify Stats",
     "version": "1.0.0",
   },
-  "parameters": Object {},
+  "parameters": Object {
+    "ItemsLimit": Object {
+      "default": 20,
+      "description": "Number of items (minimum 1, maximum 50)",
+      "format": "int32",
+      "in": "query",
+      "maximum": 50,
+      "minimum": 1,
+      "name": "limit",
+      "type": "number",
+    },
+    "ItemsOffset": Object {
+      "default": 0,
+      "description": "Offset value (minimum 0)",
+      "format": "int32",
+      "in": "query",
+      "minimum": 0,
+      "name": "offset",
+      "type": "number",
+    },
+    "ItemsTimeRange": Object {
+      "default": "medium_term",
+      "description": "Time range to take into account",
+      "enum": Array [
+        "long_term",
+        "medium_term",
+        "short_term",
+      ],
+      "in": "query",
+      "name": "timeRange",
+      "type": "string",
+    },
+    "SessionCookie": Object {
+      "default": "Set it in the browser, leave this field as it is",
+      "description": "Session cookie signed",
+      "in": "cookie",
+      "name": "session",
+      "schema": Object {
+        "type": "string",
+      },
+    },
+    "SignatureCookie": Object {
+      "default": "Set it in the browser, leave this field as it is",
+      "description": "Signature key for the Session cookie",
+      "in": "cookie",
+      "name": "session.sig",
+      "schema": Object {
+        "type": "string",
+      },
+    },
+  },
   "paths": Object {
     "/api/authentication/logout": Object {
-      "get": Object {
+      "post": Object {
         "description": "Logout from Spotify",
         "parameters": Array [
           Object {
-            "default": "Set it in the browser, leave this field as it is",
-            "description": "Session cookie signed",
-            "in": "cookie",
-            "name": "session",
-            "schema": Object {
-              "type": "string",
-            },
+            "$ref": "#/parameters/SessionCookie",
           },
           Object {
-            "default": "Set it in the browser, leave this field as it is",
-            "description": "Signature key for the Session cookie",
-            "in": "cookie",
-            "name": "session.sig",
-            "schema": Object {
-              "type": "string",
-            },
+            "$ref": "#/parameters/SignatureCookie",
           },
         ],
         "responses": Object {
           "204": Object {
-            "description": "User logged out",
+            "$ref": "#/responses/NoContent",
           },
           "401": Object {
-            "description": "No user found",
+            "$ref": "#/responses/Unauthorized",
           },
         },
         "tags": Array [
@@ -205,22 +243,10 @@ Object {
         "description": "Retrieve current user (if there is one)",
         "parameters": Array [
           Object {
-            "default": "Set it in the browser, leave this field as it is",
-            "description": "Session cookie signed",
-            "in": "cookie",
-            "name": "session",
-            "schema": Object {
-              "type": "string",
-            },
+            "$ref": "#/parameters/SessionCookie",
           },
           Object {
-            "default": "Set it in the browser, leave this field as it is",
-            "description": "Signature key for the Session cookie",
-            "in": "cookie",
-            "name": "session.sig",
-            "schema": Object {
-              "type": "string",
-            },
+            "$ref": "#/parameters/SignatureCookie",
           },
         ],
         "produces": Array [
@@ -228,13 +254,13 @@ Object {
         ],
         "responses": Object {
           "200": Object {
-            "description": "User found and returned",
+            "$ref": "#/responses/OK",
             "schema": Object {
               "$ref": "#/definitions/User",
             },
           },
           "401": Object {
-            "description": "No user found",
+            "$ref": "#/responses/Unauthorized",
           },
         },
         "tags": Array [
@@ -247,76 +273,75 @@ Object {
         "description": "Retrieve from Spotify user's top artists",
         "parameters": Array [
           Object {
-            "default": "Set it in the browser, leave this field as it is",
-            "description": "Session cookie signed",
-            "in": "cookie",
-            "name": "session",
-            "schema": Object {
-              "type": "string",
-            },
+            "$ref": "#/parameters/SessionCookie",
           },
           Object {
-            "default": "Set it in the browser, leave this field as it is",
-            "description": "Signature key for the Session cookie",
-            "in": "cookie",
-            "name": "session.sig",
-            "schema": Object {
-              "type": "string",
-            },
+            "$ref": "#/parameters/SignatureCookie",
           },
           Object {
-            "default": 5,
-            "description": "Number of artists (minimum 1, maximum 50)",
-            "format": "int32",
-            "in": "query",
-            "maximum": 50,
-            "minimum": 1,
-            "name": "limit",
-            "type": "number",
+            "$ref": "#/parameters/ItemsLimit",
           },
           Object {
-            "default": 0,
-            "description": "Offset value (minimum 0)",
-            "format": "int32",
-            "in": "query",
-            "minimum": 0,
-            "name": "offset",
-            "type": "number",
+            "$ref": "#/parameters/ItemsOffset",
           },
           Object {
-            "default": "medium_term",
-            "description": "Time range to take into account artists",
-            "enum": Array [
-              "long_term",
-              "medium_term",
-              "short_term",
-            ],
-            "in": "query",
-            "name": "timeRange",
-            "type": "string",
+            "$ref": "#/parameters/ItemsTimeRange",
           },
         ],
         "responses": Object {
           "200": Object {
-            "description": "List of user's top artists",
+            "$ref": "#/responses/OK",
             "schema": Object {
               "$ref": "#/definitions/Artists",
             },
           },
           "400": Object {
-            "description": "Bad request",
-            "schema": Object {
-              "$ref": "#/definitions/Error",
-            },
+            "$ref": "#/responses/BadRequest",
           },
           "401": Object {
-            "description": "No user found",
+            "$ref": "#/responses/Unauthorized",
           },
           "502": Object {
-            "description": "Error retrieving artists from Spotify",
-            "schema": Object {
-              "$ref": "#/definitions/Error",
-            },
+            "$ref": "#/responses/BadGateway",
+          },
+        },
+        "tags": Array [
+          "Stats",
+        ],
+      },
+    },
+    "/api/stats/topTracks": Object {
+      "get": Object {
+        "description": "Retrieve from Spotify user's top tracks",
+        "parameters": Array [
+          Object {
+            "$ref": "#/parameters/SessionCookie",
+          },
+          Object {
+            "$ref": "#/parameters/SignatureCookie",
+          },
+          Object {
+            "$ref": "#/parameters/ItemsLimit",
+          },
+          Object {
+            "$ref": "#/parameters/ItemsOffset",
+          },
+          Object {
+            "$ref": "#/parameters/ItemsTimeRange",
+          },
+        ],
+        "responses": Object {
+          "200": Object {
+            "$ref": "#/responses/OK",
+          },
+          "400": Object {
+            "$ref": "#/responses/BadRequest",
+          },
+          "401": Object {
+            "$ref": "#/responses/Unauthorized",
+          },
+          "502": Object {
+            "$ref": "#/responses/BadGateway",
           },
         },
         "tags": Array [
@@ -325,7 +350,32 @@ Object {
       },
     },
   },
-  "responses": Object {},
+  "responses": Object {
+    "BadGateway": Object {
+      "description": "Bad Gateway",
+      "schema": Object {
+        "$ref": "#/definitions/Error",
+      },
+    },
+    "BadRequest": Object {
+      "description": "Bad Request",
+      "schema": Object {
+        "$ref": "#/definitions/Error",
+      },
+    },
+    "NoContent": Object {
+      "description": "No Content",
+    },
+    "OK": Object {
+      "description": "OK",
+    },
+    "Unauthorized": Object {
+      "description": "Unauthorized",
+      "schema": Object {
+        "$ref": "#/definitions/Error",
+      },
+    },
+  },
   "securityDefinitions": Object {},
   "swagger": "2.0",
   "tags": Array [
