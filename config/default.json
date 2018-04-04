@@ -16,11 +16,11 @@
   "SPOTIFY_API_URL": "https://api.spotify.com/",
   "SPOTIFY_API_ENDPOINTS": {
     "TOP_ARTISTS": {
-      "URI": "v1/me/top/artists",
+      "ENDPOINT": "v1/me/top/artists",
       "OPTIONS": ["limit", "offset", "time_range"]
     },
     "TOP_TRACKS": {
-      "URI": "v1/me/top/tracks",
+      "ENDPOINT": "v1/me/top/tracks",
       "OPTIONS": ["limit", "offset", "time_range"]
     }
   },

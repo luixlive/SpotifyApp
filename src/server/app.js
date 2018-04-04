@@ -32,11 +32,15 @@ app.use(passport.session());
 
 app.use('/api', apiRouter);
 
+/* istanbul ignore next */
+if (environment !== 'production') {
+  app.use('/swagger', swaggerRouter);
+}
+
 const webpackCompiler = webpack(webpackConfig);
 switch (environment) {
   /* istanbul ignore next */
   case 'development':
-    app.use('/swagger', swaggerRouter);
     app.use(webpackMiddleware(webpackCompiler, {
     }));
     app.use(webpackHotMiddleware(webpackCompiler));

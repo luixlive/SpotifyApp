@@ -4,7 +4,9 @@ import error from './../../test_utils/error';
 import httpStatus from './../../../utils/http_status';
 import {
   mockSpotifyTopArtists,
+  mockSpotifyTopTracks,
   mockTopArtists,
+  mockTopTracks,
   mockUser,
 } from './../../test_utils/mock_data';
 import { statsController } from './../../../server/controllers';
@@ -66,6 +68,48 @@ describe('Server Controllers - Stats', () => {
         callback(null, null);
       };
       statsController.topArtists(req, res, mockService);
+      expect(statusValue).toBe(httpStatus.BAD_GATEWAY);
+      expect(responseValue.error).toBe(UNEXPECTED_SPOTIFY_RESPONSE);
+    });
+  });
+
+  describe('Top Tracks', () => {
+    let response;
+    beforeEach(() => {
+      response = { body: { items: _.cloneDeep(mockSpotifyTopTracks) } };
+    });
+
+    it('calls service to retrieve tracks', () => {
+      const service = jest.fn();
+      statsController.topTracks(req, res, service);
+      expect(service).toHaveBeenCalledTimes(1);
+      expect(service.mock.calls[0][0]).toBe(user.accessToken);
+      expect(service.mock.calls[0][1]).toBe(req.query);
+      expect(service.mock.calls[0][2]).toBeInstanceOf(Function);
+    });
+
+    it('returns top cleaned tracks in callback', () => {
+      const mockService = (token, options, callback) => {
+        callback(null, response);
+      };
+      statsController.topTracks(req, res, mockService);
+      expect(responseValue).toEqual(mockTopTracks);
+    });
+
+    it('returns bad gateway error when service returns error', () => {
+      const mockService = (token, options, callback) => {
+        callback(error, null);
+      };
+      statsController.topTracks(req, res, mockService);
+      expect(statusValue).toBe(httpStatus.BAD_GATEWAY);
+      expect(responseValue.error).toBe(error);
+    });
+
+    it('returns bad gateway error when Spotifys response is unexpected', () => {
+      const mockService = (token, options, callback) => {
+        callback(null, null);
+      };
+      statsController.topTracks(req, res, mockService);
       expect(statusValue).toBe(httpStatus.BAD_GATEWAY);
       expect(responseValue.error).toBe(UNEXPECTED_SPOTIFY_RESPONSE);
     });

@@ -16,7 +16,7 @@ const injectQueryParams = (url, options, optionsSchema) => {
   return finalUrl.slice(0, -1);
 };
 
-const getTopArtistsOrTracks = retrieve => (accessToken, options, callback) => {
+const getTopArtistsOrTracks = type => (accessToken, options, callback) => {
   const cleanOptions = _.mapKeys(options, (value, key) => {
     if (key === 'timeRange') {
       return 'time_range';
@@ -24,15 +24,11 @@ const getTopArtistsOrTracks = retrieve => (accessToken, options, callback) => {
     return key;
   });
 
-  const {
-    URI: topArtistsEndpoint,
-    OPTIONS: optionsSchema,
-  } = config.get('SPOTIFY_API_ENDPOINTS')[retrieve];
-
+  const { ENDPOINT, OPTIONS } = config.get('SPOTIFY_API_ENDPOINTS')[type];
   const requestUri = injectQueryParams(
-    `${SPOTIFY_API_URL}${topArtistsEndpoint}`,
+    `${SPOTIFY_API_URL}${ENDPOINT}`,
     cleanOptions,
-    optionsSchema,
+    OPTIONS,
   );
 
   request

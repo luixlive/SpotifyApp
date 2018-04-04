@@ -20,7 +20,24 @@ const cleanTopArtistsProperties = topArtists => topArtists.map(artist => ({
   uri: artist.uri,
 }));
 
-const cleanTopTracksProperties = topTracks => topTracks;
+const cleanTopTracksProperties = topTracks => topTracks.map(tracks => ({
+  albums: tracks.albums,
+  artists: tracks.artists,
+  discNumber: tracks.disc_number,
+  durationMs: tracks.duration_ms,
+  explicit: tracks.explicit,
+  externalIds: tracks.external_ids,
+  externalUrls: tracks.external_urls,
+  href: tracks.href,
+  id: tracks.id,
+  isPlayable: tracks.is_playable,
+  name: tracks.name,
+  popularity: tracks.popularity,
+  previewUrl: tracks.preview_url,
+  trackNumber: tracks.track_number,
+  type: tracks.type,
+  uri: tracks.uri,
+}));
 
 const topArtistsOrTracks = retrieve => (req, res, service) => {
   const { cleanProperties, endpoint } = {

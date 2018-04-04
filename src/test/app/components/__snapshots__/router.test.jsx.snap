@@ -31,7 +31,7 @@ exports[`App Components - Router Not Found component renders 1`] = `
 `;
 
 exports[`App Components - Router renders 1`] = `
-<_default>
+<Component>
   <BrowserRouter>
     <Router
       history={
@@ -335,5 +335,5 @@ exports[`App Components - Router renders 1`] = `
       </withRouter(Connect(SizeDetector))>
     </Router>
   </BrowserRouter>
-</_default>
+</Component>
 `;
