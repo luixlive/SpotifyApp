@@ -14,11 +14,7 @@ describe('App API - Stats', () => {
       expect(fetch).toHaveBeenCalledTimes(1);
       expect(fetch.mock.calls[0]).toEqual([
         '/api/stats/topArtists?key=value',
-        {
-          credentials: 'same-origin',
-          headers: { 'Content-Type': 'application/json' },
-          method: 'GET',
-        },
+        { credentials: 'same-origin', method: 'GET' },
       ]);
     });
   });

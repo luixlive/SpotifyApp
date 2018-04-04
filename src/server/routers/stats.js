@@ -55,7 +55,6 @@ const getRouter = (controller) => {
     ),
   );
 
-  // TODO: definir esquema de la respuesta 200
   /**
    * @swagger
    * /api/stats/topTracks:
@@ -72,6 +71,8 @@ const getRouter = (controller) => {
    *     responses:
    *       200:
    *         $ref: '#/responses/OK'
+   *         schema:
+   *           $ref: '#/definitions/Tracks'
    *       400:
    *         $ref: '#/responses/BadRequest'
    *       401:

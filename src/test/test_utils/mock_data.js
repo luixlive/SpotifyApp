@@ -35,7 +35,7 @@ export const mockSpotifyTopArtists = [{
 
 export const mockSpotifyTopTracks = [{
   albums: {},
-  artists: {},
+  artists: [],
   disc_number: 1,
   duration_ms: 0,
   explicit: false,
@@ -52,7 +52,7 @@ export const mockSpotifyTopTracks = [{
   uri: 'uri',
 }, {
   albums: {},
-  artists: {},
+  artists: [],
   disc_number: 1,
   duration_ms: 0,
   explicit: false,
@@ -69,7 +69,7 @@ export const mockSpotifyTopTracks = [{
   uri: 'uri',
 }, {
   albums: {},
-  artists: {},
+  artists: [],
   disc_number: 1,
   duration_ms: 0,
   explicit: false,
@@ -143,7 +143,7 @@ export const mockTopArtists = [{
 
 export const mockTopTracks = [{
   albums: {},
-  artists: {},
+  artists: [],
   discNumber: 1,
   durationMs: 0,
   explicit: false,
@@ -160,7 +160,7 @@ export const mockTopTracks = [{
   uri: 'uri',
 }, {
   albums: {},
-  artists: {},
+  artists: [],
   discNumber: 1,
   durationMs: 0,
   explicit: false,
@@ -177,7 +177,7 @@ export const mockTopTracks = [{
   uri: 'uri',
 }, {
   albums: {},
-  artists: {},
+  artists: [],
   discNumber: 1,
   durationMs: 0,
   explicit: false,

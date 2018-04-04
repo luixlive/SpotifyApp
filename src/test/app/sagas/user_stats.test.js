@@ -1,11 +1,12 @@
-import { call, put, select, takeLatest } from 'redux-saga/effects';
+import { all, call, put, select, takeLatest } from 'redux-saga/effects';
 
 import error from './../../test_utils/error';
 import errors from './../../../app/sagas/util/errors';
-import { statsApi } from './../../../app/api';
 import * as types from './../../../app/actions/types';
 import watcher, {
   getUserAuthenticated,
+  loadTopArtists,
+  loadTopTracks,
   loadUserStats,
 } from './../../../app/sagas/user_stats';
 
@@ -19,20 +20,20 @@ describe('App Sagas - UserStats', () => {
   });
 
   describe('Load User Stats', () => {
-    it(types.LOAD_USER_STATS_SUCCEEDED, () => {
+    it(types.LOAD_USER_STATS_FINISHED, () => {
+      const options = { limit: 15, offset: 0, timeRange: 'long_term' };
       const userAuthenticated = true;
 
       const loadUserStatsGenerator = loadUserStats();
       expect(loadUserStatsGenerator.next().value)
         .toEqual(select(getUserAuthenticated));
       expect(loadUserStatsGenerator.next(userAuthenticated).value)
-        .toEqual(call(statsApi.topArtists.get, {
-          limit: 15,
-          offset: 0,
-          timeRange: 'long_term',
-        }));
+        .toEqual(all([
+          call(loadTopArtists, options),
+          call(loadTopTracks, options),
+        ]));
       expect(loadUserStatsGenerator.next().value)
-        .toEqual(put({ type: types.LOAD_USER_STATS_SUCCEEDED }));
+        .toEqual(put({ type: types.LOAD_USER_STATS_FINISHED, payload: { } }));
       expect(loadUserStatsGenerator.next().done).toBeTruthy();
     });
 

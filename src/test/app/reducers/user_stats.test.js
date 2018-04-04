@@ -8,8 +8,8 @@ describe('App Reducers - UserStats', () => {
     expect(userStatsReducer(undefined, {})).toEqual(initialState);
   });
 
-  it(types.LOAD_USER_STATS_SUCCEEDED, () => {
-    const action = { type: types.LOAD_USER_STATS_SUCCEEDED, payload: {} };
+  it(types.LOAD_USER_STATS_FINISHED, () => {
+    const action = { type: types.LOAD_USER_STATS_FINISHED, payload: { } };
     const expectedState = { ...initialState, statsLoaded: true };
     expect(userStatsReducer(undefined, action)).toEqual(expectedState);
   });

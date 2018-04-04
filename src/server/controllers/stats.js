@@ -8,35 +8,31 @@ const { UNEXPECTED_SPOTIFY_RESPONSE } = require('./../util/error_responses');
 const { TOP_ARTISTS, TOP_TRACKS } = config.get('CONSTANTS');
 
 const cleanTopArtistsProperties = topArtists => topArtists.map(artist => ({
+  ..._.omit(artist, ['external_urls']),
   externalUrls: artist.external_urls,
-  followers: artist.followers,
-  genres: artist.genres,
-  href: artist.href,
-  id: artist.id,
-  images: artist.images,
-  name: artist.name,
-  popularity: artist.popularity,
-  type: artist.type,
-  uri: artist.uri,
 }));
 
-const cleanTopTracksProperties = topTracks => topTracks.map(tracks => ({
-  albums: tracks.albums,
-  artists: tracks.artists,
-  discNumber: tracks.disc_number,
-  durationMs: tracks.duration_ms,
-  explicit: tracks.explicit,
-  externalIds: tracks.external_ids,
-  externalUrls: tracks.external_urls,
-  href: tracks.href,
-  id: tracks.id,
-  isPlayable: tracks.is_playable,
-  name: tracks.name,
-  popularity: tracks.popularity,
-  previewUrl: tracks.preview_url,
-  trackNumber: tracks.track_number,
-  type: tracks.type,
-  uri: tracks.uri,
+const cleanTopTracksProperties = topTracks => topTracks.map(track => ({
+  ..._.omit(track, [
+    'disc_number',
+    'duration_ms',
+    'external_ids',
+    'external_urls',
+    'is_playable',
+    'preview_url',
+    'track_number',
+  ]),
+  artists: track.artists.map(artist => ({
+    ..._.omit(artist, ['external_urls']),
+    externalUrls: artist.external_urls,
+  })),
+  discNumber: track.disc_number,
+  durationMs: track.duration_ms,
+  externalIds: track.external_ids,
+  externalUrls: track.external_urls,
+  isPlayable: track.is_playable,
+  previewUrl: track.preview_url,
+  trackNumber: track.track_number,
 }));
 
 const topArtistsOrTracks = retrieve => (req, res, service) => {

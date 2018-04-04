@@ -11,14 +11,12 @@
  *       error:
  *         type: string
  *
- *   UserBase:
+ *   SpotifyItemBase:
  *     type: object
  *     required:
  *       - externalUrls
- *       - followers
  *       - href
  *       - id
- *       - images
  *       - type
  *       - uri
  *     properties:
@@ -28,39 +26,70 @@
  *           spotify:
  *             type: string
  *             format: uri
- *       followers:
- *         type: object
- *         properties:
- *           href:
- *             type: string
- *             format: uri
- *           total:
- *             type: number
- *             format: int64
  *       href:
  *         type: string
  *         format: uri
  *       id:
  *         type: string
- *       images:
- *         type: array
- *         items:
- *           type: object
- *           properties:
- *             height:
- *               type: number
- *               format: int32
- *             url:
- *               type: string
- *               format: uri
- *             width:
- *               type: number
- *               format: int32
  *       type:
  *         type: string
  *       uri:
  *         type: string
  *         format: uri
+ *
+ *   UserBase:
+ *     type: object
+ *     required:
+ *       - followers
+ *       - images
+ *     allOf:
+ *     - $ref: '#/definitions/SpotifyItemBase'
+ *     - type: object
+ *       properties:
+ *         followers:
+ *           type: object
+ *           properties:
+ *             href:
+ *               type: string
+ *               format: uri
+ *             total:
+ *               type: number
+ *               format: int64
+ *         images:
+ *           type: array
+ *           items:
+ *             type: object
+ *             properties:
+ *               height:
+ *                 type: number
+ *                 format: int32
+ *               url:
+ *                 type: string
+ *                 format: uri
+ *               width:
+ *                 type: number
+ *                 format: int32
+ *
+ *   Artists:
+ *     type: array
+ *     items:
+ *       required:
+ *         - genres
+ *         - name
+ *         - popularity
+ *       allOf:
+ *       - $ref: '#/definitions/UserBase'
+ *       - type: object
+ *         properties:
+ *           genres:
+ *             type: array
+ *             items:
+ *               type: string
+ *           name:
+ *             type: string
+ *           popularity:
+ *             type: number
+ *             format: int32
  *
  *   User:
  *     type: object
@@ -81,24 +110,63 @@
  *       refreshToken:
  *         type: string
  *
- *   Artists:
+ *   Tracks:
  *     type: array
  *     items:
  *       required:
- *         - genres
+ *         - artists
+ *         - discNumber
+ *         - durationMs
+ *         - explicit
+ *         - externalIds
+ *         - isPlayable
  *         - name
  *         - popularity
+ *         - previewUrl
+ *         - trackNumber
  *       allOf:
- *       - $ref: '#/definitions/UserBase'
+ *       - $ref: '#/definitions/SpotifyItemBase'
  *       - type: object
  *         properties:
- *           genres:
+ *           artists:
  *             type: array
  *             items:
- *               type: string
+ *               allOf:
+ *               - $ref: '#/definitions/SpotifyItemBase'
+ *               - type: object
+ *                 properties:
+ *                   externalUrls:
+ *                     type: object
+ *                     properties:
+ *                       spotify:
+ *                         type: string
+ *                         format: uri
+ *                   name:
+ *                     type: string
+ *           discNumber:
+ *             type: number
+ *             format: int32
+ *           durationMs:
+ *             type: number
+ *             format: int32
+ *           explicit:
+ *             type: boolean
+ *           externalIds:
+ *             type: object
+ *             properties:
+ *               isrc:
+ *                 type: string
+ *           isPlayable:
+ *             type: boolean
  *           name:
  *             type: string
  *           popularity:
+ *             type: number
+ *             format: int32
+ *           previewUrl:
+ *             type: string
+ *             format: uri
+ *           trackNumber:
  *             type: number
  *             format: int32
  *

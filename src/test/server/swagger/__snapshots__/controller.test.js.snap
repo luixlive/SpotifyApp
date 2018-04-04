@@ -47,6 +47,132 @@ Object {
       ],
       "type": "object",
     },
+    "SpotifyItemBase": Object {
+      "properties": Object {
+        "externalUrls": Object {
+          "properties": Object {
+            "spotify": Object {
+              "format": "uri",
+              "type": "string",
+            },
+          },
+          "type": "object",
+        },
+        "href": Object {
+          "format": "uri",
+          "type": "string",
+        },
+        "id": Object {
+          "type": "string",
+        },
+        "type": Object {
+          "type": "string",
+        },
+        "uri": Object {
+          "format": "uri",
+          "type": "string",
+        },
+      },
+      "required": Array [
+        "externalUrls",
+        "href",
+        "id",
+        "type",
+        "uri",
+      ],
+      "type": "object",
+    },
+    "Tracks": Object {
+      "items": Object {
+        "allOf": Array [
+          Object {
+            "$ref": "#/definitions/SpotifyItemBase",
+          },
+          Object {
+            "properties": Object {
+              "artists": Object {
+                "items": Object {
+                  "allOf": Array [
+                    Object {
+                      "$ref": "#/definitions/SpotifyItemBase",
+                    },
+                    Object {
+                      "properties": Object {
+                        "externalUrls": Object {
+                          "properties": Object {
+                            "spotify": Object {
+                              "format": "uri",
+                              "type": "string",
+                            },
+                          },
+                          "type": "object",
+                        },
+                        "name": Object {
+                          "type": "string",
+                        },
+                      },
+                      "type": "object",
+                    },
+                  ],
+                },
+                "type": "array",
+              },
+              "discNumber": Object {
+                "format": "int32",
+                "type": "number",
+              },
+              "durationMs": Object {
+                "format": "int32",
+                "type": "number",
+              },
+              "explicit": Object {
+                "type": "boolean",
+              },
+              "externalIds": Object {
+                "properties": Object {
+                  "isrc": Object {
+                    "type": "string",
+                  },
+                },
+                "type": "object",
+              },
+              "isPlayable": Object {
+                "type": "boolean",
+              },
+              "name": Object {
+                "type": "string",
+              },
+              "popularity": Object {
+                "format": "int32",
+                "type": "number",
+              },
+              "previewUrl": Object {
+                "format": "uri",
+                "type": "string",
+              },
+              "trackNumber": Object {
+                "format": "int32",
+                "type": "number",
+              },
+            },
+            "type": "object",
+          },
+        ],
+        "required": Array [
+          "artists",
+          "discNumber",
+          "durationMs",
+          "explicit",
+          "externalIds",
+          "isPlayable",
+          "name",
+          "popularity",
+          "previewUrl",
+          "trackNumber",
+        ],
+      },
+      "type": "array",
+    },
     "User": Object {
       "properties": Object {
         "accessToken": Object {
@@ -79,72 +205,52 @@ Object {
       "type": "object",
     },
     "UserBase": Object {
-      "properties": Object {
-        "externalUrls": Object {
+      "allOf": Array [
+        Object {
+          "$ref": "#/definitions/SpotifyItemBase",
+        },
+        Object {
           "properties": Object {
-            "spotify": Object {
-              "format": "uri",
-              "type": "string",
+            "followers": Object {
+              "properties": Object {
+                "href": Object {
+                  "format": "uri",
+                  "type": "string",
+                },
+                "total": Object {
+                  "format": "int64",
+                  "type": "number",
+                },
+              },
+              "type": "object",
+            },
+            "images": Object {
+              "items": Object {
+                "properties": Object {
+                  "height": Object {
+                    "format": "int32",
+                    "type": "number",
+                  },
+                  "url": Object {
+                    "format": "uri",
+                    "type": "string",
+                  },
+                  "width": Object {
+                    "format": "int32",
+                    "type": "number",
+                  },
+                },
+                "type": "object",
+              },
+              "type": "array",
             },
           },
           "type": "object",
         },
-        "followers": Object {
-          "properties": Object {
-            "href": Object {
-              "format": "uri",
-              "type": "string",
-            },
-            "total": Object {
-              "format": "int64",
-              "type": "number",
-            },
-          },
-          "type": "object",
-        },
-        "href": Object {
-          "format": "uri",
-          "type": "string",
-        },
-        "id": Object {
-          "type": "string",
-        },
-        "images": Object {
-          "items": Object {
-            "properties": Object {
-              "height": Object {
-                "format": "int32",
-                "type": "number",
-              },
-              "url": Object {
-                "format": "uri",
-                "type": "string",
-              },
-              "width": Object {
-                "format": "int32",
-                "type": "number",
-              },
-            },
-            "type": "object",
-          },
-          "type": "array",
-        },
-        "type": Object {
-          "type": "string",
-        },
-        "uri": Object {
-          "format": "uri",
-          "type": "string",
-        },
-      },
+      ],
       "required": Array [
-        "externalUrls",
         "followers",
-        "href",
-        "id",
         "images",
-        "type",
-        "uri",
       ],
       "type": "object",
     },
@@ -333,6 +439,9 @@ Object {
         "responses": Object {
           "200": Object {
             "$ref": "#/responses/OK",
+            "schema": Object {
+              "$ref": "#/definitions/Tracks",
+            },
           },
           "400": Object {
             "$ref": "#/responses/BadRequest",
