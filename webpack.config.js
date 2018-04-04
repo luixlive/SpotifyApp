@@ -5,7 +5,7 @@ const webpack = require('webpack');
 module.exports = {
   entry: [
     'babel-polyfill',
-    'react-hot-loader/patch',
+    'webpack-hot-middleware/client',
     'whatwg-fetch',
     path.resolve(__dirname, './src/app/index.jsx')
   ],
