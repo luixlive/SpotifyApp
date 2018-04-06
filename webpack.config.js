@@ -54,7 +54,9 @@ module.exports = {
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new webpack.HotModuleReplacementPlugin(),
+    ...(process.env.NODE_ENV !== 'production' ? [
+      new webpack.HotModuleReplacementPlugin()
+    ] : []),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false
