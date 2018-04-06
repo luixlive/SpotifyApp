@@ -16,7 +16,9 @@ const store = createStore(
   undefined,
   compose(
     applyMiddleware(sagaMiddleware),
-    window.devToolsExtension ? window.devToolsExtension() : f => f,
+    ...(process.env !== 'production' ? [
+      window.devToolsExtension ? window.devToolsExtension() : f => f,
+    ] : []),
   ),
 );
 

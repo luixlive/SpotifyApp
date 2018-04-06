@@ -1,14 +1,16 @@
+// Use to analyze bundle size
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const CompressionPlugin = require('compression-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
+const production = process.env.NODE_ENV === 'production';
+
 module.exports = {
   entry: [
     'babel-polyfill',
-    ...(process.env.NODE_ENV !== 'production' ? [
-      'webpack-hot-middleware/client',
-    ] : []),
+    ...(!production ? ['webpack-hot-middleware/client'] : []),
     'whatwg-fetch',
     path.resolve(__dirname, './src/app/index.jsx'),
   ],
@@ -17,6 +19,7 @@ module.exports = {
     publicPath: '/',
     filename: 'index_bundle.js',
   },
+  ...(!production ? { devtool: 'eval-source-map' } : {}),
   module: {
     rules: [{
       test: /\.(js|jsx)$/,
@@ -47,29 +50,30 @@ module.exports = {
     }],
   },
   plugins: [
-    new CompressionPlugin({
-      test: /\.js$|\.css$/,
-    }),
+    ...(production ? [
+      // new BundleAnalyzerPlugin(),
+      new CompressionPlugin({
+        test: /\.js$|\.css$/,
+      }),
+      new webpack.DefinePlugin({
+        'process.env': { NODE_ENV: JSON.stringify('production') },
+      }),
+      new webpack.LoaderOptionsPlugin({
+        minimize: true,
+        debug: false,
+      }),
+      new webpack.NoEmitOnErrorsPlugin(),
+      new webpack.optimize.AggressiveMergingPlugin(),
+      new webpack.optimize.UglifyJsPlugin(),
+    ] : []),
+    ...(!production ? [
+      new webpack.HotModuleReplacementPlugin(),
+    ] : []),
     new HtmlWebpackPlugin({
       inject: 'body',
       filename: 'index.html',
       template: './src/app/index.html',
     }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production'),
-      },
-    }),
-    ...(process.env.NODE_ENV !== 'production' ? [
-      new webpack.HotModuleReplacementPlugin(),
-    ] : []),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false,
-    }),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.optimize.AggressiveMergingPlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
   ],
   resolve: {
     // Hack to solve Semantic UI issue reading theme.config

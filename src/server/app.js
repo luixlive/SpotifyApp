@@ -5,15 +5,12 @@ const express = require('express');
 const helmet = require('helmet');
 const passport = require('passport');
 const path = require('path');
-const webpack = require('webpack');
-const webpackMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const apiRouter = require('./routers');
 const logger = require('./../utils/logger');
 const serveGzipped = require('./util/serve_gzipped');
+const setDevelopmentWebpack = require('./util/set_development_webpack');
 const swaggerRouter = require('./swagger');
-const webpackConfig = require('./../../webpack.config');
 
 const app = express();
 const environment = config.util.getEnv('NODE_ENV');
@@ -38,13 +35,10 @@ if (environment !== 'production') {
   app.use('/swagger', swaggerRouter);
 }
 
-const webpackCompiler = webpack(webpackConfig);
 switch (environment) {
   /* istanbul ignore next */
   case 'development':
-    app.use(webpackMiddleware(webpackCompiler, {
-    }));
-    app.use(webpackHotMiddleware(webpackCompiler));
+    setDevelopmentWebpack(app);
     break;
   case 'test':
     app.get('/test', (req, res) => {
