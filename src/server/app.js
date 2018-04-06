@@ -11,6 +11,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const apiRouter = require('./routers');
 const logger = require('./../utils/logger');
+const serveGzipped = require('./util/serve_gzipped');
 const swaggerRouter = require('./swagger');
 const webpackConfig = require('./../../webpack.config');
 
@@ -52,6 +53,8 @@ switch (environment) {
     break;
   /* istanbul ignore next */
   default:
+    app.get('*.js', serveGzipped('text/javascript'));
+    app.get('*.css', serveGzipped('text/css'));
     app.use(express.static(path.join(__dirname, './../../dist')));
 }
 

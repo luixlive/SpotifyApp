@@ -1,3 +1,4 @@
+const CompressionPlugin = require('compression-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
@@ -46,6 +47,9 @@ module.exports = {
     }],
   },
   plugins: [
+    new CompressionPlugin({
+      test: /\.js$|\.css$/,
+    }),
     new HtmlWebpackPlugin({
       inject: 'body',
       filename: 'index.html',
