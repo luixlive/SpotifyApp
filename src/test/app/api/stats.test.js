@@ -8,17 +8,25 @@ describe('App API - Stats', () => {
   });
 
   describe('Top Artists', () => {
-    it('fetches /api/stats/topArtists as a POST', () => {
+    it('fetches /api/stats/topArtists as a GET', () => {
       const query = { key: 'value' };
       statsApi.topArtists.get(query);
       expect(fetch).toHaveBeenCalledTimes(1);
       expect(fetch.mock.calls[0]).toEqual([
         '/api/stats/topArtists?key=value',
-        {
-          credentials: 'same-origin',
-          headers: { 'Content-Type': 'application/json' },
-          method: 'GET',
-        },
+        { credentials: 'same-origin', method: 'GET' },
+      ]);
+    });
+  });
+
+  describe('Top Tracks', () => {
+    it('fetches /api/stats/topTracks as a GET', () => {
+      const query = { key: 'value' };
+      statsApi.topTracks.get(query);
+      expect(fetch).toHaveBeenCalledTimes(1);
+      expect(fetch.mock.calls[0]).toEqual([
+        '/api/stats/topTracks?key=value',
+        { credentials: 'same-origin', method: 'GET' },
       ]);
     });
   });

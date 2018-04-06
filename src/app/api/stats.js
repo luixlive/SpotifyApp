@@ -6,7 +6,15 @@ export default {
       injectOptionsAsQuery('/api/stats/topArtists', options),
       {
         credentials: 'same-origin',
-        headers: { 'Content-Type': 'application/json' },
+        method: 'GET',
+      },
+    ),
+  },
+  topTracks: {
+    get: options => window.fetch(
+      injectOptionsAsQuery('/api/stats/topTracks', options),
+      {
+        credentials: 'same-origin',
         method: 'GET',
       },
     ),

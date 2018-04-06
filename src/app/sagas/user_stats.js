@@ -1,14 +1,68 @@
-import { call, put, select, takeLatest } from 'redux-saga/effects';
+import { all, call, put, select, takeLatest } from 'redux-saga/effects';
 
 import errors from './util/errors';
+import httpStatus from './../../utils/http_status';
 import {
   LOAD_USER_STATS,
   LOAD_USER_STATS_FAILED,
-  LOAD_USER_STATS_SUCCEEDED,
+  LOAD_USER_STATS_FINISHED,
+  LOAD_USER_STATS_TOP_ARTISTS_SUCCEEDED,
+  LOAD_USER_STATS_TOP_ARTISTS_FAILED,
+  LOAD_USER_STATS_TOP_TRACKS_SUCCEEDED,
+  LOAD_USER_STATS_TOP_TRACKS_FAILED,
 } from './../actions/types';
+import readResponse from './util/read_response';
 import { statsApi } from './../api';
 
 export const getUserAuthenticated = ({ user }) => user.userAuthenticated;
+
+export function* loadTopArtists(options) {
+  try {
+    const response = yield call(statsApi.topArtists.get, options);
+
+    if (response.status === httpStatus.OK) {
+      const topArtists = yield call(readResponse, response);
+      yield put({
+        type: LOAD_USER_STATS_TOP_ARTISTS_SUCCEEDED,
+        payload: { topArtists },
+      });
+    } else {
+      yield put({
+        type: LOAD_USER_STATS_TOP_ARTISTS_FAILED,
+        payload: { error: errors.couldntLoadTopArtists },
+      });
+    }
+  } catch (error) {
+    yield put({
+      type: LOAD_USER_STATS_TOP_ARTISTS_FAILED,
+      payload: { error: errors.couldntLoadTopArtists },
+    });
+  }
+}
+
+export function* loadTopTracks(options) {
+  try {
+    const response = yield call(statsApi.topTracks.get, options);
+
+    if (response.status === httpStatus.OK) {
+      const topTracks = yield call(readResponse, response);
+      yield put({
+        type: LOAD_USER_STATS_TOP_TRACKS_SUCCEEDED,
+        payload: { topTracks },
+      });
+    } else {
+      yield put({
+        type: LOAD_USER_STATS_TOP_TRACKS_FAILED,
+        payload: { error: errors.couldntLoadTopTracks },
+      });
+    }
+  } catch (error) {
+    yield put({
+      type: LOAD_USER_STATS_TOP_TRACKS_FAILED,
+      payload: { error: errors.couldntLoadTopTracks },
+    });
+  }
+}
 
 export function* loadUserStats() {
   try {
@@ -16,12 +70,23 @@ export function* loadUserStats() {
 
     if (userAuthenticated) {
       // TODO: This should be configurable by the user
-      yield call(statsApi.topArtists.get, {
-        limit: 15,
-        offset: 0,
-        timeRange: 'long_term',
+      yield all([
+        call(loadTopArtists, {
+          limit: 15,
+          offset: 0,
+          timeRange: 'long_term',
+        }),
+        call(loadTopTracks, {
+          limit: 15,
+          offset: 0,
+          timeRange: 'long_term',
+        }),
+      ]);
+
+      yield put({
+        type: LOAD_USER_STATS_FINISHED,
+        payload: { },
       });
-      yield put({ type: LOAD_USER_STATS_SUCCEEDED });
     } else {
       yield put({
         type: LOAD_USER_STATS_FAILED,

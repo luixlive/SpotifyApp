@@ -15,30 +15,20 @@ const getRouter = (controller) => {
   /**
    * @swagger
    * /api/authentication/logout:
-   *   get:
+   *   post:
    *     tags:
    *       - Authentication
    *     description: Logout from Spotify
    *     parameters:
-   *       - in: cookie
-   *         name: session
-   *         description: Session cookie signed
-   *         default: Set it in the browser, leave this field as it is
-   *         schema:
-   *           type: string
-   *       - in: cookie
-   *         name: session.sig
-   *         description: Signature key for the Session cookie
-   *         default: Set it in the browser, leave this field as it is
-   *         schema:
-   *           type: string
+   *       - $ref: '#/parameters/SessionCookie'
+   *       - $ref: '#/parameters/SignatureCookie'
    *     responses:
    *       204:
-   *         description: User logged out
+   *         $ref: '#/responses/NoContent'
    *       401:
-   *         description: No user found
+   *         $ref: '#/responses/Unauthorized'
    */
-  router.get('/logout', userLoggedIn, controller.logout);
+  router.post('/logout', userLoggedIn, controller.logout);
 
   /**
    * @swagger
@@ -67,25 +57,15 @@ const getRouter = (controller) => {
    *     produces:
    *       - application/json
    *     parameters:
-   *       - in: cookie
-   *         name: session
-   *         description: Session cookie signed
-   *         default: Set it in the browser, leave this field as it is
-   *         schema:
-   *           type: string
-   *       - in: cookie
-   *         name: session.sig
-   *         description: Signature key for the Session cookie
-   *         default: Set it in the browser, leave this field as it is
-   *         schema:
-   *           type: string
+   *       - $ref: '#/parameters/SessionCookie'
+   *       - $ref: '#/parameters/SignatureCookie'
    *     responses:
    *       200:
-   *         description: User found and returned
+   *         $ref: '#/responses/OK'
    *         schema:
    *           $ref: '#/definitions/User'
    *       401:
-   *         description: No user found
+   *         $ref: '#/responses/Unauthorized'
    */
   router.get('/user', userLoggedIn, controller.user);
 

@@ -14,17 +14,73 @@
     "start": "node src/server/server.js",
     "test": "NODE_ENV=test && jest --coverage"
   },
-  "jest": {
-    "setupTestFrameworkScriptFile": "./test-setup.js",
-    "coveragePathIgnorePatterns": [
-      "/test/"
+  "babel": {
+    "plugins": [
+      "react-hot-loader/babel",
+      "lodash"
+    ],
+    "presets": [
+      "env",
+      "stage-2",
+      "react"
     ]
+  },
+  "eslintConfig": {
+    "env": {
+      "jest": true
+    },
+    "extends": "airbnb",
+    "globals": {
+      "document": true,
+      "Event": true,
+      "window": true
+    },
+    "parser": "babel-eslint",
+    "rules": {
+      "jsx-a11y/anchor-is-valid": [
+        "error",
+        {
+          "components": [
+            "Link"
+          ],
+          "specialLink": [
+            "to"
+          ]
+        }
+      ],
+      "max-len": [
+        "error",
+        {
+          "code": 80
+        }
+      ],
+      "no-underscore-dangle": [
+        "error",
+        {
+          "allow": [
+            "_json"
+          ]
+        }
+      ],
+      "object-curly-newline": "off"
+    }
   },
   "husky": {
     "hooks": {
       "pre-commit": "npm run scan && npm run lint",
       "pre-push": "npm run scan && npm run lint && npm test"
     }
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./test-setup.js",
+    "coveragePathIgnorePatterns": [
+      "/test/"
+    ]
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "src/app/*"
+    ]
   },
   "dependencies": {
     "body-parser": "^1.18.2",
@@ -40,7 +96,7 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-hot-loader": "^3.1.3",
+    "react-hot-loader": "^4.0.1",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
@@ -60,6 +116,7 @@
     "babel-eslint": "^8.2.1",
     "babel-jest": "^22.2.2",
     "babel-loader": "^7.1.2",
+    "babel-plugin-lodash": "^3.3.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",

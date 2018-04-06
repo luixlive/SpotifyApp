@@ -1,4 +1,5 @@
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
+import { hot } from 'react-hot-loader';
 import React from 'react';
 
 import { App, Login, UserStats } from './containers';
@@ -11,7 +12,7 @@ export const NotFound = () => (
   </Message>
 );
 
-export default () => (
+export default hot(module)(() => (
   <BrowserRouter>
     <App>
       <Switch>
@@ -24,4 +25,4 @@ export default () => (
       </Switch>
     </App>
   </BrowserRouter>
-);
+));

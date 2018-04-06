@@ -44,7 +44,7 @@ export function* loadUser() {
 
 export function* logoutUser() {
   try {
-    const response = yield call(authenticationApi.logout.get);
+    const response = yield call(authenticationApi.logout.post);
 
     if (response.status === httpStatus.NO_CONTENT) {
       yield put({ type: LOGOUT_USER_SUCCEEDED, payload: {} });

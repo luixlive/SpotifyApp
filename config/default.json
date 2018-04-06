@@ -1,6 +1,10 @@
 {
   "APP_DESCRIPTION": "Simple webapp to see your user's Spotify statistics.",
   "APP_TITLE": "Spotify Stats",
+  "CONSTANTS": {
+    "TOP_ARTISTS": "TOP_ARTISTS",
+    "TOP_TRACKS": "TOP_TRACKS"
+  },
   "HOST": "localhost",
   "LOG_FILE": "./logs/spotifystats.log",
   "LOG_LEVEL": "debug",
@@ -12,7 +16,11 @@
   "SPOTIFY_API_URL": "https://api.spotify.com/",
   "SPOTIFY_API_ENDPOINTS": {
     "TOP_ARTISTS": {
-      "URI": "v1/me/top/artists",
+      "ENDPOINT": "v1/me/top/artists",
+      "OPTIONS": ["limit", "offset", "time_range"]
+    },
+    "TOP_TRACKS": {
+      "ENDPOINT": "v1/me/top/tracks",
       "OPTIONS": ["limit", "offset", "time_range"]
     }
   },
