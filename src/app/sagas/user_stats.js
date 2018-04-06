@@ -18,10 +18,10 @@ export const getUserAuthenticated = ({ user }) => user.userAuthenticated;
 
 export function* loadTopArtists(options) {
   try {
-    const topArtistsResponse = yield call(statsApi.topArtists.get, options);
+    const response = yield call(statsApi.topArtists.get, options);
 
-    if (topArtistsResponse.status === httpStatus.OK) {
-      const topArtists = yield call(readResponse, topArtistsResponse);
+    if (response.status === httpStatus.OK) {
+      const topArtists = yield call(readResponse, response);
       yield put({
         type: LOAD_USER_STATS_TOP_ARTISTS_SUCCEEDED,
         payload: { topArtists },
@@ -42,10 +42,10 @@ export function* loadTopArtists(options) {
 
 export function* loadTopTracks(options) {
   try {
-    const topTracksResponse = yield call(statsApi.topTracks.get, options);
+    const response = yield call(statsApi.topTracks.get, options);
 
-    if (topTracksResponse.status === httpStatus.OK) {
-      const topTracks = yield call(readResponse, topTracksResponse);
+    if (response.status === httpStatus.OK) {
+      const topTracks = yield call(readResponse, response);
       yield put({
         type: LOAD_USER_STATS_TOP_TRACKS_SUCCEEDED,
         payload: { topTracks },
