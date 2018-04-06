@@ -14,15 +14,20 @@
     "start": "node src/server/server.js",
     "test": "NODE_ENV=test && jest --coverage"
   },
-
   "babel": {
-    "plugins":["react-hot-loader/babel"],
-    "presets":["env", "stage-2", "react"]
+    "plugins": [
+      "react-hot-loader/babel",
+      "lodash"
+    ],
+    "presets": [
+      "env",
+      "stage-2",
+      "react"
+    ]
   },
-
   "eslintConfig": {
     "env": {
-        "jest": true
+      "jest": true
     },
     "extends": "airbnb",
     "globals": {
@@ -32,38 +37,51 @@
     },
     "parser": "babel-eslint",
     "rules": {
-      "jsx-a11y/anchor-is-valid": [ "error", {
-        "components": [ "Link" ],
-        "specialLink": [ "to" ]
-      }],
-      "max-len": [ "error", {
-        "code": 80
-      }],
-      "no-underscore-dangle": [ "error", {
-        "allow": [ "_json" ]
-      }],
+      "jsx-a11y/anchor-is-valid": [
+        "error",
+        {
+          "components": [
+            "Link"
+          ],
+          "specialLink": [
+            "to"
+          ]
+        }
+      ],
+      "max-len": [
+        "error",
+        {
+          "code": 80
+        }
+      ],
+      "no-underscore-dangle": [
+        "error",
+        {
+          "allow": [
+            "_json"
+          ]
+        }
+      ],
       "object-curly-newline": "off"
     }
   },
-
   "husky": {
     "hooks": {
       "pre-commit": "npm run scan && npm run lint",
       "pre-push": "npm run scan && npm run lint && npm test"
     }
   },
-
   "jest": {
     "setupTestFrameworkScriptFile": "./test-setup.js",
     "coveragePathIgnorePatterns": [
       "/test/"
     ]
   },
-
   "nodemonConfig": {
-    "ignore": ["src/app/*"]
+    "ignore": [
+      "src/app/*"
+    ]
   },
-
   "dependencies": {
     "body-parser": "^1.18.2",
     "config": "^1.29.4",
@@ -98,6 +116,7 @@
     "babel-eslint": "^8.2.1",
     "babel-jest": "^22.2.2",
     "babel-loader": "^7.1.2",
+    "babel-plugin-lodash": "^3.3.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
