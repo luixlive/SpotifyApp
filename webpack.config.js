@@ -5,6 +5,9 @@ const webpack = require('webpack');
 module.exports = {
   entry: [
     'babel-polyfill',
+    ...(process.env.NODE_ENV !== 'production' ? [
+      'webpack-hot-middleware/client'
+    ] : []),
     'webpack-hot-middleware/client',
     'whatwg-fetch',
     path.resolve(__dirname, './src/app/index.jsx')
