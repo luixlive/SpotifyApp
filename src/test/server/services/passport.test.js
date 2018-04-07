@@ -66,6 +66,7 @@ describe('Server Services - Passport', () => {
       const done = jest.fn();
       const {
         accessToken,
+        expiresIn,
         profile,
         refreshToken,
       } = _.cloneDeep(mockSpotifyUser);
@@ -73,17 +74,19 @@ describe('Server Services - Passport', () => {
       spotifyStrategyCallback(
         accessToken,
         refreshToken,
-        undefined,
+        expiresIn,
         profile,
         done,
       );
       expect(done).toHaveBeenCalledTimes(1);
       expect(done.mock.calls[0][0]).toBeNull();
-      expect(done.mock.calls[0][1]).toEqual({
+      expect(_.omit(done.mock.calls[0][1], 'expires')).toEqual({
         accessToken,
         refreshToken,
         profile: mockUser.profile,
       });
+      expect(done.mock.calls[0][1].expires)
+        .toBeGreaterThanOrEqual(Date.now() + expiresIn);
     });
   });
 });

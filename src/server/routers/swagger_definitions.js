@@ -54,7 +54,7 @@
  *               format: uri
  *             total:
  *               type: number
- *               format: int64
+ *               format: int32
  *         images:
  *           type: array
  *           items:
@@ -95,11 +95,15 @@
  *     type: object
  *     required:
  *       - accessToken
+ *       - expires
  *       - profile
  *       - refreshToken
  *     properties:
  *       accessToken:
  *         type: string
+ *       expires:
+ *         type: number
+ *         format: int32
  *       profile:
  *         allOf:
  *         - $ref: '#/definitions/UserBase'

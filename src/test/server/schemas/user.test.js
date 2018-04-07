@@ -17,6 +17,11 @@ describe('Server Schemas - User', () => {
     expect(result.error).toBeTruthy();
 
     user = _.cloneDeep(mockUser);
+    user.expires = null;
+    result = Joi.validate(user, userSchema);
+    expect(result.error).toBeTruthy();
+
+    user = _.cloneDeep(mockUser);
     user.profile = {};
     result = Joi.validate(user, userSchema);
     expect(result.error).toBeTruthy();

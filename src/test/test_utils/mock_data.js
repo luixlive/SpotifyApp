@@ -90,6 +90,7 @@ export const mockSpotifyUser = {
   accessToken: 'accessTokenaccessTokenaccessTokenaccessTokenaccessTokenaccess' +
   'TokenaccessTokenaccessTokenaccessTokenaccessTokenaccessTokenaccessTokenacc' +
   'essTokenaccessTo',
+  expiresIn: 1000,
   profile: {
     _json: {
       display_name: 'Display Name',
@@ -198,6 +199,7 @@ export const mockUser = {
   accessToken: 'accessTokenaccessTokenaccessTokenaccessTokenaccessTokenaccess' +
   'TokenaccessTokenaccessTokenaccessTokenaccessTokenaccessTokenaccessTokenacc' +
   'essTokenaccessTo',
+  expires: 1000,
   profile: {
     displayName: 'Display Name',
     externalUrls: {},

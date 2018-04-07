@@ -30,6 +30,9 @@ const getRouter = (controller) => {
    */
   router.post('/logout', userLoggedIn, controller.logout);
 
+  // TODO: Swagger docs
+  router.get('/keepSessionAlive', userLoggedIn, controller.keepSessionAlive);
+
   /**
    * @swagger
    * /api/authentication/spotify:

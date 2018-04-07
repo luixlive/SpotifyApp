@@ -178,6 +178,10 @@ Object {
         "accessToken": Object {
           "type": "string",
         },
+        "expires": Object {
+          "format": "int32",
+          "type": "number",
+        },
         "profile": Object {
           "allOf": Array [
             Object {
@@ -199,6 +203,7 @@ Object {
       },
       "required": Array [
         "accessToken",
+        "expires",
         "profile",
         "refreshToken",
       ],
@@ -218,7 +223,7 @@ Object {
                   "type": "string",
                 },
                 "total": Object {
-                  "format": "int64",
+                  "format": "int32",
                   "type": "number",
                 },
               },

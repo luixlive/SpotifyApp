@@ -2,6 +2,7 @@ const Joi = require('joi');
 
 module.exports = Joi.object().keys({
   accessToken: Joi.string().min(151).required(),
+  expires: Joi.number().integer().positive().required(),
   profile: Joi.object().keys({
     displayName: Joi.string().required(),
     externalUrls: Joi.object().required(),

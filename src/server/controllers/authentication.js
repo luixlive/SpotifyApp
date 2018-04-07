@@ -8,6 +8,15 @@ const logout = (req, res) => {
   res.sendStatus(httpStatus.NO_CONTENT);
 };
 
+const keepSessionAlive = (req, res) => {
+  logger.debug(`api/authentication/keepSessionAlive: ${req.logUser}`);
+  const oneMinuteFromNow = Date.now() + (60 * 1000);
+  if (oneMinuteFromNow >= req.user.expires) {
+    // Refresh token
+  }
+  res.sendStatus(httpStatus.NO_CONTENT);
+};
+
 const spotifyCallback = (req, res) => {
   logger.debug('api/authentication/spotify/callback: ', req.logUser);
   res.redirect('/');
@@ -19,6 +28,7 @@ const user = (req, res) => {
 };
 
 module.exports = {
+  keepSessionAlive,
   logout,
   spotifyCallback,
   user,

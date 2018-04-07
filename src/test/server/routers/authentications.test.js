@@ -7,6 +7,7 @@ describe('Server Routers - Authentication', () => {
   let router;
   beforeAll(() => {
     controller = {
+      keepSessionAlive: jest.fn(),
       logout: jest.fn(),
       spotifyCallback: emptyFunction,
       user: jest.fn(),
