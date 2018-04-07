@@ -15,21 +15,27 @@
     "test": "NODE_ENV=test && jest --coverage"
   },
   "babel": {
-    "plugins": [
-      "react-hot-loader/babel",
-      "lodash",
-      [
-        "direct-import",
-        [
-          "semantic-ui-react",
-          {
-            "name": "semantic-ui-react",
-            "indexFile": "semantic-ui-react/dist/es/index.js"
-          },
-          "react-router",
-          "react-router-dom"
+    "env": {
+      "production": {
+        "plugins": [
+          "lodash",
+          [
+            "direct-import",
+            [
+              "semantic-ui-react",
+              {
+                "name": "semantic-ui-react",
+                "indexFile": "semantic-ui-react/dist/es/index.js"
+              },
+              "react-router",
+              "react-router-dom"
+            ]
+          ]
         ]
-      ]
+      }
+    },
+    "plugins": [
+      "react-hot-loader/babel"
     ],
     "presets": [
       "env",
@@ -84,10 +90,12 @@
     }
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "./test-setup.js",
     "coveragePathIgnorePatterns": [
-      "/test/"
-    ]
+      "/test/",
+      "test-setup.js",
+      "webpack.config.js"
+    ],
+    "setupTestFrameworkScriptFile": "./test-setup.js"
   },
   "nodemonConfig": {
     "ignore": [

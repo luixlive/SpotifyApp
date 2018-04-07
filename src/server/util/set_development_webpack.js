@@ -4,6 +4,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const webpackConfig = require('./../../../webpack.config');
 
+/* istanbul ignore next */
 module.exports = (app) => {
   const webpackCompiler = webpack(webpackConfig);
   app.use(webpackDevMiddleware(webpackCompiler, {}));
