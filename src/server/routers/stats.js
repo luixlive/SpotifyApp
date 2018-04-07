@@ -48,11 +48,7 @@ const getRouter = (controller) => {
       '/stats/topArtists',
       SCHEMA_TYPES.TYPE_QUERY,
     ),
-    (req, res) => controller.topArtists(
-      req,
-      res,
-      spotifyService.getUsersTopArtists,
-    ),
+    controller.topArtists(spotifyService.getUsersTopArtists),
   );
 
   /**
@@ -88,11 +84,7 @@ const getRouter = (controller) => {
       '/stats/topTracks',
       SCHEMA_TYPES.TYPE_QUERY,
     ),
-    (req, res) => controller.topTracks(
-      req,
-      res,
-      spotifyService.getUsersTopTracks,
-    ),
+    controller.topTracks(spotifyService.getUsersTopTracks),
   );
 
   return router;

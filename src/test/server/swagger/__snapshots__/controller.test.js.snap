@@ -317,6 +317,33 @@ Object {
     },
   },
   "paths": Object {
+    "/api/authentication/keepSessionAlive": Object {
+      "put": Object {
+        "description": "Use refresh token to get new access token if it is needed",
+        "parameters": Array [
+          Object {
+            "$ref": "#/parameters/SessionCookie",
+          },
+          Object {
+            "$ref": "#/parameters/SignatureCookie",
+          },
+        ],
+        "responses": Object {
+          "204": Object {
+            "$ref": "#/responses/NoContent",
+          },
+          "401": Object {
+            "$ref": "#/responses/Unauthorized",
+          },
+          "502": Object {
+            "$ref": "#/responses/BadGateway",
+          },
+        },
+        "tags": Array [
+          "Authentication",
+        ],
+      },
+    },
     "/api/authentication/logout": Object {
       "post": Object {
         "description": "Logout from Spotify",

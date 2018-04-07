@@ -13,6 +13,12 @@
     "TYPE_BODY": "body",
     "TYPE_QUERY": "query"
   },
+  "SPOTIFY_ACCOUNTS_URL": "https://accounts.spotify.com/",
+  "SPOTIFY_ACCOUNTS_ENDPOINTS": {
+    "REFRESH_ACCESS_TOKEN": {
+      "ENDPOINT": "api/token"
+    }
+  },
   "SPOTIFY_API_URL": "https://api.spotify.com/",
   "SPOTIFY_API_ENDPOINTS": {
     "TOP_ARTISTS": {

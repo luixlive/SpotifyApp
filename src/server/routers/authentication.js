@@ -30,8 +30,25 @@ const getRouter = (controller) => {
    */
   router.post('/logout', userLoggedIn, controller.logout);
 
-  // TODO: Swagger docs
-  router.get('/keepSessionAlive', userLoggedIn, controller.keepSessionAlive);
+  /**
+   * @swagger
+   * /api/authentication/keepSessionAlive:
+   *   put:
+   *     tags:
+   *       - Authentication
+   *     description: Use refresh token to get new access token if it is needed
+   *     parameters:
+   *       - $ref: '#/parameters/SessionCookie'
+   *       - $ref: '#/parameters/SignatureCookie'
+   *     responses:
+   *       204:
+   *         $ref: '#/responses/NoContent'
+   *       401:
+   *         $ref: '#/responses/Unauthorized'
+   *       502:
+   *         $ref: '#/responses/BadGateway'
+   */
+  router.put('/keepSessionAlive', userLoggedIn, controller.keepSessionAlive);
 
   /**
    * @swagger

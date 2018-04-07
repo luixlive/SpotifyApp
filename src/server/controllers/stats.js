@@ -35,7 +35,7 @@ const cleanTopTracksProperties = topTracks => topTracks.map(track => ({
   trackNumber: track.track_number,
 }));
 
-const topArtistsOrTracks = retrieve => (req, res, service) => {
+const topArtistsOrTracks = (retrieve, service) => (req, res) => {
   const { cleanProperties, endpoint } = {
     TOP_ARTISTS: {
       cleanProperties: cleanTopArtistsProperties,
@@ -48,8 +48,9 @@ const topArtistsOrTracks = retrieve => (req, res, service) => {
   }[retrieve];
 
   logger.debug(`api/stats/${endpoint}: ${req.logUser}`);
-  service(req.user.accessToken, req.query, (err, spotifyRes) => {
-    if (err || !_.has(spotifyRes, 'body.items')) {
+  service(req.user.accessToken, req.query, (err, spotifyResponse) => {
+    const body = _.get(spotifyResponse, 'body', {});
+    if (err || !body.items) {
       logger.debug(
         `Spotify ${endpoint} error: `,
         err || UNEXPECTED_SPOTIFY_RESPONSE,
@@ -58,13 +59,13 @@ const topArtistsOrTracks = retrieve => (req, res, service) => {
       return res.send({ error: err || UNEXPECTED_SPOTIFY_RESPONSE });
     }
 
-    const cleanedValues = cleanProperties(spotifyRes.body.items);
+    const cleanedValues = cleanProperties(body.items);
     logger.debug(`Spotify ${endpoint}: `, JSON.stringify(cleanedValues));
     return res.send(cleanedValues);
   });
 };
 
 module.exports = {
-  topArtists: topArtistsOrTracks(TOP_ARTISTS),
-  topTracks: topArtistsOrTracks(TOP_TRACKS),
+  topArtists: service => topArtistsOrTracks(TOP_ARTISTS, service),
+  topTracks: service => topArtistsOrTracks(TOP_TRACKS, service),
 };

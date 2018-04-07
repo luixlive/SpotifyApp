@@ -39,7 +39,7 @@ describe('Server Controllers - Stats', () => {
 
     it('calls service to retrieve artists', () => {
       const service = jest.fn();
-      statsController.topArtists(req, res, service);
+      statsController.topArtists(service)(req, res);
       expect(service).toHaveBeenCalledTimes(1);
       expect(service.mock.calls[0][0]).toBe(user.accessToken);
       expect(service.mock.calls[0][1]).toBe(req.query);
@@ -50,7 +50,7 @@ describe('Server Controllers - Stats', () => {
       const mockService = (token, options, callback) => {
         callback(null, response);
       };
-      statsController.topArtists(req, res, mockService);
+      statsController.topArtists(mockService)(req, res);
       expect(responseValue).toEqual(mockTopArtists);
     });
 
@@ -58,7 +58,7 @@ describe('Server Controllers - Stats', () => {
       const mockService = (token, options, callback) => {
         callback(error, null);
       };
-      statsController.topArtists(req, res, mockService);
+      statsController.topArtists(mockService)(req, res);
       expect(statusValue).toBe(httpStatus.BAD_GATEWAY);
       expect(responseValue.error).toBe(error);
     });
@@ -67,7 +67,7 @@ describe('Server Controllers - Stats', () => {
       const mockService = (token, options, callback) => {
         callback(null, null);
       };
-      statsController.topArtists(req, res, mockService);
+      statsController.topArtists(mockService)(req, res);
       expect(statusValue).toBe(httpStatus.BAD_GATEWAY);
       expect(responseValue.error).toBe(UNEXPECTED_SPOTIFY_RESPONSE);
     });
@@ -81,7 +81,7 @@ describe('Server Controllers - Stats', () => {
 
     it('calls service to retrieve tracks', () => {
       const service = jest.fn();
-      statsController.topTracks(req, res, service);
+      statsController.topTracks(service)(req, res);
       expect(service).toHaveBeenCalledTimes(1);
       expect(service.mock.calls[0][0]).toBe(user.accessToken);
       expect(service.mock.calls[0][1]).toBe(req.query);
@@ -98,7 +98,7 @@ describe('Server Controllers - Stats', () => {
       const customMockTopTracks = _.cloneDeep(mockTopTracks);
       customMockTopTracks[0].artists = [{ externalUrls: 'example' }];
 
-      statsController.topTracks(req, res, mockService);
+      statsController.topTracks(mockService)(req, res);
       expect(responseValue).toEqual(customMockTopTracks);
     });
 
@@ -106,7 +106,7 @@ describe('Server Controllers - Stats', () => {
       const mockService = (token, options, callback) => {
         callback(error, null);
       };
-      statsController.topTracks(req, res, mockService);
+      statsController.topTracks(mockService)(req, res);
       expect(statusValue).toBe(httpStatus.BAD_GATEWAY);
       expect(responseValue.error).toBe(error);
     });
@@ -115,7 +115,7 @@ describe('Server Controllers - Stats', () => {
       const mockService = (token, options, callback) => {
         callback(null, null);
       };
-      statsController.topTracks(req, res, mockService);
+      statsController.topTracks(mockService)(req, res);
       expect(statusValue).toBe(httpStatus.BAD_GATEWAY);
       expect(responseValue.error).toBe(UNEXPECTED_SPOTIFY_RESPONSE);
     });
