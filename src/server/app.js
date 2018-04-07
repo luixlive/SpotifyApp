@@ -47,8 +47,14 @@ switch (environment) {
     break;
   /* istanbul ignore next */
   default:
-    app.get('*.js', serveGzipped('text/javascript'));
-    app.get('*.css', serveGzipped('text/css'));
+    app.get(
+      '*.js',
+      serveGzipped('text/javascript', path.resolve(__dirname, './../../dist')),
+    );
+    app.get(
+      '*.css',
+      serveGzipped('text/css', path.resolve(__dirname, './../../dist')),
+    );
     app.use(express.static(path.join(__dirname, './../../dist')));
 }
 
