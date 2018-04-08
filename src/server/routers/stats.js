@@ -3,7 +3,11 @@ const express = require('express');
 
 const { spotifyRequests } = require('./../schemas');
 const { spotifyService } = require('./../services');
-const { userLoggedIn, validateSchema } = require('./../middlewares');
+const {
+  sessionAlive,
+  userLoggedIn,
+  validateSchema,
+} = require('./../middlewares');
 
 const SCHEMA_TYPES = config.get('SCHEMA_TYPES');
 
@@ -43,6 +47,7 @@ const getRouter = (controller) => {
   router.get(
     '/topArtists',
     userLoggedIn,
+    sessionAlive,
     validateSchema(
       spotifyRequests.topArtistsOrTracksOptions,
       '/stats/topArtists',
@@ -79,6 +84,7 @@ const getRouter = (controller) => {
   router.get(
     '/topTracks',
     userLoggedIn,
+    sessionAlive,
     validateSchema(
       spotifyRequests.topArtistsOrTracksOptions,
       '/stats/topTracks',
