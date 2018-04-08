@@ -4,6 +4,7 @@ import { authenticationApi } from './../api';
 import errors from './util/errors';
 import httpStatus from './../../utils/http_status';
 import {
+  CLEAR_ERROR,
   LOAD_USER,
   LOAD_USER_FAILED,
   LOAD_USER_SUCCEEDED,
@@ -47,6 +48,7 @@ export function* logoutUser() {
     const response = yield call(authenticationApi.logout.post);
 
     if (response.status === httpStatus.NO_CONTENT) {
+      yield put({ type: CLEAR_ERROR, payload: {} });
       yield put({ type: LOGOUT_USER_SUCCEEDED, payload: {} });
     } else {
       yield put({

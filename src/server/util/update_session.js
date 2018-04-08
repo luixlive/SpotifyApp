@@ -10,7 +10,6 @@ module.exports = (req, changes) => {
     JSON.parse(req.session.passport.user),
     changes,
   );
-  logger.debug(newSession);
   const { error } = Joi.validate(newSession, userSchema);
 
   if (error) {
