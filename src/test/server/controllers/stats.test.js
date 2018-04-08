@@ -17,18 +17,11 @@ import {
 describe('Server Controllers - Stats', () => {
   let req;
   let res;
-  let responseValue;
-  let statusValue;
   let user;
   beforeEach(() => {
-    responseValue = undefined;
-    statusValue = undefined;
     user = _.cloneDeep(mockUser);
     req = { user, query: { key: 'value' } };
-    res = {
-      send: (value) => { responseValue = value; },
-      status: (status) => { statusValue = status; },
-    };
+    res = { send: jest.fn(), status: jest.fn() };
   });
 
   describe('Top Artists', () => {
@@ -51,7 +44,8 @@ describe('Server Controllers - Stats', () => {
         callback(null, response);
       };
       statsController.topArtists(mockService)(req, res);
-      expect(responseValue).toEqual(mockTopArtists);
+      expect(res.send).toHaveBeenCalledTimes(1);
+      expect(res.send.mock.calls[0][0]).toEqual(mockTopArtists);
     });
 
     it('returns bad gateway error when service returns error', () => {
@@ -59,8 +53,10 @@ describe('Server Controllers - Stats', () => {
         callback(error, null);
       };
       statsController.topArtists(mockService)(req, res);
-      expect(statusValue).toBe(httpStatus.BAD_GATEWAY);
-      expect(responseValue.error).toBe(error);
+      expect(res.status).toHaveBeenCalledTimes(1);
+      expect(res.status.mock.calls[0][0]).toBe(httpStatus.BAD_GATEWAY);
+      expect(res.send).toHaveBeenCalledTimes(1);
+      expect(res.send.mock.calls[0][0].error).toBe(error);
     });
 
     it('returns bad gateway error when Spotifys response is unexpected', () => {
@@ -68,8 +64,10 @@ describe('Server Controllers - Stats', () => {
         callback(null, null);
       };
       statsController.topArtists(mockService)(req, res);
-      expect(statusValue).toBe(httpStatus.BAD_GATEWAY);
-      expect(responseValue.error).toBe(UNEXPECTED_SPOTIFY_RESPONSE);
+      expect(res.status).toHaveBeenCalledTimes(1);
+      expect(res.status.mock.calls[0][0]).toBe(httpStatus.BAD_GATEWAY);
+      expect(res.send).toHaveBeenCalledTimes(1);
+      expect(res.send.mock.calls[0][0].error).toBe(UNEXPECTED_SPOTIFY_RESPONSE);
     });
   });
 
@@ -99,7 +97,8 @@ describe('Server Controllers - Stats', () => {
       customMockTopTracks[0].artists = [{ externalUrls: 'example' }];
 
       statsController.topTracks(mockService)(req, res);
-      expect(responseValue).toEqual(customMockTopTracks);
+      expect(res.send).toHaveBeenCalledTimes(1);
+      expect(res.send.mock.calls[0][0]).toEqual(customMockTopTracks);
     });
 
     it('returns bad gateway error when service returns error', () => {
@@ -107,8 +106,10 @@ describe('Server Controllers - Stats', () => {
         callback(error, null);
       };
       statsController.topTracks(mockService)(req, res);
-      expect(statusValue).toBe(httpStatus.BAD_GATEWAY);
-      expect(responseValue.error).toBe(error);
+      expect(res.status).toHaveBeenCalledTimes(1);
+      expect(res.status.mock.calls[0][0]).toBe(httpStatus.BAD_GATEWAY);
+      expect(res.send).toHaveBeenCalledTimes(1);
+      expect(res.send.mock.calls[0][0].error).toBe(error);
     });
 
     it('returns bad gateway error when Spotifys response is unexpected', () => {
@@ -116,8 +117,10 @@ describe('Server Controllers - Stats', () => {
         callback(null, null);
       };
       statsController.topTracks(mockService)(req, res);
-      expect(statusValue).toBe(httpStatus.BAD_GATEWAY);
-      expect(responseValue.error).toBe(UNEXPECTED_SPOTIFY_RESPONSE);
+      expect(res.status).toHaveBeenCalledTimes(1);
+      expect(res.status.mock.calls[0][0]).toBe(httpStatus.BAD_GATEWAY);
+      expect(res.send).toHaveBeenCalledTimes(1);
+      expect(res.send.mock.calls[0][0].error).toBe(UNEXPECTED_SPOTIFY_RESPONSE);
     });
   });
 });

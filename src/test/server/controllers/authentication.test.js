@@ -15,14 +15,8 @@ import {
 describe('Server Controllers - Authentication', () => {
   let req;
   let res;
-  let redirectTo;
-  let responseValue;
-  let statusValue;
   let user;
   beforeEach(() => {
-    redirectTo = undefined;
-    responseValue = undefined;
-    statusValue = undefined;
     user = _.cloneDeep(mockUser);
     req = {
       logout: () => { user = undefined; },
@@ -30,18 +24,18 @@ describe('Server Controllers - Authentication', () => {
       user,
     };
     res = {
-      redirect: (path) => { redirectTo = path; },
-      send: (value) => { responseValue = value; },
-      sendStatus: (status) => { statusValue = status; },
-      status: (status) => { statusValue = status; },
+      redirect: jest.fn(),
+      send: jest.fn(),
+      sendStatus: jest.fn(),
+      status: jest.fn(),
     };
   });
 
   describe('Logout', () => {
     it('logs out user', () => {
       authenticationController.logout(req, res);
-      expect(statusValue).toEqual(httpStatus.NO_CONTENT);
-      expect(responseValue).toBeUndefined();
+      expect(res.sendStatus).toHaveBeenCalledTimes(1);
+      expect(res.sendStatus.mock.calls[0][0]).toBe(httpStatus.NO_CONTENT);
       expect(user).toBeUndefined();
       expect(req.session).toBeNull();
     });
@@ -61,7 +55,8 @@ describe('Server Controllers - Authentication', () => {
       const service = jest.fn();
       authenticationController.keepSessionAlive(service)(req, res);
       expect(service).toHaveBeenCalledTimes(0);
-      expect(statusValue).toEqual(httpStatus.NO_CONTENT);
+      expect(res.sendStatus).toHaveBeenCalledTimes(1);
+      expect(res.sendStatus.mock.calls[0][0]).toBe(httpStatus.NO_CONTENT);
     });
 
     it('calls service to refresh token if session expired', () => {
@@ -77,7 +72,8 @@ describe('Server Controllers - Authentication', () => {
         callback(null, response);
       };
       authenticationController.keepSessionAlive(mockService)(req, res);
-      expect(statusValue).toEqual(httpStatus.NO_CONTENT);
+      expect(res.sendStatus).toHaveBeenCalledTimes(1);
+      expect(res.sendStatus.mock.calls[0][0]).toBe(httpStatus.NO_CONTENT);
     });
 
     it('returns bad gateway error when service returns error', () => {
@@ -85,8 +81,10 @@ describe('Server Controllers - Authentication', () => {
         callback(error, null);
       };
       authenticationController.keepSessionAlive(mockService)(req, res);
-      expect(statusValue).toBe(httpStatus.BAD_GATEWAY);
-      expect(responseValue.error).toBe(error);
+      expect(res.status).toHaveBeenCalledTimes(1);
+      expect(res.status.mock.calls[0][0]).toBe(httpStatus.BAD_GATEWAY);
+      expect(res.send).toHaveBeenCalledTimes(1);
+      expect(res.send.mock.calls[0][0].error).toBe(error);
     });
 
     it('returns bad gateway error when Spotifys response is unexpected', () => {
@@ -94,8 +92,10 @@ describe('Server Controllers - Authentication', () => {
         callback(null, null);
       };
       authenticationController.keepSessionAlive(mockService)(req, res);
-      expect(statusValue).toBe(httpStatus.BAD_GATEWAY);
-      expect(responseValue.error).toBe(UNEXPECTED_SPOTIFY_RESPONSE);
+      expect(res.status).toHaveBeenCalledTimes(1);
+      expect(res.status.mock.calls[0][0]).toBe(httpStatus.BAD_GATEWAY);
+      expect(res.send).toHaveBeenCalledTimes(1);
+      expect(res.send.mock.calls[0][0].error).toBe(UNEXPECTED_SPOTIFY_RESPONSE);
     });
   });
 
@@ -103,14 +103,16 @@ describe('Server Controllers - Authentication', () => {
     it('redirects to /', () => {
       req.user = _.cloneDeep(mockSpotifyUser);
       authenticationController.spotifyCallback(req, res);
-      expect(redirectTo).toEqual('/');
+      expect(res.redirect).toHaveBeenCalledTimes(1);
+      expect(res.redirect.mock.calls[0][0]).toEqual('/');
     });
   });
 
   describe('User', () => {
     it('returns user', () => {
       authenticationController.user(req, res);
-      expect(responseValue).toBe(req.user.profile);
+      expect(res.send).toHaveBeenCalledTimes(1);
+      expect(res.send.mock.calls[0][0]).toBe(req.user.profile);
     });
   });
 });
