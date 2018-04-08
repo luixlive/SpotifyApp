@@ -15,7 +15,7 @@ describe('App API Util - Inject Options as Query', () => {
 
   it('should return the endpoint alone if no options were provided', () => {
     let endpoint = '/';
-    let options = { };
+    let options = {};
     expect(injectOptionsAsQuery(endpoint, options)).toEqual('/');
 
     endpoint = 'some/endpoint';

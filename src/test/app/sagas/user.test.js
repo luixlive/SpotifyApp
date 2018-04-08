@@ -77,6 +77,10 @@ describe('App Sagas - User', () => {
       expect(logoutUserGenerator.next().value)
         .toEqual(call(authenticationApi.logout.post));
       expect(logoutUserGenerator.next(response).value).toEqual(put({
+        type: types.CLEAR_ERROR,
+        payload: {},
+      }));
+      expect(logoutUserGenerator.next(response).value).toEqual(put({
         type: types.LOGOUT_USER_SUCCEEDED,
         payload: {},
       }));

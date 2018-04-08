@@ -80,10 +80,10 @@ describe('App Components - Error', () => {
 
       const expectedActions = [{
         type: types.CLEAR_ERROR,
-        payload: { },
+        payload: {},
       }, {
         type: types.LOAD_USER,
-        payload: { },
+        payload: {},
       }];
       expect(store.getActions()[0]).toEqual(expectedActions[0]);
       expect(store.getActions()[1]).toEqual(expectedActions[1]);

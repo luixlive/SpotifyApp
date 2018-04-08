@@ -97,7 +97,7 @@ describe('App Components - Header', () => {
 
       const expectedAction = {
         type: types.LOGOUT_USER,
-        payload: { },
+        payload: {},
       };
       expect(store.getActions()[0]).toEqual(expectedAction);
     });

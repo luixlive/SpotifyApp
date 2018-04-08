@@ -5,7 +5,7 @@ describe('App Actions - Error', () => {
   it(types.CLEAR_ERROR, () => {
     const expectedAction = {
       type: types.CLEAR_ERROR,
-      payload: { },
+      payload: {},
     };
     expect(error()).toEqual(expectedAction);
   });

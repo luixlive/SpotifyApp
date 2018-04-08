@@ -15,6 +15,15 @@ describe('App Reducers - Error', () => {
     expect(errorReducer(undefined, action)).toEqual(expectedState);
   });
 
+  it(types.KEEP_SESSION_ALIVE_FAILED, () => {
+    const action = {
+      type: types.KEEP_SESSION_ALIVE_FAILED,
+      payload: { error },
+    };
+    const expectedState = error;
+    expect(errorReducer(undefined, action)).toEqual(expectedState);
+  });
+
   it(types.LOAD_USER_FAILED, () => {
     const action = { type: types.LOAD_USER_FAILED, payload: { error } };
     const expectedState = error;

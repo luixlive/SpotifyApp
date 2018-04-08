@@ -7,13 +7,13 @@ describe('App API - Authentication', () => {
     global.fetch = fetch;
   });
 
-  describe('User', () => {
-    it('fetches /api/authentication/user as a GET', () => {
-      authenticationApi.user.get();
+  describe('Keep Session Alive', () => {
+    it('fetches /api/authentication/keepSessionAlive as a PUT', () => {
+      authenticationApi.keepSessionAlive.put();
       expect(fetch).toHaveBeenCalledTimes(1);
       expect(fetch.mock.calls[0]).toEqual([
-        '/api/authentication/user',
-        { credentials: 'same-origin', method: 'GET' },
+        '/api/authentication/keepSessionAlive',
+        { credentials: 'same-origin', method: 'PUT' },
       ]);
     });
   });
@@ -25,6 +25,17 @@ describe('App API - Authentication', () => {
       expect(fetch.mock.calls[0]).toEqual([
         '/api/authentication/logout',
         { credentials: 'same-origin', method: 'POST' },
+      ]);
+    });
+  });
+
+  describe('User', () => {
+    it('fetches /api/authentication/user as a GET', () => {
+      authenticationApi.user.get();
+      expect(fetch).toHaveBeenCalledTimes(1);
+      expect(fetch.mock.calls[0]).toEqual([
+        '/api/authentication/user',
+        { credentials: 'same-origin', method: 'GET' },
       ]);
     });
   });

@@ -5,7 +5,7 @@ describe('App Actions - UserStats', () => {
   it(types.LOAD_USER_STATS, () => {
     const expectedAction = {
       type: types.LOAD_USER_STATS,
-      payload: { },
+      payload: {},
     };
     expect(loadUserStats()).toEqual(expectedAction);
   });

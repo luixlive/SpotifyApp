@@ -5,7 +5,7 @@ describe('App Actions - User', () => {
   it(types.LOAD_USER, () => {
     const expectedAction = {
       type: types.LOAD_USER,
-      payload: { },
+      payload: {},
     };
     expect(userActions.loadUser()).toEqual(expectedAction);
   });
@@ -13,7 +13,7 @@ describe('App Actions - User', () => {
   it(types.LOGOUT_USER, () => {
     const expectedAction = {
       type: types.LOGOUT_USER,
-      payload: { },
+      payload: {},
     };
     expect(userActions.logoutUser()).toEqual(expectedAction);
   });

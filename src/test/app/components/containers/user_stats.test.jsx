@@ -67,7 +67,7 @@ describe('App Components - UserStats', () => {
     it('dispatches loadUserStats', () => {
       const expectedAction = {
         type: types.LOAD_USER_STATS,
-        payload: { },
+        payload: {},
       };
       expect(store.getActions()[0]).toEqual(expectedAction);
     });

@@ -88,13 +88,13 @@ export function* loadUserStats() {
           }),
         ]);
 
-        yield put({ type: LOAD_USER_STATS_FINISHED, payload: { } });
+        yield put({ type: LOAD_USER_STATS_FINISHED, payload: {} });
       } else {
         yield put({
           type: KEEP_SESSION_ALIVE_FAILED,
           payload: { error: errors.couldntKeepSessionAlive },
         });
-        yield put({ type: LOGOUT_USER, payload: { } });
+        yield put({ type: LOGOUT_USER, payload: {} });
       }
     } else {
       yield put({

@@ -10,7 +10,7 @@ describe('App Reducers - UserStats', () => {
   });
 
   it(types.LOAD_USER_STATS_FINISHED, () => {
-    const action = { type: types.LOAD_USER_STATS_FINISHED, payload: { } };
+    const action = { type: types.LOAD_USER_STATS_FINISHED, payload: {} };
     const expectedState = { ...initialState, statsLoaded: true };
     expect(userStatsReducer(undefined, action)).toEqual(expectedState);
   });

@@ -84,7 +84,7 @@ describe('App Components - App', () => {
     it('dispatches loadUser', () => {
       const expectedAction = {
         type: types.LOAD_USER,
-        payload: { },
+        payload: {},
       };
       expect(store.getActions()[0]).toEqual(expectedAction);
     });

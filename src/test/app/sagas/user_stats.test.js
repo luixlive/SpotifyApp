@@ -6,7 +6,7 @@ import errors from './../../../app/sagas/util/errors';
 import httpStatus from './../../../utils/http_status';
 import { mockTopArtists, mockTopTracks } from './../../test_utils/mock_data';
 import readResponse from './../../../app/sagas/util/read_response';
-import { statsApi } from './../../../app/api';
+import { authenticationApi, statsApi } from './../../../app/api';
 import * as types from './../../../app/actions/types';
 import watcher, {
   getUserAuthenticated,
@@ -125,18 +125,40 @@ describe('App Sagas - UserStats', () => {
   describe('Load User Stats', () => {
     it(types.LOAD_USER_STATS_FINISHED, () => {
       const options = { limit: 15, offset: 0, timeRange: 'long_term' };
+      const keepSessionAliveResponse = { status: httpStatus.NO_CONTENT };
       const userAuthenticated = true;
 
       const loadUserStatsGenerator = loadUserStats();
       expect(loadUserStatsGenerator.next().value)
         .toEqual(select(getUserAuthenticated));
       expect(loadUserStatsGenerator.next(userAuthenticated).value)
+        .toEqual(call(authenticationApi.keepSessionAlive.put));
+      expect(loadUserStatsGenerator.next(keepSessionAliveResponse).value)
         .toEqual(all([
           call(loadTopArtists, options),
           call(loadTopTracks, options),
         ]));
       expect(loadUserStatsGenerator.next().value)
-        .toEqual(put({ type: types.LOAD_USER_STATS_FINISHED, payload: { } }));
+        .toEqual(put({ type: types.LOAD_USER_STATS_FINISHED, payload: {} }));
+      expect(loadUserStatsGenerator.next().done).toBeTruthy();
+    });
+
+    it(types.KEEP_SESSION_ALIVE_FAILED, () => {
+      const keepSessionAliveResponse = { status: httpStatus.IM_A_TEAPOT };
+      const userAuthenticated = true;
+
+      const loadUserStatsGenerator = loadUserStats();
+      expect(loadUserStatsGenerator.next().value)
+        .toEqual(select(getUserAuthenticated));
+      expect(loadUserStatsGenerator.next(userAuthenticated).value)
+        .toEqual(call(authenticationApi.keepSessionAlive.put));
+      expect(loadUserStatsGenerator.next(keepSessionAliveResponse).value)
+        .toEqual(put({
+          type: types.KEEP_SESSION_ALIVE_FAILED,
+          payload: { error: errors.couldntKeepSessionAlive },
+        }));
+      expect(loadUserStatsGenerator.next().value)
+        .toEqual(put({ type: types.LOGOUT_USER, payload: {} }));
       expect(loadUserStatsGenerator.next().done).toBeTruthy();
     });
 
