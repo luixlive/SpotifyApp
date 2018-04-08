@@ -1,3 +1,10 @@
+export const mockSpotifyRefreshToken = {
+  access_token: 'accessToken',
+  token_type: 'type',
+  scope: 'scope',
+  expires_in: 1000,
+};
+
 export const mockSpotifyTopArtists = [{
   external_urls: {},
   followers: {},

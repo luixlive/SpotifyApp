@@ -2,6 +2,7 @@ const config = require('config');
 const express = require('express');
 const passport = require('passport');
 
+const { spotifyService } = require('./../services');
 const { userLoggedIn } = require('./../middlewares');
 
 const getRouter = (controller) => {
@@ -48,7 +49,11 @@ const getRouter = (controller) => {
    *       502:
    *         $ref: '#/responses/BadGateway'
    */
-  router.put('/keepSessionAlive', userLoggedIn, controller.keepSessionAlive);
+  router.put(
+    '/keepSessionAlive',
+    userLoggedIn,
+    controller.keepSessionAlive(spotifyService.refreshAccessToken),
+  );
 
   /**
    * @swagger

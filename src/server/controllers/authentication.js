@@ -2,8 +2,8 @@ const _ = require('lodash');
 
 const httpStatus = require('./../../utils/http_status');
 const logger = require('./../../utils/logger');
-
 const { UNEXPECTED_SPOTIFY_RESPONSE } = require('./../util/error_responses');
+const updateSession = require('./../util/update_session');
 
 const logout = (req, res) => {
   logger.debug(`api/authentication/logout: ${req.logUser}`);
@@ -12,7 +12,7 @@ const logout = (req, res) => {
   res.sendStatus(httpStatus.NO_CONTENT);
 };
 
-const keepSessionAlive = (req, res, service) => {
+const keepSessionAlive = service => (req, res) => {
   logger.debug(`api/authentication/keepSessionAlive: ${req.logUser}`);
   const oneMinuteFromNow = Date.now() + (60 * 1000);
   if (oneMinuteFromNow >= req.user.expires) {
@@ -27,9 +27,11 @@ const keepSessionAlive = (req, res, service) => {
         return res.send({ error: err || UNEXPECTED_SPOTIFY_RESPONSE });
       }
 
-      req.user.accessToken = body.access_token;
-      req.user.expires = Date.now() + (body.expires_in * 1000);
-      return res.send(httpStatus.NO_CONTENT);
+      updateSession(req, {
+        accessToken: body.access_token,
+        expires: Date.now() + (body.expires_in * 1000),
+      });
+      return res.sendStatus(httpStatus.NO_CONTENT);
     });
   } else {
     res.sendStatus(httpStatus.NO_CONTENT);
