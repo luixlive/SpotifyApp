@@ -6,15 +6,17 @@ import {
 } from './../actions/types';
 
 export const initialState = {
-  displayName: undefined,
-  externalUrls: undefined,
-  followers: undefined,
-  href: undefined,
-  id: undefined,
-  images: undefined,
+  account: {
+    displayName: undefined,
+    externalUrls: undefined,
+    followers: undefined,
+    href: undefined,
+    id: undefined,
+    images: undefined,
+    type: undefined,
+    uri: undefined,
+  },
   loggingOutUser: false,
-  type: undefined,
-  uri: undefined,
   userAuthenticated: false,
   userLoaded: false,
 };
@@ -22,7 +24,12 @@ export const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case LOAD_USER_SUCCEEDED:
-      return { ...state, ...action.payload, userLoaded: true };
+      return {
+        ...state,
+        profile: action.payload.profile,
+        userAuthenticated: action.payload.userAuthenticated,
+        userLoaded: true,
+      };
     case LOGOUT_USER:
       return { ...state, loggingOutUser: true };
     case LOGOUT_USER_FAILED:

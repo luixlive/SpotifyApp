@@ -22,7 +22,7 @@ export function* loadUser() {
       const profile = yield call(readResponse, response);
       yield put({
         type: LOAD_USER_SUCCEEDED,
-        payload: { ...profile, userAuthenticated: true },
+        payload: { profile, userAuthenticated: true },
       });
     } else if (response.status === httpStatus.UNAUTHORIZED) {
       yield put({
