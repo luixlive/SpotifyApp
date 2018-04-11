@@ -66,6 +66,7 @@ const getRouter = (controller) => {
    */
   router.get('/spotify', passport.authenticate('spotify', {
     scope: config.get('SPOTIFY_AUTHORIZATION_SCOPE'),
+    showDialog: true,
   }));
 
   router.get('/spotify/callback', passport.authenticate('spotify', {
