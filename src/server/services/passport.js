@@ -22,7 +22,11 @@ const spotifyStrategyCallback = (
   done,
 ) => {
   const cleanProfile = cleanProfileProperties(profile);
-  logger.debug(`User retrieved successfully: ${JSON.stringify(cleanProfile)}`);
+  logger.debug(
+    `User retrieved successfully: ${JSON.stringify(cleanProfile)}. `,
+    `Access token: ${accessToken}. `,
+    `Refresh token: ${refreshToken}. `,
+  );
   done(null, {
     accessToken,
     expires: Date.now() + (expiresIn * 1000),
