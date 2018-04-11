@@ -30,6 +30,12 @@ describe('App Components Templates - Message', () => {
       const rendered = renderer.create(<PureMessage {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
+
+    it('renders custom title', () => {
+      props.title = 'title';
+      const rendered = renderer.create(<PureMessage {...props} />).toJSON();
+      expect(rendered).toMatchSnapshot();
+    });
   });
 
   describe('Provider', () => {

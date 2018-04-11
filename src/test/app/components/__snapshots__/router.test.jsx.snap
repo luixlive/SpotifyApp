@@ -286,7 +286,9 @@ exports[`App Components - Router renders 1`] = `
                         </Segment>
                       </PureHeader>
                     </Connect(PureHeader)>
-                    <ScreenLoader>
+                    <ScreenLoader
+                      text="Loading..."
+                    >
                       <Segment
                         basic={true}
                         className="body"
@@ -313,8 +315,18 @@ exports[`App Components - Router renders 1`] = `
                                     size="big"
                                   >
                                     <div
-                                      className="ui big inverted loader"
-                                    />
+                                      className="ui big inverted text loader"
+                                    >
+                                      <Header
+                                        as="h3"
+                                      >
+                                        <h3
+                                          className="ui header"
+                                        >
+                                          Loading...
+                                        </h3>
+                                      </Header>
+                                    </div>
                                   </Loader>
                                 </div>
                               </div>

@@ -7,11 +7,11 @@
   "version": "1.0.0",
   "scripts": {
     "build": "NODE_ENV=production; webpack",
+    "dev": "nodemon src/server/server.js",
     "lint": "eslint ./",
     "openCoverage": "open ./coverage/lcov-report/index.html",
     "postinstall": "npm run build",
     "scan": "nsp check",
-    "startDev": "nodemon src/server/server.js",
     "start": "NODE_ENV=production; node src/server/server.js",
     "test": "NODE_ENV=test; jest --coverage; npm run openCoverage",
     "testUpdate": "NODE_ENV=test; jest --coverage --updateSnapshot; npm run openCoverage"

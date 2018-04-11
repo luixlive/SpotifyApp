@@ -17,8 +17,14 @@ exports[`App Components HOC - AuthenticationChecker Snapshots renders user authe
         className="center"
       >
         <div
-          className="ui big inverted loader"
-        />
+          className="ui big inverted text loader"
+        >
+          <h3
+            className="ui header"
+          >
+            Loading...
+          </h3>
+        </div>
       </div>
     </div>
   </div>

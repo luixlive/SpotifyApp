@@ -24,48 +24,51 @@ exports[`App Components - UserStats Snapshots renders stats loaded 1`] = `
       Artists
     </a>
   </div>
-  <ul>
-    <li>
-      displayName
-      : 
-      ""
-    </li>
-    <li>
-      externalUrls
-      : 
-      {}
-    </li>
-    <li>
-      followers
-      : 
-      {}
-    </li>
-    <li>
-      href
-      : 
-      ""
-    </li>
-    <li>
-      id
-      : 
-      ""
-    </li>
-    <li>
-      images
-      : 
-      []
-    </li>
-    <li>
-      type
-      : 
-      ""
-    </li>
-    <li>
-      uri
-      : 
-      ""
-    </li>
-  </ul>
+  <div>
+    <img
+      alt="hola"
+      className="ui medium circular centered image"
+      onError={[Function]}
+      src="url"
+    />
+    <div
+      className="ui centered card"
+      href={undefined}
+      onClick={[Function]}
+    >
+      <div
+        className="content"
+      >
+        <div
+          className="header"
+        >
+          
+        </div>
+        <div
+          className="meta"
+        >
+          <span>
+            
+          </span>
+        </div>
+        <div
+          className="description"
+        >
+          <a
+            href={undefined}
+            target="_blank"
+          >
+            See in Spotify
+          </a>
+        </div>
+      </div>
+      <div
+        className="extra content"
+      >
+         followers
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
@@ -84,8 +87,14 @@ exports[`App Components - UserStats Snapshots renders stats not loaded 1`] = `
         className="center"
       >
         <div
-          className="ui big inverted loader"
-        />
+          className="ui big inverted text loader"
+        >
+          <h3
+            className="ui header"
+          >
+            Loading...
+          </h3>
+        </div>
       </div>
     </div>
   </div>

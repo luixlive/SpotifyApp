@@ -21,12 +21,9 @@ import {
 
 describe('App Components - UserStats', () => {
   describe('Snapshots', () => {
-    const mockStore = configureStore();
     let props;
-    let store;
     beforeAll(() => {
       props = _.cloneDeep(componentProps);
-      store = mockStore(initialState);
     });
 
     it('renders stats not loaded', () => {
@@ -35,6 +32,10 @@ describe('App Components - UserStats', () => {
     });
 
     it('renders stats loaded', () => {
+      const mockStore = configureStore();
+      const store = mockStore(_.merge({}, initialState, {
+        user: { profile: { images: [{ url: 'url' }] } },
+      }));
       props.statsLoaded = true;
       const rendered = renderer.create((
         <Provider store={store}>

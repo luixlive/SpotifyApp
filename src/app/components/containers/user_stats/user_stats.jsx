@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import Artists from './artists';
 import loadUserStats from './../../../actions/user_stats';
 import Profile from './profile';
-import ScreenLoader from './../../screen_loader';
+import ScreenLoader from './../../templates/screen_loader';
 import Tracks from './tracks';
 
 export class PureUserStats extends Component {
