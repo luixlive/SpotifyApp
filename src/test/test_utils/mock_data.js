@@ -94,9 +94,7 @@ export const mockSpotifyTopTracks = [{
 }];
 
 export const mockSpotifyUser = {
-  accessToken: 'accessTokenaccessTokenaccessTokenaccessTokenaccessTokenaccess' +
-  'TokenaccessTokenaccessTokenaccessTokenaccessTokenaccessTokenaccessTokenacc' +
-  'essTokenaccessTo',
+  accessToken: 'accessToken',
   expiresIn: 1000,
   profile: {
     _json: {
@@ -110,8 +108,7 @@ export const mockSpotifyUser = {
       uri: 'uri',
     },
   },
-  refreshToken: 'refreshTokenrefreshTokenrefreshTokenrefreshTokenrefreshToken' +
-  'refreshTokenrefreshTokenrefreshTokenrefreshTokenrefreshTokenrefreshToke',
+  refreshToken: 'refreshToken',
 };
 
 export const mockTopArtists = [{
@@ -203,9 +200,7 @@ export const mockTopTracks = [{
 }];
 
 export const mockUser = {
-  accessToken: 'accessTokenaccessTokenaccessTokenaccessTokenaccessTokenaccess' +
-  'TokenaccessTokenaccessTokenaccessTokenaccessTokenaccessTokenaccessTokenacc' +
-  'essTokenaccessTo',
+  accessToken: 'accessToken',
   expires: 1000,
   profile: {
     displayName: 'Display Name',
@@ -217,6 +212,5 @@ export const mockUser = {
     type: 'type',
     uri: 'uri',
   },
-  refreshToken: 'refreshTokenrefreshTokenrefreshTokenrefreshTokenrefreshToken' +
-  'refreshTokenrefreshTokenrefreshTokenrefreshTokenrefreshTokenrefreshToke',
+  refreshToken: 'refreshToken',
 };
