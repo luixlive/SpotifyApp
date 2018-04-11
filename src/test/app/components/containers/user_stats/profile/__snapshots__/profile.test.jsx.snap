@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Components - Profile renders 1`] = `
+<div>
+  <img
+    alt="hola"
+    className="ui medium circular centered image"
+    onError={[Function]}
+    src="url"
+  />
+  <div
+    className="ui centered card"
+    href={undefined}
+    onClick={[Function]}
+  >
+    <div
+      className="content"
+    >
+      <div
+        className="header"
+      >
+        
+      </div>
+      <div
+        className="meta"
+      >
+        <span>
+          
+        </span>
+      </div>
+      <div
+        className="description"
+      >
+        <a
+          href={undefined}
+          target="_blank"
+        >
+          See in Spotify
+        </a>
+      </div>
+    </div>
+    <div
+      className="extra content"
+    >
+       followers
+    </div>
+  </div>
+</div>
+`;
