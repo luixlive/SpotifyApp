@@ -6,15 +6,15 @@ import {
 } from './../actions/types';
 
 export const initialState = {
-  account: {
-    displayName: undefined,
-    externalUrls: undefined,
-    followers: undefined,
-    href: undefined,
-    id: undefined,
-    images: undefined,
-    type: undefined,
-    uri: undefined,
+  profile: {
+    displayName: '',
+    externalUrls: {},
+    followers: {},
+    href: '',
+    id: '',
+    images: [],
+    type: '',
+    uri: '',
   },
   loggingOutUser: false,
   userAuthenticated: false,

@@ -10,11 +10,11 @@ export const initialState = {
   statsLoaded: false,
   topArtists: {
     error: '',
-    list: undefined,
+    list: [],
   },
   topTracks: {
     error: '',
-    list: undefined,
+    list: [],
   },
 };
 

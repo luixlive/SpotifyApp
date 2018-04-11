@@ -37,7 +37,7 @@ export const login = { userAuthenticated: initialState.user.userAuthenticated };
 export const sizeDetector = { deviceTypeChanged: emptyFunction };
 
 export const userStats = {
-  displayName: initialState.user.account.displayName,
+  displayName: initialState.user.profile.displayName,
   statsLoaded: initialState.userStats.statsLoaded,
   loadUserStats: emptyFunction,
 };

@@ -3,8 +3,11 @@ import { Menu } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import loadUserStats from './../../actions/user_stats';
-import ScreenLoader from './../screen_loader';
+import Artists from './artists';
+import loadUserStats from './../../../actions/user_stats';
+import Profile from './profile';
+import ScreenLoader from './../../screen_loader';
+import Tracks from './tracks';
 
 export class PureUserStats extends Component {
   static PROFILE = 0;
@@ -26,11 +29,11 @@ export class PureUserStats extends Component {
   renderContent() {
     switch (this.state.activeMenuItem) {
       case PureUserStats.PROFILE:
-        return 'Profile';
+        return <Profile />;
       case PureUserStats.TRACKS:
-        return 'Tracks';
+        return <Tracks />;
       case PureUserStats.ARTISTS:
-        return 'Artists';
+        return <Artists />;
       default:
         // TODO: dispatch error if user gets here
         return null;

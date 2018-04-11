@@ -1,4 +1,5 @@
 import error from './../../test_utils/error';
+import { mockTopArtists, mockTopTracks } from './../../test_utils/mock_data';
 import userStatsReducer, {
   initialState,
 } from './../../../app/reducers/user_stats';
@@ -18,13 +19,13 @@ describe('App Reducers - UserStats', () => {
   it(types.LOAD_USER_STATS_TOP_ARTISTS_SUCCEEDED, () => {
     const action = {
       type: types.LOAD_USER_STATS_TOP_ARTISTS_SUCCEEDED,
-      payload: { topArtists: ['artist1', 'artist2'] },
+      payload: { topArtists: mockTopArtists },
     };
     const expectedState = {
       ...initialState,
       topArtists: {
         ...initialState.topArtists,
-        list: ['artist1', 'artist2'],
+        list: mockTopArtists,
       },
     };
     expect(userStatsReducer(undefined, action)).toEqual(expectedState);
@@ -42,13 +43,13 @@ describe('App Reducers - UserStats', () => {
   it(types.LOAD_USER_STATS_TOP_TRACKS_SUCCEEDED, () => {
     const action = {
       type: types.LOAD_USER_STATS_TOP_TRACKS_SUCCEEDED,
-      payload: { topTracks: ['track1', 'track2'] },
+      payload: { topTracks: mockTopTracks },
     };
     const expectedState = {
       ...initialState,
       topTracks: {
         ...initialState.topArtists,
-        list: ['track1', 'track2'],
+        list: mockTopTracks,
       },
     };
     expect(userStatsReducer(undefined, action)).toEqual(expectedState);
