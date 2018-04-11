@@ -7,7 +7,9 @@ export class PureUserCard extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { imageValid: true };
+    this.state = {
+      imageValid: props.profile.images && props.profile.images.length > 0,
+    };
   }
 
   imageIsInvalid = () => this.setState({ imageValid: false });

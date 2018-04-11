@@ -43,3 +43,8 @@ export const userStats = {
   statsLoaded: initialState.userStats.statsLoaded,
   loadUserStats: emptyFunction,
 };
+
+export const userCard = {
+  deviceMobile: initialState.deviceMobile,
+  profile: initialState.user.profile,
+};
