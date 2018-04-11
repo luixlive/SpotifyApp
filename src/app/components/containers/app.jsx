@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { Footer } from './../';
-import { Error, Header } from './../containers';
+import Error from './error';
+import Footer from './footer';
+import Header from './header';
 import { loadUser } from './../../actions/user';
-import ScreenLoader from './../screen_loader';
+import ScreenLoader from './../templates/screen_loader';
 import { SizeDetector } from './../hoc';
 
 export class PureApp extends Component {

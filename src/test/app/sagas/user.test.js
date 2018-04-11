@@ -27,7 +27,7 @@ describe('App Sagas - User', () => {
         .toEqual(call(readResponse, response));
       expect(loadUserGenerator.next(userResponse).value).toEqual(put({
         type: types.LOAD_USER_SUCCEEDED,
-        payload: { ...user, userAuthenticated: true },
+        payload: { profile: user, userAuthenticated: true },
       }));
       expect(loadUserGenerator.next().done).toBeTruthy();
     });

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-import ScreenLoader from './../screen_loader';
+import ScreenLoader from './../templates/screen_loader';
 
 export const getAuthenticationChecker = (ComposedComponent) => {
   const AuthenticationChecker = (props) => {

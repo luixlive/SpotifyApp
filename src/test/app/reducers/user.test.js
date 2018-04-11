@@ -1,4 +1,5 @@
 import error from './../../test_utils/error';
+import { mockUser } from './../../test_utils/mock_data';
 import userReducer, { initialState } from './../../../app/reducers/user';
 import * as types from './../../../app/actions/types';
 
@@ -10,10 +11,11 @@ describe('App Reducers - User', () => {
   it(types.LOAD_USER_SUCCEEDED, () => {
     const action = {
       type: types.LOAD_USER_SUCCEEDED,
-      payload: { userAuthenticated: true },
+      payload: { profile: mockUser, userAuthenticated: true },
     };
     const expectedState = {
       ...initialState,
+      profile: mockUser,
       userAuthenticated: true,
       userLoaded: true,
     };

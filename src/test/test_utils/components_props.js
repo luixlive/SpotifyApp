@@ -9,6 +9,11 @@ export const app = {
   loadUser: emptyFunction,
 };
 
+export const authenticationChecker = {
+  userAuthenticated: initialState.user.userAuthenticated,
+  loggingOutUser: initialState.user.loggingOutUser,
+};
+
 export const error = {
   error: initialState.error,
   clearError: emptyFunction,
@@ -21,10 +26,7 @@ export const header = {
   logoutUser: emptyFunction,
 };
 
-export const authenticationChecker = {
-  userAuthenticated: initialState.user.userAuthenticated,
-  loggingOutUser: initialState.user.loggingOutUser,
-};
+export const login = { userAuthenticated: initialState.user.userAuthenticated };
 
 export const message = {
   title: '',
@@ -32,11 +34,17 @@ export const message = {
   deviceMobile: initialState.deviceMobile,
 };
 
-export const login = { userAuthenticated: initialState.user.userAuthenticated };
+export const screenLoader = { text: '' };
 
 export const sizeDetector = { deviceTypeChanged: emptyFunction };
 
 export const userStats = {
+  displayName: initialState.user.profile.displayName,
   statsLoaded: initialState.userStats.statsLoaded,
   loadUserStats: emptyFunction,
+};
+
+export const userCard = {
+  deviceMobile: initialState.deviceMobile,
+  profile: initialState.user.profile,
 };

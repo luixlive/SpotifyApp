@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Router } from './components';
+import Router from './components';
 import combinedReducers from './reducers';
 import rootSaga from './sagas';
 import './style/semantic.less';

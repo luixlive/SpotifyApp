@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Components - UserStats Snapshots renders stats loaded 1`] = `
+<div>
+  <div
+    className="ui pointing secondary three item menu"
+  >
+    <a
+      className="active item"
+      onClick={[Function]}
+    >
+      
+    </a>
+    <a
+      className="item"
+      onClick={[Function]}
+    >
+      Tracks
+    </a>
+    <a
+      className="item"
+      onClick={[Function]}
+    >
+      Artists
+    </a>
+  </div>
+  <div>
+    <img
+      alt="hola"
+      className="ui medium circular centered image"
+      onError={[Function]}
+      src="url"
+    />
+    <div
+      className="ui centered card"
+      href={undefined}
+      onClick={[Function]}
+    >
+      <div
+        className="content"
+      >
+        <div
+          className="header"
+        >
+          
+        </div>
+        <div
+          className="meta"
+        >
+          <span>
+            
+          </span>
+        </div>
+        <div
+          className="description"
+        >
+          <a
+            href={undefined}
+            target="_blank"
+          >
+            See in Spotify
+          </a>
+        </div>
+      </div>
+      <div
+        className="extra content"
+      >
+         followers
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`App Components - UserStats Snapshots renders stats not loaded 1`] = `
+<div
+  className="ui basic segment body"
+>
+  <div
+    className="ui active transition visible inverted dimmer"
+    onClick={[Function]}
+  >
+    <div
+      className="content"
+    >
+      <div
+        className="center"
+      >
+        <div
+          className="ui big inverted text loader"
+        >
+          <h3
+            className="ui header"
+          >
+            Loading...
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

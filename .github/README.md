@@ -37,9 +37,8 @@ $ mkdir logs && cd logs && touch spotifystats.log
 
 5. Run the project in development mode
 ```
-$ npm run start:dev
+$ npm run dev
 ```
-
 
 6. Open localhost:3000<br />
 <b>Important:</b> You won't be able to log yourself using OAuth because it is not possible to set Spotify's OAuth callback to get you back to localhost. Also you need some secret environment variables.<br />

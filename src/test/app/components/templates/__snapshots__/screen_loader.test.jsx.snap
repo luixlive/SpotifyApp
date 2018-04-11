@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Components Templates - Screen Loader Snapshots renders 1`] = `
+<div
+  className="ui basic segment body"
+>
+  <div
+    className="ui active transition visible inverted dimmer"
+    onClick={[Function]}
+  >
+    <div
+      className="content"
+    >
+      <div
+        className="center"
+      >
+        <div
+          className="ui big inverted text loader"
+        >
+          <h3
+            className="ui header"
+          >
+            
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`App Components Templates - Screen Loader Snapshots renders with custom text 1`] = `
+<div
+  className="ui basic segment body"
+>
+  <div
+    className="ui active transition visible inverted dimmer"
+    onClick={[Function]}
+  >
+    <div
+      className="content"
+    >
+      <div
+        className="center"
+      >
+        <div
+          className="ui big inverted text loader"
+        >
+          <h3
+            className="ui header"
+          >
+            text
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
