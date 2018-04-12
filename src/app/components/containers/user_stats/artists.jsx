@@ -13,7 +13,7 @@ export const PureArtists = props => (
 PureArtists.propTypes = {
   artists: PropTypes.arrayOf(PropTypes.shape({
     followers: PropTypes.number,
-    genres: PropTypes.object,
+    genres: PropTypes.array,
     id: PropTypes.string,
     imageUrl: PropTypes.string,
     name: PropTypes.string,

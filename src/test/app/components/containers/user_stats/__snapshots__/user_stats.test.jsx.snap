@@ -76,6 +76,7 @@ exports[`App Components - UserStats Snapshots renders stats loaded 1`] = `
         <div
           className="extra center aligned content"
         >
+          0
            followers
         </div>
       </div>

@@ -53,6 +53,7 @@ exports[`App Components - Profile renders 1`] = `
       <div
         className="extra center aligned content"
       >
+        0
          followers
       </div>
     </div>

@@ -123,11 +123,11 @@ export const mockSpotifyUser = {
   profile: {
     _json: {
       display_name: 'Display Name',
-      external_urls: { spotify: 'spotify.url' },
+      external_urls: { spotify: 'sp://otify.url' },
       followers: { total: 0 },
       href: 'h://re.f',
       id: 'id',
-      images: [{ url: 'image.url' }],
+      images: [{ url: 'im://age.url' }],
       type: 'type',
       uri: 'uri',
     },
@@ -225,10 +225,10 @@ export const mockUser = {
   expires: 1000,
   profile: {
     displayName: 'Display Name',
-    spotifyUrl: 'spotify.url',
+    spotifyUrl: 'sp://otify.url',
     followers: 0,
     id: 'id',
-    imageUrl: 'image.url',
+    imageUrl: 'im://age.url',
     type: 'type',
   },
   refreshToken: 'refreshToken',

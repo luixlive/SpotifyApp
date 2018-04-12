@@ -57,6 +57,7 @@ exports[`App Components - User Card Snapshots renders mobile and image invalid 1
       <div
         className="extra center aligned content"
       >
+        0
          followers
       </div>
     </div>
@@ -114,6 +115,7 @@ exports[`App Components - User Card Snapshots renders mobile and image valid 1`]
       <div
         className="extra center aligned content"
       >
+        0
          followers
       </div>
     </div>
@@ -181,6 +183,7 @@ exports[`App Components - User Card Snapshots renders no mobile and image invali
       <div
         className="extra center aligned content"
       >
+        0
          followers
       </div>
     </div>
@@ -244,6 +247,7 @@ exports[`App Components - User Card Snapshots renders no mobile and image valid 
       <div
         className="extra center aligned content"
       >
+        0
          followers
       </div>
     </div>

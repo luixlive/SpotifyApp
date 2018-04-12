@@ -57,7 +57,7 @@ export class PureUserCard extends Component {
               </Card.Meta>
             </Card.Content>
             <Card.Content extra textAlign="center">
-              {this.props.profile.followers.total} followers
+              {this.props.profile.followers} followers
             </Card.Content>
           </Card>
         </Grid.Column>
