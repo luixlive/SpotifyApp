@@ -17,13 +17,13 @@ export class PureHeader extends Component {
     return (
       <Segment color="green" textAlign="center">
         <Grid columns={3}>
-          <Grid.Column />
-          <Grid.Column verticalAlign="middle">
-            <Header as={this.props.deviceMobile ? 'h3' : 'h2'} >
+          <Grid.Column width={4} />
+          <Grid.Column verticalAlign="middle" width={8}>
+            <Header as={this.props.deviceMobile ? 'h2' : 'h1'} >
               Spotify Stats
             </Header>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column width={4}>
             <Button
               inverted
               color="green"

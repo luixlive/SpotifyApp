@@ -34,7 +34,7 @@ describe('App Components - UserStats', () => {
     it('renders stats loaded', () => {
       const mockStore = configureStore();
       const store = mockStore(_.merge({}, initialState, {
-        user: { profile: { images: [{ url: 'url' }] } },
+        user: { profile: { imageUrl: 'url' } },
       }));
       props.statsLoaded = true;
       const rendered = renderer.create((

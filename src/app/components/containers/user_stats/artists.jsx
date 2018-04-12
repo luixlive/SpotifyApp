@@ -12,16 +12,13 @@ export const PureArtists = props => (
 
 PureArtists.propTypes = {
   artists: PropTypes.arrayOf(PropTypes.shape({
-    externalUrls: PropTypes.object,
-    followers: PropTypes.object,
+    followers: PropTypes.number,
     genres: PropTypes.object,
-    href: PropTypes.string,
     id: PropTypes.string,
-    images: PropTypes.array,
+    imageUrl: PropTypes.string,
     name: PropTypes.string,
     popularity: PropTypes.number,
-    type: PropTypes.string,
-    uri: PropTypes.string,
+    spotifyUrl: PropTypes.string,
   })).isRequired,
 };
 

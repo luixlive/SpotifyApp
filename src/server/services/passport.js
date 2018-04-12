@@ -1,17 +1,16 @@
+const _ = require('lodash');
 const config = require('config');
 const { Strategy: SpotifyStrategy } = require('passport-spotify');
 
 const logger = require('./../../utils/logger');
 
 const cleanProfileProperties = ({ _json }) => ({
-  displayName: _json.display_name,
-  externalUrls: _json.external_urls,
-  followers: _json.followers,
-  href: _json.href,
-  id: _json.id,
-  images: _json.images,
-  type: _json.type,
-  uri: _json.uri,
+  displayName: _.get(_json, 'display_name'),
+  spotifyUrl: _.get(_json, 'external_urls.spotify'),
+  followers: _.get(_json, 'followers.total'),
+  id: _.get(_json, 'id'),
+  imageUrl: _.get(_json, 'images[0].url'),
+  type: _.get(_json, 'type'),
 });
 
 const spotifyStrategyCallback = (

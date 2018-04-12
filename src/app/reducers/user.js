@@ -8,13 +8,11 @@ import {
 export const initialState = {
   profile: {
     displayName: '',
-    externalUrls: {},
-    followers: {},
-    href: '',
+    spotifyUrl: '',
+    followers: 0,
     id: '',
-    images: [],
+    imageUrl: '',
     type: '',
-    uri: '',
   },
   loggingOutUser: false,
   userAuthenticated: false,

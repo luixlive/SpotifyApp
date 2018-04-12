@@ -12,7 +12,7 @@ describe('App Components - Profile', () => {
   it('renders', () => {
     const mockStore = configureStore();
     const store = mockStore(_.merge({}, initialState, {
-      user: { profile: { images: [{ url: 'url' }] } },
+      user: { profile: { imageUrl: 'url' } },
     }));
     const rendered = renderer.create((
       <Provider store={store}>

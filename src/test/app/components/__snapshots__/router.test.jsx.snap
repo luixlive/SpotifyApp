@@ -237,31 +237,36 @@ exports[`App Components - Router renders 1`] = `
                               <div
                                 className="ui three column grid"
                               >
-                                <GridColumn>
+                                <GridColumn
+                                  width={4}
+                                >
                                   <div
-                                    className="column"
+                                    className="four wide column"
                                   />
                                 </GridColumn>
                                 <GridColumn
                                   verticalAlign="middle"
+                                  width={8}
                                 >
                                   <div
-                                    className="middle aligned column"
+                                    className="middle aligned eight wide column"
                                   >
                                     <Header
-                                      as="h2"
+                                      as="h1"
                                     >
-                                      <h2
+                                      <h1
                                         className="ui header"
                                       >
                                         Spotify Stats
-                                      </h2>
+                                      </h1>
                                     </Header>
                                   </div>
                                 </GridColumn>
-                                <GridColumn>
+                                <GridColumn
+                                  width={4}
+                                >
                                   <div
-                                    className="column"
+                                    className="four wide column"
                                   >
                                     <Button
                                       as="button"

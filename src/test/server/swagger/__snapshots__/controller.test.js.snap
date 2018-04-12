@@ -49,36 +49,17 @@ Object {
     },
     "SpotifyItemBase": Object {
       "properties": Object {
-        "externalUrls": Object {
-          "properties": Object {
-            "spotify": Object {
-              "format": "uri",
-              "type": "string",
-            },
-          },
-          "type": "object",
-        },
-        "href": Object {
-          "format": "uri",
-          "type": "string",
-        },
         "id": Object {
           "type": "string",
         },
-        "type": Object {
-          "type": "string",
-        },
-        "uri": Object {
+        "spotifyUrl": Object {
           "format": "uri",
           "type": "string",
         },
       },
       "required": Array [
-        "externalUrls",
-        "href",
         "id",
-        "type",
-        "uri",
+        "spotifyUrl",
       ],
       "type": "object",
     },
@@ -90,6 +71,22 @@ Object {
           },
           Object {
             "properties": Object {
+              "album": Object {
+                "properties": Object {
+                  "imageUrl": Object {
+                    "format": "uri",
+                    "type": "string",
+                  },
+                  "name": Object {
+                    "type": "string",
+                  },
+                  "spotifyUrl": Object {
+                    "format": "uri",
+                    "type": "string",
+                  },
+                },
+                "type": "object",
+              },
               "artists": Object {
                 "items": Object {
                   "allOf": Array [
@@ -98,15 +95,6 @@ Object {
                     },
                     Object {
                       "properties": Object {
-                        "externalUrls": Object {
-                          "properties": Object {
-                            "spotify": Object {
-                              "format": "uri",
-                              "type": "string",
-                            },
-                          },
-                          "type": "object",
-                        },
                         "name": Object {
                           "type": "string",
                         },
@@ -117,27 +105,9 @@ Object {
                 },
                 "type": "array",
               },
-              "discNumber": Object {
-                "format": "int32",
-                "type": "number",
-              },
               "durationMs": Object {
                 "format": "int32",
                 "type": "number",
-              },
-              "explicit": Object {
-                "type": "boolean",
-              },
-              "externalIds": Object {
-                "properties": Object {
-                  "isrc": Object {
-                    "type": "string",
-                  },
-                },
-                "type": "object",
-              },
-              "isPlayable": Object {
-                "type": "boolean",
               },
               "name": Object {
                 "type": "string",
@@ -145,10 +115,6 @@ Object {
               "popularity": Object {
                 "format": "int32",
                 "type": "number",
-              },
-              "previewUrl": Object {
-                "format": "uri",
-                "type": "string",
               },
               "trackNumber": Object {
                 "format": "int32",
@@ -159,15 +125,11 @@ Object {
           },
         ],
         "required": Array [
+          "album",
           "artists",
-          "discNumber",
           "durationMs",
-          "explicit",
-          "externalIds",
-          "isPlayable",
           "name",
           "popularity",
-          "previewUrl",
           "trackNumber",
         ],
       },
@@ -192,6 +154,9 @@ Object {
                 "displayName": Object {
                   "type": "string",
                 },
+                "type": Object {
+                  "type": "string",
+                },
               },
               "type": "object",
             },
@@ -206,6 +171,7 @@ Object {
         "expires",
         "profile",
         "refreshToken",
+        "type",
       ],
       "type": "object",
     },
@@ -217,37 +183,12 @@ Object {
         Object {
           "properties": Object {
             "followers": Object {
-              "properties": Object {
-                "href": Object {
-                  "format": "uri",
-                  "type": "string",
-                },
-                "total": Object {
-                  "format": "int32",
-                  "type": "number",
-                },
-              },
-              "type": "object",
+              "format": "int32",
+              "type": "number",
             },
-            "images": Object {
-              "items": Object {
-                "properties": Object {
-                  "height": Object {
-                    "format": "int32",
-                    "type": "number",
-                  },
-                  "url": Object {
-                    "format": "uri",
-                    "type": "string",
-                  },
-                  "width": Object {
-                    "format": "int32",
-                    "type": "number",
-                  },
-                },
-                "type": "object",
-              },
-              "type": "array",
+            "imageUrl": Object {
+              "format": "uri",
+              "type": "string",
             },
           },
           "type": "object",
@@ -255,7 +196,7 @@ Object {
       ],
       "required": Array [
         "followers",
-        "images",
+        "imageUrl",
       ],
       "type": "object",
     },

@@ -36,14 +36,14 @@ describe('App Components - User Card', () => {
     });
 
     it('renders no mobile and image valid', () => {
-      props.profile.images = [{ url: 'url' }];
+      props.profile.imageUrl = 'url';
       const rendered = renderer.create(<PureUserCard {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
 
     it('renders mobile and image valid', () => {
       props.deviceMobile = true;
-      props.profile.images = [{ url: 'url' }];
+      props.profile.imageUrl = 'url';
       const rendered = renderer.create(<PureUserCard {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
@@ -54,13 +54,13 @@ describe('App Components - User Card', () => {
       let wrapper = shallow(<PureUserCard {...props} />);
       expect(wrapper.state().imageValid).toBeFalsy();
 
-      props.profile.images = [{ url: 'url' }];
+      props.profile.imageUrl = 'url';
       wrapper = shallow(<PureUserCard {...props} />);
       expect(wrapper.state().imageValid).toBeTruthy();
     });
 
     it('updates state if there is an error while loading image', () => {
-      props.profile.images = [{ url: 'url' }];
+      props.profile.imageUrl = 'url';
       const wrapper = shallow(<PureUserCard {...props} />);
       expect(wrapper.state().imageValid).toBeTruthy();
       wrapper.find('Image').simulate('error');

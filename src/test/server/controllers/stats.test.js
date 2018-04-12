@@ -90,15 +90,9 @@ describe('Server Controllers - Stats', () => {
       const mockService = (token, options, callback) => {
         callback(null, response);
       };
-
-      // Validate that it also cleans property external_urls into externalUrls
-      response.body.items[0].artists = [{ external_urls: 'example' }];
-      const customMockTopTracks = _.cloneDeep(mockTopTracks);
-      customMockTopTracks[0].artists = [{ externalUrls: 'example' }];
-
       statsController.topTracks(mockService)(req, res);
       expect(res.send).toHaveBeenCalledTimes(1);
-      expect(res.send.mock.calls[0][0]).toEqual(customMockTopTracks);
+      expect(res.send.mock.calls[0][0]).toEqual(mockTopTracks);
     });
 
     it('returns bad gateway error when service returns error', () => {

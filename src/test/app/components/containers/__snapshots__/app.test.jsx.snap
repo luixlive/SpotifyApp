@@ -9,19 +9,19 @@ exports[`App Components - App Snapshots renders error 1`] = `
       className="ui three column grid"
     >
       <div
-        className="column"
+        className="four wide column"
       />
       <div
-        className="middle aligned column"
+        className="middle aligned eight wide column"
       >
-        <h2
+        <h1
           className="ui header"
         >
           Spotify Stats
-        </h2>
+        </h1>
       </div>
       <div
-        className="column"
+        className="four wide column"
       >
         <button
           className="ui green inverted right floated button"
@@ -76,19 +76,19 @@ exports[`App Components - App Snapshots renders user loaded 1`] = `
       className="ui three column grid"
     >
       <div
-        className="column"
+        className="four wide column"
       />
       <div
-        className="middle aligned column"
+        className="middle aligned eight wide column"
       >
-        <h2
+        <h1
           className="ui header"
         >
           Spotify Stats
-        </h2>
+        </h1>
       </div>
       <div
-        className="column"
+        className="four wide column"
       >
         <button
           className="ui green inverted right floated button"
@@ -116,19 +116,19 @@ exports[`App Components - App Snapshots renders user not loaded 1`] = `
       className="ui three column grid"
     >
       <div
-        className="column"
+        className="four wide column"
       />
       <div
-        className="middle aligned column"
+        className="middle aligned eight wide column"
       >
-        <h2
+        <h1
           className="ui header"
         >
           Spotify Stats
-        </h2>
+        </h1>
       </div>
       <div
-        className="column"
+        className="four wide column"
       >
         <button
           className="ui green inverted right floated button"

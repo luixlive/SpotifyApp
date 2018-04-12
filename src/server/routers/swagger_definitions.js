@@ -14,26 +14,12 @@
  *   SpotifyItemBase:
  *     type: object
  *     required:
- *       - externalUrls
- *       - href
  *       - id
- *       - type
- *       - uri
+ *       - spotifyUrl
  *     properties:
- *       externalUrls:
- *         type: object
- *         properties:
- *           spotify:
- *             type: string
- *             format: uri
- *       href:
- *         type: string
- *         format: uri
  *       id:
  *         type: string
- *       type:
- *         type: string
- *       uri:
+ *       spotifyUrl:
  *         type: string
  *         format: uri
  *
@@ -41,34 +27,17 @@
  *     type: object
  *     required:
  *       - followers
- *       - images
+ *       - imageUrl
  *     allOf:
  *     - $ref: '#/definitions/SpotifyItemBase'
  *     - type: object
  *       properties:
  *         followers:
- *           type: object
- *           properties:
- *             href:
- *               type: string
- *               format: uri
- *             total:
- *               type: number
- *               format: int32
- *         images:
- *           type: array
- *           items:
- *             type: object
- *             properties:
- *               height:
- *                 type: number
- *                 format: int32
- *               url:
- *                 type: string
- *                 format: uri
- *               width:
- *                 type: number
- *                 format: int32
+ *           type: number
+ *           format: int32
+ *         imageUrl:
+ *           type: string
+ *           format: uri
  *
  *   Artists:
  *     type: array
@@ -98,6 +67,7 @@
  *       - expires
  *       - profile
  *       - refreshToken
+ *       - type
  *     properties:
  *       accessToken:
  *         type: string
@@ -111,6 +81,8 @@
  *           properties:
  *             displayName:
  *               type: string
+ *             type:
+ *               type: string
  *       refreshToken:
  *         type: string
  *
@@ -118,20 +90,27 @@
  *     type: array
  *     items:
  *       required:
+ *         - album
  *         - artists
- *         - discNumber
  *         - durationMs
- *         - explicit
- *         - externalIds
- *         - isPlayable
  *         - name
  *         - popularity
- *         - previewUrl
  *         - trackNumber
  *       allOf:
  *       - $ref: '#/definitions/SpotifyItemBase'
  *       - type: object
  *         properties:
+ *           album:
+ *             type: object
+ *             properties:
+ *               imageUrl:
+ *                 type: string
+ *                 format: uri
+ *               name:
+ *                 type: string
+ *               spotifyUrl:
+ *                 type: string
+ *                 format: uri
  *           artists:
  *             type: array
  *             items:
@@ -139,37 +118,16 @@
  *               - $ref: '#/definitions/SpotifyItemBase'
  *               - type: object
  *                 properties:
- *                   externalUrls:
- *                     type: object
- *                     properties:
- *                       spotify:
- *                         type: string
- *                         format: uri
  *                   name:
  *                     type: string
- *           discNumber:
- *             type: number
- *             format: int32
  *           durationMs:
  *             type: number
  *             format: int32
- *           explicit:
- *             type: boolean
- *           externalIds:
- *             type: object
- *             properties:
- *               isrc:
- *                 type: string
- *           isPlayable:
- *             type: boolean
  *           name:
  *             type: string
  *           popularity:
  *             type: number
  *             format: int32
- *           previewUrl:
- *             type: string
- *             format: uri
  *           trackNumber:
  *             type: number
  *             format: int32

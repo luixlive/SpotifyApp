@@ -1,213 +1,255 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App Components - User Card Snapshots renders mobile and image invalid 1`] = `
-<div>
-  <div>
-    <div
-      className="ui hidden divider"
-    />
-    <div
-      className="ui centered grid"
-    >
+<div
+  className="ui one column grid"
+>
+  <div
+    className="sixteen wide column"
+  >
+    <div>
+      <div
+        className="ui hidden divider"
+      />
       <i
         aria-hidden="true"
         className="user circle outline huge icon"
       />
+      <div
+        className="ui hidden divider"
+      />
     </div>
     <div
-      className="ui hidden divider"
-    />
-  </div>
-  <div
-    className="ui centered card"
-    href={undefined}
-    onClick={[Function]}
-  >
-    <div
-      className="content"
+      className="ui fluid card"
+      href={undefined}
+      onClick={[Function]}
     >
       <div
-        className="header"
+        className="center aligned content"
       >
-        
-      </div>
-      <div
-        className="meta"
-      >
-        <span>
-          
-        </span>
-      </div>
-      <div
-        className="description"
-      >
-        <a
-          href={undefined}
-          target="_blank"
+        <div
+          className="header"
         >
-          See in Spotify
-        </a>
+          <h2
+            className="ui header"
+          >
+            
+          </h2>
+        </div>
+        <div
+          className="meta"
+        >
+          <h4
+            className="sub header"
+          >
+            
+             (
+            <a
+              href=""
+              target="_blank"
+            >
+              
+            </a>
+            )
+          </h4>
+        </div>
       </div>
-    </div>
-    <div
-      className="extra content"
-    >
-       followers
+      <div
+        className="extra center aligned content"
+      >
+         followers
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`App Components - User Card Snapshots renders mobile and image valid 1`] = `
-<div>
-  <img
-    alt="hola"
-    className="ui small circular centered image"
-    onError={[Function]}
-    src="url"
-  />
+<div
+  className="ui one column grid"
+>
   <div
-    className="ui centered card"
-    href={undefined}
-    onClick={[Function]}
+    className="sixteen wide column"
   >
+    <img
+      className="ui small circular centered image"
+      onError={[Function]}
+      src="url"
+    />
     <div
-      className="content"
+      className="ui fluid card"
+      href={undefined}
+      onClick={[Function]}
     >
       <div
-        className="header"
+        className="center aligned content"
       >
-        
-      </div>
-      <div
-        className="meta"
-      >
-        <span>
-          
-        </span>
-      </div>
-      <div
-        className="description"
-      >
-        <a
-          href={undefined}
-          target="_blank"
+        <div
+          className="header"
         >
-          See in Spotify
-        </a>
+          <h2
+            className="ui header"
+          >
+            
+          </h2>
+        </div>
+        <div
+          className="meta"
+        >
+          <h4
+            className="sub header"
+          >
+            
+             (
+            <a
+              href=""
+              target="_blank"
+            >
+              
+            </a>
+            )
+          </h4>
+        </div>
       </div>
-    </div>
-    <div
-      className="extra content"
-    >
-       followers
+      <div
+        className="extra center aligned content"
+      >
+         followers
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`App Components - User Card Snapshots renders no mobile and image invalid 1`] = `
-<div>
-  <div>
-    <div
-      className="ui hidden divider"
-    />
-    <div
-      className="ui centered grid"
-    >
+<div
+  className="ui three column grid"
+>
+  <div
+    className="four wide column"
+  />
+  <div
+    className="eight wide column"
+  >
+    <div>
+      <div
+        className="ui hidden divider"
+      />
       <i
         aria-hidden="true"
         className="user circle outline massive icon"
       />
+      <div
+        className="ui hidden divider"
+      />
     </div>
     <div
-      className="ui hidden divider"
-    />
+      className="ui fluid card"
+      href={undefined}
+      onClick={[Function]}
+    >
+      <div
+        className="center aligned content"
+      >
+        <div
+          className="header"
+        >
+          <h1
+            className="ui header"
+          >
+            
+          </h1>
+        </div>
+        <div
+          className="meta"
+        >
+          <h3
+            className="sub header"
+          >
+            
+             (
+            <a
+              href=""
+              target="_blank"
+            >
+              
+            </a>
+            )
+          </h3>
+        </div>
+      </div>
+      <div
+        className="extra center aligned content"
+      >
+         followers
+      </div>
+    </div>
   </div>
   <div
-    className="ui centered card"
-    href={undefined}
-    onClick={[Function]}
-  >
-    <div
-      className="content"
-    >
-      <div
-        className="header"
-      >
-        
-      </div>
-      <div
-        className="meta"
-      >
-        <span>
-          
-        </span>
-      </div>
-      <div
-        className="description"
-      >
-        <a
-          href={undefined}
-          target="_blank"
-        >
-          See in Spotify
-        </a>
-      </div>
-    </div>
-    <div
-      className="extra content"
-    >
-       followers
-    </div>
-  </div>
+    className="four wide column"
+  />
 </div>
 `;
 
 exports[`App Components - User Card Snapshots renders no mobile and image valid 1`] = `
-<div>
-  <img
-    alt="hola"
-    className="ui medium circular centered image"
-    onError={[Function]}
-    src="url"
+<div
+  className="ui three column grid"
+>
+  <div
+    className="four wide column"
   />
   <div
-    className="ui centered card"
-    href={undefined}
-    onClick={[Function]}
+    className="eight wide column"
   >
+    <img
+      className="ui small circular centered image"
+      onError={[Function]}
+      src="url"
+    />
     <div
-      className="content"
+      className="ui fluid card"
+      href={undefined}
+      onClick={[Function]}
     >
       <div
-        className="header"
+        className="center aligned content"
       >
-        
-      </div>
-      <div
-        className="meta"
-      >
-        <span>
-          
-        </span>
-      </div>
-      <div
-        className="description"
-      >
-        <a
-          href={undefined}
-          target="_blank"
+        <div
+          className="header"
         >
-          See in Spotify
-        </a>
+          <h1
+            className="ui header"
+          >
+            
+          </h1>
+        </div>
+        <div
+          className="meta"
+        >
+          <h3
+            className="sub header"
+          >
+            
+             (
+            <a
+              href=""
+              target="_blank"
+            >
+              
+            </a>
+            )
+          </h3>
+        </div>
       </div>
-    </div>
-    <div
-      className="extra content"
-    >
-       followers
+      <div
+        className="extra center aligned content"
+      >
+         followers
+      </div>
     </div>
   </div>
+  <div
+    className="four wide column"
+  />
 </div>
 `;

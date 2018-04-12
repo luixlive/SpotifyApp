@@ -8,31 +8,32 @@ const { UNEXPECTED_SPOTIFY_RESPONSE } = require('./../util/error_responses');
 const { TOP_ARTISTS, TOP_TRACKS } = config.get('CONSTANTS');
 
 const cleanTopArtistsProperties = topArtists => topArtists.map(artist => ({
-  ..._.omit(artist, ['external_urls']),
-  externalUrls: artist.external_urls,
+  spotifyUrl: _.get(artist, 'external_urls.spotify'),
+  followers: _.get(artist, 'followers.total'),
+  genres: _.get(artist, 'genres', []),
+  id: _.get(artist, 'id'),
+  imageUrl: _.get(artist, 'images[0].url'),
+  name: _.get(artist, 'name'),
+  popularity: _.get(artist, 'popularity'),
 }));
 
 const cleanTopTracksProperties = topTracks => topTracks.map(track => ({
-  ..._.omit(track, [
-    'disc_number',
-    'duration_ms',
-    'external_ids',
-    'external_urls',
-    'is_playable',
-    'preview_url',
-    'track_number',
-  ]),
-  artists: track.artists.map(artist => ({
-    ..._.omit(artist, ['external_urls']),
-    externalUrls: artist.external_urls,
+  album: {
+    spotifyUrl: _.get(track, 'album.external_urls.spotify'),
+    imageUrl: _.get(track, 'album.images[0].url'),
+    name: _.get(track, 'album.name'),
+  },
+  artists: _.get(track, 'artists', []).map(artist => ({
+    spotifyUrl: _.get(artist, 'external_urls.spotify'),
+    id: _.get(artist, 'id'),
+    name: _.get(artist, 'name'),
   })),
-  discNumber: track.disc_number,
-  durationMs: track.duration_ms,
-  externalIds: track.external_ids,
-  externalUrls: track.external_urls,
-  isPlayable: track.is_playable,
-  previewUrl: track.preview_url,
-  trackNumber: track.track_number,
+  durationMs: _.get(track, 'duration_ms'),
+  spotifyUrl: _.get(track, 'external_urls.spotify'),
+  id: _.get(track, 'id'),
+  name: _.get(track, 'name'),
+  popularity: _.get(track, 'popularity'),
+  trackNumber: _.get(track, 'track_number'),
 }));
 
 const topArtistsOrTracks = (retrieve, service) => (req, res) => {

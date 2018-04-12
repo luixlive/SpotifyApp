@@ -12,22 +12,14 @@ export const PureTracks = props => (
 
 PureTracks.propTypes = {
   tracks: PropTypes.arrayOf(PropTypes.shape({
-    albums: PropTypes.object,
+    album: PropTypes.object,
     artists: PropTypes.array,
-    discNumber: PropTypes.number,
     durationMs: PropTypes.number,
-    explicit: PropTypes.bool,
-    externalIds: PropTypes.object,
-    externalUrls: PropTypes.object,
-    href: PropTypes.string,
+    spotifyUrl: PropTypes.string,
     id: PropTypes.string,
-    isPlayable: PropTypes.bool,
     name: PropTypes.string,
     popularity: PropTypes.number,
-    previewUrl: PropTypes.string,
     trackNumber: PropTypes.number,
-    type: PropTypes.string,
-    uri: PropTypes.string,
   })).isRequired,
 };
 
