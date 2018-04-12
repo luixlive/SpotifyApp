@@ -12,7 +12,7 @@ describe('Server Schemas - User', () => {
 
   it('doesnt match invalid schemas', () => {
     let user = _.cloneDeep(mockUser);
-    user.accessToken = 'invalidToken';
+    user.accessToken = 123;
     let result = Joi.validate(user, userSchema);
     expect(result.error).toBeTruthy();
 
@@ -27,7 +27,7 @@ describe('Server Schemas - User', () => {
     expect(result.error).toBeTruthy();
 
     user = _.cloneDeep(mockUser);
-    user.refreshToken = 'invalidToken';
+    user.refreshToken = 123;
     result = Joi.validate(user, userSchema);
     expect(result.error).toBeTruthy();
   });

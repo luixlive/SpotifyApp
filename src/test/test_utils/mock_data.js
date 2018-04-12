@@ -146,6 +146,12 @@ export const mockTopArtists = [{
   uri: 'uri',
 }];
 
+export const mockTopArtistsOrTracksOptions = {
+  limit: 15,
+  offset: 0,
+  timeRange: 'long_term',
+};
+
 export const mockTopTracks = [{
   albums: {},
   artists: [],
