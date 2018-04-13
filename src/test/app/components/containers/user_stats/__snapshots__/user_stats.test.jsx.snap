@@ -25,66 +25,70 @@ exports[`App Components - UserStats Snapshots renders stats loaded 1`] = `
     </a>
   </div>
   <div
-    className="ui three column grid"
+    className="ui basic segment"
   >
     <div
-      className="four wide column"
-    />
-    <div
-      className="eight wide column"
+      className="ui three column grid"
     >
-      <img
-        className="ui small circular centered image"
-        onError={[Function]}
-        src="url"
+      <div
+        className="four wide column"
       />
       <div
-        className="ui fluid card"
-        href={undefined}
-        onClick={[Function]}
+        className="eight wide column"
       >
+        <img
+          className="ui small circular centered image"
+          onError={[Function]}
+          src="url"
+        />
         <div
-          className="center aligned content"
+          className="ui fluid card"
+          href={undefined}
+          onClick={[Function]}
         >
           <div
-            className="header"
+            className="center aligned content"
           >
-            <h1
-              className="ui header"
+            <div
+              className="header"
             >
-              
-            </h1>
-          </div>
-          <div
-            className="meta"
-          >
-            <h3
-              className="sub header"
-            >
-              
-               (
-              <a
-                href=""
-                rel="noopener noreferrer"
-                target="_blank"
+              <h1
+                className="ui header"
               >
                 
-              </a>
-              )
-            </h3>
+              </h1>
+            </div>
+            <div
+              className="meta"
+            >
+              <h3
+                className="sub header"
+              >
+                
+                 (
+                <a
+                  href=""
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  
+                </a>
+                )
+              </h3>
+            </div>
+          </div>
+          <div
+            className="extra center aligned content"
+          >
+            0
+             followers
           </div>
         </div>
-        <div
-          className="extra center aligned content"
-        >
-          0
-           followers
-        </div>
       </div>
+      <div
+        className="four wide column"
+      />
     </div>
-    <div
-      className="four wide column"
-    />
   </div>
 </div>
 `;

@@ -2,64 +2,68 @@
 
 exports[`App Components - User Card Snapshots renders mobile and image invalid 1`] = `
 <div
-  className="ui one column grid"
+  className="ui basic segment"
 >
   <div
-    className="sixteen wide column"
+    className="ui one column grid"
   >
-    <div>
-      <div
-        className="ui hidden divider"
-      />
-      <i
-        aria-hidden="true"
-        className="user circle outline huge icon"
-      />
-      <div
-        className="ui hidden divider"
-      />
-    </div>
     <div
-      className="ui fluid card"
-      href={undefined}
-      onClick={[Function]}
+      className="sixteen wide column"
     >
-      <div
-        className="center aligned content"
-      >
+      <div>
         <div
-          className="header"
-        >
-          <h2
-            className="ui header"
-          >
-            
-          </h2>
-        </div>
+          className="ui hidden divider"
+        />
+        <i
+          aria-hidden="true"
+          className="user circle outline huge icon"
+        />
         <div
-          className="meta"
-        >
-          <h4
-            className="sub header"
-          >
-            
-             (
-            <a
-              href=""
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              
-            </a>
-            )
-          </h4>
-        </div>
+          className="ui hidden divider"
+        />
       </div>
       <div
-        className="extra center aligned content"
+        className="ui fluid card"
+        href={undefined}
+        onClick={[Function]}
       >
-        0
-         followers
+        <div
+          className="center aligned content"
+        >
+          <div
+            className="header"
+          >
+            <h2
+              className="ui header"
+            >
+              
+            </h2>
+          </div>
+          <div
+            className="meta"
+          >
+            <h4
+              className="sub header"
+            >
+              
+               (
+              <a
+                href=""
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                
+              </a>
+              )
+            </h4>
+          </div>
+        </div>
+        <div
+          className="extra center aligned content"
+        >
+          0
+           followers
+        </div>
       </div>
     </div>
   </div>
@@ -68,57 +72,61 @@ exports[`App Components - User Card Snapshots renders mobile and image invalid 1
 
 exports[`App Components - User Card Snapshots renders mobile and image valid 1`] = `
 <div
-  className="ui one column grid"
+  className="ui basic segment"
 >
   <div
-    className="sixteen wide column"
+    className="ui one column grid"
   >
-    <img
-      className="ui small circular centered image"
-      onError={[Function]}
-      src="url"
-    />
     <div
-      className="ui fluid card"
-      href={undefined}
-      onClick={[Function]}
+      className="sixteen wide column"
     >
+      <img
+        className="ui small circular centered image"
+        onError={[Function]}
+        src="url"
+      />
       <div
-        className="center aligned content"
+        className="ui fluid card"
+        href={undefined}
+        onClick={[Function]}
       >
         <div
-          className="header"
+          className="center aligned content"
         >
-          <h2
-            className="ui header"
+          <div
+            className="header"
           >
-            
-          </h2>
-        </div>
-        <div
-          className="meta"
-        >
-          <h4
-            className="sub header"
-          >
-            
-             (
-            <a
-              href=""
-              rel="noopener noreferrer"
-              target="_blank"
+            <h2
+              className="ui header"
             >
               
-            </a>
-            )
-          </h4>
+            </h2>
+          </div>
+          <div
+            className="meta"
+          >
+            <h4
+              className="sub header"
+            >
+              
+               (
+              <a
+                href=""
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                
+              </a>
+              )
+            </h4>
+          </div>
         </div>
-      </div>
-      <div
-        className="extra center aligned content"
-      >
-        0
-         followers
+        <div
+          className="extra center aligned content"
+        >
+          0
+           followers
+        </div>
       </div>
     </div>
   </div>
@@ -127,137 +135,145 @@ exports[`App Components - User Card Snapshots renders mobile and image valid 1`]
 
 exports[`App Components - User Card Snapshots renders no mobile and image invalid 1`] = `
 <div
-  className="ui three column grid"
+  className="ui basic segment"
 >
   <div
-    className="four wide column"
-  />
-  <div
-    className="eight wide column"
+    className="ui three column grid"
   >
-    <div>
-      <div
-        className="ui hidden divider"
-      />
-      <i
-        aria-hidden="true"
-        className="user circle outline massive icon"
-      />
-      <div
-        className="ui hidden divider"
-      />
-    </div>
     <div
-      className="ui fluid card"
-      href={undefined}
-      onClick={[Function]}
+      className="four wide column"
+    />
+    <div
+      className="eight wide column"
     >
+      <div>
+        <div
+          className="ui hidden divider"
+        />
+        <i
+          aria-hidden="true"
+          className="user circle outline massive icon"
+        />
+        <div
+          className="ui hidden divider"
+        />
+      </div>
       <div
-        className="center aligned content"
+        className="ui fluid card"
+        href={undefined}
+        onClick={[Function]}
       >
         <div
-          className="header"
+          className="center aligned content"
         >
-          <h1
-            className="ui header"
+          <div
+            className="header"
           >
-            
-          </h1>
-        </div>
-        <div
-          className="meta"
-        >
-          <h3
-            className="sub header"
-          >
-            
-             (
-            <a
-              href=""
-              rel="noopener noreferrer"
-              target="_blank"
+            <h1
+              className="ui header"
             >
               
-            </a>
-            )
-          </h3>
+            </h1>
+          </div>
+          <div
+            className="meta"
+          >
+            <h3
+              className="sub header"
+            >
+              
+               (
+              <a
+                href=""
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                
+              </a>
+              )
+            </h3>
+          </div>
+        </div>
+        <div
+          className="extra center aligned content"
+        >
+          0
+           followers
         </div>
       </div>
-      <div
-        className="extra center aligned content"
-      >
-        0
-         followers
-      </div>
     </div>
+    <div
+      className="four wide column"
+    />
   </div>
-  <div
-    className="four wide column"
-  />
 </div>
 `;
 
 exports[`App Components - User Card Snapshots renders no mobile and image valid 1`] = `
 <div
-  className="ui three column grid"
+  className="ui basic segment"
 >
   <div
-    className="four wide column"
-  />
-  <div
-    className="eight wide column"
+    className="ui three column grid"
   >
-    <img
-      className="ui small circular centered image"
-      onError={[Function]}
-      src="url"
+    <div
+      className="four wide column"
     />
     <div
-      className="ui fluid card"
-      href={undefined}
-      onClick={[Function]}
+      className="eight wide column"
     >
+      <img
+        className="ui small circular centered image"
+        onError={[Function]}
+        src="url"
+      />
       <div
-        className="center aligned content"
+        className="ui fluid card"
+        href={undefined}
+        onClick={[Function]}
       >
         <div
-          className="header"
+          className="center aligned content"
         >
-          <h1
-            className="ui header"
+          <div
+            className="header"
           >
-            
-          </h1>
-        </div>
-        <div
-          className="meta"
-        >
-          <h3
-            className="sub header"
-          >
-            
-             (
-            <a
-              href=""
-              rel="noopener noreferrer"
-              target="_blank"
+            <h1
+              className="ui header"
             >
               
-            </a>
-            )
-          </h3>
+            </h1>
+          </div>
+          <div
+            className="meta"
+          >
+            <h3
+              className="sub header"
+            >
+              
+               (
+              <a
+                href=""
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                
+              </a>
+              )
+            </h3>
+          </div>
+        </div>
+        <div
+          className="extra center aligned content"
+        >
+          0
+           followers
         </div>
       </div>
-      <div
-        className="extra center aligned content"
-      >
-        0
-         followers
-      </div>
     </div>
+    <div
+      className="four wide column"
+    />
   </div>
-  <div
-    className="four wide column"
-  />
 </div>
 `;

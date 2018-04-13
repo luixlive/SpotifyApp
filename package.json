@@ -97,6 +97,9 @@
       "test-setup.js",
       "webpack.config.js"
     ],
+    "moduleNameMapper": {
+      "\\.less$": "identity-obj-proxy"
+    },
     "setupTestFrameworkScriptFile": "./test-setup.js"
   },
   "nodemonConfig": {

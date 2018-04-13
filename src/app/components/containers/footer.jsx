@@ -1,6 +1,8 @@
 import React from 'react';
 import { Segment } from 'semantic-ui-react';
 
+import './../../style/components/containers/footer.less';
+
 const Footer = () => (
   <Segment className="footer" textAlign="center">
     <p>
