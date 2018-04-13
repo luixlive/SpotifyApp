@@ -49,6 +49,7 @@ export class PureUserCard extends Component {
                   {this.props.profile.type} (
                   <a
                     href={this.props.profile.spotifyUrl}
+                    rel="noopener noreferrer"
                     target="_blank"
                   >
                     {this.props.profile.id}

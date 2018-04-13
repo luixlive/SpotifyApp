@@ -1,5 +1,6 @@
 // Use to analyze bundle size
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -53,16 +54,12 @@ module.exports = {
   plugins: [
     ...(production ? [
       // new BundleAnalyzerPlugin(),
-      new CompressionPlugin({
-        test: /\.js$|\.css$/,
-      }),
+      new CleanWebpackPlugin(['dist'], { verbose: true }),
+      new CompressionPlugin({ test: /\.js$|\.css$/ }),
       new webpack.DefinePlugin({
         'process.env': { NODE_ENV: JSON.stringify('production') },
       }),
-      new webpack.LoaderOptionsPlugin({
-        minimize: true,
-        debug: false,
-      }),
+      new webpack.LoaderOptionsPlugin({ minimize: true, debug: false }),
       new webpack.NoEmitOnErrorsPlugin(),
       new webpack.optimize.AggressiveMergingPlugin(),
       new webpack.optimize.UglifyJsPlugin(),
@@ -74,6 +71,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: 'body',
       filename: 'index.html',
+      minify: {
+        collapseWhitespace: true,
+        html5: true,
+        removeAttributeQuotes: true,
+        removeComments: true,
+        removeEmptyAttributes: true,
+      },
       template: './src/app/index.html',
     }),
   ],
