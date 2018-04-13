@@ -26,7 +26,7 @@ export class PureApp extends Component {
 
   render() {
     return (
-      <div className="body">
+      <div>
         <Header />
         {this.renderBody()}
         <Footer />

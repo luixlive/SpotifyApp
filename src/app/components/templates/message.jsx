@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 export const PureMessage = props => (
-  <Container className="" textAlign="center">
+  <Container textAlign="center">
     <Header
       as="h1"
       style={{
