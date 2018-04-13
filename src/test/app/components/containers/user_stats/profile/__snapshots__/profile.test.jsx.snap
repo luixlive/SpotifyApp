@@ -42,6 +42,7 @@ exports[`App Components - Profile renders 1`] = `
              (
             <a
               href=""
+              rel="noopener noreferrer"
               target="_blank"
             >
               

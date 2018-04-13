@@ -65,6 +65,7 @@ exports[`App Components - UserStats Snapshots renders stats loaded 1`] = `
                (
               <a
                 href=""
+                rel="noopener noreferrer"
                 target="_blank"
               >
                 
