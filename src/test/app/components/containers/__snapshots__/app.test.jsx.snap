@@ -63,7 +63,29 @@ exports[`App Components - App Snapshots renders error 1`] = `
       .
     </h2>
   </div>
-  <div />
+  <div
+    className="ui center aligned segment footer"
+  >
+    <p>
+      Favicon made by
+      <a
+        href="https://www.flaticon.com/authors/gregor-cresnar"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+         Gregor Cresnar 
+      </a>
+      from
+      <a
+        href="https://www.flaticon.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+         www.flaticon.com
+      </a>
+      .
+    </p>
+  </div>
 </div>
 `;
 
@@ -103,7 +125,29 @@ exports[`App Components - App Snapshots renders user loaded 1`] = `
     </div>
   </div>
   <div />
-  <div />
+  <div
+    className="ui center aligned segment footer"
+  >
+    <p>
+      Favicon made by
+      <a
+        href="https://www.flaticon.com/authors/gregor-cresnar"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+         Gregor Cresnar 
+      </a>
+      from
+      <a
+        href="https://www.flaticon.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+         www.flaticon.com
+      </a>
+      .
+    </p>
+  </div>
 </div>
 `;
 
@@ -168,6 +212,28 @@ exports[`App Components - App Snapshots renders user not loaded 1`] = `
       </div>
     </div>
   </div>
-  <div />
+  <div
+    className="ui center aligned segment footer"
+  >
+    <p>
+      Favicon made by
+      <a
+        href="https://www.flaticon.com/authors/gregor-cresnar"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+         Gregor Cresnar 
+      </a>
+      from
+      <a
+        href="https://www.flaticon.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+         www.flaticon.com
+      </a>
+      .
+    </p>
+  </div>
 </div>
 `;

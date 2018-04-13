@@ -341,7 +341,34 @@ exports[`App Components - Router renders 1`] = `
                       </Segment>
                     </ScreenLoader>
                     <Footer>
-                      <div />
+                      <Segment
+                        className="footer"
+                        textAlign="center"
+                      >
+                        <div
+                          className="ui center aligned segment footer"
+                        >
+                          <p>
+                            Favicon made by
+                            <a
+                              href="https://www.flaticon.com/authors/gregor-cresnar"
+                              rel="noopener noreferrer"
+                              target="_blank"
+                            >
+                               Gregor Cresnar 
+                            </a>
+                            from
+                            <a
+                              href="https://www.flaticon.com"
+                              rel="noopener noreferrer"
+                              target="_blank"
+                            >
+                               www.flaticon.com
+                            </a>
+                            .
+                          </p>
+                        </div>
+                      </Segment>
                     </Footer>
                   </div>
                 </PureApp>

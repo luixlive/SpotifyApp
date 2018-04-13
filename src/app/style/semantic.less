@@ -59,7 +59,14 @@
 // & { @import "~semantic-ui-less/definitions/modules/tab.less"; }
 // & { @import "~semantic-ui-less/definitions/modules/transition.less"; }
 
-/* Custom Classes */
+/* Custom Classes (!important is used to override Semantic UI less) */
 .body {
   min-height: 150px;
+}
+
+.footer {
+  bottom: 0;
+  font-size: 80% !important;
+  position: fixed !important;
+  width: 100%;
 }

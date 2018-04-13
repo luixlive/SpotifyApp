@@ -5,11 +5,8 @@ exports[`App Components - Header Snapshots renders mobile 1`] = `
   className="ui green center aligned segment"
 >
   <div
-    className="ui three column grid"
+    className="ui two column grid"
   >
-    <div
-      className="four wide column"
-    />
     <div
       className="middle aligned eight wide column"
     >
@@ -20,7 +17,7 @@ exports[`App Components - Header Snapshots renders mobile 1`] = `
       </h2>
     </div>
     <div
-      className="four wide column"
+      className="eight wide column"
     >
       <button
         className="ui green inverted right floated button"

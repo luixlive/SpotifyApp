@@ -16,14 +16,14 @@ export class PureHeader extends Component {
   render() {
     return (
       <Segment color="green" textAlign="center">
-        <Grid columns={3}>
-          <Grid.Column width={4} />
+        <Grid columns={this.props.deviceMobile ? 2 : 3}>
+          {!this.props.deviceMobile && <Grid.Column width={4} />}
           <Grid.Column verticalAlign="middle" width={8}>
             <Header as={this.props.deviceMobile ? 'h2' : 'h1'} >
               Spotify Stats
             </Header>
           </Grid.Column>
-          <Grid.Column width={4}>
+          <Grid.Column width={this.props.deviceMobile ? 8 : 4}>
             <Button
               inverted
               color="green"

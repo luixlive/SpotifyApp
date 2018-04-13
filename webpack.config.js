@@ -1,6 +1,7 @@
 // Use to analyze bundle size
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const CompressionPlugin = require('compression-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
@@ -69,6 +70,7 @@ module.exports = {
     ...(!production ? [
       new webpack.HotModuleReplacementPlugin(),
     ] : []),
+    new CopyWebpackPlugin(['./src/assets']),
     new HtmlWebpackPlugin({
       inject: 'body',
       filename: 'index.html',
