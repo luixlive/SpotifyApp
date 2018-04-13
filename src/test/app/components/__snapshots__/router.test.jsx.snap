@@ -217,7 +217,9 @@ exports[`App Components - Router renders 1`] = `
                   }
                   userLoaded={false}
                 >
-                  <div>
+                  <div
+                    className="body"
+                  >
                     <Connect(PureHeader)>
                       <PureHeader
                         deviceMobile={false}
@@ -296,10 +298,10 @@ exports[`App Components - Router renders 1`] = `
                     >
                       <Segment
                         basic={true}
-                        className="body"
+                        className="screen-loader"
                       >
                         <div
-                          className="ui basic segment body"
+                          className="ui basic segment screen-loader"
                         >
                           <Dimmer
                             active={true}

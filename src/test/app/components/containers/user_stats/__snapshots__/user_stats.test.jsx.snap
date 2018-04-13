@@ -90,7 +90,7 @@ exports[`App Components - UserStats Snapshots renders stats loaded 1`] = `
 
 exports[`App Components - UserStats Snapshots renders stats not loaded 1`] = `
 <div
-  className="ui basic segment body"
+  className="ui basic segment screen-loader"
 >
   <div
     className="ui active transition visible inverted dimmer"
