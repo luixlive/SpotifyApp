@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const ScreenLoader = props => (
-  <Segment basic className="body">
+  <Segment basic className="screen-loader">
     <Dimmer active inverted >
       <Loader inverted size="big">
         <Header as="h3" >
