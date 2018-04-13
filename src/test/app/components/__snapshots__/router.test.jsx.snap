@@ -217,9 +217,7 @@ exports[`App Components - Router renders 1`] = `
                   }
                   userLoaded={false}
                 >
-                  <div
-                    className="body"
-                  >
+                  <div>
                     <Connect(PureHeader)>
                       <PureHeader
                         deviceMobile={false}

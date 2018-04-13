@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App Components - App Snapshots renders error 1`] = `
-<div
-  className="body"
->
+<div>
   <div
     className="ui green center aligned segment"
   >
@@ -92,9 +90,7 @@ exports[`App Components - App Snapshots renders error 1`] = `
 `;
 
 exports[`App Components - App Snapshots renders user loaded 1`] = `
-<div
-  className="body"
->
+<div>
   <div
     className="ui green center aligned segment"
   >
@@ -156,9 +152,7 @@ exports[`App Components - App Snapshots renders user loaded 1`] = `
 `;
 
 exports[`App Components - App Snapshots renders user not loaded 1`] = `
-<div
-  className="body"
->
+<div>
   <div
     className="ui green center aligned segment"
   >
