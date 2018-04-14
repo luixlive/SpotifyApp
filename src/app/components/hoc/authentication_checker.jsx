@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-import ScreenLoader from './../templates/screen_loader';
+import { ScreenLoader } from './../templates';
 
 export const getAuthenticationChecker = (ComposedComponent) => {
   const AuthenticationChecker = (props) => {
     if (props.loggingOutUser) {
-      return <ScreenLoader />;
+      return <ScreenLoader text="Loading..." />;
     } else if (!props.userAuthenticated) {
       return <Redirect to="/login" />;
     }

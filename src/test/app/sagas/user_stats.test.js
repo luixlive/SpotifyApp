@@ -162,20 +162,6 @@ describe('App Sagas - UserStats', () => {
       expect(loadUserStatsGenerator.next().done).toBeTruthy();
     });
 
-    it(`${types.LOAD_USER_STATS_FAILED} - ${errors.noAccessToken}`, () => {
-      const userAuthenticated = false;
-
-      const loadUserStatsGenerator = loadUserStats();
-      expect(loadUserStatsGenerator.next().value)
-        .toEqual(select(getUserAuthenticated));
-      expect(loadUserStatsGenerator.next(userAuthenticated).value)
-        .toEqual(put({
-          type: types.LOAD_USER_STATS_FAILED,
-          payload: { error: errors.noAccessToken },
-        }));
-      expect(loadUserStatsGenerator.next().done).toBeTruthy();
-    });
-
     it(`${types.LOAD_USER_STATS_FAILED} - catch`, () => {
       const loadUserStatsGenerator = loadUserStats();
       loadUserStatsGenerator.next();

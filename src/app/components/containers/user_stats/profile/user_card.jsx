@@ -27,7 +27,10 @@ export class PureUserCard extends Component {
       <Segment basic>
         <Grid columns={this.props.deviceMobile ? 1 : 3}>
           {!this.props.deviceMobile && <Grid.Column width={4} />}
-          <Grid.Column width={this.props.deviceMobile ? 16 : 8}>
+          <Grid.Column
+            textAlign="center"
+            width={this.props.deviceMobile ? 16 : 8}
+          >
             {
               this.state.imageValid ?
                 <Image

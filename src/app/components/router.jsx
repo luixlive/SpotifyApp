@@ -4,7 +4,7 @@ import React from 'react';
 
 import { App, Login, UserStats } from './containers';
 import { AuthenticationChecker } from './hoc';
-import Message from './templates';
+import { Message } from './templates';
 
 export const NotFound = () => (
   <Message title="Error 404">

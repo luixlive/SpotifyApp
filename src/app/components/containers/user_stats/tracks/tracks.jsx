@@ -1,31 +1,34 @@
 import { connect } from 'react-redux';
+import { Grid } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import TrackForm from './form';
+import TrackList from './track_list';
+
 export const PureTracks = props => (
-  <ol>
-    {props.tracks.map(track => (
-      <li>{track.name}</li>
-    ))}
-  </ol>
+  <div>
+    {
+      props.deviceMobile ?
+        <div>
+          <TrackForm />
+          <TrackList />
+        </div> :
+        <Grid columns={2}>
+          <Grid.Column width={4}>
+            <TrackForm />
+          </Grid.Column>
+          <Grid.Column width={12}>
+            <TrackList />
+          </Grid.Column>
+        </Grid>
+    }
+  </div>
 );
 
-PureTracks.propTypes = {
-  tracks: PropTypes.arrayOf(PropTypes.shape({
-    album: PropTypes.object,
-    artists: PropTypes.array,
-    durationMs: PropTypes.number,
-    spotifyUrl: PropTypes.string,
-    id: PropTypes.string,
-    name: PropTypes.string,
-    popularity: PropTypes.number,
-    trackNumber: PropTypes.number,
-  })).isRequired,
-};
+PureTracks.propTypes = { deviceMobile: PropTypes.bool.isRequired };
 
-const mapStateToProps = ({ userStats }) => ({
-  tracks: userStats.topTracks.list,
-});
+const mapStateToProps = ({ deviceMobile }) => ({ deviceMobile });
 
 const mapDispatchToProps = () => ({});
 

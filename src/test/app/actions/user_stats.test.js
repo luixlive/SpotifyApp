@@ -1,4 +1,4 @@
-import loadUserStats from './../../../app/actions/user_stats';
+import * as userStatsActions from './../../../app/actions/user_stats';
 import * as types from './../../../app/actions/types';
 
 describe('App Actions - UserStats', () => {
@@ -7,6 +7,6 @@ describe('App Actions - UserStats', () => {
       type: types.LOAD_USER_STATS,
       payload: {},
     };
-    expect(loadUserStats()).toEqual(expectedAction);
+    expect(userStatsActions.loadUserStats()).toEqual(expectedAction);
   });
 });

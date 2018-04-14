@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 
 import clearError from './../../actions/error';
 import { loadUser } from './../../actions/user';
-import Message from './../templates';
+import { Message } from './../templates';
 
 export class PureError extends Component {
   loadUserAndClearError = () => {
