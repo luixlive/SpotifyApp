@@ -57,7 +57,7 @@ Everything was installed with the dependencies. You just need to run
 $ npm test
 ```
 
-Since this command opens the coverage index, you can't update snapshots with the good old npm test -- -u. But you can just run the second script:
+Since this command opens the coverage index, you can't update snapshots with the good `npm test -- -u`. But you can just run the second script:
 ```
 $ npm run testUpdate
 ```
