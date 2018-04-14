@@ -5,7 +5,7 @@ import renderer from 'react-test-renderer';
 import {
   screenLoader as componentProps,
 } from './../../../test_utils/components_props';
-import ScreenLoader from './../../../../app/components/templates/screen_loader';
+import { ScreenLoader } from './../../../../app/components/templates';
 
 describe('App Components Templates - Screen Loader', () => {
   describe('Snapshots', () => {

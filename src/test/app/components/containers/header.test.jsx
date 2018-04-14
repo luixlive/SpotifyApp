@@ -87,11 +87,7 @@ describe('App Components - Header', () => {
       store = mockStore(_.merge({}, initialState, {
         user: { userAuthenticated: true },
       }));
-      wrapper = mount((
-        <Provider store={store}>
-          <Header />
-        </Provider>
-      ));
+      wrapper = mount(<Provider store={store}><Header /></Provider>);
       expect(store.getActions().length).toBe(0);
       wrapper.find('Button').simulate('click');
 

@@ -9,18 +9,28 @@ import readResponse from './../../../app/sagas/util/read_response';
 import { authenticationApi, statsApi } from './../../../app/api';
 import * as types from './../../../app/actions/types';
 import watcher, {
-  getUserAuthenticated,
+  getArtistsTimeRange,
+  getTracksTimeRange,
   loadTopArtists,
   loadTopTracks,
   loadUserStats,
+  reloadTopTracks,
 } from './../../../app/sagas/user_stats';
 
 describe('App Sagas - UserStats', () => {
   describe('Selectors', () => {
-    it('should get userAuthenticated', () => {
-      const mockState = { user: { accessToken: 'token' } };
-      expect(getUserAuthenticated(mockState))
-        .toEqual(mockState.user.getUserAuthenticated);
+    it('should get artists time range', () => {
+      const timeRange = 'short_term';
+      const mockState = { userStats: { topArtists: { timeRange } } };
+      expect(getArtistsTimeRange(mockState))
+        .toEqual(timeRange);
+    });
+
+    it('should get tracks time range', () => {
+      const timeRange = 'long_term';
+      const mockState = { userStats: { topTracks: { timeRange } } };
+      expect(getTracksTimeRange(mockState))
+        .toEqual(timeRange);
     });
   });
 
@@ -124,19 +134,27 @@ describe('App Sagas - UserStats', () => {
 
   describe('Load User Stats', () => {
     it(types.LOAD_USER_STATS_FINISHED, () => {
-      const options = { limit: 15, offset: 0, timeRange: 'long_term' };
       const keepSessionAliveResponse = { status: httpStatus.NO_CONTENT };
-      const userAuthenticated = true;
+      const artistsTimeRange = 'short_term';
+      const tracksTimeRange = 'long_term';
 
       const loadUserStatsGenerator = loadUserStats();
       expect(loadUserStatsGenerator.next().value)
-        .toEqual(select(getUserAuthenticated));
-      expect(loadUserStatsGenerator.next(userAuthenticated).value)
         .toEqual(call(authenticationApi.keepSessionAlive.put));
       expect(loadUserStatsGenerator.next(keepSessionAliveResponse).value)
+        .toEqual(select(getArtistsTimeRange));
+      expect(loadUserStatsGenerator.next(artistsTimeRange).value)
+        .toEqual(select(getTracksTimeRange));
+      expect(loadUserStatsGenerator.next(tracksTimeRange).value)
         .toEqual(all([
-          call(loadTopArtists, options),
-          call(loadTopTracks, options),
+          call(
+            loadTopArtists,
+            { limit: 50, offset: 0, timeRange: artistsTimeRange },
+          ),
+          call(
+            loadTopTracks,
+            { limit: 50, offset: 0, timeRange: tracksTimeRange },
+          ),
         ]));
       expect(loadUserStatsGenerator.next().value)
         .toEqual(put({ type: types.LOAD_USER_STATS_FINISHED, payload: {} }));
@@ -145,33 +163,14 @@ describe('App Sagas - UserStats', () => {
 
     it(types.KEEP_SESSION_ALIVE_FAILED, () => {
       const keepSessionAliveResponse = { status: httpStatus.IM_A_TEAPOT };
-      const userAuthenticated = true;
 
       const loadUserStatsGenerator = loadUserStats();
       expect(loadUserStatsGenerator.next().value)
-        .toEqual(select(getUserAuthenticated));
-      expect(loadUserStatsGenerator.next(userAuthenticated).value)
         .toEqual(call(authenticationApi.keepSessionAlive.put));
       expect(loadUserStatsGenerator.next(keepSessionAliveResponse).value)
         .toEqual(put({
           type: types.KEEP_SESSION_ALIVE_FAILED,
           payload: { error: errors.couldntKeepSessionAlive },
-        }));
-      expect(loadUserStatsGenerator.next().value)
-        .toEqual(put({ type: types.LOGOUT_USER, payload: {} }));
-      expect(loadUserStatsGenerator.next().done).toBeTruthy();
-    });
-
-    it(`${types.LOAD_USER_STATS_FAILED} - ${errors.noAccessToken}`, () => {
-      const userAuthenticated = false;
-
-      const loadUserStatsGenerator = loadUserStats();
-      expect(loadUserStatsGenerator.next().value)
-        .toEqual(select(getUserAuthenticated));
-      expect(loadUserStatsGenerator.next(userAuthenticated).value)
-        .toEqual(put({
-          type: types.LOAD_USER_STATS_FAILED,
-          payload: { error: errors.noAccessToken },
         }));
       expect(loadUserStatsGenerator.next().done).toBeTruthy();
     });
@@ -187,11 +186,58 @@ describe('App Sagas - UserStats', () => {
     });
   });
 
+  describe('Reload Top Tracks', () => {
+    it('CALL loadTopTracks', () => {
+      const keepSessionAliveResponse = { status: httpStatus.NO_CONTENT };
+      const timeRange = 'medium_term';
+
+      const reloadTopTracksGenerator = reloadTopTracks({
+        payload: { timeRange },
+      });
+      expect(reloadTopTracksGenerator.next().value)
+        .toEqual(call(authenticationApi.keepSessionAlive.put));
+      expect(reloadTopTracksGenerator.next(keepSessionAliveResponse).value)
+        .toEqual(call(loadTopTracks, { limit: 50, offset: 0, timeRange }));
+      expect(reloadTopTracksGenerator.next().done).toBeTruthy();
+    });
+
+    it(types.KEEP_SESSION_ALIVE_FAILED, () => {
+      const keepSessionAliveResponse = { status: httpStatus.IM_A_TEAPOT };
+      const timeRange = 'medium_term';
+
+      const reloadTopTracksGenerator = reloadTopTracks({
+        payload: { timeRange },
+      });
+      expect(reloadTopTracksGenerator.next().value)
+        .toEqual(call(authenticationApi.keepSessionAlive.put));
+      expect(reloadTopTracksGenerator.next(keepSessionAliveResponse).value)
+        .toEqual(put({
+          type: types.KEEP_SESSION_ALIVE_FAILED,
+          payload: { error: errors.couldntKeepSessionAlive },
+        }));
+      expect(reloadTopTracksGenerator.next().done).toBeTruthy();
+    });
+
+    it(`${types.LOAD_USER_STATS_TOP_TRACKS_FAILED} - catch`, () => {
+      const reloadTopTracksGenerator = reloadTopTracks({
+        payload: { timeRange: '' },
+      });
+      reloadTopTracksGenerator.next();
+      expect(reloadTopTracksGenerator.throw(error).value).toEqual(put({
+        type: types.LOAD_USER_STATS_TOP_TRACKS_FAILED,
+        payload: { error: errors.couldntLoadTopTracks },
+      }));
+      expect(reloadTopTracksGenerator.next().done).toBeTruthy();
+    });
+  });
+
   describe('Watcher', () => {
     it('watches every action', () => {
       const watcherGenerator = watcher();
       expect(watcherGenerator.next().value)
         .toEqual(takeLatest(types.LOAD_USER_STATS, loadUserStats));
+      expect(watcherGenerator.next().value)
+        .toEqual(takeLatest(types.CHANGE_TRACKS_TIME_RANGE, reloadTopTracks));
       expect(watcherGenerator.next().done).toBeTruthy();
     });
   });

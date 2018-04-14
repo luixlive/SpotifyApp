@@ -7,8 +7,10 @@ import Error from './error';
 import Footer from './footer';
 import Header from './header';
 import { loadUser } from './../../actions/user';
-import ScreenLoader from './../templates/screen_loader';
+import { ScreenLoader } from './../templates';
 import { SizeDetector } from './../hoc';
+
+import './../../style/components/containers/app.less';
 
 export class PureApp extends Component {
   componentDidMount() {
@@ -21,14 +23,14 @@ export class PureApp extends Component {
     } else if (this.props.userLoaded) {
       return this.props.children;
     }
-    return <ScreenLoader />;
+    return <ScreenLoader text="Loading..." />;
   }
 
   render() {
     return (
       <div>
         <Header />
-        {this.renderBody()}
+        <div className="body">{this.renderBody()}</div>
         <Footer />
       </div>
     );

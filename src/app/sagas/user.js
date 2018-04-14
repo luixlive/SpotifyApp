@@ -11,6 +11,7 @@ import {
   LOGOUT_USER,
   LOGOUT_USER_FAILED,
   LOGOUT_USER_SUCCEEDED,
+  KEEP_SESSION_ALIVE_FAILED,
 } from './../actions/types';
 import readResponse from './util/read_response';
 
@@ -65,6 +66,7 @@ export function* logoutUser() {
 }
 
 export default function* watcher() {
+  yield takeLatest(KEEP_SESSION_ALIVE_FAILED, logoutUser);
   yield takeLatest(LOAD_USER, loadUser);
   yield takeLatest(LOGOUT_USER, logoutUser);
 }

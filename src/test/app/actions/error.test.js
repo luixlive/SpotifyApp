@@ -1,4 +1,4 @@
-import error from './../../../app/actions/error';
+import clearError from './../../../app/actions/error';
 import * as types from './../../../app/actions/types';
 
 describe('App Actions - Error', () => {
@@ -7,6 +7,6 @@ describe('App Actions - Error', () => {
       type: types.CLEAR_ERROR,
       payload: {},
     };
-    expect(error()).toEqual(expectedAction);
+    expect(clearError()).toEqual(expectedAction);
   });
 });

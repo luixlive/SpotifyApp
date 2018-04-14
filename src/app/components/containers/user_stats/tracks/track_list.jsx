@@ -2,15 +2,23 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export const PureTracks = props => (
-  <ol>
-    {props.tracks.map(track => (
-      <li>{track.name}</li>
-    ))}
-  </ol>
-);
+import { ScreenLoader } from './../../../templates';
 
-PureTracks.propTypes = {
+export const PureTrackList = (props) => {
+  if (props.reloading) {
+    return <ScreenLoader />;
+  }
+  return (
+    <ol>
+      {props.tracks.map(track => (
+        <li key={track.name}>{track.name}</li>
+      ))}
+    </ol>
+  );
+};
+
+PureTrackList.propTypes = {
+  reloading: PropTypes.bool.isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({
     album: PropTypes.object,
     artists: PropTypes.array,
@@ -24,10 +32,10 @@ PureTracks.propTypes = {
 };
 
 const mapStateToProps = ({ userStats }) => ({
+  reloading: userStats.topTracks.reloading,
   tracks: userStats.topTracks.list,
 });
 
 const mapDispatchToProps = () => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(PureTracks);
-
+export default connect(mapStateToProps, mapDispatchToProps)(PureTrackList);

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-import Message from './../templates';
+import { Message } from './../templates';
 
 export const PureLogin = (props) => {
   if (props.userAuthenticated) {

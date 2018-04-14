@@ -115,6 +115,8 @@ describe('App Sagas - User', () => {
     it('watches every action', () => {
       const watcherGenerator = watcher();
       expect(watcherGenerator.next().value)
+        .toEqual(takeLatest(types.KEEP_SESSION_ALIVE_FAILED, logoutUser));
+      expect(watcherGenerator.next().value)
         .toEqual(takeLatest(types.LOAD_USER, loadUser));
       expect(watcherGenerator.next().value)
         .toEqual(takeLatest(types.LOGOUT_USER, logoutUser));

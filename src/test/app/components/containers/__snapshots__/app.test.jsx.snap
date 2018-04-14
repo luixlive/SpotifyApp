@@ -36,32 +36,36 @@ exports[`App Components - App Snapshots renders error 1`] = `
     </div>
   </div>
   <div
-    className="ui center aligned container"
+    className="body"
   >
-    <h1
-      className="ui header"
-      style={
-        Object {
-          "fontSize": "4em",
-          "marginTop": "1.5em",
+    <div
+      className="ui center aligned container"
+    >
+      <h1
+        className="ui header"
+        style={
+          Object {
+            "fontSize": "4em",
+            "marginTop": "1.5em",
+          }
         }
-      }
-    >
-      Error :(
-    </h1>
-    <h2
-      className="ui header"
-    >
-      
-       Go back to
-      <a
-        href="/"
-        onClick={[Function]}
       >
-         Home
-      </a>
-      .
-    </h2>
+        Error :(
+      </h1>
+      <h2
+        className="ui header"
+      >
+        
+         Go back to
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+           Home
+        </a>
+        .
+      </h2>
+    </div>
   </div>
   <div
     className="ui center aligned segment footer"
@@ -124,7 +128,11 @@ exports[`App Components - App Snapshots renders user loaded 1`] = `
       </div>
     </div>
   </div>
-  <div />
+  <div
+    className="body"
+  >
+    <div />
+  </div>
   <div
     className="ui center aligned segment footer"
   >
@@ -187,26 +195,30 @@ exports[`App Components - App Snapshots renders user not loaded 1`] = `
     </div>
   </div>
   <div
-    className="ui basic segment screen-loader"
+    className="body"
   >
     <div
-      className="ui active transition visible inverted dimmer"
-      onClick={[Function]}
+      className="ui basic segment screen-loader"
     >
       <div
-        className="content"
+        className="ui active transition visible inverted dimmer"
+        onClick={[Function]}
       >
         <div
-          className="center"
+          className="content"
         >
           <div
-            className="ui big inverted text loader"
+            className="center"
           >
-            <h3
-              className="ui header"
+            <div
+              className="ui big inverted text loader"
             >
-              Loading...
-            </h3>
+              <h3
+                className="ui header"
+              >
+                Loading...
+              </h3>
+            </div>
           </div>
         </div>
       </div>

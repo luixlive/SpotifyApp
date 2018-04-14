@@ -17,7 +17,7 @@ const ScreenLoader = props => (
 );
 
 ScreenLoader.defaultProps = {
-  text: 'Loading...',
+  text: '',
 };
 
 ScreenLoader.propTypes = {

@@ -1,3 +1,7 @@
 import Message from './message';
+import ScreenLoader from './screen_loader';
 
-export default Message;
+export {
+  Message,
+  ScreenLoader,
+};

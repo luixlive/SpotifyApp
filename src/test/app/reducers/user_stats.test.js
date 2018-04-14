@@ -10,6 +10,23 @@ describe('App Reducers - UserStats', () => {
     expect(userStatsReducer(undefined, {})).toEqual(initialState);
   });
 
+  it(types.CHANGE_TRACKS_TIME_RANGE, () => {
+    const timeRange = 'medium_term';
+    const action = {
+      type: types.CHANGE_TRACKS_TIME_RANGE,
+      payload: { timeRange },
+    };
+    const expectedState = {
+      ...initialState,
+      topTracks: {
+        ...initialState.topTracks,
+        timeRange,
+        reloading: true,
+      },
+    };
+    expect(userStatsReducer(undefined, action)).toEqual(expectedState);
+  });
+
   it(types.LOAD_USER_STATS_FINISHED, () => {
     const action = { type: types.LOAD_USER_STATS_FINISHED, payload: {} };
     const expectedState = { ...initialState, statsLoaded: true };
@@ -36,7 +53,10 @@ describe('App Reducers - UserStats', () => {
       type: types.LOAD_USER_STATS_TOP_ARTISTS_FAILED,
       payload: { error },
     };
-    const expectedState = { ...initialState, error };
+    const expectedState = {
+      ...initialState,
+      topArtists: { ...initialState.topArtists, error },
+    };
     expect(userStatsReducer(undefined, action)).toEqual(expectedState);
   });
 
@@ -48,7 +68,7 @@ describe('App Reducers - UserStats', () => {
     const expectedState = {
       ...initialState,
       topTracks: {
-        ...initialState.topArtists,
+        ...initialState.topTracks,
         list: mockTopTracks,
       },
     };
@@ -60,7 +80,10 @@ describe('App Reducers - UserStats', () => {
       type: types.LOAD_USER_STATS_TOP_TRACKS_FAILED,
       payload: { error },
     };
-    const expectedState = { ...initialState, error };
+    const expectedState = {
+      ...initialState,
+      topTracks: { ...initialState.topTracks, error },
+    };
     expect(userStatsReducer(undefined, action)).toEqual(expectedState);
   });
 });

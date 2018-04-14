@@ -8,7 +8,7 @@ exports[`App Components - User Card Snapshots renders mobile and image invalid 1
     className="ui one column grid"
   >
     <div
-      className="sixteen wide column"
+      className="center aligned sixteen wide column"
     >
       <div>
         <div
@@ -78,7 +78,7 @@ exports[`App Components - User Card Snapshots renders mobile and image valid 1`]
     className="ui one column grid"
   >
     <div
-      className="sixteen wide column"
+      className="center aligned sixteen wide column"
     >
       <img
         className="ui small circular centered image"
@@ -144,7 +144,7 @@ exports[`App Components - User Card Snapshots renders no mobile and image invali
       className="four wide column"
     />
     <div
-      className="eight wide column"
+      className="center aligned eight wide column"
     >
       <div>
         <div
@@ -220,7 +220,7 @@ exports[`App Components - User Card Snapshots renders no mobile and image valid 
       className="four wide column"
     />
     <div
-      className="eight wide column"
+      className="center aligned eight wide column"
     >
       <img
         className="ui small circular centered image"

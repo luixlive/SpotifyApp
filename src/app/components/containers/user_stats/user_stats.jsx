@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import Artists from './artists';
-import loadUserStats from './../../../actions/user_stats';
+import { loadUserStats } from './../../../actions/user_stats';
 import Profile from './profile';
-import ScreenLoader from './../../templates/screen_loader';
+import { ScreenLoader } from './../../templates';
 import Tracks from './tracks';
 
 export class PureUserStats extends Component {
@@ -21,7 +21,9 @@ export class PureUserStats extends Component {
   }
 
   componentDidMount() {
-    this.props.loadUserStats();
+    if (!this.props.statsLoaded) {
+      this.props.loadUserStats();
+    }
   }
 
   handleItemClick = item => () => this.setState({ activeMenuItem: item });
@@ -35,7 +37,6 @@ export class PureUserStats extends Component {
       case PureUserStats.ARTISTS:
         return <Artists />;
       default:
-        // TODO: dispatch error if user gets here
         return null;
     }
   }
@@ -65,7 +66,7 @@ export class PureUserStats extends Component {
         </div>
       );
     }
-    return <ScreenLoader />;
+    return <ScreenLoader text="Loading..." />;
   }
 }
 
