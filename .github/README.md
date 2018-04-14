@@ -28,11 +28,11 @@ $ cd spotify-stats
 ```
 $ npm i
 ```
-This step will build the project because of a post-install script. In order to run the project you will need the `dist/index.html`, but you can remove the rest of the files.
+This step will build the project because of a post-install script. In order to run the project you will need the `dist/index.html`(HTML Webpack Plugin doesn't goes along Hot Module Replacement), but you can remove the rest of the files.
 
 4. Create the logs file
 ```
-$ mkdir logs && cd logs && touch spotifystats.log
+$ mkdir logs && touch logs/spotifystats.log
 ```
 
 5. Run the project in development mode
@@ -57,8 +57,21 @@ Everything was installed with the dependencies. You just need to run
 $ npm test
 ```
 
+Since this command opens the coverage index, you can't update snapshots with the good old npm test -- -u. But you can just run the second script:
+```
+$ npm run testUpdate
+```
+
 ## Deployment
-This project is being managed in [Heroku](https://www.heroku.com/) by luixlive.
+This project is being managed in [Heroku](https://www.heroku.com/) by luixlive. You can check the production build running:
+```
+$ npm run build
+```
+
+And run the project just like it runs in production with:
+```
+$ npm start
+```
 
 ## API
 This project uses [Swagger UI](https://swagger.io/swagger-ui/) + [Swagger JSDoc](https://github.com/Surnet/swagger-jsdoc) to document the API. Just go to `localhost:3000/swagger/api-docs/` while project is running.
