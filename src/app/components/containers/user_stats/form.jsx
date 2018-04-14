@@ -3,11 +3,34 @@ import { Form, Header, Radio, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import { changeTracksTimeRange } from './../../../../actions/user_stats';
-import FORM_OPTIONS from './../../../../util/constants';
+import { changeTracksTimeRange } from './../../../actions/user_stats';
+import FORM_OPTIONS from './../../../util/constants';
 
 export class PureForm extends Component {
-  handleChange = timeRange => () => this.props.changeTracksTimeRange(timeRange);
+  static TYPE_TRACKS = 'tracks';
+  static TYPE_ARTISTS = 'artists';
+
+  handleChange = timeRange => () => {
+    switch (this.props.type) {
+      case PureForm.TYPE_TRACKS:
+        return this.props.changeTracksTimeRange(timeRange);
+      case PureForm.TYPE_ARTISTS:
+        return null;
+      default:
+        return null;
+    }
+  };
+
+  isRadioChecked = (itemTimeRange) => {
+    switch (this.props.type) {
+      case PureForm.TYPE_TRACKS:
+        return this.props.tracksTimeRange === itemTimeRange;
+      case PureForm.TYPE_ARTISTS:
+        return this.props.artistsTimeRange === itemTimeRange;
+      default:
+        return false;
+    }
+  }
 
   render() {
     const radioButtons = [
@@ -19,7 +42,7 @@ export class PureForm extends Component {
         <Radio
           label={item.label}
           name="timeRange"
-          checked={this.props.timeRange === item.value}
+          checked={this.isRadioChecked(item.value)}
           onChange={this.handleChange(item.value)}
         />
       </Form.Field>
@@ -39,12 +62,15 @@ export class PureForm extends Component {
 }
 
 PureForm.propTypes = {
+  artistsTimeRange: PropTypes.string.isRequired,
   changeTracksTimeRange: PropTypes.func.isRequired,
-  timeRange: PropTypes.string.isRequired,
+  tracksTimeRange: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = ({ userStats }) => ({
-  timeRange: userStats.topTracks.timeRange,
+  tracksTimeRange: userStats.topTracks.timeRange,
+  artistsTimeRange: userStats.topArtists.timeRange,
 });
 
 const mapDispatchToProps = dispatch => ({

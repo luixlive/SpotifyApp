@@ -11,7 +11,7 @@ export const PureTrackList = (props) => {
   return (
     <ol>
       {props.tracks.map(track => (
-        <li>{track.name}</li>
+        <li key={track.name}>{track.name}</li>
       ))}
     </ol>
   );

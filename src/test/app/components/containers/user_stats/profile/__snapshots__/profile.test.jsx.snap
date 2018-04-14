@@ -11,7 +11,7 @@ exports[`App Components - Profile renders 1`] = `
       className="four wide column"
     />
     <div
-      className="eight wide column"
+      className="center aligned eight wide column"
     >
       <img
         className="ui small circular centered image"

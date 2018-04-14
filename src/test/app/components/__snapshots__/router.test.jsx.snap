@@ -291,55 +291,59 @@ exports[`App Components - Router renders 1`] = `
                         </Segment>
                       </PureHeader>
                     </Connect(PureHeader)>
-                    <ScreenLoader
-                      text="Loading..."
+                    <div
+                      className="body"
                     >
-                      <Segment
-                        basic={true}
-                        className="screen-loader"
+                      <ScreenLoader
+                        text="Loading..."
                       >
-                        <div
-                          className="ui basic segment screen-loader"
+                        <Segment
+                          basic={true}
+                          className="screen-loader"
                         >
-                          <Dimmer
-                            active={true}
-                            inverted={true}
+                          <div
+                            className="ui basic segment screen-loader"
                           >
-                            <div
-                              className="ui active transition visible inverted dimmer"
-                              onClick={[Function]}
+                            <Dimmer
+                              active={true}
+                              inverted={true}
                             >
                               <div
-                                className="content"
+                                className="ui active transition visible inverted dimmer"
+                                onClick={[Function]}
                               >
                                 <div
-                                  className="center"
+                                  className="content"
                                 >
-                                  <Loader
-                                    inverted={true}
-                                    size="big"
+                                  <div
+                                    className="center"
                                   >
-                                    <div
-                                      className="ui big inverted text loader"
+                                    <Loader
+                                      inverted={true}
+                                      size="big"
                                     >
-                                      <Header
-                                        as="h3"
+                                      <div
+                                        className="ui big inverted text loader"
                                       >
-                                        <h3
-                                          className="ui header"
+                                        <Header
+                                          as="h3"
                                         >
-                                          Loading...
-                                        </h3>
-                                      </Header>
-                                    </div>
-                                  </Loader>
+                                          <h3
+                                            className="ui header"
+                                          >
+                                            Loading...
+                                          </h3>
+                                        </Header>
+                                      </div>
+                                    </Loader>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          </Dimmer>
-                        </div>
-                      </Segment>
-                    </ScreenLoader>
+                            </Dimmer>
+                          </div>
+                        </Segment>
+                      </ScreenLoader>
+                    </div>
                     <Footer>
                       <Segment
                         className="footer"

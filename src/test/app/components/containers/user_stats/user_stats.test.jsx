@@ -99,6 +99,15 @@ describe('App Components - UserStats', () => {
       wrapper.find('MenuItem').at(2).simulate('click');
       expect(wrapper.find(Artists).length).toBe(1);
     });
+
+    it('renders null if options is unknown', () => {
+      props.statsLoaded = true;
+      const wrapper = shallow(<PureUserStats {...props} />);
+      wrapper.setState({ activeMenuItem: 'unknown' });
+      expect(wrapper.find(Profile).length).toBe(0);
+      expect(wrapper.find(Tracks).length).toBe(0);
+      expect(wrapper.find(Artists).length).toBe(0);
+    });
   });
 
   describe('Provider', () => {
@@ -107,11 +116,7 @@ describe('App Components - UserStats', () => {
     let wrapper;
     beforeEach(() => {
       store = mockStore(initialState);
-      wrapper = mount((
-        <Provider store={store}>
-          <UserStats />
-        </Provider>
-      ));
+      wrapper = mount(<Provider store={store}><UserStats /></Provider>);
     });
 
     it('renders', () => {

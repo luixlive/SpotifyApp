@@ -5,7 +5,7 @@ import React from 'react';
 export const PureArtists = props => (
   <ol>
     {props.artists.map(artist => (
-      <li>{artist.name}</li>
+      <li key={artist.name}>{artist.name}</li>
     ))}
   </ol>
 );

@@ -20,6 +20,13 @@ export const error = {
   loadUser: emptyFunction,
 };
 
+export const form = {
+  type: 'tracks',
+  tracksTimeRange: initialState.userStats.topTracks.timeRange,
+  artistsTimeRange: initialState.userStats.topArtists.timeRange,
+  changeTracksTimeRange: emptyFunction,
+};
+
 export const header = {
   deviceMobile: initialState.deviceMobile,
   userAuthenticated: initialState.user.userAuthenticated,
@@ -37,6 +44,13 @@ export const message = {
 export const screenLoader = { text: '' };
 
 export const sizeDetector = { deviceTypeChanged: emptyFunction };
+
+export const trackList = {
+  reloading: initialState.userStats.topTracks.reloading,
+  tracks: initialState.userStats.topTracks.list,
+};
+
+export const tracks = { deviceMobile: initialState.deviceMobile };
 
 export const userStats = {
   displayName: initialState.user.profile.displayName,

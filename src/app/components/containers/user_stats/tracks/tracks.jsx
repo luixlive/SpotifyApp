@@ -3,7 +3,7 @@ import { Grid } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import TrackForm from './form';
+import Form from './../form';
 import TrackList from './track_list';
 
 export const PureTracks = props => (
@@ -11,12 +11,12 @@ export const PureTracks = props => (
     {
       props.deviceMobile ?
         <div>
-          <TrackForm />
+          <Form type="tracks" />
           <TrackList />
         </div> :
         <Grid columns={2}>
           <Grid.Column width={4}>
-            <TrackForm />
+            <Form type="tracks" />
           </Grid.Column>
           <Grid.Column width={12}>
             <TrackList />

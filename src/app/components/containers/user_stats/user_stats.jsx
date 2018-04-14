@@ -30,12 +30,14 @@ export class PureUserStats extends Component {
 
   renderContent() {
     switch (this.state.activeMenuItem) {
+      case PureUserStats.PROFILE:
+        return <Profile />;
       case PureUserStats.TRACKS:
         return <Tracks />;
       case PureUserStats.ARTISTS:
         return <Artists />;
       default:
-        return <Profile />;
+        return null;
     }
   }
 
