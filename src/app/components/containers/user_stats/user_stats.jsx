@@ -21,22 +21,21 @@ export class PureUserStats extends Component {
   }
 
   componentDidMount() {
-    this.props.loadUserStats();
+    if (!this.props.statsLoaded) {
+      this.props.loadUserStats();
+    }
   }
 
   handleItemClick = item => () => this.setState({ activeMenuItem: item });
 
   renderContent() {
     switch (this.state.activeMenuItem) {
-      case PureUserStats.PROFILE:
-        return <Profile />;
       case PureUserStats.TRACKS:
         return <Tracks />;
       case PureUserStats.ARTISTS:
         return <Artists />;
       default:
-        // TODO: dispatch error if user gets here
-        return null;
+        return <Profile />;
     }
   }
 

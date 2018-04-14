@@ -6,11 +6,12 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import initialState from './../../../../test_utils/initial_state';
-import {
-  Artists,
-  Profile,
-  Tracks,
-} from './../../../../../app/components/containers/user_stats';
+import Artists
+  from './../../../../../app/components/containers/user_stats/artists';
+import Profile
+  from './../../../../../app/components/containers/user_stats/profile';
+import Tracks
+  from './../../../../../app/components/containers/user_stats/tracks';
 import * as types from './../../../../../app/actions/types';
 import UserStats, {
   PureUserStats,
@@ -98,15 +99,6 @@ describe('App Components - UserStats', () => {
       wrapper.find('MenuItem').at(2).simulate('click');
       expect(wrapper.find(Artists).length).toBe(1);
     });
-
-    it('does not render anything in a weird behavior', () => {
-      props.statsLoaded = true;
-      const wrapper = shallow(<PureUserStats {...props} />);
-      wrapper.setState({ activeMenuItem: 'unknown' });
-      expect(wrapper.find(Profile).length).toBe(0);
-      expect(wrapper.find(Tracks).length).toBe(0);
-      expect(wrapper.find(Artists).length).toBe(0);
-    });
   });
 
   describe('Provider', () => {
@@ -136,6 +128,7 @@ describe('App Components - UserStats', () => {
         type: types.LOAD_USER_STATS,
         payload: {},
       };
+      expect(store.getActions().length).toBe(1);
       expect(store.getActions()[0]).toEqual(expectedAction);
     });
   });
