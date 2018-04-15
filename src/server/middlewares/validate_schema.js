@@ -17,7 +17,8 @@ module.exports = (schema, endpoint, type) => (req, res, next) => {
 
   const { error } = Joi.validate(req[type], schema);
   if (error) {
-    logger.error(`${endpoint} - Schema error: ${error.message}.`);
+    logger.error(`${endpoint} schema error ${error.message}: ${req.logUser}`);
+
     res.status(httpStatus.BAD_REQUEST);
     return res.send({ error: `${INVALID_JSON_SCHEMA}: ${error.message}` });
   }

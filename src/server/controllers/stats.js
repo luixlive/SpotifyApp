@@ -40,28 +40,29 @@ const topArtistsOrTracks = (retrieve, service) => (req, res) => {
   const { cleanProperties, endpoint } = {
     TOP_ARTISTS: {
       cleanProperties: cleanTopArtistsProperties,
-      endpoint: 'topArtists',
+      endpoint: 'Top artists',
     },
     TOP_TRACKS: {
       cleanProperties: cleanTopTracksProperties,
-      endpoint: 'topTracks',
+      endpoint: 'Top tracks',
     },
   }[retrieve];
 
-  logger.debug(`api/stats/${endpoint}: ${req.logUser}`);
+  logger.info(`${endpoint} controller: ${req.logUser}`);
+
   service(req.user.accessToken, req.query, (err, spotifyResponse) => {
     const body = _.get(spotifyResponse, 'body', {});
     if (err || !body.items) {
-      logger.debug(
-        `Spotify ${endpoint} error: `,
-        err || UNEXPECTED_SPOTIFY_RESPONSE,
+      logger.error(
+        `${endpoint} error ${err || UNEXPECTED_SPOTIFY_RESPONSE}: `,
+        req.logUser,
       );
+
       res.status(httpStatus.BAD_GATEWAY);
       return res.send({ error: err || UNEXPECTED_SPOTIFY_RESPONSE });
     }
 
     const cleanedValues = cleanProperties(body.items);
-    logger.debug(`Spotify ${endpoint}: `, JSON.stringify(cleanedValues));
     return res.send(cleanedValues);
   });
 };

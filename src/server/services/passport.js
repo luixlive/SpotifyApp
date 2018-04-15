@@ -2,8 +2,6 @@ const _ = require('lodash');
 const config = require('config');
 const { Strategy: SpotifyStrategy } = require('passport-spotify');
 
-const logger = require('./../../utils/logger');
-
 const cleanProfileProperties = ({ _json }) => ({
   displayName: _.get(_json, 'display_name'),
   spotifyUrl: _.get(_json, 'external_urls.spotify'),
@@ -21,11 +19,6 @@ const spotifyStrategyCallback = (
   done,
 ) => {
   const cleanProfile = cleanProfileProperties(profile);
-  logger.debug(
-    `User retrieved successfully: ${JSON.stringify(cleanProfile)}. `,
-    `Access token: ${accessToken}. `,
-    `Refresh token: ${refreshToken}. `,
-  );
   done(null, {
     accessToken,
     expires: Date.now() + (expiresIn * 1000),
