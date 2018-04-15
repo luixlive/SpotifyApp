@@ -50,7 +50,7 @@ const getRouter = (controller) => {
     sessionAlive,
     validateSchema(
       spotifyRequests.topArtistsOrTracksOptions,
-      '/stats/topArtists',
+      'Top Artists',
       SCHEMA_TYPES.TYPE_QUERY,
     ),
     controller.topArtists(spotifyService.getUsersTopArtists),
@@ -87,7 +87,7 @@ const getRouter = (controller) => {
     sessionAlive,
     validateSchema(
       spotifyRequests.topArtistsOrTracksOptions,
-      '/stats/topTracks',
+      'Top Tracks',
       SCHEMA_TYPES.TYPE_QUERY,
     ),
     controller.topTracks(spotifyService.getUsersTopTracks),

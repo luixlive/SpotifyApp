@@ -6,23 +6,27 @@ const { UNEXPECTED_SPOTIFY_RESPONSE } = require('./../util/error_responses');
 const updateSession = require('./../util/update_session');
 
 const logout = (req, res) => {
-  logger.debug(`api/authentication/logout: ${req.logUser}`);
+  logger.info(`Logout controller: ${req.logUser}`);
+
   req.logout();
   req.session = null;
   res.sendStatus(httpStatus.NO_CONTENT);
 };
 
 const keepSessionAlive = service => (req, res) => {
-  logger.debug(`api/authentication/keepSessionAlive: ${req.logUser}`);
+  logger.info(`Keep session alive controller: ${req.logUser}`);
+
   const oneMinuteFromNow = Date.now() + (60 * 1000);
   if (oneMinuteFromNow >= req.user.expires) {
     service(req.user.refreshToken, (err, spotifyResponse) => {
       const body = _.get(spotifyResponse, 'body', {});
       if (err || !body.access_token || !body.expires_in) {
-        logger.debug(
-          'Spotify keepSessionAlive error: ',
+        logger.error(
+          'Keep session alive error ',
           err || UNEXPECTED_SPOTIFY_RESPONSE,
+          `: ${req.logUser}`,
         );
+
         res.status(httpStatus.BAD_GATEWAY);
         return res.send({ error: err || UNEXPECTED_SPOTIFY_RESPONSE });
       }
@@ -39,12 +43,14 @@ const keepSessionAlive = service => (req, res) => {
 };
 
 const spotifyCallback = (req, res) => {
-  logger.debug('api/authentication/spotify/callback: ', req.logUser);
+  logger.info(`Spotify callback controller: ${req.logUser}`);
+
   res.redirect('/');
 };
 
 const user = (req, res) => {
-  logger.debug(`api/authentication/user: ${req.logUser}`);
+  logger.info(`User controller: ${req.logUser}`);
+
   res.send(req.user.profile);
 };
 

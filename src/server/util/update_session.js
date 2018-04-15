@@ -13,9 +13,10 @@ module.exports = (req, changes) => {
   const { error } = Joi.validate(newSession, userSchema);
 
   if (error) {
-    logger.debug(`Invalid session update: ${error}`);
+    logger.error(`Invalid session update: ${error}`);
   } else {
     req.session.passport.user = JSON.stringify(newSession);
-    logger.debug(`User's session updated: ${req.logUser}`);
+
+    logger.info(`User's session updated: ${req.logUser}`);
   }
 };

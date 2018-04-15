@@ -2,3 +2,4 @@ coverage
 dist
 logs
 node_modules
+calculate_user_log.js
