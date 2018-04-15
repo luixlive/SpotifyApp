@@ -3,6 +3,7 @@ import { all, call, put, select, takeLatest } from 'redux-saga/effects';
 import errors from './util/errors';
 import httpStatus from './../../utils/http_status';
 import {
+  CHANGE_ARTISTS_TIME_RANGE,
   CHANGE_TRACKS_TIME_RANGE,
   KEEP_SESSION_ALIVE_FAILED,
   LOAD_USER_STATS,
@@ -105,6 +106,25 @@ export function* loadUserStats() {
   }
 }
 
+export function* reloadTopArtists({ payload: { timeRange } }) {
+  try {
+    const response = yield call(authenticationApi.keepSessionAlive.put);
+    if (response.status === httpStatus.NO_CONTENT) {
+      yield call(loadTopArtists, { limit: 50, offset: 0, timeRange });
+    } else {
+      yield put({
+        type: KEEP_SESSION_ALIVE_FAILED,
+        payload: { error: errors.couldntKeepSessionAlive },
+      });
+    }
+  } catch (error) {
+    yield put({
+      type: LOAD_USER_STATS_TOP_ARTISTS_FAILED,
+      payload: { error: errors.couldntLoadTopArtists },
+    });
+  }
+}
+
 export function* reloadTopTracks({ payload: { timeRange } }) {
   try {
     const response = yield call(authenticationApi.keepSessionAlive.put);
@@ -125,6 +145,7 @@ export function* reloadTopTracks({ payload: { timeRange } }) {
 }
 
 export default function* watcher() {
-  yield takeLatest(LOAD_USER_STATS, loadUserStats);
+  yield takeLatest(CHANGE_ARTISTS_TIME_RANGE, reloadTopArtists);
   yield takeLatest(CHANGE_TRACKS_TIME_RANGE, reloadTopTracks);
+  yield takeLatest(LOAD_USER_STATS, loadUserStats);
 }

@@ -1,5 +1,6 @@
-import FORM_OPTIONS from './../util/constants';
+import { FORM_OPTIONS } from './../util/constants';
 import {
+  CHANGE_ARTISTS_TIME_RANGE,
   CHANGE_TRACKS_TIME_RANGE,
   LOAD_USER_STATS_FINISHED,
   LOAD_USER_STATS_TOP_ARTISTS_SUCCEEDED,
@@ -28,6 +29,15 @@ export const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case CHANGE_ARTISTS_TIME_RANGE:
+      return {
+        ...state,
+        topArtists: {
+          ...state.topArtists,
+          timeRange: action.payload.timeRange,
+          reloading: true,
+        },
+      };
     case CHANGE_TRACKS_TIME_RANGE:
       return {
         ...state,

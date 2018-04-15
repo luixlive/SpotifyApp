@@ -3,11 +3,10 @@ import { Menu } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import Artists from './artists';
 import { loadUserStats } from './../../../actions/user_stats';
 import Profile from './profile';
 import { ScreenLoader } from './../../templates';
-import Tracks from './tracks';
+import TracksArtistsTemplate from './tracks_artists_template';
 
 export class PureUserStats extends Component {
   static PROFILE = 0;
@@ -33,9 +32,9 @@ export class PureUserStats extends Component {
       case PureUserStats.PROFILE:
         return <Profile />;
       case PureUserStats.TRACKS:
-        return <Tracks />;
+        return <TracksArtistsTemplate type="tracks" />;
       case PureUserStats.ARTISTS:
-        return <Artists />;
+        return <TracksArtistsTemplate type="artists" />;
       default:
         return null;
     }

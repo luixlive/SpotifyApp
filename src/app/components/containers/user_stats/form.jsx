@@ -3,19 +3,19 @@ import { Form, Header, Radio, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import { changeTracksTimeRange } from './../../../actions/user_stats';
-import FORM_OPTIONS from './../../../util/constants';
+import {
+  changeArtistsTimeRange,
+  changeTracksTimeRange,
+} from './../../../actions/user_stats';
+import { FORM_OPTIONS, PAGE_TYPES } from './../../../util/constants';
 
 export class PureForm extends Component {
-  static TYPE_TRACKS = 'tracks';
-  static TYPE_ARTISTS = 'artists';
-
   handleChange = timeRange => () => {
     switch (this.props.type) {
-      case PureForm.TYPE_TRACKS:
+      case PAGE_TYPES.TYPE_TRACKS:
         return this.props.changeTracksTimeRange(timeRange);
-      case PureForm.TYPE_ARTISTS:
-        return null;
+      case PAGE_TYPES.TYPE_ARTISTS:
+        return this.props.changeArtistsTimeRange(timeRange);
       default:
         return null;
     }
@@ -23,9 +23,9 @@ export class PureForm extends Component {
 
   isRadioChecked = (itemTimeRange) => {
     switch (this.props.type) {
-      case PureForm.TYPE_TRACKS:
+      case PAGE_TYPES.TYPE_TRACKS:
         return this.props.tracksTimeRange === itemTimeRange;
-      case PureForm.TYPE_ARTISTS:
+      case PAGE_TYPES.TYPE_ARTISTS:
         return this.props.artistsTimeRange === itemTimeRange;
       default:
         return false;
@@ -63,6 +63,7 @@ export class PureForm extends Component {
 
 PureForm.propTypes = {
   artistsTimeRange: PropTypes.string.isRequired,
+  changeArtistsTimeRange: PropTypes.func.isRequired,
   changeTracksTimeRange: PropTypes.func.isRequired,
   tracksTimeRange: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
@@ -74,6 +75,8 @@ const mapStateToProps = ({ userStats }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  changeArtistsTimeRange: timeRange =>
+    dispatch(changeArtistsTimeRange(timeRange)),
   changeTracksTimeRange: timeRange =>
     dispatch(changeTracksTimeRange(timeRange)),
 });

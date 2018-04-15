@@ -14,6 +14,7 @@ import watcher, {
   loadTopArtists,
   loadTopTracks,
   loadUserStats,
+  reloadTopArtists,
   reloadTopTracks,
 } from './../../../app/sagas/user_stats';
 
@@ -186,6 +187,51 @@ describe('App Sagas - UserStats', () => {
     });
   });
 
+  describe('Reload Top Artists', () => {
+    it('CALL loadTopArtists', () => {
+      const keepSessionAliveResponse = { status: httpStatus.NO_CONTENT };
+      const timeRange = 'medium_term';
+
+      const reloadTopArtistsGenerator = reloadTopArtists({
+        payload: { timeRange },
+      });
+      expect(reloadTopArtistsGenerator.next().value)
+        .toEqual(call(authenticationApi.keepSessionAlive.put));
+      expect(reloadTopArtistsGenerator.next(keepSessionAliveResponse).value)
+        .toEqual(call(loadTopArtists, { limit: 50, offset: 0, timeRange }));
+      expect(reloadTopArtistsGenerator.next().done).toBeTruthy();
+    });
+
+    it(types.KEEP_SESSION_ALIVE_FAILED, () => {
+      const keepSessionAliveResponse = { status: httpStatus.IM_A_TEAPOT };
+      const timeRange = 'medium_term';
+
+      const reloadTopArtistsGenerator = reloadTopArtists({
+        payload: { timeRange },
+      });
+      expect(reloadTopArtistsGenerator.next().value)
+        .toEqual(call(authenticationApi.keepSessionAlive.put));
+      expect(reloadTopArtistsGenerator.next(keepSessionAliveResponse).value)
+        .toEqual(put({
+          type: types.KEEP_SESSION_ALIVE_FAILED,
+          payload: { error: errors.couldntKeepSessionAlive },
+        }));
+      expect(reloadTopArtistsGenerator.next().done).toBeTruthy();
+    });
+
+    it(`${types.LOAD_USER_STATS_TOP_ARTISTS_FAILED} - catch`, () => {
+      const reloadTopArtistsGenerator = reloadTopArtists({
+        payload: { timeRange: '' },
+      });
+      reloadTopArtistsGenerator.next();
+      expect(reloadTopArtistsGenerator.throw(error).value).toEqual(put({
+        type: types.LOAD_USER_STATS_TOP_ARTISTS_FAILED,
+        payload: { error: errors.couldntLoadTopArtists },
+      }));
+      expect(reloadTopArtistsGenerator.next().done).toBeTruthy();
+    });
+  });
+
   describe('Reload Top Tracks', () => {
     it('CALL loadTopTracks', () => {
       const keepSessionAliveResponse = { status: httpStatus.NO_CONTENT };
@@ -235,9 +281,11 @@ describe('App Sagas - UserStats', () => {
     it('watches every action', () => {
       const watcherGenerator = watcher();
       expect(watcherGenerator.next().value)
-        .toEqual(takeLatest(types.LOAD_USER_STATS, loadUserStats));
+        .toEqual(takeLatest(types.CHANGE_ARTISTS_TIME_RANGE, reloadTopArtists));
       expect(watcherGenerator.next().value)
         .toEqual(takeLatest(types.CHANGE_TRACKS_TIME_RANGE, reloadTopTracks));
+      expect(watcherGenerator.next().value)
+        .toEqual(takeLatest(types.LOAD_USER_STATS, loadUserStats));
       expect(watcherGenerator.next().done).toBeTruthy();
     });
   });

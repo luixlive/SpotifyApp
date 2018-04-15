@@ -6,12 +6,11 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import initialState from './../../../../test_utils/initial_state';
-import Artists
-  from './../../../../../app/components/containers/user_stats/artists';
+import TracksArtistsTemplate
+/* eslint-disable-next-line max-len */
+  from './../../../../../app/components/containers/user_stats/tracks_artists_template';
 import Profile
   from './../../../../../app/components/containers/user_stats/profile';
-import Tracks
-  from './../../../../../app/components/containers/user_stats/tracks';
 import * as types from './../../../../../app/actions/types';
 import UserStats, {
   PureUserStats,
@@ -87,17 +86,21 @@ describe('App Components - UserStats', () => {
     it('renders Tracks if option in menu is clicked', () => {
       props.statsLoaded = true;
       const wrapper = shallow(<PureUserStats {...props} />);
-      expect(wrapper.find(Tracks).length).toBe(0);
+      expect(wrapper.find(TracksArtistsTemplate).length).toBe(0);
       wrapper.find('MenuItem').at(1).simulate('click');
-      expect(wrapper.find(Tracks).length).toBe(1);
+      expect(wrapper.find(TracksArtistsTemplate).length).toBe(1);
+      expect(wrapper.find(TracksArtistsTemplate).props().type)
+        .toEqual('tracks');
     });
 
     it('renders Artists if option in menu is clicked', () => {
       props.statsLoaded = true;
       const wrapper = shallow(<PureUserStats {...props} />);
-      expect(wrapper.find(Artists).length).toBe(0);
+      expect(wrapper.find(TracksArtistsTemplate).length).toBe(0);
       wrapper.find('MenuItem').at(2).simulate('click');
-      expect(wrapper.find(Artists).length).toBe(1);
+      expect(wrapper.find(TracksArtistsTemplate).length).toBe(1);
+      expect(wrapper.find(TracksArtistsTemplate).props().type)
+        .toEqual('artists');
     });
 
     it('renders null if options is unknown', () => {
@@ -105,8 +108,7 @@ describe('App Components - UserStats', () => {
       const wrapper = shallow(<PureUserStats {...props} />);
       wrapper.setState({ activeMenuItem: 'unknown' });
       expect(wrapper.find(Profile).length).toBe(0);
-      expect(wrapper.find(Tracks).length).toBe(0);
-      expect(wrapper.find(Artists).length).toBe(0);
+      expect(wrapper.find(TracksArtistsTemplate).length).toBe(0);
     });
   });
 

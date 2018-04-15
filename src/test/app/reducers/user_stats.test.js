@@ -10,6 +10,23 @@ describe('App Reducers - UserStats', () => {
     expect(userStatsReducer(undefined, {})).toEqual(initialState);
   });
 
+  it(types.CHANGE_ARTISTS_TIME_RANGE, () => {
+    const timeRange = 'medium_term';
+    const action = {
+      type: types.CHANGE_ARTISTS_TIME_RANGE,
+      payload: { timeRange },
+    };
+    const expectedState = {
+      ...initialState,
+      topArtists: {
+        ...initialState.topArtists,
+        timeRange,
+        reloading: true,
+      },
+    };
+    expect(userStatsReducer(undefined, action)).toEqual(expectedState);
+  });
+
   it(types.CHANGE_TRACKS_TIME_RANGE, () => {
     const timeRange = 'medium_term';
     const action = {

@@ -5,13 +5,14 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import {
-  tracks as componentProps,
+  artists as componentProps,
 } from './../../../../../test_utils/components_props';
 import initialState from './../../../../../test_utils/initial_state';
-import Tracks
-  from './../../../../../../app/components/containers/user_stats/tracks/tracks';
+import Artists
+/* eslint-disable-next-line max-len */
+  from './../../../../../../app/components/containers/user_stats/artists/artists';
 
-describe('App Components - Tracks', () => {
+describe('App Components - Artists', () => {
   describe('Snapshots', () => {
     it('renders', () => {
       const mockStore = configureStore();
@@ -19,7 +20,7 @@ describe('App Components - Tracks', () => {
       const store = mockStore(initialState);
       const rendered = renderer.create((
         <Provider store={store}>
-          <Tracks {...props} />
+          <Artists {...props} />
         </Provider>
       )).toJSON();
       expect(rendered).toMatchSnapshot();

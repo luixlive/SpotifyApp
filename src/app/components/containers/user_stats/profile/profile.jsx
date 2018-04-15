@@ -2,8 +2,5 @@ import React from 'react';
 
 import UserCard from './user_card';
 
-const Profile = () => (
-  <UserCard />
-);
-
-export default Profile;
+// TODO: Add followers list
+export default () => <UserCard />;
