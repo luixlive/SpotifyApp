@@ -36,7 +36,7 @@ exports[`App Components - App Snapshots renders error 1`] = `
     </div>
   </div>
   <div
-    className="body"
+    className="content"
   >
     <div
       className="ui center aligned container"
@@ -129,7 +129,7 @@ exports[`App Components - App Snapshots renders user loaded 1`] = `
     </div>
   </div>
   <div
-    className="body"
+    className="content"
   >
     <div />
   </div>
@@ -195,7 +195,7 @@ exports[`App Components - App Snapshots renders user not loaded 1`] = `
     </div>
   </div>
   <div
-    className="body"
+    className="content"
   >
     <div
       className="ui basic segment screen-loader"

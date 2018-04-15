@@ -292,7 +292,7 @@ exports[`App Components - Router renders 1`] = `
                       </PureHeader>
                     </Connect(PureHeader)>
                     <div
-                      className="body"
+                      className="content"
                     >
                       <ScreenLoader
                         text="Loading..."
