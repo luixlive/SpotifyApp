@@ -115,5 +115,46 @@ describe('App Components - Form', () => {
       };
       expect(store.getActions()[0]).toEqual(expectedAction);
     });
+
+    it('dispatches changeArtistsTimeRange', () => {
+      store = mockStore(initialState);
+      wrapper = mount((
+        <Provider store={store}>
+          <Form type="artists" />
+        </Provider>
+      ));
+      expect(store.getActions().length).toBe(0);
+      wrapper.find('Radio').at(1).simulate('change');
+
+      let expectedAction = {
+        type: types.CHANGE_ARTISTS_TIME_RANGE,
+        payload: { timeRange: 'medium_term' },
+      };
+      expect(store.getActions()[0]).toEqual(expectedAction);
+
+      wrapper.find('Radio').at(2).simulate('change');
+
+      expectedAction = {
+        type: types.CHANGE_ARTISTS_TIME_RANGE,
+        payload: { timeRange: 'long_term' },
+      };
+      expect(store.getActions()[1]).toEqual(expectedAction);
+
+      store = mockStore(_.merge({}, initialState, {
+        userStats: { topArtists: { timeRange: 'long_term' } },
+      }));
+      wrapper = mount((
+        <Provider store={store}>
+          <Form type="artists" />
+        </Provider>
+      ));
+      wrapper.find('Radio').at(0).simulate('change');
+
+      expectedAction = {
+        type: types.CHANGE_ARTISTS_TIME_RANGE,
+        payload: { timeRange: 'short_term' },
+      };
+      expect(store.getActions()[0]).toEqual(expectedAction);
+    });
   });
 });

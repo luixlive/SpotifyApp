@@ -9,6 +9,13 @@ export const app = {
   loadUser: emptyFunction,
 };
 
+export const artists = {};
+
+export const artistList = {
+  reloading: initialState.userStats.topArtists.reloading,
+  artists: initialState.userStats.topArtists.list,
+};
+
 export const authenticationChecker = {
   userAuthenticated: initialState.user.userAuthenticated,
   loggingOutUser: initialState.user.loggingOutUser,
@@ -24,6 +31,7 @@ export const form = {
   type: 'tracks',
   tracksTimeRange: initialState.userStats.topTracks.timeRange,
   artistsTimeRange: initialState.userStats.topArtists.timeRange,
+  changeArtistsTimeRange: emptyFunction,
   changeTracksTimeRange: emptyFunction,
 };
 
@@ -45,12 +53,17 @@ export const screenLoader = { text: '' };
 
 export const sizeDetector = { deviceTypeChanged: emptyFunction };
 
+export const tracks = {};
+
 export const trackList = {
   reloading: initialState.userStats.topTracks.reloading,
   tracks: initialState.userStats.topTracks.list,
 };
 
-export const tracks = { deviceMobile: initialState.deviceMobile };
+export const tracksArtistsTemplate = {
+  type: 'tracks',
+  deviceMobile: initialState.deviceMobile,
+};
 
 export const userStats = {
   displayName: initialState.user.profile.displayName,

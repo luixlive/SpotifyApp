@@ -1,31 +1,6 @@
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import React from 'react';
 
-export const PureArtists = props => (
-  <ol>
-    {props.artists.map(artist => (
-      <li key={artist.name}>{artist.name}</li>
-    ))}
-  </ol>
-);
+import ArtistList from './artist_list';
 
-PureArtists.propTypes = {
-  artists: PropTypes.arrayOf(PropTypes.shape({
-    followers: PropTypes.number,
-    genres: PropTypes.array,
-    id: PropTypes.string,
-    imageUrl: PropTypes.string,
-    name: PropTypes.string,
-    popularity: PropTypes.number,
-    spotifyUrl: PropTypes.string,
-  })).isRequired,
-};
-
-const mapStateToProps = ({ userStats }) => ({
-  artists: userStats.topArtists.list,
-});
-
-const mapDispatchToProps = () => ({});
-
-export default connect(mapStateToProps, mapDispatchToProps)(PureArtists);
+// TODO: Add recomended artists
+export default () => <ArtistList />;
