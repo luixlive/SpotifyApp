@@ -11,7 +11,7 @@ export const PureArtistList = (props) => {
   return (
     <ol>
       {props.artists.map(artist => (
-        <li key={artist.name}>{artist.name}</li>
+        <li key={artist.id}>{artist.name}</li>
       ))}
     </ol>
   );

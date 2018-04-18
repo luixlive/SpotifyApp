@@ -33,13 +33,19 @@ export class PureUserCard extends Component {
           >
             {
               this.state.imageValid ?
-                <Image
-                  centered
-                  circular
-                  onError={this.imageIsInvalid}
-                  size={this.props.deviceMobile ? 'small' : 'small'}
-                  src={this.props.profile.imageUrl}
-                /> :
+                <a
+                  href={this.props.profile.spotifyUrl}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <Image
+                    centered
+                    circular
+                    onError={this.imageIsInvalid}
+                    size={this.props.deviceMobile ? 'small' : 'small'}
+                    src={this.props.profile.imageUrl}
+                  />
+                </a> :
                 <div>
                   <Divider hidden />
                   <Icon
