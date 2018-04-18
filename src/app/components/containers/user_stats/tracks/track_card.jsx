@@ -25,7 +25,7 @@ export const formatSongTime = (ms) => {
 
 export const PureTrackCard = props => (
   <div>
-    <Header floated>
+    <Header as={props.deviceMobile ? 'h3' : 'h2'} floated="left">
       {props.place}
     </Header>
     <Card className="track" fluid>

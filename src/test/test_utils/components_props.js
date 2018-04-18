@@ -56,6 +56,7 @@ export const sizeDetector = { deviceTypeChanged: emptyFunction };
 export const tracks = {};
 
 export const trackList = {
+  deviceMobile: initialState.deviceMobile,
   reloading: initialState.userStats.topTracks.reloading,
   tracks: initialState.userStats.topTracks.list,
 };

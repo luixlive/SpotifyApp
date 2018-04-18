@@ -80,11 +80,17 @@ exports[`App Components - User Card Snapshots renders mobile and image valid 1`]
     <div
       className="center aligned sixteen wide column"
     >
-      <img
-        className="ui small circular centered image"
-        onError={[Function]}
-        src="url"
-      />
+      <a
+        href=""
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <img
+          className="ui small circular centered image"
+          onError={[Function]}
+          src="url"
+        />
+      </a>
       <div
         className="ui fluid card"
         href={undefined}
@@ -222,11 +228,17 @@ exports[`App Components - User Card Snapshots renders no mobile and image valid 
     <div
       className="center aligned eight wide column"
     >
-      <img
-        className="ui small circular centered image"
-        onError={[Function]}
-        src="url"
-      />
+      <a
+        href=""
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <img
+          className="ui small circular centered image"
+          onError={[Function]}
+          src="url"
+        />
+      </a>
       <div
         className="ui fluid card"
         href={undefined}

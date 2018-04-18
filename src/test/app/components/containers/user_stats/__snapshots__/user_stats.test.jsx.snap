@@ -36,11 +36,17 @@ exports[`App Components - UserStats Snapshots renders stats loaded 1`] = `
       <div
         className="center aligned eight wide column"
       >
-        <img
-          className="ui small circular centered image"
-          onError={[Function]}
-          src="url"
-        />
+        <a
+          href=""
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <img
+            className="ui small circular centered image"
+            onError={[Function]}
+            src="url"
+          />
+        </a>
         <div
           className="ui fluid card"
           href={undefined}
