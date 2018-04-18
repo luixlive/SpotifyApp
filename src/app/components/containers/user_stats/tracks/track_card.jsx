@@ -9,6 +9,7 @@ import './../../../../style/components/containers/user_stats/tracks/track_card.l
 export const formatArtists = artists => artists.map((artist, index, array) => (
   <a
     href={artist.spotifyUrl}
+    key={artist.id}
     rel="noopener noreferrer"
     target="_blank"
   >
