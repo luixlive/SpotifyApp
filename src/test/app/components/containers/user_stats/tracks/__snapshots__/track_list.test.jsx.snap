@@ -84,7 +84,7 @@ exports[`App Components - Track List Snapshots renders with some tracks 1`] = `
               <h4
                 className="sub header"
               >
-                0:0
+                0:00
               </h4>
             </div>
             <div
@@ -166,7 +166,7 @@ exports[`App Components - Track List Snapshots renders with some tracks 1`] = `
               <h4
                 className="sub header"
               >
-                0:0
+                0:00
               </h4>
             </div>
             <div
@@ -248,7 +248,264 @@ exports[`App Components - Track List Snapshots renders with some tracks 1`] = `
               <h4
                 className="sub header"
               >
-                0:0
+                0:00
+              </h4>
+            </div>
+            <div
+              className="description"
+            >
+              <h4
+                className="sub header"
+              >
+                <a
+                  href="artistspotify.url"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  artist3
+                </a>
+              </h4>
+            </div>
+          </div>
+          <div
+            className="extra content"
+          >
+            Album: 
+            <a
+              href="albumspotify.url"
+            >
+              album3
+            </a>
+            <br />
+            Number: 1
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`App Components - Track List Snapshots renders with some tracks mobile 1`] = `
+<div
+  className="ui basic segment"
+>
+  <div
+    className="ui grid"
+  >
+    <div
+      className="sixteen wide column"
+    >
+      <div>
+        <h2
+          className="ui left floated header"
+        >
+          1
+        </h2>
+        <div
+          className="ui fluid card track"
+          href={undefined}
+          onClick={[Function]}
+        >
+          <a
+            href="albumspotify.url"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <img
+              className="ui image"
+              src="albumimage.url"
+            />
+          </a>
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              <h3
+                className="ui header"
+              >
+                <a
+                  href="spotify.url"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  name1
+                </a>
+              </h3>
+            </div>
+            <div
+              className="meta"
+            >
+              <h4
+                className="sub header"
+              >
+                0:00
+              </h4>
+            </div>
+            <div
+              className="description"
+            >
+              <h4
+                className="sub header"
+              >
+                <a
+                  href="artistspotify.url"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  artist1
+                </a>
+              </h4>
+            </div>
+          </div>
+          <div
+            className="extra content"
+          >
+            Album: 
+            <a
+              href="albumspotify.url"
+            >
+              album1
+            </a>
+            <br />
+            Number: 1
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="sixteen wide column"
+    >
+      <div>
+        <h2
+          className="ui left floated header"
+        >
+          2
+        </h2>
+        <div
+          className="ui fluid card track"
+          href={undefined}
+          onClick={[Function]}
+        >
+          <a
+            href="albumspotify.url"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <img
+              className="ui image"
+              src="albumimage.url"
+            />
+          </a>
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              <h3
+                className="ui header"
+              >
+                <a
+                  href="spotify.url"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  name2
+                </a>
+              </h3>
+            </div>
+            <div
+              className="meta"
+            >
+              <h4
+                className="sub header"
+              >
+                0:00
+              </h4>
+            </div>
+            <div
+              className="description"
+            >
+              <h4
+                className="sub header"
+              >
+                <a
+                  href="artistspotify.url"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  artist2
+                </a>
+              </h4>
+            </div>
+          </div>
+          <div
+            className="extra content"
+          >
+            Album: 
+            <a
+              href="albumspotify.url"
+            >
+              album2
+            </a>
+            <br />
+            Number: 1
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="sixteen wide column"
+    >
+      <div>
+        <h2
+          className="ui left floated header"
+        >
+          3
+        </h2>
+        <div
+          className="ui fluid card track"
+          href={undefined}
+          onClick={[Function]}
+        >
+          <a
+            href="albumspotify.url"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <img
+              className="ui image"
+              src="albumimage.url"
+            />
+          </a>
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              <h3
+                className="ui header"
+              >
+                <a
+                  href="spotify.url"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  name3
+                </a>
+              </h3>
+            </div>
+            <div
+              className="meta"
+            >
+              <h4
+                className="sub header"
+              >
+                0:00
               </h4>
             </div>
             <div

@@ -18,9 +18,13 @@ export const formatArtists = artists => artists.map((artist, index, array) => (
 ));
 
 export const formatSongTime = (ms) => {
-  const msInAMinute = 60000;
-  const minutes = Math.floor(ms / msInAMinute);
-  const seconds = (ms % msInAMinute).toString().slice(0, 2);
+  const msInASecond = 1000;
+  const secondsInAMinute = 60;
+
+  const inSeconds = ms / msInASecond;
+  const minutes = Math.floor(inSeconds / secondsInAMinute);
+  let seconds = (inSeconds % secondsInAMinute).toString().split('.')[0];
+  seconds = seconds.length === 1 ? `0${seconds}` : seconds;
   return `${minutes}:${seconds}`;
 };
 
@@ -76,13 +80,13 @@ PureTrackCard.defaultProps = {
   album: {
     spotifyUrl: null,
     imageUrl: null,
-    name: null,
+    name: '',
   },
   artists: [],
-  durationMs: null,
-  name: null,
+  durationMs: 0,
+  name: '',
   spotifyUrl: null,
-  trackNumber: null,
+  trackNumber: 0,
 };
 
 PureTrackCard.propTypes = {

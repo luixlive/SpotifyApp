@@ -38,6 +38,17 @@ describe('App Components - Track List', () => {
       expect(rendered).toMatchSnapshot();
     });
 
+    it('renders with some tracks mobile', () => {
+      props.deviceMobile = true;
+      props.tracks = _.cloneDeep(mockTopTracks);
+      const rendered = renderer.create((
+        <Provider store={store}>
+          <PureTrackList {...props} />
+        </Provider>
+      )).toJSON();
+      expect(rendered).toMatchSnapshot();
+    });
+
     it('renders while reloading', () => {
       props.reloading = true;
       const rendered = renderer.create(<PureTrackList {...props} />).toJSON();

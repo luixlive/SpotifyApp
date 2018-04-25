@@ -50,6 +50,10 @@ describe('App Components - Header', () => {
       const wrapper = shallow(<PureHeader {...props} />);
       wrapper.find('Button').simulate('click');
       expect(global.open).toHaveBeenCalledTimes(1);
+      expect(global.open.mock.calls[0][0])
+        .toEqual('/api/authentication/spotify');
+      expect(global.open.mock.calls[0][1])
+        .toEqual('_self');
     });
 
     it('calls logoutUser on logout button click', () => {
