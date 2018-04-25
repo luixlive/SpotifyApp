@@ -16,6 +16,12 @@ import TrackList, {
 } from './../../../../../../app/components/containers/user_stats/tracks/track_list';
 
 describe('App Components - Track List', () => {
+  const mockStore = configureStore();
+  let store;
+  beforeAll(() => {
+    store = mockStore(initialState);
+  });
+
   describe('Snapshots', () => {
     let props;
     beforeEach(() => {
@@ -24,7 +30,22 @@ describe('App Components - Track List', () => {
 
     it('renders with some tracks', () => {
       props.tracks = _.cloneDeep(mockTopTracks);
-      const rendered = renderer.create(<PureTrackList {...props} />).toJSON();
+      const rendered = renderer.create((
+        <Provider store={store}>
+          <PureTrackList {...props} />
+        </Provider>
+      )).toJSON();
+      expect(rendered).toMatchSnapshot();
+    });
+
+    it('renders with some tracks mobile', () => {
+      props.deviceMobile = true;
+      props.tracks = _.cloneDeep(mockTopTracks);
+      const rendered = renderer.create((
+        <Provider store={store}>
+          <PureTrackList {...props} />
+        </Provider>
+      )).toJSON();
       expect(rendered).toMatchSnapshot();
     });
 
@@ -36,11 +57,8 @@ describe('App Components - Track List', () => {
   });
 
   describe('Provider', () => {
-    const mockStore = configureStore();
-    let store;
     let wrapper;
     beforeAll(() => {
-      store = mockStore(initialState);
       wrapper = mount((
         <Provider store={store}>
           <TrackList />

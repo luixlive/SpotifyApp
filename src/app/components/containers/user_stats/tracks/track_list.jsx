@@ -1,23 +1,30 @@
 import { connect } from 'react-redux';
+import { Grid, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import { ScreenLoader } from './../../../templates';
+import TrackCard from './track_card';
 
 export const PureTrackList = (props) => {
   if (props.reloading) {
     return <ScreenLoader />;
   }
   return (
-    <ol>
-      {props.tracks.map(track => (
-        <li key={track.name}>{track.name}</li>
-      ))}
-    </ol>
+    <Segment basic>
+      <Grid>
+        {props.tracks.map((track, index) => (
+          <Grid.Column key={track.id} width={props.deviceMobile ? 16 : 8}>
+            <TrackCard {...track} place={index + 1} />
+          </Grid.Column>
+        ))}
+      </Grid>
+    </Segment>
   );
 };
 
 PureTrackList.propTypes = {
+  deviceMobile: PropTypes.bool.isRequired,
   reloading: PropTypes.bool.isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({
     album: PropTypes.object,
@@ -31,7 +38,8 @@ PureTrackList.propTypes = {
   })).isRequired,
 };
 
-const mapStateToProps = ({ userStats }) => ({
+const mapStateToProps = ({ deviceMobile, userStats }) => ({
+  deviceMobile,
   reloading: userStats.topTracks.reloading,
   tracks: userStats.topTracks.list,
 });

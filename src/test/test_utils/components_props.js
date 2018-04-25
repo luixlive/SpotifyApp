@@ -55,7 +55,27 @@ export const sizeDetector = { deviceTypeChanged: emptyFunction };
 
 export const tracks = {};
 
+export const trackCard = {
+  place: 0,
+  deviceMobile: initialState.deviceMobile,
+  album: {
+    spotifyUrl: '',
+    imageUrl: '',
+    name: '',
+  },
+  artists: [{
+    id: '',
+    spotifyUrl: '',
+    name: '',
+  }],
+  durationMs: 0,
+  name: '',
+  spotifyUrl: '',
+  trackNumber: 0,
+};
+
 export const trackList = {
+  deviceMobile: initialState.deviceMobile,
   reloading: initialState.userStats.topTracks.reloading,
   tracks: initialState.userStats.topTracks.list,
 };

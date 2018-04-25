@@ -150,11 +150,11 @@ describe('App Sagas - UserStats', () => {
         .toEqual(all([
           call(
             loadTopArtists,
-            { limit: 50, offset: 0, timeRange: artistsTimeRange },
+            { limit: 20, offset: 0, timeRange: artistsTimeRange },
           ),
           call(
             loadTopTracks,
-            { limit: 50, offset: 0, timeRange: tracksTimeRange },
+            { limit: 20, offset: 0, timeRange: tracksTimeRange },
           ),
         ]));
       expect(loadUserStatsGenerator.next().value)
@@ -198,7 +198,7 @@ describe('App Sagas - UserStats', () => {
       expect(reloadTopArtistsGenerator.next().value)
         .toEqual(call(authenticationApi.keepSessionAlive.put));
       expect(reloadTopArtistsGenerator.next(keepSessionAliveResponse).value)
-        .toEqual(call(loadTopArtists, { limit: 50, offset: 0, timeRange }));
+        .toEqual(call(loadTopArtists, { limit: 20, offset: 0, timeRange }));
       expect(reloadTopArtistsGenerator.next().done).toBeTruthy();
     });
 
@@ -243,7 +243,7 @@ describe('App Sagas - UserStats', () => {
       expect(reloadTopTracksGenerator.next().value)
         .toEqual(call(authenticationApi.keepSessionAlive.put));
       expect(reloadTopTracksGenerator.next(keepSessionAliveResponse).value)
-        .toEqual(call(loadTopTracks, { limit: 50, offset: 0, timeRange }));
+        .toEqual(call(loadTopTracks, { limit: 20, offset: 0, timeRange }));
       expect(reloadTopTracksGenerator.next().done).toBeTruthy();
     });
 

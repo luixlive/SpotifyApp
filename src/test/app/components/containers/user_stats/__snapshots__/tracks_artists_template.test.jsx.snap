@@ -211,7 +211,13 @@ exports[`App Components - TracksArtistsTemplate Snapshots renders device mobile 
         </div>
       </form>
     </div>
-    <ol />
+    <div
+      className="ui basic segment"
+    >
+      <div
+        className="ui grid"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -446,7 +452,13 @@ exports[`App Components - TracksArtistsTemplate Snapshots renders device no mobi
     <div
       className="twelve wide column"
     >
-      <ol />
+      <div
+        className="ui basic segment"
+      >
+        <div
+          className="ui grid"
+        />
+      </div>
     </div>
   </div>
 </div>

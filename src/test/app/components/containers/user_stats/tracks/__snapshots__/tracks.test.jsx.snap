@@ -1,3 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App Components - Tracks Snapshots renders 1`] = `<ol />`;
+exports[`App Components - Tracks Snapshots renders 1`] = `
+<div
+  className="ui basic segment"
+>
+  <div
+    className="ui grid"
+  />
+</div>
+`;

@@ -80,12 +80,12 @@ export function* loadUserStats() {
       const tracksTimeRange = yield select(getTracksTimeRange);
       yield all([
         call(loadTopArtists, {
-          limit: 50,
+          limit: 20,
           offset: 0,
           timeRange: artistsTimeRange,
         }),
         call(loadTopTracks, {
-          limit: 50,
+          limit: 20,
           offset: 0,
           timeRange: tracksTimeRange,
         }),
@@ -110,7 +110,7 @@ export function* reloadTopArtists({ payload: { timeRange } }) {
   try {
     const response = yield call(authenticationApi.keepSessionAlive.put);
     if (response.status === httpStatus.NO_CONTENT) {
-      yield call(loadTopArtists, { limit: 50, offset: 0, timeRange });
+      yield call(loadTopArtists, { limit: 20, offset: 0, timeRange });
     } else {
       yield put({
         type: KEEP_SESSION_ALIVE_FAILED,
@@ -129,7 +129,7 @@ export function* reloadTopTracks({ payload: { timeRange } }) {
   try {
     const response = yield call(authenticationApi.keepSessionAlive.put);
     if (response.status === httpStatus.NO_CONTENT) {
-      yield call(loadTopTracks, { limit: 50, offset: 0, timeRange });
+      yield call(loadTopTracks, { limit: 20, offset: 0, timeRange });
     } else {
       yield put({
         type: KEEP_SESSION_ALIVE_FAILED,
