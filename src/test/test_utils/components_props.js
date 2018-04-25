@@ -12,6 +12,7 @@ export const app = {
 export const artists = {};
 
 export const artistList = {
+  deviceMobile: initialState.deviceMobile,
   reloading: initialState.userStats.topArtists.reloading,
   artists: initialState.userStats.topArtists.list,
 };

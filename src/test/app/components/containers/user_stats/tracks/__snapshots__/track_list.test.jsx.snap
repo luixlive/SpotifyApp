@@ -113,7 +113,8 @@ exports[`App Components - Track List Snapshots renders with some tracks 1`] = `
               album1
             </a>
             <br />
-            Number: 1
+            Number: 
+            1
           </div>
         </div>
       </div>
@@ -195,7 +196,8 @@ exports[`App Components - Track List Snapshots renders with some tracks 1`] = `
               album2
             </a>
             <br />
-            Number: 1
+            Number: 
+            1
           </div>
         </div>
       </div>
@@ -277,7 +279,8 @@ exports[`App Components - Track List Snapshots renders with some tracks 1`] = `
               album3
             </a>
             <br />
-            Number: 1
+            Number: 
+            1
           </div>
         </div>
       </div>
@@ -370,7 +373,8 @@ exports[`App Components - Track List Snapshots renders with some tracks mobile 1
               album1
             </a>
             <br />
-            Number: 1
+            Number: 
+            1
           </div>
         </div>
       </div>
@@ -452,7 +456,8 @@ exports[`App Components - Track List Snapshots renders with some tracks mobile 1
               album2
             </a>
             <br />
-            Number: 1
+            Number: 
+            1
           </div>
         </div>
       </div>
@@ -534,7 +539,8 @@ exports[`App Components - Track List Snapshots renders with some tracks mobile 1
               album3
             </a>
             <br />
-            Number: 1
+            Number: 
+            1
           </div>
         </div>
       </div>

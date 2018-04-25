@@ -16,6 +16,12 @@ import ArtistList, {
 } from './../../../../../../app/components/containers/user_stats/artists/artist_list';
 
 describe('App Components - Artist List', () => {
+  const mockStore = configureStore();
+  let store;
+  beforeAll(() => {
+    store = mockStore(initialState);
+  });
+
   describe('Snapshots', () => {
     let props;
     beforeEach(() => {
@@ -24,23 +30,28 @@ describe('App Components - Artist List', () => {
 
     it('renders with some artists', () => {
       props.artists = _.cloneDeep(mockTopArtists);
-      const rendered = renderer.create(<PureArtistList {...props} />).toJSON();
+      const rendered = renderer.create((
+        <Provider store={store}>
+          <PureArtistList {...props} />
+        </Provider>
+      )).toJSON();
       expect(rendered).toMatchSnapshot();
     });
 
     it('renders while reloading', () => {
       props.reloading = true;
-      const rendered = renderer.create(<PureArtistList {...props} />).toJSON();
+      const rendered = renderer.create((
+        <Provider store={store}>
+          <PureArtistList {...props} />
+        </Provider>
+      )).toJSON();
       expect(rendered).toMatchSnapshot();
     });
   });
 
   describe('Provider', () => {
-    const mockStore = configureStore();
-    let store;
     let wrapper;
     beforeAll(() => {
-      store = mockStore(initialState);
       wrapper = mount((
         <Provider store={store}>
           <ArtistList />

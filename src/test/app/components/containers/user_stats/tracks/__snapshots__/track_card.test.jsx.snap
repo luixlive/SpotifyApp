@@ -75,7 +75,8 @@ exports[`App Components - Track Card Snapshots renders mobile 1`] = `
         
       </a>
       <br />
-      Number: 0
+      Number: 
+      0
     </div>
   </div>
 </div>
@@ -156,7 +157,8 @@ exports[`App Components - Track Card Snapshots renders no mobile 1`] = `
         
       </a>
       <br />
-      Number: 0
+      Number: 
+      0
     </div>
   </div>
 </div>
