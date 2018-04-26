@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App Components - Track Card Snapshots renders mobile 1`] = `
+exports[`App Components - Artist Card Snapshots renders mobile 1`] = `
 <div>
   <h3
     className="ui left floated header"
@@ -8,7 +8,7 @@ exports[`App Components - Track Card Snapshots renders mobile 1`] = `
     0
   </h3>
   <div
-    className="ui fluid card track"
+    className="ui fluid card artist"
     href={undefined}
     onClick={[Function]}
   >
@@ -45,44 +45,20 @@ exports[`App Components - Track Card Snapshots renders mobile 1`] = `
       >
         <h5
           className="sub header"
-        >
-          0:00
-        </h5>
-      </div>
-      <div
-        className="description"
-      >
-        <h5
-          className="sub header"
-        >
-          <a
-            href=""
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            
-          </a>
-        </h5>
+        />
       </div>
     </div>
     <div
       className="extra content"
     >
-      Album: 
-      <a
-        href=""
-      >
-        
-      </a>
-      <br />
-      Number: 
+      Followers: 
       0
     </div>
   </div>
 </div>
 `;
 
-exports[`App Components - Track Card Snapshots renders no mobile 1`] = `
+exports[`App Components - Artist Card Snapshots renders no mobile 1`] = `
 <div>
   <h2
     className="ui left floated header"
@@ -90,7 +66,7 @@ exports[`App Components - Track Card Snapshots renders no mobile 1`] = `
     0
   </h2>
   <div
-    className="ui fluid card track"
+    className="ui fluid card artist"
     href={undefined}
     onClick={[Function]}
   >
@@ -127,37 +103,13 @@ exports[`App Components - Track Card Snapshots renders no mobile 1`] = `
       >
         <h4
           className="sub header"
-        >
-          0:00
-        </h4>
-      </div>
-      <div
-        className="description"
-      >
-        <h4
-          className="sub header"
-        >
-          <a
-            href=""
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            
-          </a>
-        </h4>
+        />
       </div>
     </div>
     <div
       className="extra content"
     >
-      Album: 
-      <a
-        href=""
-      >
-        
-      </a>
-      <br />
-      Number: 
+      Followers: 
       0
     </div>
   </div>

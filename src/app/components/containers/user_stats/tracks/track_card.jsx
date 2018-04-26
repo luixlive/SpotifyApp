@@ -70,7 +70,7 @@ export const PureTrackCard = props => (
           {props.album.name}
         </a>
         <br />
-        {`Number: ${props.trackNumber}`}
+        Number: {props.trackNumber}
       </Card.Content>
     </Card>
   </div>
