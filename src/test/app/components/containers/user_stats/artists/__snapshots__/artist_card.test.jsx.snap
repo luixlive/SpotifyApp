@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Components - Artist Card Snapshots renders mobile 1`] = `
+<div>
+  <h3
+    className="ui left floated header"
+  >
+    0
+  </h3>
+  <div
+    className="ui fluid card artist"
+    href={undefined}
+    onClick={[Function]}
+  >
+    <a
+      href=""
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <img
+        className="ui image"
+        src=""
+      />
+    </a>
+    <div
+      className="content"
+    >
+      <div
+        className="header"
+      >
+        <h4
+          className="ui header"
+        >
+          <a
+            href=""
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            
+          </a>
+        </h4>
+      </div>
+      <div
+        className="meta"
+      >
+        <h5
+          className="sub header"
+        />
+      </div>
+    </div>
+    <div
+      className="extra content"
+    >
+      Followers: 
+      0
+    </div>
+  </div>
+</div>
+`;
+
+exports[`App Components - Artist Card Snapshots renders no mobile 1`] = `
+<div>
+  <h2
+    className="ui left floated header"
+  >
+    0
+  </h2>
+  <div
+    className="ui fluid card artist"
+    href={undefined}
+    onClick={[Function]}
+  >
+    <a
+      href=""
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <img
+        className="ui image"
+        src=""
+      />
+    </a>
+    <div
+      className="content"
+    >
+      <div
+        className="header"
+      >
+        <h3
+          className="ui header"
+        >
+          <a
+            href=""
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            
+          </a>
+        </h3>
+      </div>
+      <div
+        className="meta"
+      >
+        <h4
+          className="sub header"
+        />
+      </div>
+    </div>
+    <div
+      className="extra content"
+    >
+      Followers: 
+      0
+    </div>
+  </div>
+</div>
+`;

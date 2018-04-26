@@ -7,7 +7,7 @@ import React from 'react';
 import './../../../../style/components/containers/user_stats/artists/artist_card.less';
 
 export const formatGenres = genres => genres.map(genre => (
-  <div>
+  <div key={genre}>
     {`${genre[0].toUpperCase()}${genre.slice(1)}`}<br />
   </div>
 ));

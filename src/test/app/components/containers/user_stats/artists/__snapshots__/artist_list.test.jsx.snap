@@ -216,3 +216,191 @@ exports[`App Components - Artist List Snapshots renders with some artists 1`] = 
   </div>
 </div>
 `;
+
+exports[`App Components - Artist List Snapshots renders with some artists mobile 1`] = `
+<div
+  className="ui basic segment"
+>
+  <div
+    className="ui grid"
+  >
+    <div
+      className="sixteen wide column"
+    >
+      <div>
+        <h2
+          className="ui left floated header"
+        >
+          1
+        </h2>
+        <div
+          className="ui fluid card artist"
+          href={undefined}
+          onClick={[Function]}
+        >
+          <a
+            href="spotify.url"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <img
+              className="ui image"
+              src="image.url"
+            />
+          </a>
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              <h3
+                className="ui header"
+              >
+                <a
+                  href="spotify.url"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  name1
+                </a>
+              </h3>
+            </div>
+            <div
+              className="meta"
+            >
+              <h4
+                className="sub header"
+              />
+            </div>
+          </div>
+          <div
+            className="extra content"
+          >
+            Followers: 
+            0
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="sixteen wide column"
+    >
+      <div>
+        <h2
+          className="ui left floated header"
+        >
+          2
+        </h2>
+        <div
+          className="ui fluid card artist"
+          href={undefined}
+          onClick={[Function]}
+        >
+          <a
+            href="spotify.url"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <img
+              className="ui image"
+              src="image.url"
+            />
+          </a>
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              <h3
+                className="ui header"
+              >
+                <a
+                  href="spotify.url"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  name2
+                </a>
+              </h3>
+            </div>
+            <div
+              className="meta"
+            >
+              <h4
+                className="sub header"
+              />
+            </div>
+          </div>
+          <div
+            className="extra content"
+          >
+            Followers: 
+            0
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="sixteen wide column"
+    >
+      <div>
+        <h2
+          className="ui left floated header"
+        >
+          3
+        </h2>
+        <div
+          className="ui fluid card artist"
+          href={undefined}
+          onClick={[Function]}
+        >
+          <a
+            href="spotify.url"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <img
+              className="ui image"
+              src="image.url"
+            />
+          </a>
+          <div
+            className="content"
+          >
+            <div
+              className="header"
+            >
+              <h3
+                className="ui header"
+              >
+                <a
+                  href="spotify.url"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  name3
+                </a>
+              </h3>
+            </div>
+            <div
+              className="meta"
+            >
+              <h4
+                className="sub header"
+              />
+            </div>
+          </div>
+          <div
+            className="extra content"
+          >
+            Followers: 
+            0
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

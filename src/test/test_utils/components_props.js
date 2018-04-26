@@ -11,6 +11,16 @@ export const app = {
 
 export const artists = {};
 
+export const artistCard = {
+  place: 0,
+  deviceMobile: initialState.deviceMobile,
+  followers: 0,
+  genres: [],
+  imageUrl: '',
+  name: '',
+  spotifyUrl: '',
+};
+
 export const artistList = {
   deviceMobile: initialState.deviceMobile,
   reloading: initialState.userStats.topArtists.reloading,

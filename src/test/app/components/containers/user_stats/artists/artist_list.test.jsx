@@ -38,6 +38,17 @@ describe('App Components - Artist List', () => {
       expect(rendered).toMatchSnapshot();
     });
 
+    it('renders with some artists mobile', () => {
+      props.deviceMobile = true;
+      props.artists = _.cloneDeep(mockTopArtists);
+      const rendered = renderer.create((
+        <Provider store={store}>
+          <PureArtistList {...props} />
+        </Provider>
+      )).toJSON();
+      expect(rendered).toMatchSnapshot();
+    });
+
     it('renders while reloading', () => {
       props.reloading = true;
       const rendered = renderer.create((
