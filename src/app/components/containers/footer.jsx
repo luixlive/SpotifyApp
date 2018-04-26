@@ -20,7 +20,15 @@ const Footer = () => (
         rel="noopener noreferrer"
         target="_blank"
       >
-        {' www.flaticon.com'}
+        {' flaticon'}
+      </a>
+      . Contact me on
+      <a
+        href="https://twitter.com/LuisAlfonsoCHA"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        {' twitter'}
       </a>.
     </p>
   </Segment>

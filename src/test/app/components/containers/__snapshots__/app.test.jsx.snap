@@ -85,7 +85,15 @@ exports[`App Components - App Snapshots renders error 1`] = `
         rel="noopener noreferrer"
         target="_blank"
       >
-         www.flaticon.com
+         flaticon
+      </a>
+      . Contact me on
+      <a
+        href="https://twitter.com/LuisAlfonsoCHA"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+         twitter
       </a>
       .
     </p>
@@ -151,7 +159,15 @@ exports[`App Components - App Snapshots renders user loaded 1`] = `
         rel="noopener noreferrer"
         target="_blank"
       >
-         www.flaticon.com
+         flaticon
+      </a>
+      . Contact me on
+      <a
+        href="https://twitter.com/LuisAlfonsoCHA"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+         twitter
       </a>
       .
     </p>
@@ -242,7 +258,15 @@ exports[`App Components - App Snapshots renders user not loaded 1`] = `
         rel="noopener noreferrer"
         target="_blank"
       >
-         www.flaticon.com
+         flaticon
+      </a>
+      . Contact me on
+      <a
+        href="https://twitter.com/LuisAlfonsoCHA"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+         twitter
       </a>
       .
     </p>
