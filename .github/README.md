@@ -1,4 +1,4 @@
-# Spotify Stats
+# Music Stats
 Simple webapp to see your user's Spotify statistics.
 
 ## Production site

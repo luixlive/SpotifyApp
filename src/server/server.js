@@ -6,5 +6,5 @@ const logger = require('./../utils/logger');
 const port = config.get('PORT');
 
 app.listen(port, () => {
-  logger.info(`Spotify App listening at http://${config.get('HOST')}:${port}`);
+  logger.info(`Music Stats listening port: ${port}`);
 });

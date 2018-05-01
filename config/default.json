@@ -1,6 +1,6 @@
 {
   "APP_DESCRIPTION": "Simple webapp to see your user's Spotify statistics.",
-  "APP_TITLE": "Spotify Stats",
+  "APP_TITLE": "Music Stats",
   "CONSTANTS": {
     "TOP_ARTISTS": "TOP_ARTISTS",
     "TOP_TRACKS": "TOP_TRACKS"
