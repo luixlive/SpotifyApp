@@ -203,7 +203,7 @@ Object {
   },
   "info": Object {
     "description": "Simple webapp to see your user's Spotify statistics.",
-    "title": "Spotify Stats",
+    "title": "Music Stats",
     "version": "1.0.0",
   },
   "parameters": Object {
