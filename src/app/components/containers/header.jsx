@@ -20,7 +20,7 @@ export class PureHeader extends Component {
           {!this.props.deviceMobile && <Grid.Column width={4} />}
           <Grid.Column verticalAlign="middle" width={8}>
             <Header as={this.props.deviceMobile ? 'h2' : 'h1'} >
-              Spotify Stats
+              Music Stats
             </Header>
           </Grid.Column>
           <Grid.Column width={this.props.deviceMobile ? 8 : 4}>

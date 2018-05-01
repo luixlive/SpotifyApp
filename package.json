@@ -3,8 +3,8 @@
   "description": "Simple webapp to see your user's Spotify statistics.",
   "license": "ISC",
   "main": "src/server/server.js",
-  "name": "spotify-stats",
-  "version": "1.0.0",
+  "name": "music-stats",
+  "version": "1.0.1",
   "scripts": {
     "build": "NODE_ENV=production; webpack",
     "dev": "nodemon src/server/server.js",

@@ -17,7 +17,7 @@ exports[`App Components - App Snapshots renders error 1`] = `
         <h1
           className="ui header"
         >
-          Spotify Stats
+          Music Stats
         </h1>
       </div>
       <div
@@ -71,7 +71,15 @@ exports[`App Components - App Snapshots renders error 1`] = `
     className="ui center aligned segment footer"
   >
     <p>
-      Favicon made by
+      This app uses the
+      <a
+        href="https://www.spotify.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+         Spotify 
+      </a>
+      API. Favicon made by
       <a
         href="https://www.flaticon.com/authors/gregor-cresnar"
         rel="noopener noreferrer"
@@ -118,7 +126,7 @@ exports[`App Components - App Snapshots renders user loaded 1`] = `
         <h1
           className="ui header"
         >
-          Spotify Stats
+          Music Stats
         </h1>
       </div>
       <div
@@ -145,7 +153,15 @@ exports[`App Components - App Snapshots renders user loaded 1`] = `
     className="ui center aligned segment footer"
   >
     <p>
-      Favicon made by
+      This app uses the
+      <a
+        href="https://www.spotify.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+         Spotify 
+      </a>
+      API. Favicon made by
       <a
         href="https://www.flaticon.com/authors/gregor-cresnar"
         rel="noopener noreferrer"
@@ -192,7 +208,7 @@ exports[`App Components - App Snapshots renders user not loaded 1`] = `
         <h1
           className="ui header"
         >
-          Spotify Stats
+          Music Stats
         </h1>
       </div>
       <div
@@ -244,7 +260,15 @@ exports[`App Components - App Snapshots renders user not loaded 1`] = `
     className="ui center aligned segment footer"
   >
     <p>
-      Favicon made by
+      This app uses the
+      <a
+        href="https://www.spotify.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+         Spotify 
+      </a>
+      API. Favicon made by
       <a
         href="https://www.flaticon.com/authors/gregor-cresnar"
         rel="noopener noreferrer"

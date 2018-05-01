@@ -1,6 +1,6 @@
 {
-    "name": "Spotify Stats",
-    "short_name": "Spotify Stats",
+    "name": "Music Stats",
+    "short_name": "Music Stats",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",

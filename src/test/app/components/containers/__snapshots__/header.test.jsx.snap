@@ -13,7 +13,7 @@ exports[`App Components - Header Snapshots renders mobile 1`] = `
       <h2
         className="ui header"
       >
-        Spotify Stats
+        Music Stats
       </h2>
     </div>
     <div
@@ -49,7 +49,7 @@ exports[`App Components - Header Snapshots renders no mobile 1`] = `
       <h1
         className="ui header"
       >
-        Spotify Stats
+        Music Stats
       </h1>
     </div>
     <div
@@ -85,7 +85,7 @@ exports[`App Components - Header Snapshots renders user authenticated 1`] = `
       <h1
         className="ui header"
       >
-        Spotify Stats
+        Music Stats
       </h1>
     </div>
     <div

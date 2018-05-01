@@ -6,7 +6,15 @@ import './../../style/components/containers/footer.less';
 const Footer = () => (
   <Segment className="footer" textAlign="center">
     <p>
-      Favicon made by
+      This app uses the
+      <a
+        href="https://www.spotify.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        {' Spotify '}
+      </a>
+      API. Favicon made by
       <a
         href="https://www.flaticon.com/authors/gregor-cresnar"
         rel="noopener noreferrer"

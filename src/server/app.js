@@ -15,7 +15,7 @@ const swaggerRouter = require('./swagger');
 const app = express();
 const environment = config.util.getEnv('NODE_ENV');
 
-logger.info(`Spotify App started in ${config.util.getEnv('NODE_ENV')} mode`);
+logger.info(`Music Stats started in ${config.util.getEnv('NODE_ENV')} mode`);
 
 require('./services/passport').configurePassport(passport);
 
