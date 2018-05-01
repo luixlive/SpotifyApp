@@ -3,12 +3,14 @@ import { Grid, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { ScreenLoader } from './../../../templates';
+import { Message, ScreenLoader } from './../../../templates';
 import ArtistCard from './artist_card';
 
 export const PureArtistList = (props) => {
   if (props.reloading) {
     return <ScreenLoader />;
+  } else if (props.error) {
+    return <Message title="Error :(">{props.error}</Message>;
   }
   return (
     <Segment basic>
@@ -25,6 +27,7 @@ export const PureArtistList = (props) => {
 
 PureArtistList.propTypes = {
   deviceMobile: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired,
   artists: PropTypes.arrayOf(PropTypes.shape({
     followers: PropTypes.number,
     genres: PropTypes.array,
@@ -39,6 +42,7 @@ PureArtistList.propTypes = {
 
 const mapStateToProps = ({ deviceMobile, userStats }) => ({
   deviceMobile,
+  error: userStats.topArtists.error,
   reloading: userStats.topArtists.reloading,
   artists: userStats.topArtists.list,
 });

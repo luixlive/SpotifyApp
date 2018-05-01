@@ -51,6 +51,12 @@ describe('App Components - Artist List', () => {
 
     it('renders while reloading', () => {
       props.reloading = true;
+      const rendered = renderer.create(<PureArtistList {...props} />).toJSON();
+      expect(rendered).toMatchSnapshot();
+    });
+
+    it('renders with error', () => {
+      props.error = 'Some error';
       const rendered = renderer.create((
         <Provider store={store}>
           <PureArtistList {...props} />

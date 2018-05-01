@@ -23,6 +23,7 @@ export const artistCard = {
 
 export const artistList = {
   deviceMobile: initialState.deviceMobile,
+  error: initialState.userStats.topArtists.error,
   reloading: initialState.userStats.topArtists.reloading,
   artists: initialState.userStats.topArtists.list,
 };
@@ -87,6 +88,7 @@ export const trackCard = {
 
 export const trackList = {
   deviceMobile: initialState.deviceMobile,
+  error: initialState.userStats.topTracks.error,
   reloading: initialState.userStats.topTracks.reloading,
   tracks: initialState.userStats.topTracks.list,
 };

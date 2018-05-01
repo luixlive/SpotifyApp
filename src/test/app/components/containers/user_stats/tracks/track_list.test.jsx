@@ -54,6 +54,16 @@ describe('App Components - Track List', () => {
       const rendered = renderer.create(<PureTrackList {...props} />).toJSON();
       expect(rendered).toMatchSnapshot();
     });
+
+    it('renders with error', () => {
+      props.error = 'Some error';
+      const rendered = renderer.create((
+        <Provider store={store}>
+          <PureTrackList {...props} />
+        </Provider>
+      )).toJSON();
+      expect(rendered).toMatchSnapshot();
+    });
   });
 
   describe('Provider', () => {

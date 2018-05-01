@@ -3,12 +3,14 @@ import { Grid, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { ScreenLoader } from './../../../templates';
+import { Message, ScreenLoader } from './../../../templates';
 import TrackCard from './track_card';
 
 export const PureTrackList = (props) => {
   if (props.reloading) {
     return <ScreenLoader />;
+  } else if (props.error) {
+    return <Message title="Error :(">{props.error}</Message>;
   }
   return (
     <Segment basic>
@@ -25,6 +27,7 @@ export const PureTrackList = (props) => {
 
 PureTrackList.propTypes = {
   deviceMobile: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired,
   reloading: PropTypes.bool.isRequired,
   tracks: PropTypes.arrayOf(PropTypes.shape({
     album: PropTypes.object,
@@ -40,6 +43,7 @@ PureTrackList.propTypes = {
 
 const mapStateToProps = ({ deviceMobile, userStats }) => ({
   deviceMobile,
+  error: userStats.topTracks.error,
   reloading: userStats.topTracks.reloading,
   tracks: userStats.topTracks.list,
 });
