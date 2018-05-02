@@ -4,7 +4,7 @@
   "license": "ISC",
   "main": "src/server/server.js",
   "name": "music-stats",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "build": "NODE_ENV=production; webpack",
     "dev": "nodemon src/server/server.js",
