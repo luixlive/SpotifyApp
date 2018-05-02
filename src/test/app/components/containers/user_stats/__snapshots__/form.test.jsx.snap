@@ -94,7 +94,7 @@ exports[`App Components - Form Snapshots renders 1`] = `
           <label
             htmlFor={undefined}
           >
-            begining of times
+            beginning of times
           </label>
         </div>
       </div>

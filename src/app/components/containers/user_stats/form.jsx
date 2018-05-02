@@ -36,7 +36,7 @@ export class PureForm extends Component {
     const radioButtons = [
       { label: 'last month', value: FORM_OPTIONS.TIME_RANGE.SHORT_TERM },
       { label: 'last six months', value: FORM_OPTIONS.TIME_RANGE.MEDIUM_TERM },
-      { label: 'begining of times', value: FORM_OPTIONS.TIME_RANGE.LONG_TERM },
+      { label: 'beginning of times', value: FORM_OPTIONS.TIME_RANGE.LONG_TERM },
     ].map(item => (
       <Form.Field key={item.value}>
         <Radio

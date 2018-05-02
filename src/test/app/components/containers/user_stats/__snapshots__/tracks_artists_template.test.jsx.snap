@@ -96,7 +96,7 @@ exports[`App Components - TracksArtistsTemplate Snapshots renders device mobile 
               <label
                 htmlFor={undefined}
               >
-                begining of times
+                beginning of times
               </label>
             </div>
           </div>
@@ -210,7 +210,7 @@ exports[`App Components - TracksArtistsTemplate Snapshots renders device mobile 
               <label
                 htmlFor={undefined}
               >
-                begining of times
+                beginning of times
               </label>
             </div>
           </div>
@@ -329,7 +329,7 @@ exports[`App Components - TracksArtistsTemplate Snapshots renders device no mobi
                 <label
                   htmlFor={undefined}
                 >
-                  begining of times
+                  beginning of times
                 </label>
               </div>
             </div>
@@ -453,7 +453,7 @@ exports[`App Components - TracksArtistsTemplate Snapshots renders device no mobi
                 <label
                   htmlFor={undefined}
                 >
-                  begining of times
+                  beginning of times
                 </label>
               </div>
             </div>
